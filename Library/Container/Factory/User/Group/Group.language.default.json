@@ -1,0 +1,38 @@
+{
+    "group": {
+        "_language": {
+            "de_de": "Gruppe: "
+        }
+    },
+    "overview": {
+        "createdAndEdit": {
+            "_language": {
+                "de_de": "Diese Gruppe wurde am <b>{$created}</b> erstellt und am <b>{$edited}</b> bearbeitet."
+            }
+        },
+        "button": {
+            "edit": {
+                "_language": {
+                    "de_de": "Bearbeiten"
+                }
+            }    
+        }
+    },
+    "header": {
+        "id": {
+            "_language": {
+                "de_de": "ID"
+            }
+        },
+        "size": {
+            "_language": {
+                "de_de": "Größe"
+            }
+        },
+        "status": {
+            "_language": {
+                "de_de": "Status"
+            }
+        }
+    }
+}

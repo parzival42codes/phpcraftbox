@@ -1,0 +1,22 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Content"
+      }
+    },
+    "/table/button/create": {
+      "language": {
+        "de_DE": "Index erstellen",
+        "en_US": "Create Index"
+      }
+    },
+    "/table/button/reCreate": {
+      "language": {
+        "de_DE": "Index neu erstellen",
+        "en_US": "Recreate Index"
+      }
+    }
+  }
+}

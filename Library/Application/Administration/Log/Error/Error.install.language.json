@@ -1,0 +1,40 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Error Log"
+      }
+    },
+    "/filter/header/type": {
+      "language": {
+        "de_DE": "Type",
+        "en_US": "Type"
+      }
+    },
+    "/filter/trigger": {
+      "language": {
+        "de_DE": "Trigger (%s)",
+        "en_US": "Trigger (%s)"
+      }
+    },
+    "/filter/warning": {
+      "language": {
+        "de_DE": "Warnung (%s)",
+        "en_US": "Warning (%s)"
+      }
+    },
+    "/filter/exception": {
+      "language": {
+        "de_DE": "Exception (%s)",
+        "en_US": "Exception (%s)"
+      }
+    },
+    "/filter/info": {
+      "language": {
+        "de_DE": "Info (%s)",
+        "en_US": "Info (%s)"
+      }
+    }
+  }
+}

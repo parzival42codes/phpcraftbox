@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationUserGroup",
+    "menuClassMain": "ApplicationAdministrationUserGroup",
+    "menuIcon": "&#128101;",
+    "language": {
+      "de_DE": {
+        "menuTitle": "Gruppenbearbeitung",
+        "menuDescription": "",
+        "menuPath": "/Administration/Benutzer/Gruppen",
+        "menuAccess": "ApplicationAdministrationUserGroup"
+      }
+    }
+  }
+}

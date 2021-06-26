@@ -1,0 +1,19 @@
+{
+  "type": "install.language",
+  "content": {
+    "/exception/classNotFound/title": {
+      "language": {
+        "de_DE": {
+          "value": "Verarbeitungsfehler"
+        }
+      }
+    },
+    "/exception/classNotFound/debug": {
+      "language": {
+        "de_DE": {
+          "value": "Die Klasse <b>%s</b> wurde nicht gefunden"
+        }
+      }
+    }
+  }
+}

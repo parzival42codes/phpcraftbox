@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationLogNotification",
+    "menuClassMain": "ApplicationAdministrationLogNotification",
+    "menuIcon": "&#128211;",
+    "language": {
+      "de_DE": {
+        "menuTitle": "Notifications",
+        "menuDescription": "",
+        "menuAccess": "ApplicationAdministrationLogNotification",
+        "menuPath": "/Administration/Log"
+      }
+    }
+  }
+}

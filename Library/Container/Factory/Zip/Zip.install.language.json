@@ -1,0 +1,50 @@
+{
+  "type": "install.language",
+  "content": {
+    "/errorcodes/open/ER_EXISTS": {
+      "language": {
+        "de_DE": "Die Datei existiert bereits."
+      }
+    },
+    "/errorcodes/open/ER_INCONS": {
+      "language": {
+        "de_DE": "Das Zip-Archiv ist inkonsistent."
+      }
+    },
+    "/errorcodes/open/ER_INVAL": {
+      "language": {
+        "de_DE": "Ungültiges Argument."
+      }
+    },
+    "/errorcodes/open/ER_MEMORY": {
+      "language": {
+        "de_DE": "Alloc Fehler."
+      }
+    },
+    "/errorcodes/open/ER_NOENT": {
+      "language": {
+        "de_DE": "Keine solche Datei."
+      }
+    },
+    "/errorcodes/open/ER_NOZIP": {
+      "language": {
+        "de_DE": "Kein ZIP-Archiv."
+      }
+    },
+    "/errorcodes/open/ER_OPEN": {
+      "language": {
+        "de_DE": "Datei konnte nicht geöffnet werden."
+      }
+    },
+    "/errorcodes/open/ER_READ": {
+      "language": {
+        "de_DE": "Lesefehler."
+      }
+    },
+    "/errorcodes/open/ER_SEEK": {
+      "language": {
+        "de_DE": "Positionierungsfehler."
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "Profiler"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "Profiler"
+      }
+    },
+    "author": {
+      "_language": {
+        "#": "Stefan Schlombs"
+      }
+    },
+    "version": {
+      "_language": {
+        "#": "1.0.0"
+      }
+    }
+  },
+  "skeleton": {
+    "comment": {
+      "CMSprofilerCatchParameter": {
+        "_language": {
+          "de_de": "Nimmt einen Wert aus dem Parameter"
+        },
+        "parameter": {
+          "paramNr": {
+            "_language": {
+              "de_de": "Parameter Nr."
+            }
+          },
+          "name": {
+            "_language": {
+              "de_de": "Zugeordneter Name"
+            }
+          }
+        }
+      },
+      "CMSprofilerSet": {
+        "_language": {
+          "de_de": "Setzt einene Wert"
+        },
+        "parameter": {
+          "key": {
+            "_language": {
+              "de_de": "Schlüssel"
+            }
+          },
+          "value": {
+            "_language": {
+              "de_de": "Inhalt"
+            }
+          }
+        }
+      },
+      "CMSprofilerOption": {
+        "_language": {
+          "de_de": "Setzt einen Option"
+        },
+        "parameter": {
+          "key": {
+            "_language": {
+              "de_de": "Schlüssel"
+            }
+          },
+          "value": {
+            "_language": {
+              "de_de": "Inhalt"
+            }
+          }
+        }
+      }
+    }
+  }
+}

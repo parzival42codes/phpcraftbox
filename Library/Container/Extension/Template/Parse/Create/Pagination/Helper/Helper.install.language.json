@@ -1,0 +1,11 @@
+{
+  "type": "install.language",
+  "content": {
+    "/title": {
+      "language": {
+        "de_DE": "Seite %s von %s",
+        "en_US": "Page <strong>%s</strong> from <strong>%s</strong>"
+      }
+    }
+  }
+}

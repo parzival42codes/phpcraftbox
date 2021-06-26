@@ -1,0 +1,8 @@
+{
+  "description": "Tabulator",
+  "author": "Stefan Schlombs",
+  "version": "1.0.0",
+  "javascript": "2",
+  "css": "5",
+  "dependency": []
+}

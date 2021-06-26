@@ -1,0 +1,36 @@
+.ApplicationAdministrationLogError .table-cell-key-crudType span {
+    padding: 0.4em;
+}
+
+.ApplicationAdministrationLogError-widget-log-item {
+    padding: 1em 0;
+    border-bottom: solid #000;
+}
+
+.ApplicationAdministrationLogError-widget-log-item .datetime {
+    font-weight: bold;
+    padding: 0.4em;
+}
+
+.ApplicationAdministrationLogError-widget-log-item .type {
+    text-align: center;
+    padding: 0.4em;
+}
+
+.ApplicationAdministrationLogError-widget-log-item .content {
+    padding: 0.4em;
+}
+
+.ApplicationAdministrationLogError-widget-log-item .path {
+    padding: 0.4em;
+}
+
+.ApplicationAdministrationLogError-widget-log-item .backtrace {
+    padding: 0.4em;
+}
+
+.ApplicationAdministrationLogError-widget-log .card-container-header a {
+    color: #style-color-primary-light;
+    display: inline-block;
+    width: 100%;
+}

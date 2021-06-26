@@ -1,0 +1,1 @@
+<ul id="404Alternates">{$content}</ul>

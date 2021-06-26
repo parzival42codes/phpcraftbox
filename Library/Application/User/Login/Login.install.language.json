@@ -1,0 +1,61 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Einloggen"
+      }
+    },
+    "/form/email/label": {
+      "language": {
+        "de_DE": "E-Mail Addresse"
+      }
+    },
+    "/form/email/info": {
+      "language": {
+        "de_DE": "Bitte geben Sie Ihre E-Mail Addresse an"
+      }
+    },
+    "/form/password/label": {
+      "language": {
+        "de_DE": "Passwort"
+      }
+    },
+    "/form/password/info": {
+      "language": {
+        "de_DE": "Bitte geben Sie Ihr Password an"
+      }
+    },
+    "/notification/login/success": {
+      "language": {
+        "de_DE": "Sie wurden erfolgreich eingeloggt !",
+        "en-US": "Login successful !"
+      }
+    },
+    "/notification/error/notFound": {
+      "language": {
+        "de_DE": "Falsche E-Mail Adresse und oder Passwort"
+      }
+    },
+    "/notification/error/notActivated": {
+      "language": {
+        "de_DE": "Ihr Zugang wurde noch nicht aktiviert !"
+      }
+    },
+    "/notification/error/noEmailCheck": {
+      "language": {
+        "de_DE": "Ihre E-Mail Adresse wurde noch nicht bestätigt !"
+      }
+    },
+    "/notification/error/failCounterFull": {
+      "language": {
+        "de_DE": "Das Passwort wurde %s mal falsch eingegeben.<br />Warten Sie bitte %s Minuten für einen neuen Versuch!"
+      }
+    }  ,
+    "/notification/session/active": {
+      "language": {
+        "de_DE": "Sie sind bereits Angemeldet !"
+      }
+    }
+  }
+}

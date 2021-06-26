@@ -1,0 +1,21 @@
+{
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Konfiguration User",
+      "en_US": "Config User"
+    },
+    "/meta/description": {
+      "de_DE": "Konfiguration User",
+      "en_US": "Config Administration"
+    },
+    "/breadcrumb": {
+      "de_DE": "Konfiguration",
+      "en_US": "Config"
+    },
+    "/notification/updated": {
+      "de_DE": "Die Konfiguration für '%s' wurde aktualisiert !",
+      "en_US": "The Configuration for '%s' are updated !"
+    }
+  }
+}

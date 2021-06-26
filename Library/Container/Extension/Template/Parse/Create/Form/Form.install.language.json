@@ -1,0 +1,25 @@
+{
+  "type": "install.language",
+  "content": {
+    "/form/submit": {
+      "language": {
+        "de_DE": {
+          "value": "Absenden"
+        },
+        "en_US": {
+          "value": "Submit."
+        }
+      }
+    },
+    "/form/reset": {
+      "language": {
+        "de_DE": {
+          "value": "Zurücksetzen"
+        },
+        "en_US": {
+          "value": "Reset"
+        }
+      }
+    }
+  }
+}

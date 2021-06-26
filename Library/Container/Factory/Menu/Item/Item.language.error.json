@@ -1,0 +1,36 @@
+{
+    "main": {
+        "exception": {
+            "setId": {
+                "seroIdNotAllowed": {
+                    "title": {
+                        "_language": {
+                            "de_de": "Menüe Item Fehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Eine Id für ein Menüitem wurde falsch gesetzt."
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Die Id 0 ist für den Hauptzweig Reserviert."
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+           
+            }            
+        }
+    }
+}

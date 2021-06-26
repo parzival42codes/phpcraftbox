@@ -1,0 +1,142 @@
+/*#thisClass {*/
+
+/*}*/
+
+/*.thisClass-container {*/
+/*    @aboveTheFold: "1";*/
+/*}*/
+
+/*#thisClass-container-header {*/
+/*    @description: "Page Header";*/
+/*    @aboveTheFold: "1";*/
+/*    font-size: 1.7em;*/
+/*}*/
+
+/*#thisClass-container-footer {*/
+/*    @description: "Page Header";*/
+/*    @aboveTheFold: "1";*/
+/*    bottom: 0;*/
+/*    width: 99%;*/
+
+/*}*/
+
+/*.thisClass-container-footer-link {*/
+/*    @aboveTheFold: "1";*/
+/*    display: inline-block;*/
+/*    cursor: pointer;*/
+/*    margin: 0 0 0 1em;*/
+/*}*/
+
+/*#thisClass ul {*/
+/*    @description: "Breadcrump List";*/
+/*    @aboveTheFold: "1";*/
+/*    display: inline-block;*/
+/*}*/
+
+/*#thisClass li {*/
+/*    @description: "Breadcrump List Item";*/
+/*    @aboveTheFold: "1";*/
+/*    display: inline-block;*/
+/*}*/
+
+/*#thisClass-card-menu {*/
+
+/*}*/
+/*thisClass-card-menu-main {*/
+
+/*}*/
+/*thisClass-card-menu-application {*/
+
+/*}*/
+
+/*#thisClass-window-header {*/
+/*    @aboveTheFold: "1";*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    margin: auto 25%;*/
+/*    top: 25%;*/
+/*    width: 50%;*/
+/*}*/
+/*#thisClass-window-center {*/
+/*    @aboveTheFold: "1";*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    margin: auto 10%;*/
+/*    top: 5%;*/
+/*    width: 80%;*/
+/*    overflow-y: auto;*/
+/*    max-height: 90%;*/
+/*}*/
+/*#thisClass-window-footer {*/
+/*    @aboveTheFold: "1";*/
+/*    z-index: 9999;*/
+/*    position: fixed;*/
+/*    bottom: 2em;*/
+/*    width: 99%;*/
+/*}*/
+
+/*.thisClass-template {*/
+/*    @aboveTheFold: "1";*/
+/*    display: none;*/
+/*}*/
+
+/*.button{*/
+/*    display: inline-block;*/
+/*    padding: 0.5em;*/
+/*    margin: 0.5em;*/
+/*    border: #style-color-divider 1px solid;*/
+/*    box-sizing: border-box;*/
+/*    background: #style-color-primary-light;*/
+/*    color: #style-color-info;*/
+/*    cursor: pointer;*/
+/*    @media: "#style-screen-mobile-small";*/
+/*    width: 100%;*/
+/*    font-size: 0.8em;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.button:hover{*/
+/*    background: #style-color-primary;*/
+/*    color: #style-color-text-light;*/
+/*}*/
+/*.buttonSizeSmall{*/
+/*    font-size: 0.8em;*/
+/*    padding: 2px 15px;*/
+/*    margin: 2px 0;*/
+/*}*/
+/*.buttonSizeMiddle{*/
+/*    padding: 10px 15px;*/
+/*}*/
+/*.buttonBlock{*/
+/*    display: block !important;*/
+/*}*/
+/*.buttonWithMax{*/
+/*    width: 100%;*/
+/*}*/
+/*.buttonCenter{*/
+/*    text-align: center;*/
+/*    vertical-align: middle;*/
+/*}*/
+/*.buttonActive{*/
+/*    background: #style-color-primary !important;*/
+/*    color: #style-color-text-light !important;*/
+/*}*/
+/*.buttonDeactivated{*/
+/*    color: #style-color-text-primary !important;*/
+/*    background: #style-color-primary-dark !important;*/
+/*    cursor: no-drop;*/
+/*}*/
+/*.buttonTypeWarning{*/
+/*    display: block !important;*/
+/*}*/
+
+.ContainerIndexPage.notification {
+    padding: 1em;
+    vertical-align: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+#Application_app_menu .subdir--folder-icon-open {
+    display: none;
+}

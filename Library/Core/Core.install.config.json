@@ -1,0 +1,31 @@
+{
+  "type": "install.config",
+  "content": {
+    "/page/title": {
+      "value": "PHPCraftBox",
+      "language": {
+        "de_DE": "Titel der PHPCraftBox",
+        "en_US": "Titel of the PHPCraftBox"
+      }
+    },
+    "/gzip/work": {
+      "value": "1",
+      "language": {
+        "de_DE": "Komprimieren von CSS / Javascript ?",
+        "en_US": "Compress CSS / Javascript ?"
+      },
+      "form": {
+        "type": "switch"
+      }
+    },
+    "/gzip/work/level": {
+      "value": "9"
+    },
+    "/gzip": {
+      "value": "1"
+    },
+    "/gzip/level": {
+      "value": "9"
+    }
+  }
+}

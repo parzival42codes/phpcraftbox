@@ -1,0 +1,22 @@
+{
+  "yes": {
+    "_language": {
+      "de_de": "<span class='ContainerIndexTableYesnoYes'>&nbsp;</span>"
+    }
+  },
+  "yesCount": {
+    "_language": {
+      "de_de": "<span class='ContainerIndexTableYesnoYesCount'>(%s)</span>"
+    }
+  },
+  "no": {
+    "_language": {
+      "de_de": "<span class='ContainerIndexTableYesnoNo'>&nbsp;</span>"
+    }
+  },
+  "template": {
+    "_language": {
+      "de_de": "<span class='ContainerIndexTableYesno'>%s</span>"
+    }
+  }
+}

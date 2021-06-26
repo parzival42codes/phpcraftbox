@@ -1,0 +1,122 @@
+{
+    "main": {
+        "exception": {
+            "callStatic": {
+                "staticMethodFail": {
+                    "title": {
+                        "_language": {
+                            "de_de": "Klassenfehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Eine angegebene Methode ist nicht vorhanden"
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Die Methode '{$index}' konnte nicht gefunden werden."
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+            },
+            "mappingCache": {
+                "fileLibraryFail": {
+                    "title": {
+                        "_language": {
+                            "de_de": "Datei Ladefehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Eine benötigte Library Datei konnte nicht im Cache gefunden werden."
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Die Library Datei '{$className}' konnte nicht im Cache gefunden werden."
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+            },
+            "getMappedClassName": {
+                "loadIndexNotExitsts": {
+                    "title": {
+                        "_language": {
+                            "de_de": "Klassenfehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Ein Zugeordneter gemappter Klassenname konnte nicht gefunden werden."
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Der Mapping Eintrag '{$index}' konnte nicht gefunden werden."
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+            },
+            "check": {
+                "classIndexFail": {
+                    "title": {
+                        "_language": {
+                            "de_de": "Klassenfehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Ein Zugeordneter gemappter Klassenname konnte nicht gefunden werden."
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Der Mapping Eintrag '{$index}' konnte nicht gefunden werden."
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+            }            
+        }
+    }
+}

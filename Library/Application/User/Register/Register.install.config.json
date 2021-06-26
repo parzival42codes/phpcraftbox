@@ -1,0 +1,22 @@
+{
+  "type": "install.config",
+  "content": {
+    "/register/available": {
+      "value": "1",
+      "language": {
+        "de_DE": "Registrieren möglich ?",
+        "en_US": "Register available ?"
+      },
+      "form": {
+        "type": "switch"
+      }
+    },
+    "/register/activate": {
+      "value": "1",
+      "language": {
+        "de_DE": "User muss aktiviert werden",
+        "en_US": "User must be activate"
+      }
+    }
+  }
+}

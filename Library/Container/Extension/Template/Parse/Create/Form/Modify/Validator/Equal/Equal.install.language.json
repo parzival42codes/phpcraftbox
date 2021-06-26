@@ -1,0 +1,11 @@
+{
+  "type": "install.language",
+  "content": {
+    "/decorator/error/element": {
+      "language": {
+        "de_DE": "<span class='colorError'>Dieses Feld muss dem Feld '%s' entsprechen</span>",
+        "en_US": "<span class='colorError'>This Field must be equal to '%s'</span>"
+      }
+    }
+  }
+}

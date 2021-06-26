@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationUser",
+    "menuClassMain": "ApplicationAdministrationUser",
+    "menuIcon": "&#128100;",
+    "language": {
+      "de_DE": {
+        "menuTitle": "1|Benutzer Übersicht",
+        "menuDescription": "",
+        "menuPath": "/Administration/Benutzer",
+        "menuAccess": "ApplicationAdministrationUser"
+      }
+    }
+  }
+}

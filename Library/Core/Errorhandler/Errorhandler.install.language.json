@@ -1,0 +1,133 @@
+{
+  "type": "install.language",
+  "content": {
+    "/exception/template/title": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Ausnahmefehler"
+        }
+      }
+    },
+    "/exception/template/message": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Verzeihung, es ist ein Ausnahmefehler aufgetreten"
+        }
+      }
+    },
+    "/exception/template/message/info": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Der Adminstrator wurde darüber Informiert."
+        }
+      }
+    },
+    "/trigger/level/8/UndefinedVariable": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Nicht existierende Variable: "
+        }
+      }
+    },
+    "/template/level": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Level"
+        }
+      }
+    },
+    "/template/message": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Nachricht"
+        }
+      }
+    },
+    "/template/details": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Details"
+        }
+      }
+    },
+    "/template/header": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Fehler: {$errorCount}"
+        }
+      }
+    },
+    "/template/errorLevel/0": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Triggered"
+        }
+      }
+    },
+    "/template/errorLevel/2": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Warnung"
+        }
+      }
+    },
+    "/template/errorLevel/8": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Hinweis"
+        }
+      }
+    },
+    "/template/errorLevel/1024": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "CMS Hinweis"
+        }
+      }
+    },
+    "/template/errorLevel/4096": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Abfangbarer fataler Fehler"
+        }
+      }
+    },
+    "/template/table/parameter": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Parameter"
+        }
+      }
+    },
+    "/template/table/isAbstract": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Abstrakte Funktion"
+        }
+      }
+    },
+    "/template/table/getDocComment": {
+      "group": "Template",
+      "language": {
+        "de_DE": {
+          "value": "Kommentar"
+        }
+      }
+    }
+  }
+}

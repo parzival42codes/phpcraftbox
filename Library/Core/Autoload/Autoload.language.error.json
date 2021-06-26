@@ -1,0 +1,35 @@
+{
+    "main": {
+        "exception": {
+            "autoLoadClass": {
+                "autoloadClassFileNotExists": {
+                    "title": {
+                        "_language": {
+                            "de_de": "Autoload Fehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Die angegebene Klasse konnte nicht automatisch geladen werden"
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Class: '{$class}', File: '{$file}'"
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,7 @@
+{
+  "regex": {
+    "profil": {
+      "path": "/user/profil/{userid|[0-9+]}"
+    }
+  }
+}

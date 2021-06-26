@@ -1,0 +1,12 @@
+{
+  "menu": {
+    "_language": {
+      "de_de": "/Templates/Template"
+    }
+  },
+  "code01": {
+    "_language": {
+      "de_de": "<code>/** @var ContainerExtensionTemplate $template */<br /> $template = \Container::get('ContainerExtensionTemplate');<br /> $template->set(template);<br />$template->assign('Foo','Bar');<br /> $template->parse();<br />$template->get();</code>"
+    }
+  }
+}

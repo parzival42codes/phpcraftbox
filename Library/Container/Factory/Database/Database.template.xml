@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <language>
+        <debugExplainId>
+            <de_de>SELECT identifier</de_de>
+            <en_en>SELECT identifier</en_en>
+        </debugExplainId>        
+        <debugSelectType>
+            <de_de>SELECT type</de_de>
+            <en_en>SELECT type</en_en>
+        </debugSelectType>        
+        <debugSelectTypeSimple>
+            <de_de>Einfaches SELECT, ohne UNION oder Subqueries</de_de>
+            <en_en>Simple SELECT (not using UNION or subqueries)</en_en>
+        </debugSelectTypeSimple>        
+        <debugSelectTypePrimary>
+            <de_de>Outermost SELECT</de_de>
+            <en_en>Outermost SELECT</en_en>
+        </debugSelectTypePrimary> 
+        <debugSelectTypeUnion>
+            <de_de>Second or later SELECT statement in a UNION</de_de>
+            <en_en>Second or later SELECT statement in a UNION</en_en>
+        </debugSelectTypeUnion>   
+        <debugSelectTypeDependentUnion>
+            <de_de>Second or later SELECT statement in a UNION, dependent on outer query</de_de>
+            <en_en>Second or later SELECT statement in a UNION, dependent on outer query</en_en>
+        </debugSelectTypeDependentUnion>   
+        <debugSelectTypeUnionResult>
+            <de_de>Result of a UNION.</de_de>
+            <en_en>Result of a UNION.</en_en>
+        </debugSelectTypeUnionResult>   
+        <debugSelectTypeSubquery>
+            <de_de>First SELECT in subquery</de_de>
+            <en_en>First SELECT in subquery</en_en>
+        </debugSelectTypeSubquery>   
+        <debugSelectTypeDependentSubquery>
+            <de_de>First SELECT in subquery, dependent on outer query</de_de>
+            <en_en>First SELECT in subquery, dependent on outer query</en_en>
+        </debugSelectTypeDependentSubquery>                  
+        <debugSelectTypeDerived>
+            <de_de>Derived table SELECT (subquery in FROM clause)</de_de>
+            <en_en>Derived table SELECT (subquery in FROM clause)</en_en>
+        </debugSelectTypeDerived>                  
+        <debugSelectTypeMaterialized>
+            <de_de>Materialized subquery</de_de>
+            <en_en>Materialized subquery</en_en>
+        </debugSelectTypeMaterialized>                                 
+        <debugSelectTypeUncacheableSubquery>
+            <de_de>A subquery for which the result cannot be cached and must be re-evaluated for each row of the outer query</de_de>
+            <en_en>A subquery for which the result cannot be cached and must be re-evaluated for each row of the outer query</en_en>
+        </debugSelectTypeUncacheableSubquery>                  
+        <debugSelectTypeUncacheableUnion>
+            <de_de>The second or later select in a UNION that belongs to an uncacheable subquery (see UNCACHEABLE SUBQUERY)</de_de>
+            <en_en>The second or later select in a UNION that belongs to an uncacheable subquery (see UNCACHEABLE SUBQUERY)</en_en>
+        </debugSelectTypeUncacheableUnion>                  
+        <debugTable>
+            <de_de>Tabelle</de_de>
+            <en_en>Table</en_en>
+        </debugTable>                  
+        <debugPossibleKeys>
+            <de_de>Mögliche Schlüssel</de_de>
+            <en_en>Possible Keys</en_en>
+        </debugPossibleKeys>     
+        <debugKey>
+            <de_de>Benutzter Schlüssel</de_de>
+            <en_en>Key</en_en>
+        </debugKey>                
+        <debugKeyLen>
+            <de_de>Schlüssellänge</de_de>
+            <en_en>Key length</en_en>
+        </debugKeyLen>                
+        <debugRef>
+            <de_de>Ref</de_de>
+            <en_en>Ref</en_en>
+        </debugRef>                
+        <debugRows>
+            <de_de>Zeilen</de_de>
+            <en_en>Rows</en_en>
+        </debugRows>                
+        <debugFiltered>
+            <de_de>Gefilterte Zeilen</de_de>
+            <en_en>Filtered</en_en>
+        </debugFiltered>                
+        <debugExtra>
+            <de_de>Zusätzliche Informationen</de_de>
+            <en_en>Extra</en_en>
+        </debugExtra>                
+    </language>    
+</root>

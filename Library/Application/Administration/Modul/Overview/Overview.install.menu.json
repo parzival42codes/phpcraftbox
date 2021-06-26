@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationModulOverview",
+    "menuClassMain": "ApplicationAdministrationModulOverview",
+    "menuIcon": "&#128101;",
+    "language": {
+      "de_DE": {
+        "menuTitle": "1|Übersicht",
+        "menuDescription": "",
+        "menuPath": "/Administration/Modul",
+        "menuAccess": "ApplicationAdministrationModulOverview"
+      }
+    }
+  }
+}

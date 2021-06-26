@@ -1,0 +1,158 @@
+{
+    "dialogHeader": {
+        "type": {
+            "_language": {
+                "#": "header1"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Ersetzungen für die Boxen"
+            }
+        }           
+    },
+    "replace1": {
+        "type": {
+            "_language": {
+                "#": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "messageHeader : Nachrichten im Headerbereich"
+            }
+        }            
+    },
+    "replace1": {
+        "type": {
+            "_language": {
+                "#": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "messageContent : Nachrichten im Oberen Contentbereich"
+            }
+        }            
+    },
+    "replace2": {
+        "type": {
+            "_language": {
+                "#": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "breadcrumb : Breadcrumb"
+            }
+        }            
+    },
+    "replace3": {
+        "type": {
+            "_language": {
+                "#": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "menuMain : Hauptmenü"
+            }
+        }            
+    },
+    "replace4": {
+        "type": {
+            "_language": {
+                "#": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "menuAdditional : Zusatzmenü"
+            }
+        }            
+    },
+    "replace5": {
+        "type": {
+            "_language": {
+                "#": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "menuApplication : Menü der App"
+            }
+        }            
+    },
+    "box": {
+        "type": {
+            "_language": {
+                "#": "header1"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Boxen"
+            }
+        }            
+    },
+    "box1": {
+        "type": {
+            "_language": {
+                "#": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "header : Kopf"
+            }
+        }            
+    },
+    "box2": {
+        "type": {
+            "_language": {
+                "de_de": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "header_asinde : Kopf - Nebeninformationen"
+            }
+        }            
+    }    ,
+    "box3": {
+        "type": {
+            "_language": {
+                "de_de": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "content_header: Content Kopf"
+            }
+        }            
+    }    ,
+    "box4": {
+        "type": {
+            "_language": {
+                "de_de": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "content_footer: Content Footer"
+            }
+        }            
+    }    ,
+    "box5": {
+        "type": {
+            "_language": {
+                "de_de": "list_item"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "footer: Footer"
+            }
+        }            
+    }    
+}    

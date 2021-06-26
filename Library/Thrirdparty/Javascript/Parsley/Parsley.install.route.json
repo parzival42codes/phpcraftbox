@@ -1,0 +1,8 @@
+{
+  "simple": {
+    "get": {
+      "path": "/resources/javascript/core/parsley.min.js.map",
+      "target": "free"
+    }
+  }
+}

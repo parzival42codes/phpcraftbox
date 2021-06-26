@@ -1,0 +1,36 @@
+{
+  "main": {
+    "exception": {
+      "requireContent": {
+        "noContent": {
+          "title": {
+            "_language": {
+              "de_de": "Datei Ladefehler"
+            }
+          },
+          "cont": {
+            "_language": {
+              "de_de": "Eine Datei konnte nicht gefunden werden."
+            }
+          },
+          "cont_debug": {
+            "_language": {
+              "de_de": "Die Datei '{$filename}' konnte nicht gefunden werden."
+            }
+          },
+          "class": {
+            "_language": {
+              "#": "Error"
+            }
+          },
+          "header": {
+            "_language": {
+              "#": "500"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

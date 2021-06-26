@@ -1,0 +1,7 @@
+.ApplicationAdministrationContentBox {
+    white-space: pre-line;
+}
+
+.ApplicationAdministrationLContent .table-cell-type-body {
+    white-space: nowrap;
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<error>
+    <main>
+        <trigger>
+            <get>
+                <filePathNoFound>
+                    <lang>
+                        <de_de>Die Datei "{$filepath}" wurde nicht gefunden.</de_de>
+                    </lang>
+                </filePathNoFound>
+            </get>  
+            <getFromList>
+                <fileListItemNoFound>
+                    <lang>
+                        <de_de>Die Konstante "{$filepath}" wurde nicht in der Liste gefunden.</de_de>
+                    </lang>
+                </fileListItemNoFound>
+            </getFromList>  
+        </trigger>
+    </main>
+</error>

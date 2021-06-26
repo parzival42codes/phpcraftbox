@@ -1,0 +1,33 @@
+{
+  "type": "install.language",
+  "content": {
+    "/template/header": {
+      "language": {
+        "de_DE": {
+          "value": "Debug ({$count})"
+        }
+      }
+    },
+    "/dump": {
+      "language": {
+        "de_DE": {
+          "value": "Dump"
+        }
+      }
+    },
+    "/dumpCall": {
+      "language": {
+        "de_DE": {
+          "value": "Dump Aufruf"
+        }
+      }
+    },
+    "/additional/string": {
+      "language": {
+        "de_DE": {
+          "value": "| {$count} Zeichen"
+        }
+      }
+    }
+  }
+}

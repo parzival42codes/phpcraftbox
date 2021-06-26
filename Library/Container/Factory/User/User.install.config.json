@@ -1,0 +1,8 @@
+{
+  "type": "install.config",
+  "content": {
+    "/guest/group": {
+      "value": "1"
+    }
+  }
+}

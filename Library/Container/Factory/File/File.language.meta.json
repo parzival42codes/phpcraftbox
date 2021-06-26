@@ -1,0 +1,60 @@
+{
+    "information": {
+        "title": {
+            "_language": {
+                "de_de": "Datei Zugriff"
+            }
+        },
+        "description": {
+            "_language": {
+                "de_de": "Datei Zugriff"
+            }
+        },
+        "author": {
+            "_language": {
+                "#": "Stefan Schlombs"
+            }
+        },
+        "version": {
+            "_language": {
+                "#": "1.0.0"
+            }
+        }
+    },
+    "skeleton": {
+        "title": {
+            "default": {
+                "_language": {
+                    "de_de": "Datei Zugriff"
+                }
+            }
+        },
+        "template": {
+            "_language": {
+                "de_de": "System"
+            }
+        },
+        "_meta": {
+            "de_de": "application"
+        }
+    },
+    "plugin": {
+        "PluginEventLog": {
+            "title": {
+                "default": {
+                    "_language": {
+                        "de_de": "Datei Zugriff"
+                    }
+                }
+            },
+            "template": {
+                "_language": {
+                    "de_de": "System"
+                }
+            },
+            "_meta": {
+                "de_de": "application"
+            }
+        }
+    }
+}

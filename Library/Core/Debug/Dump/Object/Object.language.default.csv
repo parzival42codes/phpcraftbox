@@ -1,0 +1,11 @@
+"Path"           ,"de_de"
+"/table/getName"    ,"Name der Methode"
+"/table/isStatic"    ,"Statisch"
+"/table/isAbstract"    ,"Abstract"
+"/table/getDocComment"    ,"Kommentar"
+"/table/parameter"    ,"Parameter"
+"/table/type"    ,"Type"
+"/table/isFinal"    ,"Fiale Methode"
+
+"/table/getProperty"    ,"Name der Eigenschaft"
+"/table/value"    ,"Inhalt"

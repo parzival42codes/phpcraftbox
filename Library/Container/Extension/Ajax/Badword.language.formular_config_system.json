@@ -1,0 +1,34 @@
+{
+    "title": {
+        "_language": {
+            "de_de": "Badword Filter"
+        }
+    },
+    "elements": {       
+        "badwords": {
+            "_meta": {
+                "element": "textarea",
+                "validate": {
+                    "noempty": true
+                },
+                "value": "",
+                "attribute": {
+                    "element": {
+                        "rows": 40
+                    }
+                }                   
+            },
+            "label": {
+                "_language": {
+                    "de_de": "Nachricht"
+                }
+            },
+            "value": {
+                "_language": {
+                    "de_de": ".ru"
+                }
+            } 
+        }
+    }
+}
+

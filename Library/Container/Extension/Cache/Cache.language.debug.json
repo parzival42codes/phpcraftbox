@@ -1,0 +1,14 @@
+{
+  "template": {
+    "header": {
+      "_language": {
+        "de_de": "Cache Aufrufe: {$count}"
+      }
+    },
+    "parameter": {
+      "_language": {
+        "de_de": "Parameter"
+      }
+    }
+  }
+}

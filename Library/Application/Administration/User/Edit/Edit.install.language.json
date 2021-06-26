@@ -1,0 +1,45 @@
+{
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Benutzer Bearbeiten: %s",
+      "en_US": "User edit"
+    },
+    "/meta/description": {
+      "de_DE": "Benutzer Bearbeiten",
+      "en_US": "User edit"
+    },
+    "/breadcrumb": {
+      "de_DE": "Benutzer Bearbeiten",
+      "en_US": "User edit"
+    },
+    "/form/username/label": {
+      "de_DE": "Benutzername",
+      "en_US": "Username"
+    },
+    "/form/email/label": {
+      "de_DE": "E-Mail Adresse",
+      "en_US": "E-Mail Address"
+    },
+    "/form/usergroup/label": {
+      "de_DE": "Benutzergruppe",
+      "en_US": "Useergroup"
+    },
+    "/form/password/label": {
+      "de_DE": "Passwort",
+      "en_US": "Password"
+    },
+    "/form/passwordVerify/label": {
+      "de_DE": "Password wiederholen",
+      "en_US": "Password repeat"
+    },
+    "/form/infoUserId/label": {
+      "de_DE": "User ID",
+      "en_US": "User ID"
+    },
+    "/form/infoRegisterDate/label": {
+      "de_DE": "Registrierungsdatum",
+      "en_US": "Register Date"
+    }
+  }
+}

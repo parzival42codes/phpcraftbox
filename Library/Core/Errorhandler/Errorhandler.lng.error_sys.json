@@ -1,0 +1,23 @@
+{
+    "main": {
+        "exception": {
+            "_": {
+                "Using $this when not in object context": {
+                    "lang": {
+                        "de_de": {
+                            "title": "Kritischer PHP Ausführungs Fehler",
+                            "cont": "Benutzung von $this, ohne das dieses in einem Objekt Kontext steht",
+                            "cont_debug": ""
+                        }
+                    },
+                    "class": "",
+                    "header": ""
+                }
+            }
+        },
+        "trigger": {
+            "_": {
+            }
+        }
+    }
+}

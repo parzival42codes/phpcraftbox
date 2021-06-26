@@ -1,0 +1,44 @@
+.btn {
+    @aboveTheFold: "1";
+    background: #style-color-button-background;
+    color: #style-color-button;
+    padding: 0.2em 2em;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btnSmall {
+    @aboveTheFold: "1";
+    padding: 0.2em 1em;
+    margin: 0 0.2em;
+}
+
+.btnInset {
+    @aboveTheFold: "1";
+    border-style: inset;
+}
+
+.btnOutset {
+    @aboveTheFold: "1";
+    border-style: outset;
+}
+
+.btnOn {
+    @aboveTheFold: "1";
+    color: white;
+    background: green;
+}
+
+.btnOff {
+    @aboveTheFold: "1";
+    color: white;
+    background: red;
+}
+
+.btn.left {
+    text-align: left;
+}
+
+.btn.right {
+    text-align: right;
+}

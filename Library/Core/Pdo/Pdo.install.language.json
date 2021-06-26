@@ -1,0 +1,12 @@
+{
+  "type": "install.language",
+  "content": {
+    "/exception/databaseExecuteError/debug": {
+      "language": {
+        "de_DE": {
+          "value": "<p><b>Code:</b> %s </p><p> <b>Fehler:</b> %s </p><p><b>Query:</b> %s </p><p><b>Datei:</b> %s </p><p><b>Zeile:</b> %s</p><p><b>Values</b> %s </p>"
+        }
+      }
+    }
+  }
+}

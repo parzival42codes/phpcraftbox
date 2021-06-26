@@ -1,0 +1,41 @@
+{
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Nachricht beantworten",
+      "en_US": "Message Reply"
+    },
+    "/meta/description": {
+      "de_DE": "Nachricht beantworten",
+      "en_US": "Message Reply"
+    },
+    "/breadcrumb": {
+      "de_DE": "Nachricht beantworten",
+      "en_US": "Message Reply"
+    },
+    "/form/plainSource/label": {
+      "de_DE": "Von",
+      "en_US": "From"
+    },
+    "/form/plainTarget/label": {
+      "de_DE": "An",
+      "en_US": "To"
+    },
+    "/form/title/label": {
+      "de_DE": "Titel",
+      "en_US": "Title"
+    },
+    "/form/message/label": {
+      "de_DE": "Nachricht",
+      "en_US": "Message"
+    },
+    "/mail/subject": {
+      "de_DE": "Nee Nachricht auf %s",
+      "en_US": "New Message at %s"
+    },
+    "/notification/success": {
+      "de_DE": "Ihre Nachricht wurde an '%s' versendet",
+      "en_US": "Your message has been sent to '%s'"
+    }
+  }
+}

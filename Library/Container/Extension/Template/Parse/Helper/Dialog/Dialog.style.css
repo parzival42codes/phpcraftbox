@@ -1,0 +1,67 @@
+.indexDialog-button {
+    cursor: pointer;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container_item {
+    @aboveTheFold: "1";
+    display: none;
+    color: #000;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container_item_view {
+    @aboveTheFold: "1";
+    display: block !important;
+}
+
+#ContainerExtensionTemplateParseCreateDialog_page_container_center {
+    @aboveTheFold: "1";
+    display: none;
+    background: transparent;
+    color: white;
+    padding: 1em;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 75% !important;
+    overflow: auto;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_button {
+    cursor: pointer;
+    display: inline-block;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container ._header {
+
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container .header_content {
+    flex: 5;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container .header_close {
+    cursor: pointer;
+    text-align: right;
+    flex: 1;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container .body {
+    @aboveTheFold: "1";
+    overflow: auto;
+    resize: both;
+    max-height: 20em;
+    padding: 1em;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container .body .box {
+    @aboveTheFold: "1";
+    display: inline-block;
+    padding: 1em;
+}
+
+.ContainerExtensionTemplateParseCreateDialog_container .footer {
+
+}
+

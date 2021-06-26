@@ -1,0 +1,125 @@
+.thisClass.menu-vertical {
+    @aboveTheFold: "1";
+    display: inline-block;
+    padding: 1em 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #style-color-text-primary;
+    background: #style-color-primary-light;
+    cursor: pointer;
+    width: 100%;
+}
+
+.thisClass.menu-vertical ul, .thisClass.menu-vertical li {
+    @aboveTheFold: "1";
+    list-style: none;
+    padding: 0;
+    margin: 0.5em 0 0 0.3em;
+}
+
+.thisClass.menu-vertical .subdir--folder-icon-text {
+    @aboveTheFold: "1";
+    display: block;
+    font-size: 0.9em;
+}
+
+.thisClass.menu-vertical .subdir--folder-icon {
+    @aboveTheFold: "1";
+    float: left;
+}
+
+.thisClass.menu-vertical .subDir {
+    @aboveTheFold: "1";
+    display: none;
+}
+
+.thisClass.menu-vertical .subdir--folder-icon-open {
+    @aboveTheFold: "1";
+    display: none;
+}
+
+.thisClass.menu-vertical .active-folder, .thisClass.menu-vertical .active-item {
+    @aboveTheFold: "1";
+    font-weight: bold;
+}
+
+.menu-vertical-item {
+    @aboveTheFold: "1";
+    font-size: 0.8em;
+}
+
+.thisClass.menu-horizontal {
+    @aboveTheFold: "1";
+    display: inline-block;
+    padding: 0.4em 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: #style-color-text-primary;
+    background: #style-color-primary-light;
+    cursor: pointer;
+    width: 100%;
+}
+
+.ContainerFactoryMenu.menu-horizontal .subDir {
+    position: absolute;
+}
+
+.thisClass.menu-horizontal ul {
+    @aboveTheFold: "1";
+    list-style: none;
+    padding: 0;
+}
+
+.thisClass.menu-horizontal li {
+    @aboveTheFold: "1";
+    list-style: none;
+    padding: 0.4em;
+}
+
+.thisClass.menu-horizontal .subdir--folder-icon-text {
+    @aboveTheFold: "1";
+    display: block;
+    font-size: 0.9em;
+}
+
+.thisClass.menu-horizontal .subdir--folder-icon {
+    @aboveTheFold: "1";
+    float: left;
+}
+
+.thisClass.menu-horizontal .subDir {
+    @aboveTheFold: "1";
+    display: none;
+}
+
+.thisClass.menu-horizontal .subdir--folder-icon-open {
+    @aboveTheFold: "1";
+    display: none;
+}
+
+.thisClass.menu-horizontal .active-folder, .thisClass.menu-horizontal .active-item {
+    @aboveTheFold: "1";
+    font-weight: bold;
+}
+
+.menu-horizontal-item {
+    @aboveTheFold: "1";
+    color: #style-color-text-primary;
+    background: #style-color-primary-light;
+    float: left;
+}
+
+/* Tab Style */
+
+.ContainerFactoryMenu.menu-horizontal-tab {
+    @aboveTheFold: "1";
+    background: transparent !important;
+}
+
+.ContainerFactoryMenu.menu-horizontal-tab .menu-horizontal-item {
+    @aboveTheFold: "1";
+    margin: 0 0.2em;
+    box-shadow: 0.1em 0.1em;
+    border: 1px solid #style-color-primary-dark;
+    border-radius: 0.1em;
+}

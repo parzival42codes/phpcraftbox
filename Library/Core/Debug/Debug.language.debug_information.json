@@ -1,0 +1,121 @@
+{
+  "tab": {
+    "title": {
+      "_language": {
+        "de_de": "Erstellt am: {$datetime} | Durchlaufzeit: {$microtime}  | Max- / End Memory; {$peakMemory} / {$endMemory}"
+      }
+    },
+    "info": {
+      "microtimeWithoutDebug": {
+        "_language": {
+          "de_de": "Durchlaufzeit ohne Debugbar:"
+        }
+      },
+      "memoryWithoutDebug": {
+        "_language": {
+          "de_de": "Speicher ohne Debugbar:"
+        }
+      },
+      "phpversion": {
+        "_language": {
+          "de_de": "PHP Version:"
+        }
+      },
+      "_language": {
+        "de_de": "Informationen"
+      }
+    },
+    "server": {
+      "_language": {
+        "de_de": "Servervariablen"
+      }
+    },
+    "extensions": {
+      "_language": {
+        "de_de": "Extensions"
+      }
+    },
+    "env": {
+      "_language": {
+        "de_de": "Umgebungsvariablen"
+      }
+    },
+    "get": {
+      "_language": {
+        "de_de": "$_GET"
+      }
+    },
+    "post": {
+      "_language": {
+        "de_de": "$_POST"
+      }
+    },
+    "files": {
+      "_language": {
+        "de_de": "$_FILES"
+      }
+    },
+    "cookie": {
+      "_language": {
+        "de_de": "Cookies"
+      }
+    },
+    "session": {
+      "_language": {
+        "de_de": "Sessionvariablen"
+      }
+    },
+    "config": {
+      "_language": {
+        "de_de": "Configuration"
+      }
+    },
+    "statisticTab": {
+      "_language": {
+        "de_de": "Statistiken"
+      }
+    }
+  },
+  "statistic": {
+    "datetime": {
+      "_language": {
+        "de_de": "Zeit des Aufrufes"
+      }
+    },
+    "pageComplete": {
+      "_language": {
+        "de_de": "Zeit der vollständigen Generierung"
+      }
+    },
+    "page": {
+      "_language": {
+        "de_de": "Zeit der Seitengenerierung"
+      }
+    },
+    "pageDebug": {
+      "_language": {
+        "de_de": "Zeit der Debug Generierung"
+      }
+    },
+    "pageApplication": {
+      "_language": {
+        "de_de": "Zeit der Applicationsausführung"
+      }
+    },
+    "pageApplicationView": {
+      "_language": {
+        "de_de": "Zeit der Applicationsausführung mit Seitengenerierung"
+      }
+    },
+    "memoryEnd": {
+      "_language": {
+        "de_de": "Speicherhöhe bei Beendigung"
+      }
+    },
+    "memoryPeak": {
+      "_language": {
+        "de_de": "Maximale Speicherhöhe"
+      }
+    }
+  }
+}

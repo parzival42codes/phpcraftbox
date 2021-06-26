@@ -1,0 +1,20 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationUserLogin",
+    "menuIcon": "",
+    "menuAccess": "ApplicationUserLogin/Menu",
+    "language": {
+      "de_DE": {
+        "menuTitle": "1|Login",
+        "menuDescription": "",
+        "menuPath": "/Benutzer"
+      } ,
+      "en_US": {
+        "menuTitle": "1|Login",
+        "menuDescription": "",
+        "menuPath": "/User"
+      }
+    }
+  }
+}

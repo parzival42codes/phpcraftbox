@@ -1,0 +1,117 @@
+{
+  "type": "install.language",
+  "content": {
+    "/tab/info": {
+      "language": {
+        "de_DE": {
+          "value": "Informationen"
+        }
+      }
+    },
+    "/tab/info/phpversion": {
+      "language": {
+        "de_DE": {
+          "value": "PHP Version"
+        }
+      }
+    },
+    "/tab/info/route/application": {
+      "language": {
+        "de_DE": {
+          "value": "Route: Anwendung"
+        }
+      }
+    },
+    "/tab/info/route/route": {
+      "language": {
+        "de_DE": {
+          "value": "Route: Route"
+        }
+      }
+    },
+    "/tab/info/route/parameter": {
+      "language": {
+        "de_DE": {
+          "value": "Route: Parameter"
+        }
+      }
+    },
+    "/tab/info/route/target": {
+      "language": {
+        "de_DE": {
+          "value": "Route: Ziel (index, free, ajax)"
+        }
+      }
+    },
+    "/tab/server": {
+      "language": {
+        "de_DE": {
+          "value": "Serverinformationen"
+        }
+      }
+    },
+    "/tab/extensions": {
+      "language": {
+        "de_DE": {
+          "value": "Erweiterungen"
+        }
+      }
+    },
+    "/tab/env": {
+      "language": {
+        "de_DE": {
+          "value": "Umgebung"
+        }
+      }
+    },
+    "/tab/get": {
+      "language": {
+        "de_DE": {
+          "value": "GET"
+        }
+      }
+    },
+    "/tab/post": {
+      "language": {
+        "de_DE": {
+          "value": "POST"
+        }
+      }
+    },
+    "/tab/files": {
+      "language": {
+        "de_DE": {
+          "value": "FILES"
+        }
+      }
+    },
+    "/tab/cookie": {
+      "language": {
+        "de_DE": {
+          "value": "COOKIE"
+        }
+      }
+    },
+    "/tab/session": {
+      "language": {
+        "de_DE": {
+          "value": "SESSION"
+        }
+      }
+    },
+    "/tab/config": {
+      "language": {
+        "de_DE": {
+          "value": "Konfiguration"
+        }
+      }
+    },
+    "/tab/title": {
+      "language": {
+        "de_DE": {
+          "value": "Erstellt am: {$datetime} | Durchlaufzeit: {$microtime}  | Max- / End Memory; {$peakMemory} / {$endMemory}"
+        }
+      }
+    }
+  }
+}

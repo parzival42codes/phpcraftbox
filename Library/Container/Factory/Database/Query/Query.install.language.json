@@ -1,0 +1,42 @@
+{
+  "type": "install.language",
+  "content": {
+    "/debug/table/query": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Query"
+        }
+      }
+    },
+    "/debug/table/table": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Tabelle"
+        }
+      }
+    },
+    "/debug/table/rowCount": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Anzahl"
+        }
+      }
+    },
+    "/debug/table/databaseConnection": {
+      "language": {
+        "de_DE": {
+          "value": "Datenbankverbindung"
+        }
+      }
+    },
+    "/debug/header": {
+      "group": "debug",
+      "language": {
+        "de_DE": "Query Lesen: {$countRead} | Query Schreiben {$countWrite} | Query Andere {$countOther} | Query Unbekannt {$countUnknown}"
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "install.language",
+  "content": {
+    "/debug/title": {
+      "language": {
+        "de_DE": "Encrypt: {$encrypt} Decrypt: {$decrypt}"
+      }
+    }
+  }
+}

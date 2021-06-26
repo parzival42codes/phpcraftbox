@@ -1,0 +1,14 @@
+{
+    "exception": {
+        "notFoundTitle": {
+            "_language": {
+                "de_de": "Problem"
+            }
+        },
+        "notFoundCont": {
+            "_language": {
+                "de_de": "Es ist ein unbekannter Fehler aufgetreten"
+            }
+        }
+    }
+}

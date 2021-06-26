@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationLogPage",
+    "menuClassMain": "ApplicationAdministrationLogPage",
+    "menuIcon": "&#128211;",
+    "language": {
+      "de_DE": {
+        "menuTitle": "Page",
+        "menuDescription": "",
+        "menuAccess": "ApplicationAdministrationLogPage",
+        "menuPath": "/Administration/Log"
+      }
+    }
+  }
+}

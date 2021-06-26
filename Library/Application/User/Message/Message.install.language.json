@@ -1,0 +1,25 @@
+{
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Nachrichten",
+      "en_US": "Messages"
+    },
+    "/meta/description": {
+      "de_DE": "Nachrichten",
+      "en_US": "Messages"
+    },
+    "/breadcrumb": {
+      "de_DE": "Nachrichten",
+      "en_US": "Messages"
+    },
+    "/notification/userNoMessage": {
+      "de_DE": "Der User hat sein Message System deaktiviert !",
+      "en_US": "The user has deactivated his message system!"
+    },
+    "/notification/configNoMessage": {
+      "de_DE": "Das Message System wurde deaktiviert !",
+      "en_US": "The message system has been deactivated!"
+    }
+  }
+}

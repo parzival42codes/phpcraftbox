@@ -1,0 +1,47 @@
+{
+  "type": "install.language",
+  "content": {
+    "/metaTitle": {
+      "language": {
+        "de_DE": {
+          "value": "CMS"
+        }
+      }
+    },
+    "/separator": {
+      "language": {
+        "de_DE": {
+          "value": " - "
+        }
+      }
+    },
+    "/metaTitleSeparator": {
+      "language": {
+        "de_DE": {
+          "value": " - "
+        }
+      }
+    },
+    "/metaDescription": {
+      "language": {
+        "de_DE": {
+          "value": ""
+        }
+      }
+    },
+    "/title": {
+      "language": {
+        "de_DE": {
+          "value": "CMS"
+        }
+      }
+    },
+    "/description": {
+      "language": {
+        "de_DE": {
+          "value": ""
+        }
+      }
+    }
+  }
+}

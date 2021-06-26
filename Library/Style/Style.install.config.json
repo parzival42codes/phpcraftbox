@@ -1,0 +1,8 @@
+{
+  "type": "install.config",
+  "content": {
+    "/selected": {
+      "value": "default"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Content Bearbeitung",
+        "en_US": "Content Edit"
+      }
+    },
+    "/form/contentContent/label": {
+      "language": {
+        "de_DE": "Inhalt",
+        "en_US": "Content"
+      }
+    },
+    "/form/contentContent/info": {
+      "language": {
+        "de_DE": "",
+        "en_US": ""
+      }
+    },
+    "/form/contentIdent/label": {
+      "language": {
+        "de_DE": "Identifikation",
+        "en_US": "Identification"
+      }
+    },
+    "/form/contentIdent/info": {
+      "language": {
+        "de_DE": "",
+        "en_US": ""
+      }
+    },
+    "/form/contentHistory/label": {
+      "language": {
+        "de_DE": "Version",
+        "en_US": "Version"
+      }
+    },
+    "/form/contentHistory/info": {
+      "language": {
+        "de_DE": "",
+        "en_US": ""
+      }
+    },
+    "/form/contentData/label": {
+      "language": {
+        "de_DE": "Content Daten",
+        "en_US": "Content Data"
+      }
+    },
+    "/form/contentData/info": {
+      "language": {
+        "de_DE": "Daten als INI Form",
+        "en_US": "Data as INI"
+      }
+    },
+    "/notification/saved": {
+      "language": {
+        "de_DE": "Der Content '%s' wurde gespeichert !"
+      }
+    }
+  }
+}

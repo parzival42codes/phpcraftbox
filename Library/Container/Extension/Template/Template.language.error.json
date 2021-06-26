@@ -1,0 +1,13 @@
+{
+    "main": {
+        "trigger": {
+            "callback": {
+                "templateKeyError": {
+                    "_language": {
+                        "de_de": "Template Fehler: Der Schlüssel: '{$key}' wurde nicht gefunden"
+                    }
+                }
+            }
+        }
+    }
+}

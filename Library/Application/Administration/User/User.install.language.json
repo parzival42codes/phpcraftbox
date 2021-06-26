@@ -1,0 +1,17 @@
+{
+    "type": "install.language",
+    "content": {
+        "/meta/title": {
+            "de_DE": "Benutzer Übersicht",
+            "en_US": "User Overview"
+        },
+        "/meta/description": {
+            "de_DE": "Benutzer Übersicht",
+            "en_US": "User Overview"
+        },
+        "/breadcrumb": {
+            "de_DE": "Benutzer Übersicht",
+            "en_US": "User Overview"
+        }
+    }
+}

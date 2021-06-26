@@ -1,0 +1,76 @@
+.thisClass {
+    position: relative;
+    text-decoration: none;
+    cursor: help;
+}
+
+.tab > ul {
+    display: block;
+    overflow: hidden;
+    margin: 0.1em;
+}
+
+.tab > ul > li {
+    padding: 2px;
+    margin: 2px;
+    cursor: default;
+    display: inline-block;
+}
+
+.tab > ul > li > span {
+    color: #000;
+}
+
+.tabTitle {
+}
+
+/*.tabContent { width: 98%; border: #000 1px solid; padding: 5px; margin: 2px; overflow: auto; min-height: 200px; }*/
+.tabContent {
+    width: 98%;
+    padding: 5px;
+    margin: 2px;
+    overflow: auto;
+    min-height: 200px;
+}
+
+.tabTitle h1, .tabTitle h2, .tabTitle h3, .tabTitle h4, .tabTitle h5, .tabTitle h6 {
+    font-size: 1em;
+}
+
+.tab > ul > .tabButton {
+    padding: 0.3em;
+    margin: 0.3em;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    Border-Width: 1px;
+    color: black;
+}
+
+.tab > ul > .tabButton > span {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.tabButton {
+    box-shadow: 0.1em 0.1em;
+    border: 1px solid #style-color-primary-dark;
+    border-radius: 0.1em;
+}
+
+.tabButton.tabActive {
+    background: lightskyblue;
+}
+
+.tabButton.tabActive:hover {
+    background: lightskyblue;
+}
+
+.tabButton.tabInactive {
+    background: #ccc;
+    font-style: normal;
+}
+
+.tabButton.tabInactive:hover {
+    background: lightskyblue;
+}

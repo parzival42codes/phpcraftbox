@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationConfig",
+    "menuClassMain": "ApplicationAdministrationConfig",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "2|Konfigurations Bearbeitung",
+        "menuDescription": "",
+        "menuPath": "/Administration",
+        "menuAccess": "ApplicationAdministrationConfig"
+      }
+    }
+  }
+}

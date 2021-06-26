@@ -1,0 +1,43 @@
+{
+    "information": {
+        "title": {
+            "_language": {
+                "de_de": "Core"
+            }
+        },
+        "description": {
+            "_language": {
+                "de_de": "Der Core"
+            }
+        },
+        "_meta": {
+            "Author": "Stefan Schlombs",
+            "Version": "1.0"
+        }
+    },
+    "meta": {
+        "config": {
+            "_language": {
+                "de_de": "/System"
+            }
+        }
+    },
+    "resources": {
+        "_language": {
+            "de_de": ""
+        },
+        "_meta": {
+            "resources": {
+                "frontend": {
+                    "package": {
+                        "css": [
+                            {
+                                "name": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

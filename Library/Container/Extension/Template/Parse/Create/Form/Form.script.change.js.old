@@ -1,0 +1,138 @@
+/*<meta> {
+    "prio" : 5
+} </meta>*/
+;
+
+(function ($, window, document, undefined) {
+
+    "use strict";
+
+    // undefined is used here as the undefined global variable in ECMAScript 3 is
+    // mutable (ie. it can be changed by someone else). undefined isn't really being
+    // passed in so we can ensure the value of it is truly undefined. In ES5, undefined
+    // can no longer be modified.
+
+    // window and document are passed through as local variable rather than global
+    // as this (slightly) quickens the resolution process and can be more efficiently
+    // minified (especially dwhen both are regularly referenced in your plugin).
+
+    // Create the defaults once
+    var pluginName = "CMSContainerExtensionTemplateParseForm_element",
+        defaults = {};
+
+    var pluginFormAjaxElement = $.CMSAjax({
+        'path': "Container/Extension/Template/Parse/Form_element",
+        'dataType': 'html',
+        'onSuccess': function (elementSettings, resultData) {
+            // console.log(elementSettings);
+            // console.log(resultData);
+
+            let resultIDTarget = $('#' + resultData.content.id);
+            // console.log('resultIDTarget', resultIDTarget);
+
+            let resultDecorators = $(resultData.content.decorators);
+            console.log('resultDecorators', resultDecorators);
+
+            resultDecorators.each(function () {
+                $.each(this, function (key, val) {
+                    // console.log(key + ' => ' + val);
+                    // console.log(resultIDTarget.find('.' + key));
+                    resultIDTarget.find('.' + key).text(val);
+                });
+            });
+
+            let scriptElementName = 'ContainerExtensionTemplateParseCreateFormElement' + resultIDTarget.attr('data-elementtype');
+            console.log(scriptElementName);
+            console.log(typeof _globalFunctions[scriptElementName]);
+
+            if (typeof _globalFunctions[scriptElementName] === 'function') {
+                _globalFunctions[scriptElementName].call(this, resultIDTarget, resultData.content);
+            }
+
+            //  resultIDTarget.find('.decorator-element-input').resultData.content.value;
+
+
+            //   resultIDTarget.find('.');
+        },
+        'onError': function (elementSettings, resultData, textStatus, errorThrown) {
+
+            console.log(elementSettings);
+            console.log(resultData);
+            // console.log(textStatus);
+            // console.log(errorThrown);
+
+        }
+    });
+
+    var pluginMethods = {
+        'trigger': function (options, args) {
+            this.pluginFormAjaxElement.trigger(options)
+        }
+    };
+
+    // The actual plugin constructor
+    function Plugin(element, options) {
+        this.pluginFormAjaxElement = pluginFormAjaxElement;
+        this.element = element;
+        this.settings = $.extend({}, defaults, options);
+        this._methods = pluginMethods;
+        this._defaults = defaults;
+        this._name = 'CMSContainerExtensionTemplateParseForm_element';
+        this.init();
+    }
+
+    // Avoid Plugin.prototype conflicts
+    $.extend(Plugin.prototype, {
+        init: function () {
+            var $this = this;
+
+        },
+        trigger: function (options) {
+            var args = arguments;
+            this._methods['trigger'].call(this, options, args);
+        }
+    });
+
+    // A really lightweight plugin wrapper around the constructor,
+    // preventing against multiple instantiations
+    $.pluginFormAjaxElement = function (options) {
+        var args = arguments;
+        return $.data(this, 'plugin_CMSContainerExtensionTemplateParseForm_element', new Plugin(this, options));
+    };
+
+})(jQuery, window, document);
+
+_globalFunctions['ExtensionTemplateParseFormElement'] = function (element) {
+    let formAjax = jQuery.pluginFormAjaxElement();
+
+    element.bind("change", function (event) {
+        event.preventDefault();
+
+        let target = jQuery(event.target);
+
+        console.log(target);
+
+        let targetFormId = target.attr('data-formid');
+
+        console.log(targetFormId);
+
+        let targetFormData = $('#' + targetFormId).closest('.ContainerExtensionTemplateParseCreateForm').serializeArray();
+
+        console.log('targetFormData', targetFormData);
+
+
+        formAjax.trigger({
+            "value": target.val(),
+            "formData": targetFormData,
+            "name": target.attr('name'),
+            "formid": targetFormId,
+            "crypt": element.find('input[name="crypt"]').val()
+        });
+
+    });
+};
+
+pushDataTrigger('extensiontemplateparseformelement', function (element) {
+    _globalFunctions['ExtensionTemplateParseFormElement'].call(this, element);
+});
+

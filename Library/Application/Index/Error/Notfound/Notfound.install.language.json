@@ -1,0 +1,13 @@
+{
+  "type": "install.language",
+  "content": {
+    "/debug/table/query": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Query"
+        }
+      }
+    }
+  }
+}

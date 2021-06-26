@@ -1,0 +1,96 @@
+{
+    "template": {
+        "debug": {
+            "yes": {
+                "_language": {
+                    "de_de": "Ja"
+                }
+            },
+            "no": {
+                "_language": {
+                    "de_de": "Nein"
+                }
+            },
+            "class": {
+                "_language": {
+                    "de_de": "Klasse"
+                }
+            },
+            "method": {
+                "_language": {
+                    "de_de": "Methode"
+                }
+            },
+            "function": {
+                "_language": {
+                    "de_de": "Function"
+                }
+            },
+            "filename": {
+                "_language": {
+                    "de_de": "Dateiname"
+                }
+            },
+            "file": {
+                "_language": {
+                    "de_de": "Datei"
+                }
+            },
+            "line": {
+                "_language": {
+                    "de_de": "Zeile"
+                }
+            },
+            "seconds": {
+                "_language": {
+                    "de_de": "Sekunden"
+                }
+            },
+            "milliseconds": {
+                "_language": {
+                    "de_de": "ms"
+                }
+            },
+            "milliseconds_delta": {
+                "_language": {
+                    "de_de": "-Verbrauch"
+                }
+            },
+            "milliseconds_leap": {
+                "_language": {
+                    "de_de": "-Sprung"
+                }
+            },
+            "memory": {
+                "_language": {
+                    "de_de": "Speicher"
+                }
+            },
+            "memory_delta": {
+                "_language": {
+                    "de_de": "-verbrauch"
+                }
+            },
+            "memory_leap": {
+                "_language": {
+                    "de_de": "-sprung"
+                }
+            },
+            "error": {
+                "_language": {
+                    "de_de": "Fehler"
+                }
+            },
+            "backtrace": {
+                "_language": {
+                    "de_de": "Verfolgung"
+                }
+            },
+            "message": {
+                "_language": {
+                    "de_de": "Mitteilung"
+                }
+            }
+        }
+    }
+}

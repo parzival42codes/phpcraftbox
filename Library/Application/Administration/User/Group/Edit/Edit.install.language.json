@@ -1,0 +1,65 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Gruppe: #%s: %s"
+      }
+    },
+    "/form/groupData/label": {
+      "language": {
+        "de_DE": "Gruppendaten"
+      }
+    },
+    "/form/groupData/info": {
+      "language": {
+        "de_DE": "Format:<br /> [*language_iso*]<br />name = \"*name*\"<br />description = \"*description*\""
+      }
+    },
+    "/form/take/label": {
+      "language": {
+        "de_DE": "Übernehmen"
+      }
+    },
+    "/form/take/info": {
+      "language": {
+        "de_DE": "Von welcher Gruppe sollten die Rechte übernommen werden ?"
+      }
+    },
+    "/form/checkbox/delete": {
+      "language": {
+        "de_DE": "Gruppe löschen"
+      }
+    },
+    "/form/checkbox/delete/label": {
+      "language": {
+        "de_DE": "Soll die Gruppe wirklich gelöscht werden ?"
+      }
+    },
+    "/form/checkbox/delete/dialog/title": {
+      "language": {
+        "de_DE": "Soll die Gruppe wirklich gelöscht werden ?"
+      }
+    },
+    "/form/checkbox/delete/dialog/content": {
+      "language": {
+        "de_DE": "Gruppe löschen !"
+      }
+    },
+    "/notification/saved": {
+      "language": {
+        "de_DE": "Die Usergruppe '%s' wurde gespeichert !"
+      }
+    },
+    "/notification/take": {
+      "language": {
+        "de_DE": "Die Rechte der Usergruppe '%s' wurden nach '%s' übernommen!"
+      }
+    },
+    "/notification/delete": {
+      "language": {
+        "de_DE": "Die Usergruppe '%s' wurde gelöscht !"
+      }
+    }
+  }
+}

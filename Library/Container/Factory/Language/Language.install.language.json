@@ -1,0 +1,179 @@
+{
+  "type": "install.language",
+  "content": {
+    "/standard/template/id": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "ID "
+        }
+      }
+    },
+    "/standard/template/copyToClipboard": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "In die Zwischenablage kopieren "
+        }
+      }
+    },
+    "/standard/template/delete": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Löschen"
+        }
+      }
+    },
+    "/standard/template/class": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Klasse "
+        }
+      }
+    },
+    "/standard/template/method": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Methode"
+        }
+      }
+    },
+    "/standard/template/file": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Datei "
+        }
+      }
+    },
+    "/standard/template/line": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Zeile"
+        }
+      }
+    },
+    "/standard/template/function": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Function"
+        }
+      }
+    },
+    "/standard/template/backtrace": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Zurückverfolgung"
+        }
+      }
+    },
+    "/standard/template/arguments": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Argumente"
+        }
+      }
+    },
+    "/standard/template/memory": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Memory"
+        }
+      }
+    },
+    "/standard/template/level": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Ebene"
+        }
+      }
+    },
+    "/standard/template/message": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Nachricht"
+        }
+      }
+    },
+    "/standard/template/microtime": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Microtime"
+        }
+      }
+    },
+    "/standard/template/source": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Quelle"
+        }
+      }
+    },
+    "/standard/button/yes": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Ja"
+        }
+      }
+    },
+    "/standard/button/no": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Nein"
+        }
+      }
+    },
+    "/standard/button/close": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Schließen"
+        }
+      }
+    },
+    "/standard/debug/table/microtimeDiff": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Zeitdifferenz"
+        }
+      }
+    },
+    "/standard/debug/table/memoryDiff": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Speicherdifferenz"
+        }
+      }
+    },
+    "/language/dateTime": {
+      "group": "template",
+      "language": {
+        "de_DE": "d.m.Y H:i:s"
+      }
+    },
+    "/development/LoremIpsum": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet metus ac gravida tristique. Vivamus sit amet nisi faucibus, facilisis mi ac, sollicitudin urna. Nunc rhoncus imperdiet nisi, sit amet viverra sem. Nam et turpis non magna tristique tempus. Fusce auctor nisl a velit lacinia, ac porttitor purus commodo. In vulputate auctor metus at egestas. Ut tincidunt eget dolor non scelerisque. Quisque elementum sem eros, nec elementum quam sollicitudin quis. Duis at accumsan justo."
+        }
+      }
+    }
+  }
+}

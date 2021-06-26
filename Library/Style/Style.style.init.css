@@ -1,0 +1,221 @@
+body {
+    @aboveTheFold: "1";
+    margin: 0;
+    padding: 0;
+}
+
+a, a:active, a:hover, a:focus {
+    @description: "Link Color";
+    @aboveTheFold: "1";
+    color: #style-color-text-primary;
+    text-decoration: none;
+}
+
+a.block {
+    @aboveTheFold: "1";
+    display: inline-block;
+    width: 100%;
+}
+
+li, ul {
+    @aboveTheFold: "1";
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.colorSuccess {
+    @aboveTheFold: "1";
+    color: #style-color-success-text !important;
+}
+
+.simpleModifySuccess {
+    @aboveTheFold: "1";
+    background-color: #style-color-success-background !important;
+    color: #style-color-success !important;
+}
+
+.simpleModifyInfo {
+    @aboveTheFold: "1";
+    color: #style-color-info !important;
+}
+
+.colorInfo {
+    @aboveTheFold: "1";
+    background-color: #style-color-info-background !important;
+    color: #style-color-info-text !important;
+}
+
+.colorTrigger {
+    @aboveTheFold: "1";
+    background-color: #style-color-warning-background !important;
+    color: #style-color-warning-text !important;
+}
+
+.simpleModifyTrigger {
+    @aboveTheFold: "1";
+    background-color: #style-color-warning-background !important;
+    color: #style-color-warning !important;
+}
+
+.colorWarning {
+    @aboveTheFold: "1";
+    background-color: #style-color-warning-background !important;
+    color: #style-color-warning-text !important;
+}
+
+.simpleModifyWarning {
+    @aboveTheFold: "1";
+    background-color: #style-color-warning-background !important;
+    color: #style-color-warning !important;
+}
+
+.colorError {
+    @aboveTheFold: "1";
+    color: #style-color-error-text !important;
+}
+
+.simpleModifyError {
+    @aboveTheFold: "1";
+    background-color: #style-color-error-background !important;
+    color: #style-color-error !important;
+}
+
+.colorException {
+    @aboveTheFold: "1";
+    color: #style-color-error-text !important;
+}
+
+.simpleModifyException {
+    @aboveTheFold: "1";
+    background-color: #style-color-error-background !important;
+    color: #style-color-error !important;
+}
+
+summary {
+    cursor: pointer;
+}
+
+/* Flex System */
+
+.flex-container {
+    @aboveTheFold: "1";
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.flex-container-item {
+    flex: 1;
+    display: flex;
+}
+
+.flex-container-item .item{
+    flex: 1;
+}
+
+
+.flex-container-sub {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flex-container-sub-item {
+    flex: 1;
+    display: inline-block;
+}
+
+.flex-container-resize {
+    resize: vertical;
+}
+
+/* Card System */
+
+.card-container {
+    @aboveTheFold: "1";
+    margin: 0;
+    padding: 0;
+}
+
+.card-container--shadow {
+    @aboveTheFold: "1";
+    box-shadow: 0.1em 0.1em #style-color-text-dark;
+    background-color: #style-color-primary-light;
+    margin: 0.5em;
+}
+
+.card-container--space {
+    @aboveTheFold: "1";
+    margin: 1em;
+}
+
+.card-container-header {
+    @aboveTheFold: "1";
+    background: #style-color-primary-dark;
+    color: #style-color-text-light;
+    padding: 0.5em 1em;
+}
+
+.card-container-content {
+    @aboveTheFold: "1";
+    background: #style-color-primary-light;
+    color: #style-color-text-dark;
+    padding: 0.5em 1em;
+}
+
+.card-container-footer {
+    @aboveTheFold: "1";
+    overflow: hidden;
+    background: #style-color-primary;
+    color: #style-color-text-dark;
+    padding: 0.5em 1em;
+}
+
+.btn {
+    @aboveTheFold: "1";
+    background: #style-color-button-background;
+    color: #style-color-button;
+    padding: 0.2em 2em;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btnSmall {
+    @aboveTheFold: "1";
+    padding: 0.2em 1em;
+    margin: 0 0.2em;
+}
+
+.btn.left {
+    text-align: left;
+}
+
+.btn.right {
+    text-align: right;
+}
+
+.code {
+    display: block;
+    font-family: monospace;
+    margin: 1em;
+}
+
+.codeBox {
+    display: block;
+    font-family: monospace;
+    margin: 1em;
+    border: 1px solid #000;
+    padding: 1em;
+    color: #000;
+    background: #FFF;
+}
+
+.withFill {
+    @aboveTheFold: "1";
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+}
+

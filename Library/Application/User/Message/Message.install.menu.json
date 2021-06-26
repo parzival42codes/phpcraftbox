@@ -1,0 +1,15 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationUserMessage",
+    "menuClassMain": "ApplicationUserMessage",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "2|Nachrichten",
+        "menuDescription": "",
+        "menuPath": "/Benutzer"
+      }
+    }
+  }
+}

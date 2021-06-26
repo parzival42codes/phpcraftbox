@@ -1,0 +1,39 @@
+{
+    "main": {
+        "exception": {
+            "execute": {
+                "DatabaseError": {
+                    "title": {
+                        "_language": {
+                            "de_de": "SQL Ausführungs Fehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Es wurde eine fehlerhafte Datenbankabfrage getätigt."
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Der Query String:<br /><br /> <b style='word-break: break-word;'>{$getQuery}</b> <br /><br /> in der Datei <b>{$getFile}</b> Zeile: <b>{$getLine}</b> ist Fehlerhaft.<br /><br />{$getMessage}<br /><br />{$getArgs}<br />{$Info}"
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }                    
+                }
+            }
+        },
+        "trigger": {
+            "_": {
+            }
+        }
+    }
+}

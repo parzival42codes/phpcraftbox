@@ -1,0 +1,59 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Modulverwaltung"
+      }
+    },
+    "/table/Install/header/title": {
+      "language": {
+        "de_DE": "Installiert",
+        "en_US": "Installed"
+      }
+    },
+    "/table/UnInstall/header/title": {
+      "language": {
+        "de_DE": "Nicht Installiert",
+        "en_US": "Not Installed"
+      },
+      "description": "CltkZV9ERV0KZGVzY3JpcHRpb249IktvcGZ6ZWlsZSBkZXIgQ29udGVudCBUYWJlbGxlIgpbZW5fVVNdCmRlc2NyaXB0aW9uPSJIZWFkZXIgZnJvbSB0aGUgQ29udGVudCBUYWJsZSIK"
+    },
+    "/table/Active/header/title": {
+      "language": {
+        "de_DE": "Aktiviert",
+        "en_US": "Activated"
+      }
+    },
+    "/table/InActive/header/title": {
+      "language": {
+        "de_DE": "Deaktiviert",
+        "en_US": "Not Activated"
+      }
+    },
+    "/table/action/UnInstall": {
+      "language": {
+        "de_DE": "Deinstallieren",
+        "en_US": "Uninstall"
+      }
+    },
+    "/table/action/Install": {
+      "language": {
+        "de_DE": "Installieren",
+        "en_US": "Install"
+      }
+    },
+    "/table/action/Activate": {
+      "language": {
+        "de_DE": "Aktivieren",
+        "en_US": "Activate"
+      }
+    },
+    "/table/action/DeActivate": {
+      "language": {
+        "de_DE": "Deaktivieren",
+        "en_US": "Deactivate"
+      }
+    }
+  }
+}

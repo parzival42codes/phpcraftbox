@@ -1,0 +1,134 @@
+.thisClass {
+    @aboveTheFold: "1";
+    display: table;
+    width: 100%;
+}
+
+.thisClass .table-row-header {
+    @aboveTheFold: "1";
+    font-weight: bold;
+}
+
+.thisClass .table-row {
+    @aboveTheFold: "1";
+    display: table-row;
+}
+
+.thisClass .table-row-display-border-bottom {
+    @aboveTheFold: "1";
+    border-bottom: 1px solid;
+}
+
+.thisClass .table-row-display-border-left {
+    @aboveTheFold: "1";
+    border-left: 1px solid;
+}
+
+.thisClass .table-row-display-border-center {
+    @aboveTheFold: "1";
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+.thisClass .table-row-display-border-center:last-child {
+    @aboveTheFold: "1";
+    border-right: none;
+}
+
+.thisClass .table-row-display-border-right {
+    @aboveTheFold: "1";
+    border-right: 1px solid;
+}
+
+/* Standard */
+.thisClass.template-table-standard .table-cell {
+    @aboveTheFold: "1";
+    word-wrap: break-word;
+    padding: 0.3em;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.thisClass.template-table-standard .table-cell-type-header {
+    @aboveTheFold: "1";
+    padding: 0.5em;
+    font-weight: bold;
+    background: #style-color-primary-dark;
+    color: #style-color-text-light;
+}
+
+.thisClass.template-table-standard .table-cell-type-body {
+    @aboveTheFold: "1";
+    padding: 0.6em;
+}
+
+
+/* Standard Small */
+.thisClass.template-table-standard-small .table-cell {
+    @aboveTheFold: "1";
+    font-size: 0.9em;
+}
+
+.thisClass.template-table-standard-small .table-cell-type-header {
+
+}
+
+.thisClass.template-table-standard-small .table-cell-type-body {
+
+}
+
+/* Standard Small */
+.thisClass.template-table-standard-monospace .table-cell {
+    @aboveTheFold: "1";
+    font-family: monospace;
+}
+
+.thisClass .table-row .table-cell {
+    @aboveTheFold: "1";
+    display: table-cell;
+}
+
+.thisClass .table-cell-ellipsis {
+    @aboveTheFold: "1";
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.thisClass .table-header {
+    @aboveTheFold: "1";
+    display: table-header-group;
+}
+
+.thisClass .table-footer {
+    @aboveTheFold: "1";
+    display: table-footer-group;
+}
+
+.thisClass .table-row:nth-child(even) {
+    @aboveTheFold: "1";
+    background: #style-color-primary;
+    color: #style-color-text-primary;
+}
+
+.thisClass .table-row:nth-child(od) {
+    @aboveTheFold: "1";
+    background: #style-color-primary-light;
+    color: #style-color-text-primary;
+}
+
+.thisClass .table-row:hover {
+    @aboveTheFold: "1";
+    background: #style-color-primary-dark;
+    color: #style-color-text-light;
+}
+
+.thisClass .breakWord {
+    @aboveTheFold: "1";
+    word-break: break-word;
+}
+
+/*#debugBar .tab > ul > .tabButton > span, #debugBar .thisClassContainer {*/
+/*font-size: 0.8em;*/
+/*}*/

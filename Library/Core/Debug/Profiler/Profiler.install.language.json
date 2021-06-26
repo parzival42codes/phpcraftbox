@@ -1,0 +1,133 @@
+{
+  "type": "install.language",
+  "content": {
+    "/debug/id": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Ausnahmefehler"
+        }
+      }
+    },
+    "/debug/level": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Verzeihung, es ist ein Ausnahmefehler aufgetreten"
+        }
+      }
+    },
+    "/debug/": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Der Adminstrator wurde darüber Informiert."
+        }
+      }
+    },
+    "/trigger/level/8/UndefinedVariable": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Nicht existierende Variable: "
+        }
+      }
+    },
+    "/template/level": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Level"
+        }
+      }
+    },
+    "/template/message": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Nachricht"
+        }
+      }
+    },
+    "/template/details": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Details"
+        }
+      }
+    },
+    "/template/header": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "{~/icon/warning} Fehler: {$errorCount}"
+        }
+      }
+    },
+    "/template/errorLevel/0": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Triggered"
+        }
+      }
+    },
+    "/template/errorLevel/2": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Warnung"
+        }
+      }
+    },
+    "/template/errorLevel/8": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Hinweis"
+        }
+      }
+    },
+    "/template/errorLevel/1024": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "CMS Hinweis"
+        }
+      }
+    },
+    "/template/errorLevel/4096": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Abfangbarer fataler Fehler"
+        }
+      }
+    },
+    "/template/table/parameter": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Parameter"
+        }
+      }
+    },
+    "/template/table/isAbstract": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Abstrakte Funktion"
+        }
+      }
+    },
+    "/template/table/getDocComment": {
+      "group": "CoreErrorhandler",
+      "language": {
+        "de_DE": {
+          "value": "Kommentar"
+        }
+      }
+    }
+  }
+}

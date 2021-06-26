@@ -1,0 +1,17 @@
+{
+  "type": "install.config",
+  "content": {
+    "/cspScriptSrc": {
+      "value": ""
+    },
+    "/cspScriptStyle": {
+      "value": ""
+    },
+    "/cspScriptFont": {
+      "value": ""
+    },
+    "/cspScriptChild": {
+      "value": ""
+    }
+  }
+}

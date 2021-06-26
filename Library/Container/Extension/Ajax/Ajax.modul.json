@@ -1,0 +1,8 @@
+{
+  "description": "AJAX Extension",
+  "author": "Stefan Schlombs",
+  "version": "1.0.0",
+  "javascript": "2",
+  "css": "2",
+  "dependency": []
+}

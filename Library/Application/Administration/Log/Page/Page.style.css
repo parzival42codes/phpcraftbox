@@ -1,0 +1,8 @@
+.ApplicationAdministrationLogNotification .table-cell-key-crudMessage span {
+    display: inline-block;
+    padding: 0.5em;
+}
+
+.ApplicationAdministrationLogNotification .table-cell-key-crudMessage {
+    width: 100%;
+}

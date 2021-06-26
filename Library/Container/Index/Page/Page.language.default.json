@@ -1,0 +1,16 @@
+{
+    "redirect": {
+        "secounds": {
+            "_language": {
+                "de_de": "Sie werden in {$secounds} Sekunden auf die vorherige Seite weitergeleitet !"
+            }
+        }
+    },
+    "waitwindow": {
+        "secounds": {
+            "_language": {
+                "de_de": "Bitte haben Sie etwas Geduld, die aktuelle Verarbeitung dauert etwas länger... "
+            }
+        }
+    }
+}

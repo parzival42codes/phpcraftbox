@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationUserConfig",
+    "menuClassMain": "ApplicationUserConfig",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "4|Konfiguration",
+        "menuDescription": "",
+        "menuPath": "/Benutzer",
+        "menuAccess": "ApplicationUserConfig"
+      }
+    }
+  }
+}

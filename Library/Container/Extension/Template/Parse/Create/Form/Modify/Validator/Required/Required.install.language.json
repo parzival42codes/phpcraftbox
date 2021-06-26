@@ -1,0 +1,11 @@
+{
+  "type": "install.language",
+  "content": {
+    "/decorator/error/element": {
+      "language": {
+        "de_DE": "<span class='colorError'>Bitte füllen Sie dieses Feld aus</span>",
+        "en_US": "<span class='colorError'>Please fill out this field</span>"
+      }
+    }
+  }
+}

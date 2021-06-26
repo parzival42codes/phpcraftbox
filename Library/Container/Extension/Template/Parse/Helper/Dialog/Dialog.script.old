@@ -1,0 +1,95 @@
+$(document).ready(function () {
+
+    var IndexCardTemplate = 'ContainerIndexDialog-button';
+
+    $('.' + IndexCardTemplate).on("click", function () {
+        cardAddCall(this);
+    });
+
+});
+
+_globalFunctions['getIndexDialogTemplate'] = function (cardClick, modify = null) {
+    console.log('klick1');
+    return jQuery('#IndexDialog_item_container').clone().children();
+};
+
+function ContainerIndexContainerBoxControl() {
+    var indexPageItem = jQuery('#ContainerIndexDialog_container_center .ContainerIndexCard-container ');
+    if (indexPageItem.length <= 0) {
+        jQuery('#ContainerIndexDialog_container_center').hide();
+    } else {
+        jQuery('#ContainerIndexDialog_container_center').show();
+    }
+
+}
+
+_globalFunctions['cardAddCall'] = function (cardClick, cardData, modify = null) {
+    var cardClickQuery = jQuery(cardClick);
+    console.log('klick2');
+
+    var templateClone = jQuery('#ContainerIndexDialog_container_item').clone();
+
+    console.log(templateClone);
+
+    if (typeof cardClickQuery.data('close') !== 'undefined') {
+
+        templateClone.find('.ContainerIndexCard-header-top').append(function () {
+            return jQuery('<span class="ContainerIndexCard-close">' + cardClickQuery.data('close') + '</span>').bind("click", function () {
+                jQuery(this).closest('.ContainerIndexCard-container').fadeOut(300, function () {
+                    jQuery(this).remove();
+                    ContainerIndexCardContainerBoxControl();
+                });
+            });
+        });
+
+        if (typeof cardClickQuery.data('content') !== 'undefined') {
+
+            var cardClickQueryContent = cardClickQuery.data('content');
+            var cardClickQueryContentBaseEncode = cardClickQueryContent.search('BASE64:');
+
+            if (cardClickQueryContentBaseEncode === 0) {
+                var base64Content = cardClickQueryContent.substr(7);
+                cardClickQueryContent = window.atob(base64Content);
+            }
+
+            templateClone.find('.ContainerIndexCard-content-container').html(cardClickQueryContent);
+        } else {
+            templateClone.find('.ContainerIndexCard-content-container').remove();
+        }
+
+        if (typeof cardClickQuery.data('headerprimary') !== 'undefined') {
+            templateClone.find('.ContainerIndexCard-header').html(cardClickQuery.data('headerprimary'));
+        } else {
+            templateClone.find('.ContainerIndexCard-header').remove();
+        }
+
+        templateClone.css({
+            "display": "block"
+        });
+
+        console.log(templateClone);
+
+        jQuery('#ContainerIndexDialog_container_center').append(templateClone);
+
+        console.log(jQuery('#ContainerIndexDialog_container_center'));
+
+        ContainerIndexCardContainerBoxControl();
+    }
+};
+
+function cardAddCall(cardClick, modify = null) {
+    return callGloballFunction('cardAddCall', cardClick, modify);
+}
+
+function removeCardTemplate(ident) {
+    jQuery('#' + ident).find('.ContainerIndexCard-close').trigger('click');
+}
+
+function timeoutCardTemplate(ident) {
+
+    setTimeout(function () {
+        template.find('.ContainerIndexCard-close').trigger('click');
+    }, timeout);
+
+}
+

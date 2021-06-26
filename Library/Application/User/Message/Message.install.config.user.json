@@ -1,0 +1,15 @@
+{
+  "type": "install.language",
+  "content": {
+    "/messages/receive": {
+      "value": "1",
+      "language": {
+        "de_DE": "Messages können Empfangen werden",
+        "en_US": "Messages can be received"
+      },
+      "form": {
+        "type": "switch"
+      }
+    }
+  }
+}

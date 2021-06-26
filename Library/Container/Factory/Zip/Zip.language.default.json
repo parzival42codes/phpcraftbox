@@ -1,0 +1,51 @@
+{
+    "errorcodes": {
+        "open": {
+            "ER_EXISTS": {
+                "_language": {
+                    "de_de": "Die Datei existiert bereits."
+                }
+            },
+            "ER_INCONS": {
+                "_language": {
+                    "de_de": "Das Zip-Archiv ist inkonsistent."
+                }
+            },
+            "ER_INVAL": {
+                "_language": {
+                    "de_de": "Ungültiges Argument."
+                }
+            },
+            "ER_MEMORY": {
+                "_language": {
+                    "de_de": "Malloc Fehler."
+                }
+            },
+            "ER_NOENT": {
+                "_language": {
+                    "de_de": "Keine solche Datei."
+                }
+            },
+            "ER_NOZIP": {
+                "_language": {
+                    "de_de": "Kein ZIP-Archiv."
+                }
+            },
+            "ER_OPEN": {
+                "_language": {
+                    "de_de": "Datei konnte nicht geöffnet werden."
+                }
+            },
+            "ER_READ": {
+                "_language": {
+                    "de_de": "Lesefehler."
+                }
+            },
+            "ER_SEEK": {
+                "_language": {
+                    "de_de": "Positionierungsfehler."
+                }
+            }
+        }
+    }
+}

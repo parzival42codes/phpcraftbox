@@ -1,0 +1,20 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationUserMessageNew",
+    "menuAccess": "ApplicationUserMessageNew",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "1|Neu",
+        "menuDescription": "",
+        "menuPath": "/Benutzer/Nachricht"
+      },
+      "en_US": {
+        "menuTitle": "1|New",
+        "menuDescription": "",
+        "menuPath": "/User/Message"
+      }
+    }
+  }
+}

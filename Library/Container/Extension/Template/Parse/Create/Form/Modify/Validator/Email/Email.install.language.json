@@ -1,0 +1,10 @@
+{
+  "type": "install.language",
+  "content": {
+    "/message/emailFail": {
+      "language": {
+        "de_DE": "Dies ist keine gültige Email Adresse"
+      }
+    }
+  }
+}

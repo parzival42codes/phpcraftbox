@@ -1,0 +1,12 @@
+{
+  "simple": {
+    "default": {
+      "path": "/user/message/new/"
+    }
+  },
+  "regex": {
+    "message": {
+      "path": "/user/message/new/{userid|[0-9+]}"
+    }
+  }
+}

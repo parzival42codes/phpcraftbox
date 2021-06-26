@@ -1,0 +1,12 @@
+.ContainerExtensionTemplateTagTableTableYesno {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.ContainerExtensionTemplateTagTableTableYesnoYes {
+    color: #008800;
+}
+
+.ContainerExtensionTemplateTagTableTableYesnoNo {
+    color: #FF0000;
+}

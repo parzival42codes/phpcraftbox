@@ -1,0 +1,59 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "Template"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "Templatesystem"
+      }
+    },
+    "author": {
+      "_language": {
+        "#": "Stefan Schlombs"
+      }
+    },
+    "version": {
+      "_language": {
+        "#": "1.0.0"
+      }
+    }
+  },
+  "skeleton": {
+    "title": {
+      "default": {
+        "_language": {
+          "de_de": "Template"
+        }
+      }
+    },
+    "template": {
+      "_language": {
+        "de_de": "Template"
+      }
+    },
+    "_meta": {
+      "de_de": "application"
+    }
+  },
+  "resources": {
+    "_language": {
+      "de_de": ""
+    },
+    "_meta": {
+      "resources": {
+        "frontend": {
+          "package": {
+            "css": [
+              {
+                "name": ""
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

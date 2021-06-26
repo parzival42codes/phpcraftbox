@@ -1,0 +1,82 @@
+{
+    "cookie": {
+        "content": {
+            "_language": {
+                "de_de": "Diese Webseite verwendet in der Grundfunktion keinerlei Cookies. Dennoch können Erweiterungen, wie z.B. Analysedienste und Warenkörbe Cookies erzeugen.<br/>Vor einer Cookierstellung werden Sie darüber Informiert und um Erlaubnis gefragt.<br />Der Satus des Lesens dieser Information wird direkt in Ihrem Browser gespeichert mithilfe der localStorage Funktion."
+            }
+        }
+    },
+    "thisLocalSessionStorage": {
+        "title": {
+            "_language": {
+                "de_de": "LocalStorage und SessionStorage"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Diese Webseite verwendet für einige Javascript Funktionen die LocalStorage (dauerhafte Speicherung) bzw. SessionStorage (Speicherung während der Browser offen ist) Funktion Ihres Internetprogrammes. Die Storage Funktionen speichern Informationen in Ihrem Browser. Im Gegensatz zu Cookies werden keine Informationen zum Server gesendet. Diese Daten können Sie jederzeit über die jeweilige Funktion in Ihrem Browser einsehen.< br/>Diese Webseite wird diese Funktion nicht zur eindeutigen Identifizierung verwenden. Es sei denn, es dient internen Sicherheitsfunktionen. Keinesfalls wird diese Funktion für Tracking oder Werbung verwendet."
+            }
+        }
+    },
+    "thisPrivacy": {
+        "title": {
+            "_language": {
+                "de_de": "Datenschutz"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Diese von Ihnen Besuchte Webseite nimmt den Datenschutz sehr ernst.<br />Personenbezogene Informationen werden vertraulich und gemäß den gesetzlichen Vorschriften behandelt. Wie dies in dieser Datenschutzerklkärung erläutert wird.<br />Diese Webseite verzichtet auf die Erhebung persönlicher Daten wie z.B. Name, Addresse oder E-Mail, wenn dies nicht erforderlich ist.<br />Sie können jederzeit die Speicherung Ihrer Daten per schriftlicher Kontaktaufnahme jederzeit mit sofortiger Wirkung wiederrufen.<br />Eine Weiterleitung der Persönlichen Daten an dritte wird nie ohne spezielle Genehmigung stattfinden.<br />Bitte beachten Sie, das Datenübertragungen wie über e-Mail selbst bei Einhaltung der erforderlichen Maßnahmen nie absolut sicher sind."
+            }
+        }
+    },
+    "thisData": {
+        "title": {
+            "_language": {
+                "de_de": "Auskunft, Löschung, Sperrung"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Sie können sich zu jedem Zeitpunkt können über die personenbezogenen Daten, deren Herkunft und Empfänger und den Nutzen der Datenverarbeitung informieren und unentgeltlich eine Korrektur, Sperrung oder Löschung dieser Daten verlangen. Als Kontaktwege können Sie die Daten im Impressum und das Kontaktformular benuzen. Für weitere Fragen zum Thema stehen wir Ihnen ebenfalls jederzeit zur Verfügung."
+            }
+        }
+    },
+    "thisLogFiles": {
+        "title": {
+            "_language": {
+                "de_de": "Server-Log-Files / Datenübermittlung /Datenprotokollierung"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Der Webserver speichert automatisch sogenannte Log Files, welcher keiner bestimmten Person zuzuordnen sind, Sie dienen lediglich statistischen Auswertungszwecken.<br />Diese Daten beinhalten u. a. den Browsertyp und -version, verwendetes Betriebssystem, Referrer URL, IP-Adresse des anfragenden Rechners, Zugriffsdatum und -uhrzeit der Serveranfrage und die Dateianfrage des Client. Eine Weitergabe an Dritte, zu kommerziellen oder nichtkommerziellen Zwecken, findet nicht statt.<br />Sollten jedoch Hinweise zu einer rechtswidrige Nutzung vorliegen, wird das Recht einbehalten, dise Daten im nachinein zu Prüfen."
+            }
+        }
+    },
+    "thisEva": {
+        "title": {
+            "_language": {
+                "de_de": "EVA - Eingabe - Verarbeitung - Ausgabe Formulare"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Diese Webseite benutzt auf einigen Seiten sogenannte Eingabe - Verarbeitung - Ausgabe Formulare, welche die eingegebenen Daten nicht auf dem Server speichern, sondern direkt Berarbeiten und danach Ausgeben. Auch erfolgt bei diesen Formularen, wenn nicht vorher darüber Informiert (z.B. Bei Formularen, welche eine API nuzen), auch keinerlei Speicherung bei dritten."
+            }
+        }
+    },
+    "thisChange": {
+        "title": {
+            "_language": {
+                "de_de": "Änderung der Datenschutzbestimmungen"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Die Datenschutzerklärung kann in unregelmäßigen Abständen angepasst werden, damit sie den aktuellen rechtlichen Anforderungen entsprechen oder um Änderungen umzusetzen, u. a. bei neuen Funktionen. Für den nächsten Besuch gilt dann automatisch die neue Datenschutzerklärung."
+            }
+        }
+    }
+}
+   

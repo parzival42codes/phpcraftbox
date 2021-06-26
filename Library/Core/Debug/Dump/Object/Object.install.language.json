@@ -1,0 +1,41 @@
+{
+  "type": "install.language",
+  "content": {
+    "/table/getName": {
+      "language": {
+        "de_DE": "Name",
+        "en_US": "Name"
+      }
+    },
+    "/table/type": {
+      "language": {
+        "de_DE": "Type",
+        "en_US": "Type"
+      }
+    },
+    "/table/isStatic": {
+      "language": {
+        "de_DE": "Statisch ?",
+        "en_US": "Static ?"
+      }
+    },
+    "/table/isAbstract": {
+      "language": {
+        "de_DE": "Abstract ?",
+        "en_US": "Abstract ?"
+      }
+    },
+    "/table/parameter": {
+      "language": {
+        "de_DE": "Parameter",
+        "en_US": "Parameter"
+      }
+    },
+    "/table/getDocComment": {
+      "language": {
+        "de_DE": "Dokumentation",
+        "en_US": "Documentation"
+      }
+    }
+  }
+}

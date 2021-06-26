@@ -1,0 +1,25 @@
+{
+    "template": {
+        "header": {
+            "_language": {
+                "de_de": "{~/icon/insert_drive_file}Dateizugriff Liste: {$fromListYes}/{$fromListNo} {~/icon/arrow_upward} L: {$load} {~/icon/arrow_downward} S: {$save}"
+            }
+        },
+        "fromList": {
+            "_language": {
+                "de_de": "Von der Liste"
+            }
+        },
+        "action": {
+            "_language": {
+                "de_de": "Aktion"
+            }
+        },
+        "direction": {
+            "_language": {
+                "de_de": "Richtung"
+            }
+        }
+
+    }
+}

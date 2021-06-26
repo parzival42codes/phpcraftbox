@@ -1,0 +1,37 @@
+{
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Benutzer Registrieren",
+      "en_US": "User Register"
+    },
+    "/meta/description": {
+      "de_DE": "Benutzer Registrieren",
+      "en_US": "User Register"
+    },
+    "/breadcrumb": {
+      "de_DE": "Benutzer Registrieren",
+      "en_US": "User Register"
+    },
+    "/form/username/label": {
+      "de_DE": "Benutzername",
+      "en_US": "Username"
+    },
+    "/form/email/label": {
+      "de_DE": "E-Mail Adresse",
+      "en_US": "E-Mail Address"
+    },
+    "/form/password/label": {
+      "de_DE": "Passwort",
+      "en_US": "Password"
+    },
+    "/form/passwordVerify/label": {
+      "de_DE": "Password wiederholen",
+      "en_US": "Password repeat"
+    },
+    "/form/message/register/closed": {
+      "de_DE": "Das Registrieren ist derzeit nicht möglich !",
+      "en_US": "Registration is currently not possible!"
+    }
+  }
+}

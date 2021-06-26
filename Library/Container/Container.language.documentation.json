@@ -1,0 +1,17 @@
+{
+    "meta": {
+        "path": {
+            "_language": {
+                "de_de": "/Core"
+            }
+        },
+        "title": {
+            "_language": {
+                "de_de": "Container"
+            }
+        }
+    },
+    "replace": {
+
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "type": "install.language",
+    "content": {
+        "/meta/title": {
+            "de_DE": "Sprache",
+            "en_US": "Language"
+        },
+        "/meta/description": {
+            "de_DE": "Sprache",
+            "en_US": "Language"
+        },
+        "/breadcrumb": {
+            "de_DE": "Sprache",
+            "en_US": "Language"
+        }  ,
+        "/notification/updated": {
+            "de_DE": "Die Sprache für '%s' wurde aktualisiert !",
+            "en_US": "The Language for '%s' are updated !"
+        }
+    }
+}

@@ -1,0 +1,36 @@
+.template--form--group--row {
+    @aboveTheFold: "1";
+    margin: 1em 0;
+}
+
+.template--form--group--row-row {
+    @aboveTheFold: "1";
+}
+
+.template--form--group--row-label {
+    @aboveTheFold: "1";
+    margin-bottom: 0.5em;
+}
+
+.template--form--group--row-input {
+    @aboveTheFold: "1";
+
+}
+
+.template--form--group--row-input {
+    @aboveTheFold: "1";
+    margin: 0.5em;
+}
+
+.template--form--group--row-info {
+    @aboveTheFold: "1";
+    font-size: small;
+}
+
+.template--form--group--row-error {
+    @aboveTheFold: "1";
+    font-size: small;
+    color: #FF0000;
+    padding: 0.4em;
+}
+

@@ -1,0 +1,14 @@
+
+
+
+#ErrorhandlerDebugTable {
+
+}
+
+#ErrorhandlerDebugTable .table-row .table-cell {
+    padding: 0.3em;
+}
+
+#ErrorhandlerDebugTable .table-row-header .table-cell.table-cell-key-description {
+    width: 100%;
+}

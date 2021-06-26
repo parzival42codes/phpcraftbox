@@ -1,0 +1,10 @@
+{
+  "type": "install.language",
+  "content": {
+    "/separator": {
+      "language": {
+        "de_DE": "&raquo;"
+      }
+    }
+  }
+}

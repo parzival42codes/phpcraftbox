@@ -1,0 +1,24 @@
+parameters:
+  level: 8
+  phpVersion: 70400 # PHP 7.4
+  paths:
+    - Custom/
+    - Library/
+  excludePaths:
+    - Library/Thrirdparty/*
+    - Library/Console/*
+    - Library/Created/*
+  ignoreErrors:
+    - '/Function d not found/'
+    - '/Cannot call method \_\_\_get\(\) on class-string\|object./'
+    - '/onstant CMS\_[a-zA-Z0-9\\_]+ not found./'
+    - '/Variable \$data in PHPDoc tag @var does not exist./'
+    - '/Call to an undefined method [a-zA-Z0-9\\_]+::getCacheContent\(\)./'
+    - '/Call to an undefined method ContainerFactoryFile::save\(\)./'
+    - '/Call to an undefined method ContainerFactoryDatabaseQuery::execute\(\)./'
+    - '/function call_user_func expects callable.*array\(.*\) given/'
+    - '/function call_user_func_array expects callable.*array\(.*\) given/'
+#    - '/[a-zA-Z0-9\\_]+ class PHPMailer\PHPMailer\PHPMailer./'
+  reportUnmatchedIgnoredErrors: true
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false

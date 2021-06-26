@@ -1,0 +1,17 @@
+{
+  "simple": {
+    "default": {
+      "path": "/",
+      "target": "index"
+    },
+    "favicon": {
+      "path": "/favicon.ico",
+      "target": "free"
+    }
+  },
+  "regex": {
+    "edit": {
+      "path": "/testa/testb/{$foo|.*}/{$bar|.*}"
+    }
+  }
+}

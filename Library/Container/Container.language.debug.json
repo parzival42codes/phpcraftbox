@@ -1,0 +1,34 @@
+{
+    "template": {
+        "header": {
+            "_language": {
+                "de_de": "Container: Neu: {$new} Geteilt: {$shared} Statisch: {$static}"
+            }
+        },
+        "index": {
+            "_language": {
+                "de_de": "Index"
+            }
+        },
+        "action": {
+            "_language": {
+                "de_de": "Aufruf"
+            }
+        },
+        "new": {
+            "_language": {
+                "de_de": "Neu"
+            }
+        },
+        "base": {
+            "_language": {
+                "de_de": "Base"
+            }
+        },
+        "parameter": {
+            "_language": {
+                "de_de": "Parameter"
+            }
+        }
+    }
+}

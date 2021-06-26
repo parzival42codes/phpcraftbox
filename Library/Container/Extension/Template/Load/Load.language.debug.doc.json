@@ -1,0 +1,12 @@
+{
+  "menu": {
+    "_language": {
+      "de_de": "/Templates/Load"
+    }
+  },
+  "code01": {
+    "_language": {
+      "de_de": "<code>   /** @var ContainerExtensionTemplateLoad $templateCache */<br /> $templateCache = \Container::get('ContainerExtensionTemplateLoad',<br /> \Core::getRootClass(__CLASS__),<br /> [<br />'default',<br />]<br />);<br /><br /> $templates = $templateCache->get();</code>"
+    }
+  }
+}

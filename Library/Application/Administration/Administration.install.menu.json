@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministration",
+    "menuClassMain": "ApplicationAdministration",
+    "menuAccess": "ApplicationAdministration",
+    "menuIcon": "{insert/resources resource=\"icon\" icon=\"spider_web\"}",
+    "language": {
+      "de_DE": {
+        "menuTitle": "1|Dashboard",
+        "menuDescription": "",
+        "menuPath": "/Administration"
+      }
+    }
+  }
+}

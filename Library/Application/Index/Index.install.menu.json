@@ -1,0 +1,14 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=Index",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "Startseite",
+        "menuDescription": "",
+        "menuPath": "/"
+      }
+    }
+  }
+}

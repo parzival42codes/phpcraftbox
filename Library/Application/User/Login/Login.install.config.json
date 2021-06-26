@@ -1,0 +1,12 @@
+{
+  "type": "install.config",
+  "content": {
+    "/login/fail/max": {
+      "value": "3",
+      "language": {
+        "de_DE": "Maximale Anmelde Versuche vor Sperrung",
+        "en_US": "Maximal Login Fails"
+      }
+    }
+  }
+}

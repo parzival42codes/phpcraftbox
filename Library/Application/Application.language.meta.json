@@ -1,0 +1,51 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "ApplicationCore"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "ApplicationCore"
+      }
+    },
+    "_meta": {
+      "author": "Stefan Schlombs",
+      "category": "/System/Core",
+      "versionModul": "1.0.0",
+      "versionRequiredSystem": "1.0.0",
+      "dependencies": [
+      ]
+    }
+  },
+  "route": {
+    "simple": {
+      "default": {
+        "_language": {
+          "de_de": "Application/App"
+        },
+        "_meta": {
+          "target": "ajax",
+          "class": "Application",
+          "part": "app"
+        }
+      }
+    }
+  },
+  "event": {
+    "attach": {
+      "addEventItems": {
+        "_language": {
+          "de_de": "Ajax warte Nachricht"
+        },
+        "_meta": {
+          "class": "ContainerIndexPage",
+          "method": "generateFinalPage",
+          "trigger": "final",
+          "call": "insertTemplateDialog"
+        }
+      }
+    }
+  }
+}

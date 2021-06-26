@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationLogError",
+    "menuClassMain": "ApplicationAdministrationLogError",
+    "menuIcon": "&#9888;",
+    "language": {
+      "de_DE": {
+        "menuTitle": "Errorlogs",
+        "menuDescription": "",
+        "menuAccess": "ApplicationAdministration",
+        "menuPath": "/Administration/Log"
+      }
+    }
+  }
+}

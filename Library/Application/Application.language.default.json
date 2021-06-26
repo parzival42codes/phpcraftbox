@@ -1,0 +1,15 @@
+{
+    "access": {
+        "title": {
+            "_language": {
+                "de_de": "Zugriffsgenehmigung erforderlich"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Für diesen Bereich müssen Sie als zugriffsberechtigter Benutzer angemeldet sein."
+            }
+        }
+    }
+}
+

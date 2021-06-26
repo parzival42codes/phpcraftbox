@@ -1,0 +1,33 @@
+{
+  "type": "install.language",
+  "content": {
+    "/yes": {
+      "language": {
+        "de_DE": {
+          "value": "<span class='ContainerExtensionTemplateTagTableTableYesno ContainerExtensionTemplateTagTableTableYesnoYes'>&#10003;</span>"
+        }
+      }
+    },
+    "/yes/count": {
+      "language": {
+        "de_DE": {
+          "value": "<span class='ContainerExtensionTemplateTagTableTableYesno ContainerExtensionTemplateTagTableTableYesnoYes'>&#10003;&nbsp;(%s)</span>"
+        }
+      }
+    },
+    "/no": {
+      "language": {
+        "de_DE": {
+          "value": "<span class='ContainerExtensionTemplateTagTableTableYesno ContainerExtensionTemplateTagTableTableYesnoNo'>X</span>"
+        }
+      }
+    },
+    "/no/count": {
+      "language": {
+        "de_DE": {
+          "value": "<span class='ContainerExtensionTemplateTagTableTableYesno ContainerExtensionTemplateTagTableTableYesnoNo'>X&nbsp;(%s)</span>"
+        }
+      }
+    }
+  }
+}

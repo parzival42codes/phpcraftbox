@@ -1,0 +1,24 @@
+{
+  "template": {
+    "header": {
+      "_language": {
+        "de_de": "Exceptions: {$count}"
+      }
+    },
+    "class": {
+      "_language": {
+        "de_de": "Klasse"
+      }
+    },
+    "message": {
+      "_language": {
+        "de_de": "Message"
+      }
+    },
+    "parameter": {
+      "_language": {
+        "de_de": "Parameter"
+      }
+    }
+  }
+}

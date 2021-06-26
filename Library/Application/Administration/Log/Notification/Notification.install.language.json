@@ -1,0 +1,22 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Notification Log"
+      }
+    },
+    "/filter/header/class": {
+      "language": {
+        "de_DE": "Klasse",
+        "en_US": "Class"
+      }
+    },
+    "/filter/header/ident": {
+      "language": {
+        "de_DE": "Ident",
+        "en_US": "Ident"
+      }
+    }
+  }
+}

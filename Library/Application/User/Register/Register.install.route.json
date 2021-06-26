@@ -1,0 +1,8 @@
+{
+    "simple": {
+        "default": {
+            "path": "/user/register"
+        }
+    },
+    "regex": []
+}

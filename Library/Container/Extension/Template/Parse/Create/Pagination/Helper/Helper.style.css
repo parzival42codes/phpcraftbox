@@ -1,0 +1,11 @@
+.ContainerExtensionTemplateParseCreatePaginationHelper {
+    width: 100%;
+}
+
+.ContainerExtensionTemplateParseCreatePaginationHelper .active {
+    font-weight: bold;
+}
+
+.ContainerExtensionTemplateParseCreatePaginationHelper .card-container-header {
+    text-align: center;
+}

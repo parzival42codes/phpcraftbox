@@ -1,0 +1,11 @@
+
+#ContainerIndexPageBreadcrumb .card-container-content {
+    @aboveTheFold: "1";
+    padding: 0.5em;
+}
+
+#ContainerIndexPageBreadcrumb .card-container-content ul li {
+    @aboveTheFold: "1";
+    display: inline-block;
+    margin: 0 0.7em;
+}

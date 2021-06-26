@@ -1,0 +1,26 @@
+{
+  "type": "install.language",
+  "content": {
+    "/ajaxLoadMessageTitle": {
+      "language": {
+        "de_DE": {
+          "value": "Loading..."
+        }
+      }
+    },
+    "/ajaxLoadMessagePre": {
+      "language": {
+        "de_DE": {
+          "value": ""
+        }
+      }
+    },
+    "/ajaxLoadMessageAfter": {
+      "language": {
+        "de_DE": {
+          "value": ""
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "regex":
+            {
+                "redirect": {
+                    "_meta": {
+                        "target": "free",
+                        "call": "redirect"
+                    },
+                    "_language": {
+                        "de_de": "Redirect/{$redirect|.*}"
+                    }
+                }
+            }
+}

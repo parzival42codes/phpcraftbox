@@ -1,0 +1,13 @@
+{
+    "main": {
+        "trigger": {
+            "__construct": {
+                "exception": {
+                    "_language": {
+                        "de_de": "Exception: {$message}"
+                    }
+                }
+            }
+        }
+    }
+}

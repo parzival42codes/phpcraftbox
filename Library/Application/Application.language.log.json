@@ -1,0 +1,18 @@
+{
+    "exceptionAccess": {
+        "title": {
+            "_language": {
+                "de_de": "Unberechtigter Zugriff"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Auf Seite: {$url} <br /> von UserID: {$userid}"
+            }
+        },
+        "_meta": {
+            "type": "error",
+            "icon": "warning"
+        }
+    }
+}

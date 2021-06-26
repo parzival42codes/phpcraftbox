@@ -1,0 +1,161 @@
+{
+    "box": {
+        "withTitle": {
+            "start": {
+                "_language": {
+                    "#": "<div class=\"box\"><h3 class=\"boxTitle\">"
+                }
+            },
+            "middle": {
+                "_language": {
+                    "#": "</h3><div class=\"boxContent\">"
+                }
+            },
+            "end": {
+                "_language": {
+                    "#": "</div></div>"
+                }
+            }
+        },
+        "withOutTitle": {
+            "start": {
+                "_language": {
+                    "#": "<div class=\"box{$class}\"><div class=\"boxContent\">"
+                },
+                "_meta": {
+                    "{$class}": ""
+                }
+            },
+            "end": {
+                "_language": {
+                    "#": "</div></div>"
+                }
+            }
+        }
+    },
+    "text": {
+        "dateTime": {
+            "month": {
+                "1": {
+                    "_language": {
+                        "de_de": "Januar"
+                    }
+                },
+                "2": {
+                    "_language": {
+                        "de_de": "Februar"
+                    }
+                },
+                "3": {
+                    "_language": {
+                        "de_de": "März"
+                    }
+                },
+                "4": {
+                    "_language": {
+                        "de_de": "April"
+                    }
+                },
+                "5": {
+                    "_language": {
+                        "de_de": "Mai"
+                    }
+                },
+                "6": {
+                    "_language": {
+                        "de_de": "Juni"
+                    }
+                },
+                "7": {
+                    "_language": {
+                        "de_de": "Juli"
+                    }
+                },
+                "8": {
+                    "_language": {
+                        "de_de": "August"
+                    }
+                },
+                "9": {
+                    "_language": {
+                        "de_de": "September"
+                    }
+                },
+                "10": {
+                    "_language": {
+                        "de_de": "Oktober"
+                    }
+                },
+                "11": {
+                    "_language": {
+                        "de_de": "November"
+                    }
+                },
+                "12": {
+                    "_language": {
+                        "de_de": "Dezember"
+                    }
+                }
+            },
+            "weekday": {
+                "1": {
+                    "_language": {
+                        "de_de": "Montag"
+                    }
+                },
+                "2": {
+                    "_language": {
+                        "de_de": "Dienstag"
+                    }
+                },
+                "3": {
+                    "_language": {
+                        "de_de": "Mittwoch"
+                    }
+                },
+                "4": {
+                    "_language": {
+                        "de_de": "Donnerstag"
+                    }
+                },
+                "5": {
+                    "_language": {
+                        "de_de": "Freitag"
+                    }
+                },
+                "6": {
+                    "_language": {
+                        "de_de": "Samtag"
+                    }
+                },
+                "7": {
+                    "_language": {
+                        "de_de": "Sonntag"
+                    }
+                }
+            }
+        },
+        "yesNo": {
+            "yes": {
+                "_language": {
+                    "de_de": "Ja"
+                }
+            },
+            "no": {
+                "_language": {
+                    "de_de": "Nein"
+                }
+            },
+            "1": {
+                "_language": {
+                    "de_de": "Ja"
+                }
+            },
+            "0": {
+                "_language": {
+                    "de_de": "Nein"
+                }
+            }
+        }
+    }
+}

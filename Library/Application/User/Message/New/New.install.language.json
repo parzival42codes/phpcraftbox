@@ -1,0 +1,49 @@
+{
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Neue Nachricht",
+      "en_US": "New Message"
+    },
+    "/meta/description": {
+      "de_DE": "Neue Nachricht",
+      "en_US": "New Message"
+    },
+    "/breadcrumb": {
+      "de_DE": "Neue Nachricht",
+      "en_US": "New Message"
+    },
+    "/form/plainSource/label": {
+      "de_DE": "Von",
+      "en_US": "From"
+    },
+    "/form/plainTarget/label": {
+      "de_DE": "An",
+      "en_US": "To"
+    },
+    "/form/title/label": {
+      "de_DE": "Titel",
+      "en_US": "Title"
+    },
+    "/form/message/label": {
+      "de_DE": "Nachricht",
+      "en_US": "Message"
+    },
+    "/target/admin": {
+      "de_DE": "Nachricht an die Administratoren",
+      "en_US": "Message to the administrators"
+    },
+    "/mail/subject": {
+      "de_DE": "Nee Nachricht auf %s",
+      "en_US": "New Message at %s"
+    },
+    "/notification/empty": {
+      "de_DE": "Sie haben keinen Empfänger angegeben",
+      "en_US": "You have not specified a recipient"
+    },
+    "/notification/success": {
+      "de_DE": "Ihre Nachricht wurde an '%s' versendet",
+      "en_US": "Your message has been sent to '%s'"
+    }
+  }
+}

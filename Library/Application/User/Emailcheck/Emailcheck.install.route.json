@@ -1,0 +1,7 @@
+{
+  "regex": {
+    "default": {
+      "path": "/user/emailcheck/{id|.*}"
+    }
+  }
+}

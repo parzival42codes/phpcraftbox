@@ -1,0 +1,310 @@
+
+body {
+
+
+}
+
+/****************************************** Menu ******************************************/
+
+
+/****************************************** Box ******************************************/
+
+.box {
+    color: {{$textAndIcons}};
+}
+
+.box .boxTitle {
+    padding: 0.5em;
+}
+
+.box .boxContent {
+    padding: 0.5em;
+    overflow: hidden;
+}
+
+/****************************************** PageContainer ******************************************/
+
+#PageContainer {
+    text-align: center;
+    color: {{$textAndIcons}};
+}
+
+/*#PageContainerHeaderMain {
+    margin: auto;
+    padding: 0.5em;
+    max-width: 1170px;
+}*/
+
+#PageContainerHeaderImage {
+    float: left;
+}
+
+#PageContainerHeaderContent {
+    margin: auto;
+    padding: 0.5em;
+    max-width: 1170px;
+}
+
+#PageContainerHeaderContentTop {
+    margin: auto;
+    padding: 1em;
+    max-width: 1170px;
+    width: 100%;
+}
+
+
+/*
+#PageContainerHeaderMenu {
+    margin: 0 auto;
+    max-width: 1170px;
+    width: 100%;
+}
+
+#PageContainerHeaderBreadcrumb {
+    margin: 0 auto;
+    max-width: 1170px;
+    width: 100%;
+}*/
+
+#PageContainerHeaderBreadcrumb ul {
+    display: inline-block;
+    margin: 5px;
+}
+
+#PageContainerHeaderBreadcrumb li {
+    display: inline-block;
+    padding: 2px;
+}
+
+.pageContainerFooter {
+
+}
+
+/****************************************** tab ******************************************/
+
+.tab > ul {display: block; overflow: hidden; }
+
+.tab > ul > li { padding: 2px; margin: 2px; cursor: default; display: inline-block; }
+.tab > ul > li > span { color: #000; }
+.tabTitle { }
+/*.tabContent { width: 98%; border: #000 1px solid; padding: 5px; margin: 2px; overflow: auto; min-height: 200px; }*/
+.tabContent { width: 98%; padding: 5px; margin: 2px; overflow: auto; min-height: 200px; }
+
+.tabTitle h1,.tabTitle h2,.tabTitle h3,.tabTitle h4,.tabTitle h5,.tabTitle h6 {  font-size: 1em; }
+
+.tab > ul > .tabButton {
+    padding: 2px;
+    margin: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    Border-Width: 1px;
+    color: black;
+}
+.tab > ul > .tabButton > span {
+    display: inline-block;
+    padding: 0 5px;
+}
+
+.tabButton.tabActive { background: lightskyblue; font-weight: bold; }
+.tabButton.tabActive:hover { background: lightskyblue; font-weight: bold; }
+.tabButton.tabInactive { background: #ccc; font-style: normal; }
+.tabButton.tabInactive:hover { background: lightskyblue; font-weight: bold; }
+
+/****************************************** CMS Dialog ******************************************/
+
+#CMSDialogCenter {
+    background-color: #FFF;
+    border: 1px #000 dotted;
+}
+
+.CMSDialog {
+    padding: 2px;
+}
+
+.CMSDialog.CMSDialogWithTitle {
+    padding: 5px;
+    border: 1px #000 dotted;
+}
+
+.CMSDialog.CMSDialogWithTitle .CMSDialogTitle {
+    padding: 5px;
+    display: inline-block;
+}
+
+.CMSDialog.CMSDialogWithTitle .CMSDialogClose {
+    float: right;
+    padding: 5px;
+    /*display: inline-block;*/
+    cursor: pointer;
+}
+
+.CMSDialog.CMSDialogWithTitle .CMSDialogContent {
+    padding: 5px;
+}
+
+.CMSDialog.CMSDialogWithOutTitle {
+    padding: 5px;
+    border: 1px #000 dotted;
+}
+
+.CMSDialog.CMSDialogWithOutTitle .CMSDialogClose {
+    float: right;
+    padding: 5px;
+    /*display: inline-block;*/
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.CMSDialog.CMSDialogWithOutTitle .CMSDialogContent {
+    display: inline-block;
+    padding: 5px;
+}
+
+/****************************************** Dialog ******************************************/
+
+.dialogDisplayContent {
+    display: none;
+}
+
+.dialogDisplayContentDialog {
+    border: 1px #000 solid;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.dialogDisplayTitle {
+    cursor: pointer;
+}
+
+/****************************************** message ******************************************/
+
+
+.messageError {
+    border: #F00 dashed;
+}
+.messageError .boxTitle {
+    text-align: center;
+    color: #F00;
+    background-color: #FFF !important;
+}
+.messageError .boxContent{
+    color: #F00;
+    background-color: #FFF !important;
+}
+
+
+{
+    "media": {
+        "mediumSmall": ""
+    },
+    "assign": {
+        "FormularBorderRadius": "5px"
+    },
+    "stylesheet": {
+        "main": {
+        },
+        "menu": {
+            ".CMSMenu.menuHorizontal": {
+                "display": "inline-block;"
+            },
+            ".CMSMenu.menuHorizontal nav": {
+                "background-color": "{{$primaryColorDark}}"
+            }
+        },
+        "helper": {
+            ".fontSmall": {
+                "font-size": "0.75em"
+            }
+        },
+        "Formular": {
+            ".FormularElementRow": {},
+            ".FormularElementField": {
+                "display": "block"
+            },
+            ".FormularElementBlock": {
+                "display": "block",
+                "margin": "5px 15px"
+            },
+            ".FormularElementLabel": {
+                "font-size": "1.0em",
+                "font-weight": "bold",
+                "margin": "5px 0",
+                "display": "block",
+                "color": "{{$textAndIcons}}"
+            },
+            ".FormularElementField input, .FormularElementField textarea": {
+                "border-color": "{{$primaryColorDark}}",
+                "border-style": "solid",
+                "background": "transparent",
+                "width": "100%",
+                "padding": "5px",
+                "transition": "border 0.5s",
+                "color": "{{$textAndIcons}}",
+                "border-radius": "{{$FormularBorderRadius}}"
+            },
+            ".FormularElementField input:hover, .FormularElementField textarea:hover": {
+                "border-color": "{{$primaryColorLight}}"
+            },
+            ".FormularElementFieldCheckbox, .FormularElementFieldCheckboxOption": {
+                "display": "inline-block",
+                "width": "100%"
+            },
+            ".FormularElementFieldCheckboxOption input": {
+                "width": "10%"
+            },
+            ".FormularElementFieldCheckboxOption label": {
+                "width": "80%"
+            },
+            ".FormularElementFieldSelect": {
+                "width": "100%",
+                "border-radius": "{{$FormularBorderRadius}}"
+            },
+            ".FormularElementInfo": {
+                "display": "block",
+                "border": "1px #000 solid",
+                "background": "{{$primaryColorDark}}",
+                "width": "100%",
+                "padding": "2px",
+                "margin": "5px",
+                "color": "{{$textAndIcons}}",
+                "border-radius": "{{$FormularBorderRadius}}"
+            },
+            ".FormularElementFieldPlain": {
+                "display": "block",
+                "border": "1px #000 solid",
+                "background": "{{$primaryColorDark}}",
+                "width": "100%",
+                "padding": "5px",
+                "color": "{{$textAndIcons}}",
+                "border-radius": "{{$FormularBorderRadius}}"
+            },
+            ".FormularElementFieldCaptchaDefaultImage": {
+                "display": "block",
+                "background": "#F00"
+            },
+            ".FormularElementFieldCaptchaDefaultInput": {
+                "display": "block"
+            },
+            ".FormularElementError ul li": {
+                "color": "{{$errorColor}}"
+            },
+            ".FormularElementRowError label": {
+            },
+            ".FormularElementRowError input, .FormularElementRowError select, .FormularElementRowError textarea": {
+                "border-width": "1px",
+                "border-color": "{{$errorColor}}",
+                "border-style": "solid"
+            },
+            ".FormularElementError, .FormularElementFieldConcat .FormularElementField, .FormularElementFieldConcat .gridWithHalfLeft": {
+                "width": "auto !important"
+            },
+            ".FormularSubmit, .FormularReset": {
+                "width": "100%",
+                "height": "inherit",
+                "border-radius": "{{$FormularBorderRadius}}"
+            }
+        }
+    }
+}
+

@@ -1,0 +1,12 @@
+{
+  "simple": {
+    "default": {
+      "path": "/administration/box/edit"
+    }
+  },
+  "regex": {
+    "edit": {
+      "path": "/administration/box/edit/{id|.*}"
+    }
+  }
+}

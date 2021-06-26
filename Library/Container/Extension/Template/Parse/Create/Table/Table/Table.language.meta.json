@@ -1,0 +1,46 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "Card"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "Card"
+      }
+    },
+    "_meta": {
+      "author": "Stefan Schlombs",
+      "category": "/System/Index/Table",
+      "versionModul": "1.0.0",
+      "versionRequiredSystem": "1.0.0",
+      "dependencies": [
+      ]
+    }
+  },
+  "resources": {
+    "_language": {
+      "de_de": ""
+    },
+    "_meta": {
+      "resources": {
+        "frontend": {
+          "package": {
+            "css": [
+              {
+                "name": ""
+              }
+            ],
+            "js": [
+              {
+                "prio": 2,
+                "name": ""
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+    "main": {
+        "exception": {
+            "Error": {
+                "Error": {
+                    "title": {
+                        "_language": {
+                            "de_de": "ERROR"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Es wurde ein Fehler ausgelößt"
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": ""
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

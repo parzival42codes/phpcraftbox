@@ -1,0 +1,17 @@
+{
+    "test": {
+        "title": {
+            "_language": {
+                "de_de": "Titel Nachricht: {$foo}"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "Content Nachricht: {$foo}"
+            }
+        },
+        "_meta": {
+            "type": "notice"
+        }
+    }
+}

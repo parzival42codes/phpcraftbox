@@ -1,0 +1,12 @@
+{
+  "simple": {
+    "default": {
+      "path": "/user/message/reply/"
+    }
+  },
+  "regex": {
+    "message": {
+      "path": "/user/message/reply/{id|[0-9+]}"
+    }
+  }
+}

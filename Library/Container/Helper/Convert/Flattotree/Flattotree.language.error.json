@@ -1,0 +1,35 @@
+{
+    "main": {
+        "exception": {
+            "convert": {
+                "seroIdNotAllowed": {
+                    "title": {
+                        "_language": {
+                            "de_de": "Baumfehler"
+                        }
+                    },
+                    "cont": {
+                        "_language": {
+                            "de_de": "Der Baumaufbau ist nicht korrekt"
+                        }
+                    },
+                    "cont_debug": {
+                        "_language": {
+                            "de_de": "Der Baum {$array} hat eine ID 0. Diese Id ist für den Hauptzweig Reserviert."
+                        }
+                    },
+                    "class": {
+                        "_language": {
+                            "#": "Error"
+                        }
+                    },
+                    "header": {
+                        "_language": {
+                            "#": "500"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

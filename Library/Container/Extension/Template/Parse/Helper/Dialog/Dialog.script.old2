@@ -1,0 +1,70 @@
+$(document).ready(function () {
+
+    jQuery('.indexDialog').each(function (index) {
+        indexDialogClick(this);
+    });
+
+});
+
+_globalFunctions['indexDialog_container'] = function () {
+    callGloballFunction('indexDialog_container_check', jQuery('#IndexDialog_page_container_center'));
+};
+
+_globalFunctions['indexDialog_container_check'] = function (areaContainer) {
+    var areaContainerLength = areaContainer.length;
+    if (areaContainerLength > 0) {
+        areaContainer.show();
+    } else {
+        areaContainer.hide();
+    }
+};
+
+_globalFunctions['indexDialog_close'] = function (dialog) {
+    var indexDialog = jQuery(dialog);
+    var indexDialogButton = indexDialog.find('.indexDialog-action-close');
+
+    indexDialogButton.on("click", function (event) {
+        var $this = jQuery(this);
+        var thisDialog = $this.closest('.indexDialogBox-content');
+        thisDialog.remove();
+
+        callGloballFunction('indexDialog_container');
+    });
+};
+
+_globalFunctions['indexDialog_timeout'] = function (dialog) {
+    var indexDialog = jQuery(dialog);
+};
+
+_globalFunctions['indexDialogClick'] = function (dialog) {
+    var indexDialog = jQuery(dialog);
+    var indexDialogButton = indexDialog.children().children('.indexDialog-button');
+    indexDialogButton.on("click", function (event) {
+
+        var $this = jQuery(this);
+        var thisDialog = $this.closest('.indexDialog');
+        var thisDialogContent = thisDialog.children().children('.indexDialog-content');
+        var thisDialogContentClone = thisDialogContent.clone();
+
+        callGloballFunction('indexDialog_close', thisDialogContentClone);
+        callGloballFunction('indexDialog_timeout', thisDialog);
+
+        thisDialogContentClone.css('display', 'block');
+
+        var IndexDialog_page_container_center = jQuery('#IndexDialog_page_container_center');
+
+        IndexDialog_page_container_center.append(thisDialogContentClone);
+        IndexDialog_page_container_center.show();
+
+        return callGloballFunction('indexDialog_container');
+    });
+};
+
+_globalFunctions['indexDialog_view'] = function (dialog) {
+
+};
+
+
+function indexDialogClick(dialog) {
+    return callGloballFunction('indexDialogClick', dialog);
+}

@@ -1,0 +1,22 @@
+.ContainerExtensionTemplateParseHelperTooltip_hover {
+    cursor: help;
+}
+
+.ContainerExtensionTemplateParseHelperTooltip_container {
+    @aboveTheFold: "1";
+}
+
+.ContainerExtensionTemplateParseHelperTooltip_container_item {
+    @aboveTheFold: "1";
+    display: none;
+    position: absolute;
+    background: #style-color-primary-light;
+    color: #style-color-text-dark;
+    padding: 0.5em 1em;
+    border: #style-color-text-dark 1px solid;
+}
+
+.ContainerExtensionTemplateParseHelperTooltip_container_item_active {
+    @aboveTheFold: "1";
+    display: inline-block;
+}

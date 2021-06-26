@@ -1,0 +1,11 @@
+{
+  "trigger": {
+    "getElement": {
+      "elementFormIsMissing": {
+        "_language": {
+          "de_de": "Fehlendes FORM Attribut in dem Element: '{$getParseString}'"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationContent",
+    "menuClassMain": "ApplicationAdministrationContent",
+    "menuIcon": "&#128101;",
+    "language": {
+      "de_DE": {
+        "menuTitle": "4|Content",
+        "menuDescription": "",
+        "menuPath": "/Administration",
+        "menuAccess": "ApplicationAdministrationContent"
+      }
+    }
+  }
+}

@@ -1,0 +1,272 @@
+
+
+/******************************************************** old *********************************************************************/
+
+
+html {
+
+}
+
+
+table {
+    margin: 0;
+    padding: 0;
+    width: 99%;
+}
+
+caption {
+    display: none;
+}
+
+div {
+    text-align:left;
+    margin: 0;
+    padding: 0;
+}
+
+pre {
+}
+
+h1,h2,h3,h4 {
+    margin: 0.1em;
+    padding: 0.1em;
+}
+
+h1,h2 {
+    margin: 0.1em;
+    padding: 0.1em;
+}
+
+hr {
+}
+
+
+a {
+}
+
+a:hover {
+
+}
+
+a:active {
+
+}
+
+.lastlogin_visited {
+}
+
+li,ul {
+    margin: 1px;
+    padding: 1px;
+    list-style-type: none;
+}
+
+img {
+    border: none;
+    max-width: 100%;
+}
+
+/****************************************** tab ******************************************/
+
+/*.tab { overflow: hidden; }*/
+.tab ul { padding: 0; margin: 0; }
+.tab > ul > li {cursor: pointer;}
+.tab > ul > li > span { text-decoration: none; display: block; }
+.tabTitle { cursor: pointer; }
+.tabContent { overflow: auto; }
+
+.tabTitle h1,.tabTitle h2,.tabTitle h3,.tabTitle h4,.tabTitle h5,.tabTitle h6 { padding: 0; margin: 0;  }
+
+.tab > ul > .tabButton { cursor: pointer;}
+.tab > ul > .tabButton > span { text-decoration: none; display: inline-block; }
+
+.tabActive {  }
+.tabButton.tabInactive {  }
+.tabButton.tabInactive {  }
+
+
+/****************************************** collapse ******************************************/
+
+.collapse { cursor: pointer; }
+.collapseTitle  { font-weight: bold; }
+.collapseCont { overflow: auto;  }
+
+/****************************************** Grid ******************************************/
+
+.floatClear {
+    clear: both;
+}
+/*.floatClear:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}*/
+
+.noDisplay {
+    display: none;
+}
+
+.noDisplayImportant {
+    display: none !important;
+}
+
+.smallTallLeft {
+    width: 25%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.smallTallRight {
+    width: 74%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.halfHalf {
+    overflow: visible;
+}
+
+.gridWithHalfLeft {
+    width:49% !important;
+    display: inline-block;
+    vertical-align: top;
+    /*float:left;*/
+}
+
+.gridWithHalfRight {
+    width:49% !important;
+    display: inline-block;
+    vertical-align: top;
+    /*float:right;*/
+}
+
+.ContentHalfLeft {
+    width: 50%;
+    float:left;
+}
+
+.ContentHalfRight {
+    width: 49%;
+    float:right;
+}
+
+
+.thirdLeft {
+    width:33%;
+    float:left;
+}
+
+.thirdMiddle {
+    width:33%;
+    float:left;
+}
+
+.thirdRight {
+    width:33%;
+    float:right;
+}
+
+.quarterLeft {
+    width:25%;
+    float:left;
+}
+.quarterMiddleLeft {
+    width:25%;
+    float:left;
+}
+.quarterMiddleRight {
+    width:25%;
+    float:left;
+}
+.quarterRight {
+    width:25%;
+    float:right;
+}
+
+
+.gridWithMax {
+    width: 100%;
+}
+
+/****************************************** Helper ******************************************/
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+
+.floatClear {
+    clear: both;
+}
+
+
+.strong  {
+    font-weight: bold;
+}
+
+/****************************************** Tooltip ******************************************/
+
+.dialogTooltip {
+    cursor: help;
+}
+
+.DialogPositionTooltipContent {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    background: #FFF;
+    padding: 4px;
+    border: 1px solid #000;
+    color: #000;
+}
+
+.DialogPositionTooltipContentShow {
+    display: block;
+}
+.DialogPositionTooltipContentHide {
+    display: none;
+}
+
+/****************************************** Position ******************************************/
+
+#CMSPostitionCenter {
+    display: none;
+}
+
+/****************************************** Error ******************************************/
+
+#ajaxErrorMessage {
+    padding: 10px;
+    margin: auto;
+    border: 1px #F00 dashed;
+    width: 200px;
+    background: #FFF;
+    color: #000;
+    z-index: 1000;
+}
+
+/****************************************** Debug ******************************************/
+
+.ViewhelperArrayView {
+    width: 100%;
+}
+
+.ViewhelperArrayViewHeader {
+    font-weight: bold;
+}
+
+.ViewhelperArrayViewObject {
+    font-style: italic;
+}
+
+.ViewhelperArrayViewObjectContent {
+    height: 100px;
+    overflow: auto;
+}
+
+.ViewhelperArrayViewContent {
+
+}

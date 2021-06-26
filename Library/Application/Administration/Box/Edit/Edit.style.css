@@ -1,0 +1,18 @@
+#ApplicationAdministrationBoxEdit-Box .ContainerExtensionTemplateParseCreateForm textarea {
+    height: 10em;
+    width: 20em;
+}
+
+.ApplicationAdministrationBoxEdit-Box-dialog textarea {
+    height: 20em;
+    width: 100%;
+}
+
+#ApplicationAdministrationBoxEdit-Box-dialog-widget {
+    height: 20em;
+    overflow: auto;
+}
+
+#ApplicationAdministrationBoxEdit-Box .ContainerExtensionTemplateParseCreateForm .flex-container-sub {
+    margin: 0.5em 0;
+}

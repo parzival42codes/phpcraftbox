@@ -1,0 +1,112 @@
+.thisClass {
+    display: table;
+    width: 100%;
+}
+
+.thisClass .table-row-header {
+    font-weight: bold;
+}
+
+.thisClass .table-row {
+    display: table-row;
+}
+
+.thisClass .table-row-display-border-bottom {
+    border-bottom: 1px solid;
+}
+
+.thisClass .table-row-display-border-left {
+    border-left: 1px solid;
+}
+
+.thisClass .table-row-display-border-center {
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+
+.thisClass .table-row-display-border-center:last-child {
+    border-right: none;
+}
+
+.thisClass .table-row-display-border-right {
+    border-right: 1px solid;
+}
+
+/* Standard */
+.thisClass.template-table-standard .table-cell {
+    padding: 0.3em;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.thisClass.template-table-standard .table-cell-type-header {
+    padding: 0.5em;
+    font-weight: bold;
+    background: #style-color-primary-dark;
+    color: #style-color-text-light;
+}
+
+.thisClass.template-table-standard .table-cell-type-body {
+    padding: 0.6em;
+}
+
+
+/* Standard Small */
+.thisClass.template-table-standard-small .table-cell {
+    font-size: 0.9em;
+}
+
+.thisClass.template-table-standard-small .table-cell-type-header {
+
+}
+
+.thisClass.template-table-standard-small .table-cell-type-body {
+
+}
+
+/* Standard Small */
+.thisClass.template-table-standard-monospace .table-cell {
+    font-family: monospace;
+}
+
+.thisClass .table-row .table-cell {
+    display: table-cell;
+}
+
+.thisClass .table-cell-ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.thisClass .table-header {
+    display: table-header-group;
+}
+
+.thisClass .table-footer {
+    display: table-footer-group;
+}
+
+.thisClass .table-row:nth-child(even) {
+    background: #style-color-primary;
+    color: #style-color-text-primary;
+}
+
+.thisClass .table-row:nth-child(od) {
+    background: #style-color-primary-light;
+    color: #style-color-text-primary;
+}
+
+.thisClass .table-row:hover {
+    background: #style-color-primary-dark;
+    color: #style-color-text-light;
+}
+
+.thisClass .breakWord {
+    word-break: break-word;
+}
+
+/*#debugBar .tab > ul > .tabButton > span, #debugBar .thisClassContainer {*/
+/*font-size: 0.8em;*/
+/*}*/

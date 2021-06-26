@@ -1,0 +1,10 @@
+{
+  "/flexLeft": {
+    "value": "1",
+    "valueDefault": "1"
+  },
+  "/flexMain": {
+    "value": "4",
+    "valueDefault": "4"
+  }
+}

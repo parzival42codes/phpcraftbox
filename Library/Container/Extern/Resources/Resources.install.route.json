@@ -1,0 +1,20 @@
+{
+  "regex": {
+    "css": {
+      "path": "/resources/css/{$design|[A-Za-z0-9]*}/Core{gzip|.*?}.css",
+      "target": "free"
+    },
+    "javascriptCollect": {
+      "path": "/resources/javascript/core/javascript{gzip|.*?}.js",
+      "target": "free"
+    },
+    "javascript": {
+      "path": "/resources/javascript/core/{$part|[0-9]+}{gzip|.*?}.js",
+      "target": "free"
+    },
+    "other": {
+      "path": "/resources/other/{$hash|[a-zA-Z0-9_]+}.{ext|[a-zA-Z0-9]*}",
+      "target": "free"
+    }
+  }
+}

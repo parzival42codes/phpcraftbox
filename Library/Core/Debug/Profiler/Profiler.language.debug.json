@@ -1,0 +1,45 @@
+{
+    "template": {
+        "header": {
+            "_language": {
+                "de_de": "{~/icon/memory} Speicher Ende: {$memoryEnd} / Max: {$memoryMax} / Zeit: {$time}"
+            }
+        },
+        "id": {
+            "_language": {
+                "de_de": "ID"
+            }
+        },
+        "function": {
+            "_language": {
+                "de_de": "F?"
+            }
+        },
+        "functionYes": {
+            "_language": {
+                "de_de": "{~/icon/functions}"
+            }
+        },
+        "functionNo": {
+            "_language": {
+                "de_de": "{~/icon/clear}"
+            }
+        },
+        "level": {
+            "_language": {
+                "de_de": "Ebene"
+            }
+        },
+        "stages": {
+            "_language": {
+                "de_de": "Stages"
+            }
+        },
+        "data": {
+            "_language": {
+                "de_de": "Daten"
+            }
+        }
+
+    }
+}

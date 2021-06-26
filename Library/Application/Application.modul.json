@@ -1,0 +1,8 @@
+{
+  "description": "Application Core",
+  "author": "Stefan Schlombs",
+  "version": "1.0.0",
+  "javascript": "5",
+  "css": "",
+  "dependency": []
+}

@@ -1,0 +1,103 @@
+{
+    "title": {
+        "_language": {
+            "de_de": "Gruppe <b>{$group}</b> bearbeiten"
+        }
+    },
+    "elements": {
+        "groupName": {
+            "_meta": {
+                "element": "text",
+                "validate": {
+                    "noempty": true
+                },
+                "value": ""
+            },
+            "label": {
+                "_language": {
+                    "de_de": "Gruppenname"
+                }
+            },
+            "value": {
+                "_language": {
+                    "de_de": ""
+                }
+            }  
+        },      
+        "groupPre": {
+            "_meta": {
+                "element": "text",
+                "value": ""
+            },
+            "label": {
+                "_language": {
+                    "de_de": "Anzeige vor der Gruppe"
+                }
+            },
+            "value": {
+                "_language": {
+                    "de_de": ""
+                }
+            }                 
+        },
+        "groupAfter": {
+            "_meta": {
+                "element": "text",
+                "value": ""
+            },
+            "label": {
+                "_language": {
+                    "de_de": "Anzeige nach der Gruppe"
+                }
+            },
+            "value": {
+                "_language": {
+                    "de_de": ""
+                }
+            }                 
+        },
+        "groupClass": {
+            "_meta": {
+                "element": "text",
+                "value": ""
+            },
+            "label": {
+                "_language": {
+                    "de_de": "Klasse"
+                }
+            },
+            "value": {
+                "_language": {
+                    "de_de": ""
+                }
+            }                 
+        },
+        "groupRights": {
+            "_meta": {
+                "flexLabel": 1,
+                "flexDirection": "column",
+                "cardFlex": 2,
+                "card": true,
+                "element": "checkbox",
+                "value": "",
+                "attribute": {
+                    "value": {
+                        "class": "foo"
+                    }
+                }
+            },
+            "label": {
+                "_language": {
+                    "de_de": "Zugriffsrechte"
+                }
+            },
+            "value": {
+                "_language": {
+                    "de_de": ""
+                }
+            }                 
+        }
+    }
+}
+
+

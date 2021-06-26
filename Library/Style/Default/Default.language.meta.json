@@ -1,0 +1,24 @@
+{
+    "information": {
+        "title": {
+            "_language": {
+                "de_de": "Hauptstyle"
+            }
+        },
+        "description": {
+            "_language": {
+                "de_de": "Hauptstyle"
+            }
+        },
+        "author": {
+            "_language": {
+                "#": "Stefan Schlombs"
+            }
+        },
+        "version": {
+            "_language": {
+                "#": "1.0.0"
+            }
+        }
+    }
+}

@@ -1,0 +1,44 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "Index bzw. Hauptseitenanzeige"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "Index bzw. Hauptseitenanzeige"
+      }
+    },
+    "author": {
+      "_language": {
+        "#": "Stefan Schlombs"
+      }
+    },
+    "version": {
+      "_language": {
+        "#": "1.0.0"
+      }
+    }
+  },
+  "meta": {
+    "config": {
+      "_language": {
+        "de_de": "/System/Hauptseitenanzeige"
+      }
+    }
+  },
+  "installation": {
+    "constrains": {
+      "_language": {
+        "de_de": "#"
+      },
+      "_meta": {
+        "dependencies": [
+          "Language",
+          "Template"
+        ]
+      }
+    }
+  }
+}

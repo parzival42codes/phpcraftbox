@@ -1,0 +1,48 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "CLI"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "CLI"
+      }
+    },
+    "author": {
+      "_language": {
+        "#": "Stefan Schlombs"
+      }
+    },
+    "version": {
+      "_language": {
+        "#": "1.0.0"
+      }
+    }
+  },
+  "route": {
+    "route": {
+      "regex": {
+        "cli": {
+          "_meta": {
+            "target": "free",
+            "call": "cli"
+          },
+          "_language": {
+            "de_de": "cli/{$class|[a-zA-Z0-9-]*}/{$cmd|[a-zA-Z0-9-]*}.cmd"
+          }
+        },
+        "step": {
+          "_meta": {
+            "target": "free",
+            "call": "cli"
+          },
+          "_language": {
+            "de_de": "cli/{$class|[a-zA-Z0-9-]*}/{$cmd|[a-zA-Z0-9-]*}/{$uid|[a-zA-Z0-9-]*}/{$step|[0-9]*}.cmd"
+          }
+        }
+      }
+    }
+  }
+}

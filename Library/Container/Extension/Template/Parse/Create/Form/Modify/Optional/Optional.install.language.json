@@ -1,0 +1,12 @@
+{
+  "type": "install.language",
+  "content": {
+    "/decorator/label/after": {
+      "group": "decorator",
+      "language": {
+        "de_DE": "<span style='float: right;'>(Optional)</span>",
+        "en_US": "<span style='float: right;'>(Optional)</span>"
+      }
+    }
+  }
+}

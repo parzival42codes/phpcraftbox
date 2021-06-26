@@ -1,0 +1,20 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationUser",
+    "menuAccess": "ApplicationUser",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "1|Übersicht",
+        "menuDescription": "",
+        "menuPath": "/Benutzer"
+      },
+      "en_US": {
+        "menuTitle": "1|Overview",
+        "menuDescription": "",
+        "menuPath": "/User"
+      }
+    }
+  }
+}

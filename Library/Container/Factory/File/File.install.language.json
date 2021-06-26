@@ -1,0 +1,36 @@
+{
+  "type": "install.language",
+  "content": {
+    "/debug/table/": {
+      "group": "table",
+      "language": {
+        "de_DE": {
+          "value": "Pfad"
+        }
+      }
+    },
+    "/trigger/__construct/fileNotFound": {
+      "language": {
+        "de_DE": {
+          "value": "Datei *{$filename}* wurde nicht gefunden. Suchpfad: {$pathSearch}"
+        }
+      }
+    },
+    "/debug/table/direction": {
+      "group": "template",
+      "language": {
+        "de_DE": {
+          "value": "Richtung"
+        }
+      }
+    },
+    "/debug/header": {
+      "group": "debug",
+      "language": {
+        "de_DE": {
+          "value": "Datei lesen : {$load} Datei schreiben: {$save}"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+
+#StyleOrg {
+    color: #FFF;
+@style-color-accent: "#607D8B";
+@style-color-primary-light: "#F5F5F5";
+@style-color-primary-dark: "#616161";
+@style-color-primary: "#9E9E9E";
+@style-color-text: "#212121";
+@style-color-text-primary: "#212121";
+@style-color-text-secundary: "#757575";
+@style-color-text-light: "#FFF";
+@style-color-text-dark: "#000";
+@style-color-icons: "#212121";
+@style-color-divider: "#BDBDBD";
+@style-color-form-element-text: "#212121";
+@style-color-form-element-background: "#FFF";
+@style-color-button: "#000";
+@style-color-button-background: "#BDBDBD";
+@style-color-button-background-activ: "#9E9E9E";
+@style-color-button-background-inactiv: "#F5F5F5";
+@style-color-info: "#000";
+@style-color-info-background: "#FFF";
+@style-color-success: #FFF;
+@style-color-success-background: "green";
+@style-color-success-text: "green";
+@style-color-warning: #000;
+@style-color-warning-background: "yellow";
+@style-color-warning-text: "yellow";
+@style-color-error: #FFF;
+@style-color-error-background: "red";
+@style-color-error-text: "red";
+
+@style-screen-mobile-medium: "screen and (max-width: 800px)";
+@style-screen-mobile-small: "screen and (max-width: 600px)";
+
+@style-screen-min-width-10em: only screen and (min-device-width: 10em);
+@style-screen-min-width-20em: only screen and (min-device-width: 20em);
+@style-screen-min-width-30em: only screen and (min-device-width: 30em);
+@style-screen-min-width-40em: only screen and (min-device-width: 40em);
+@style-screen-min-width-50em: only screen and (min-device-width: 50em);
+@style-screen-min-width-60em: only screen and (min-device-width: 60em);
+@style-screen-min-width-70em: only screen and (min-device-width: 70em);
+@style-screen-min-width-80em: only screen and (min-device-width: 80em);
+
+}

@@ -1,0 +1,10 @@
+<tr>
+        <td>{$filename}</td>
+        <td>{$fromList}</td>
+        <td>{$action}</td>
+        <td>{$error}</td>
+        <td>{$debugMicrotimeDelta}</td>
+        <td>{$debugMemoryDelta}</td>
+        <td>{$debugBacktraceFile}</td>
+        <td>{$debugBacktraceLine}</td>
+</tr>

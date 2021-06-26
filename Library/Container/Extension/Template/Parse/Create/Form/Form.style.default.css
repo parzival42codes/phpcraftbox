@@ -1,0 +1,114 @@
+.ContainerExtensionTemplateParseCreateForm {
+    @aboveTheFold: "1";
+    width: 100%;
+}
+
+.ContainerExtensionTemplateParseCreateForm .element-container {
+    display: flex;
+}
+
+.ContainerExtensionTemplateParseCreateForm .footer-button-container-submit, .ContainerExtensionTemplateParseCreateForm .footer-button-container-reset {
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.ContainerExtensionTemplateParseCreateForm .footer-button-container-submit {
+    flex: 2;
+}
+
+.ContainerExtensionTemplateParseCreateForm .footer-button-container-reset {
+    flex: 1;
+}
+
+.ContainerExtensionTemplateParseCreateForm .additionalSpamwait-text {
+    @aboveTheFold: "1";
+    margin: 0.5em 0;
+}
+
+.ContainerExtensionTemplateParseCreateForm .additionalSpamwait-text-number {
+    font-weight: bold;
+}
+
+.ContainerExtensionTemplateParseCreateForm .additionalSpamwait-progress {
+    @aboveTheFold: "1";
+    display: none;
+}
+
+.ContainerExtensionTemplateParseCreateForm .footer-button-container {
+    @aboveTheFold: "1";
+    width: 100%;
+    display: flex;
+    margin: 0.5em 0;
+}
+
+.ContainerExtensionTemplateParseCreateForm-input, .ContainerExtensionTemplateParseCreateForm-textarea, .ContainerExtensionTemplateParseCreateForm-select {
+    padding: 0.5em 0 0.5em 0.5em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ContainerExtensionTemplateParseCreateForm-textarea {
+    min-height: 5em;
+}
+
+/*.ContainerExtensionTemplateParseCreateForm-input:read-only, .ContainerExtensionTemplateParseCreateForm-textarea:read-only {*/
+/*    background-color: #style-color-button-background-inactiv;*/
+/*}*/
+
+/* Radio-Buttons */
+.ContainerExtensionTemplateParseCreateFormRadioContainerItem-input, .ContainerExtensionTemplateParseCreateFormCheckboxContainerItem-input {
+    display: none;
+}
+
+.ContainerExtensionTemplateParseCreateFormRadioContainerItem-input + label, .ContainerExtensionTemplateParseCreateFormCheckboxContainerItem-input + label {
+    position: relative;
+    cursor: pointer;
+    background: #style-color-button-background;
+    color: #style-color-button;
+    padding: 0.2em 1em;
+    display: inline-block;
+    border: 1px solid #000;
+    line-height: 1.2em;
+    overflow: hidden;
+    width: 100%;
+}
+
+.ContainerExtensionTemplateParseCreateFormRadioContainerItem-input:checked + label, .ContainerExtensionTemplateParseCreateFormCheckboxContainerItem input:checked + label {
+    background: #style-color-button-background-activ;
+}
+
+.ContainerExtensionTemplateParseCreateFormRadioContainerItem-input + label:before, .ContainerExtensionTemplateParseCreateFormCheckboxContainerItem input + label:before {
+    color: #000;
+    display: inline-block;
+    width: .8em;
+    text-align: left;
+    content: "X";
+}
+
+.ContainerExtensionTemplateParseCreateFormRadioContainerItem-input:checked + label:before, .ContainerExtensionTemplateParseCreateFormCheckboxContainerItem input:checked + label:before {
+    content: "✔";
+}
+
+.ContainerExtensionTemplateParseCreateForm-label {
+    text-align: right;
+    margin: 0.5em;
+    display: inline-block;
+}
+
+.ContainerExtensionTemplateParseCreateForm-info {
+    margin: 0.5em;
+}
+
+.ContainerExtensionTemplateParseCreateForm-error {
+
+}
+
+.ContainerExtensionTemplateParseCreateFormRadioContainer, .ContainerExtensionTemplateParseCreateFormCheckboxContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.ContainerExtensionTemplateParseCreateFormRadioContainerItem, .ContainerExtensionTemplateParseCreateFormCheckboxContainerItem {
+    flex: 1;
+    overflow: hidden;
+}

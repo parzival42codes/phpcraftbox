@@ -1,0 +1,55 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "Page"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "Generierung der Seite"
+      }
+    },
+    "author": {
+      "_language": {
+        "#": "Stefan Schlombs"
+      }
+    },
+    "version": {
+      "_language": {
+        "#": "1.0.0"
+      }
+    }
+  },
+  "meta": {
+    "config": {
+      "_language": {
+        "de_de": "/System/Seitengenerierung"
+      }
+    }
+  },
+  "documentation": {
+    "path": {
+      "_language": {
+        "de_de": "/Index/Seitengenerierung"
+      }
+    }
+  },
+  "resources": {
+    "_language": {
+      "de_de": ""
+    },
+    "_meta": {
+      "resources": {
+        "frontend": {
+          "package": {
+            "css": [
+              {
+                "name": ""
+              }
+            ]          }
+        }
+      }
+    }
+  }
+}

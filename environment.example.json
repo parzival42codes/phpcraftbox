@@ -1,0 +1,74 @@
+{
+  "_default": {
+    "language": "de_DE",
+    "datetime": {
+      "format": "d.m.Y H:i:s"
+    },
+    "database": {
+      "primary": {
+        "dsn": "host=mysql;dbname=cms;port=3306",
+        "dbname": "cms",
+        "user": "root",
+        "password": "",
+        "collect/insert_replace": "cms",
+        "default_charset": "utf8",
+        "type": "mysql"
+      },
+      "cache": {
+        "dsn": "Storage/cache.sqlite",
+        "type": "sqlite"
+      }
+    },
+    "email": {
+      "from": "info@phpcraftbox.net",
+      "fromName": "PHPCraftBox",
+      "host": "mailcatcher",
+      "debug": "PHPMailer\\PHPMailer\\SMTP::DEBUG_SERVER",
+      "SMTPAuth": false,
+      "username": "user@example.com",
+      "password": "secret",
+      "SMTPSecure": false,
+      "port": "1025"
+    },
+    "system": {
+      "filepath": "Library/;Extension/Repository/;Custom/Local/"
+    },
+    "install": {
+      "user": {
+        "username": "Admin",
+        "email": "info@phpcraftbox.net",
+        "password": "dummy"
+      }
+    },
+    "config": {
+      "status": "development",
+      "iso_language_code": "de_DE",
+      "html_language_code": "de",
+      "log": "1"
+    },
+    "secret": {
+      "cipher": "aes-256-cbc",
+      "template": "6L#ZLq2fYdBdPuhrocDgspnEbPw&okn3",
+      "form": "6L#ZLq2fYdBdPuhrocDgspnEbPw&okn3",
+      "cgui": "6L#ZLq2fYdBdPuhrocDgspnEbPw&okn3"
+    },
+    "session": {
+      "cookie": {
+        "name": "phpcraftboxsession",
+        "lifetime": "0",
+        "path": "/",
+        "domain": "",
+        "secure": "1",
+        "httponly": "1",
+        "samesite": "lax"
+      }
+    },
+    "registry": {
+    },
+    "debug": {
+      "active": true,
+      "cache": false,
+      "author": "Stefan Schlombs"
+    }
+  }
+}

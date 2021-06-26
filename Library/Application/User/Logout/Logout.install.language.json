@@ -1,0 +1,20 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Ausloggen"
+      }
+    },
+    "/notification/logout/success": {
+      "language": {
+        "de_DE": "Sie wurden erfolgreich ausgeloggt !",
+        "en-US": "Logout successful !"}
+    },
+    "/notification/logout/noSession": {
+      "language": {
+        "de_DE": "Sie sind bereits ausgeloggt !",
+        "en-US": "Not login !"}
+    }
+  }
+}

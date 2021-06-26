@@ -1,0 +1,28 @@
+{
+    "doExceptionView": {
+        "filter": {
+            "_language": {
+                "de_de": "Systemfehler: Ausnahmen"
+            }
+        },
+        "title": {
+            "_language": {
+                "de_de": "Systemfehler: {$errorMessageTitle}"
+            }
+        },
+        "content": {
+            "_language": {
+                "de_de": "{$errorMessageCont} <hr /> @ {$exceptionGetFile} # {$exceptionGetLine}"
+            }
+        },
+        "contentDetail": {
+            "_language": {
+                "de_de": "{$errorMessageCont} <hr /> @ {$exceptionGetFile} # {$exceptionGetLine}<hr />Parameter:<hr /><p>{$parameter}</p><hr />Trace:<p>{$trace}</p>"
+            }
+        },
+        "_meta": {
+            "type": "error",
+            "icon": "warning"
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "Resources"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "Resources"
+      }
+    },
+    "author": {
+      "_language": {
+        "#": "Stefan Schlombs"
+      }
+    },
+    "version": {
+      "_language": {
+        "#": "1.0.0"
+      }
+    }
+  },
+  "route": {
+    "regex": {
+      "css": {
+        "_meta": {
+          "target": "free",
+          "call": "css"
+        },
+        "_language": {
+          "de_de": "Resources/CSS/{$design|[A-Za-z0-9]*}/Core{$gzip|.*}.css"
+        }
+      },
+      "javascript": {
+        "_meta": {
+          "target": "free",
+          "call": "Javascript"
+        },
+        "_language": {
+          "de_de": "Resources/Javascript/Core/{$part|[0-9]+}{$gzip|.*}.js"
+        }
+      },
+      "other": {
+        "_meta": {
+          "target": "free",
+          "call": "other"
+        },
+        "_language": {
+          "de_de": "Resources/Other/{$hash|[a-zA-Z0-9_]*}.{$ext|[a-zA-Z0-9]*}"
+        }
+      }
+    }
+  }
+}

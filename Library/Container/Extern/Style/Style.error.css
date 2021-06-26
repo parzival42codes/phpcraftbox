@@ -1,0 +1,208 @@
+body {
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: 1.2em;
+    Background-Color: #F9F9F9;
+    color: black;
+}
+
+#ErrorException {
+    width: 100%;
+    margin: 10px;
+    border-color: #FF0000;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#ErrorException table {
+    width: 99%;
+    margin: 10px;
+    font-size: 1.0em;
+}
+
+#ErrorException table td {
+    border: 1px #000 dotted;
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+#ErrorException table th {
+    border: 1px #000 dotted;
+    padding: 10px;
+    font-size: larger;
+    text-align: center;
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+
+.ViewhelperBacktraceView {
+    margin: 10px !important;
+    font-size: 0.8em !important;
+}
+
+#ErrorException pre {
+    font-size: 1.2em;
+}
+
+.errorFileViewContentRow {
+    width: 100%;
+}
+
+.errorFileView pre {
+    padding: 0;
+    margin: 0;
+}
+
+.errorFileViewContentLine {
+    width: 4%;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.errorFileViewContent {
+    width: 100%;
+}
+
+.errorFileViewContentMarked {
+    background-color: #C0C0C0;
+    width: 90%;
+    display: inline-block;
+}
+
+/****************************************** DebugBacktraceView ******************************************/
+
+.DebugBacktraceView {
+    width: 100%;
+}
+
+.DebugBacktraceView td {
+    border: 1px black dotted;
+    font-size: 0.5em;
+    padding: 2px;
+} 
+
+
+/****************************************** EOL ******************************************/
+
+.EOLTable, .EOLTable table, .DebugEolTable {
+    width: 100%;
+}
+
+.EOLTable td {
+    border: 1px black dotted;
+    font-size: 0.5em;
+    padding: 10px;
+    overflow: auto;
+} 
+
+.EOLTable .DebugBacktraceView{
+    font-size: 0.5em;
+}
+
+/****************************************** DebugEolTable ******************************************/
+
+.DebugEolTable td  {
+    border: 1px black dotted;
+    font-size: 0.5em;
+    padding: 10px;
+
+}
+
+/****************************************** collapse ******************************************/
+
+.collapse { cursor: pointer; }
+.collapseTitle:hover { background-color: lightgray; }
+.collapseTitle  { font-weight: bold; }
+.collapseCont { min-height: 2em; max-height: 15em; overflow: auto; width: 100%; }
+.collapseCont pre { width: 100%; }
+
+/****************************************** tab ******************************************/
+
+/*.tab { overflow: hidden; }*/
+.tab ul { padding: 0; margin: 0; }
+.tab > ul > li { padding: 5px; margin: 5px; cursor: pointer;}
+.tab > ul > li > span { text-decoration: none; display: block; color: #000; }
+.tab > ul > li:hover { background: #0f0; font-style: bold; }
+.tabTitle { cursor: pointer; border: #000 1px solid; padding: 5px; margin: 2px; }
+.tabContent { width: 95%; border: #000 1px solid; padding: 5px; margin: 2px; overflow: auto; }
+.tabActive { background: #0f0; font-style: bold; }
+.tabInactive { background: #ccc; font-style: normal; }
+
+.tabTitle h1,.tabTitle h2,.tabTitle h3,.tabTitle h4,.tabTitle h5,.tabTitle h6 { padding: 0; margin: 0; font-size: 1em; } 
+
+
+
+/****************************************** Display Box ******************************************/
+
+
+.DisplayBox div {
+    display: none;
+
+}
+.DisplayBox {
+    cursor: pointer;
+}
+
+
+#DisplayBoxViewBackground {
+    position: absolute;
+    z-index: 900;
+    top: 0;
+    left: 0;
+    background-color: #0000FF;
+    opacity: 0.2;
+}
+
+#DisplayBoxView {
+    position: fixed;
+    z-index: 1000;
+    border: 1px solid #000;
+    background-color: #FFF;
+    padding: 10px;
+    min-width: 20%;
+    min-height: 20%;
+    border-radius: 10px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -moz-border-radius: 10px;
+}
+
+#DisplayBoxViewTitle {
+    background-color: #C0C0C0;
+    border: 1px solid #000;
+    overflow: hidden;
+    padding: 5px;
+    font-weight: bold;
+}
+
+#DisplayBoxViewTitleText {
+    float: left;
+}
+
+#DisplayBoxViewTitleClose {
+    float: right;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+#DisplayBoxViewCont {
+    overflow: auto;
+    padding: 5px;
+    min-height: 200px;
+}
+
+#DisplayBoxViewOk {
+    background-color: #C0C0C0;
+    border: 1px solid #000;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 5px;
+    text-align: center;
+    bottom: 5px;
+    cursor: pointer;
+    width: 98%;
+}

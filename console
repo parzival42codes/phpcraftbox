@@ -1,0 +1,19 @@
+#!/usr/bin/php -q
+<?php
+require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Library/exception.inc.php');
+require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Library/config.inc.php');
+
+$parameter = $_SERVER["argv"];
+array_shift($parameter);
+$parameterClass = array_shift($parameter);
+
+$consoleClassName = ucfirst($parameterClass) . '_console';
+
+// C:\xampp\htdocs\cms\Library\Container\Extension\Cache\Cache.console.php
+
+/** @var Console_abstract $console */
+$console = Container::get($consoleClassName,
+                           $parameter);
+$console->execute();
+
+?>

@@ -1,0 +1,32 @@
+{
+    "Information": {
+        "Title": {
+            "de_de": "Errorhandler"
+        },
+        "Description": {
+            "de_de": "Errorhandler"
+        },
+        "_meta": {
+            "Author": "Stefan Schlombs",
+            "Version": "1.0"
+        }
+    },
+    "resources": {
+        "_language": {
+            "de_de": ""
+        },
+        "_meta": {
+            "resources": {
+                "frontend": {
+                    "package": {
+                        "css": [
+                            {
+                                "name": ""
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

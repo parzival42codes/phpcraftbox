@@ -1,0 +1,18 @@
+{
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Benutzer",
+      "en_US": "User"
+    },
+    "/meta/description": {
+      "de_DE": "Benutzer",
+      "en_US": "User"
+    },
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Benutzer"
+      }
+    }
+  }
+}

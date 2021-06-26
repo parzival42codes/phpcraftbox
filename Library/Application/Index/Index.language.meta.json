@@ -1,0 +1,35 @@
+{
+  "information": {
+    "title": {
+      "_language": {
+        "de_de": "Indexseite"
+      }
+    },
+    "description": {
+      "_language": {
+        "de_de": "Übersicht"
+      }
+    },
+    "_meta": {
+      "Author": "Stefan Schlombs",
+      "Version": "1.0"
+    }
+  },
+  "menu": {
+    "_language": {
+      "de_de": "/!Übersicht"
+    },
+    "_meta": {
+      "icon": ""
+    }
+  },
+  "route": {
+    "simple": {
+      "default": {
+        "_language": {
+          "de_de": "/"
+        }
+      }
+    }
+  }
+}

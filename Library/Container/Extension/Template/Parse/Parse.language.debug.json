@@ -1,0 +1,20 @@
+{
+    "template": {
+        "header": {
+            "_language": {
+                "de_de": "Komplexe Template Parsungen: {$count}"
+            }
+        },
+        "parseCLass": {
+            "_language": {
+                "de_de": "Klasse"
+            }
+        },
+        "parseString": {
+            "_language": {
+                "de_de": "String"
+            }
+        }
+
+    }
+}

@@ -1,0 +1,90 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Boxgruppe: %s"
+      }
+    },
+    "/form/crudRow/label": {
+      "language": {
+        "de_DE": "Reihe"
+      }
+    },
+    "/form/crudPosition/label": {
+      "language": {
+        "de_DE": "Position"
+      }
+    },
+    "/form/crudFlex/label": {
+      "language": {
+        "de_DE": "Flex"
+      }
+    },
+    "/form/crudDescription/label": {
+      "language": {
+        "de_DE": "Beschreibung"
+      }
+    },
+    "/form/crudContent/label": {
+      "language": {
+        "de_DE": "Inhalt"
+      }
+    },
+    "/form/active/label": {
+      "language": {
+        "de_DE": "Aktiv ?"
+      }
+    },
+    "/form/checkbox/active": {
+      "language": {
+        "de_DE": "Aktiviert ?"
+      }
+    },
+    "/form/delete": {
+      "language": {
+        "de_DE": "Box löschen"
+      }
+    },
+    "/form/checkbox/delete": {
+      "language": {
+        "de_DE": "Box löschen"
+      }
+    },
+    "/form/checkbox/delete/label": {
+      "language": {
+        "de_DE": "Soll die Box wirklich gelöscht werden ?"
+      }
+    },
+    "/form/checkbox/delete/dialog/title": {
+      "language": {
+        "de_DE": "Soll die Box wirklich gelöscht werden ?"
+      }
+    },
+    "/form/checkbox/delete/dialog/content": {
+      "language": {
+        "de_DE": "Box löschen !"
+      }
+    },
+    "/form/button/edit": {
+      "language": {
+        "de_DE": "Inhalt Bearbeiten"
+      }
+    },
+    "/button/widgets": {
+      "language": {
+        "de_DE": "Widgets"
+      }
+    },
+    "/dialog/widgets/title": {
+      "language": {
+        "de_DE": "Widgets"
+      }
+    },
+    "/notification/saved": {
+      "language": {
+        "de_DE": "Die Boxen für '%s' wurden gespeichert !"
+      }
+    }
+  }
+}

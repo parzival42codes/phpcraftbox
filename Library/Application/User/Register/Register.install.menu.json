@@ -1,0 +1,15 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationUserRegister",
+    "menuClassMain": "ApplicationUserRegister",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "2|Registrieren",
+        "menuDescription": "",
+        "menuPath": "/Benutzer"
+      }
+    }
+  }
+}

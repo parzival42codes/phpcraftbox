@@ -1,0 +1,28 @@
+{
+  "name": "phpcraftbox/phpcraftbox",
+  "description": "Simple template engine.",
+  "type": "library",
+  "keywords": [
+    "template"
+  ],
+  "homepage": "https://phpCraftBox.net",
+  "license": "",
+  "authors": [
+    {
+      "name": "Stefan Schlombs",
+      "email": "info@phpcrafrbox.net",
+      "role": "lead"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/sebastianbergmann/php-text-template/issues"
+  },
+  "config": {
+    "platform": {
+      "php": "8.0"
+    }
+  },
+  "require": {
+    "php": ">=8.0"
+  }
+}

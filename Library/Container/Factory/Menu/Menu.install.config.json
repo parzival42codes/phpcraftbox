@@ -1,0 +1,12 @@
+{
+  "type": "install.language",
+  "content": {
+    "/initialMenuLevel": {
+      "value": "1",
+      "language": {
+        "de_DE": "Tiefe der zu öffnen Menu Ebenen",
+        "en_US": "Deep of the open Menu Level"
+      }
+    }
+  }
+}

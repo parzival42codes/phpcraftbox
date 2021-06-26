@@ -1,0 +1,28 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Content"
+      }
+    },
+    "/filter/header/type": {
+      "language": {
+        "de_DE": "Type",
+        "en_US": "Type"
+      }
+    },
+    "/filter/notFound": {
+      "language": {
+        "de_DE": "Nicht gefunden (%s)",
+        "en_US": "Not Found (%s)"
+      }
+    },
+    "/filter/denited": {
+      "language": {
+        "de_DE": "Zugriff Verweigert (%s)",
+        "en_US": "Access Denited (%s)"
+      }
+    }
+  }
+}
