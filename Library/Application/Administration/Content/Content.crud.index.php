@@ -86,9 +86,9 @@ class ApplicationAdministrationContent_crud_index extends Base_abstract_crud
     }
 
     /**
-     * @param ?string $crudContentIdent
+     * @param string $crudContentIdent
      */
-    public function setCrudContentIdent(?string $crudContentIdent): void
+    public function setCrudContentIdent(string $crudContentIdent): void
     {
         $this->crudContentIdent = $crudContentIdent;
     }

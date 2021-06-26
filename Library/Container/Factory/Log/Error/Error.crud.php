@@ -8,12 +8,12 @@ class ContainerFactoryLogError_crud extends Base_abstract_crud
     const LOG_TYPE_WARNING   = 'warning';
     const LOG_TYPE_EXCEPTION = 'exception';
 
-    protected static string      $table    = 'log_error';
-    protected static string      $tableId  = 'crudId';
-    protected static  $database = 'cache';
+    protected static string $table    = 'log_error';
+    protected static string $tableId  = 'crudId';
+    protected static        $database = 'cache';
 
     /**
-     * @var
+     * @var int|null
      */
     protected ?int $crudId = null;
     /**
@@ -64,14 +64,14 @@ class ContainerFactoryLogError_crud extends Base_abstract_crud
             $query->execute();
 
             ContainerFactoryDatabaseEngineSqlite::addTableDatabase('cache',
-                                                                  'log_error');
+                                                                   'log_error');
         }
 
         parent::__construct($data);
     }
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId(): ?int
     {
@@ -79,7 +79,7 @@ class ContainerFactoryLogError_crud extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudId
+     * @param int|null $crudId
      */
     public function setCrudId(?int $crudId): void
     {

@@ -14,11 +14,11 @@ class ApplicationUserEmailcheck_crud extends Base_abstract_crud
     protected static string $tableId = 'crudId';
 
     /**
-     * @var string
+     * @var ?string
      * @database type varchar;250
      * @database isPrimary
      */
-    protected  $crudId = null;
+    protected ?string  $crudId = null;
     /**
      * @var string
      * @database type varchar;250

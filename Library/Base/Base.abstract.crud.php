@@ -2,14 +2,14 @@
 
 abstract class Base_abstract_crud
 {
-    protected static string      $table                     = '';
-    protected static $database                  = true;
-    protected static array       $reflectionProperty        = [];
-    protected static string      $tableId                   = '';
-    protected string             $dataVariableCreated       = '';
-    protected string             $dataVariableEdited        = '';
-    protected int                $dataVariableEditedCounter = 0;
-    protected string             $dataVariableDeleted       = '';
+    protected static string $table                     = '';
+    protected static        $database                  = true;
+    protected static array  $reflectionProperty        = [];
+    protected static string $tableId                   = '';
+    protected string        $dataVariableCreated       = '';
+    protected string        $dataVariableEdited        = '';
+    protected int           $dataVariableEditedCounter = 0;
+    protected string        $dataVariableDeleted       = '';
     /**
      * @var array
      */
@@ -204,6 +204,11 @@ abstract class Base_abstract_crud
                 return false;
             }
             else {
+                $id = call_user_func([
+                                         $this,
+                                         'get' . ucfirst(static::$tableId)
+                                     ]);
+
                 throw new DetailedException('idNotFound',
                                             0,
                                             null,
@@ -455,7 +460,7 @@ abstract class Base_abstract_crud
     /**
      * @param string $key
      *
-     * @return
+     * @return string|null
      */
     public function getAdditionalQuerySelect(string $key): ?string
     {
@@ -464,7 +469,7 @@ abstract class Base_abstract_crud
 
     /**
      * @param string      $key
-     * @param  $value
+     * @param string|null $value
      */
     public function setAdditionalQuerySelect(string $key, ?string $value): void
     {
@@ -523,7 +528,7 @@ abstract class Base_abstract_crud
                         break;
                     case 'ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT';
                         $columnDefault = ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT;
-                        $columnNull = false;
+                        $columnNull    = false;
                         break;
                     default:
                         $columnDefault = $dataBaseCollectItemParameter['default'];

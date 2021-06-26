@@ -31,32 +31,32 @@ class ContainerFactoryUserConfig_crud extends Base_abstract_crud
      */
     protected string $crudConfigKey = '';
     /**
-     * @var
+     * @var string|null
      * @database type text
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_NONE
      */
-    protected  $crudConfigValueDefault = '';
+    protected ?string $crudConfigValueDefault = '';
     /**
-     * @var
+     * @var string|null
      * @database type varchar;250
      * @database isNull
      * @database ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_NULL
      */
-    protected  $crudConfigGroup = '';
+    protected ?string $crudConfigGroup = '';
     /**
-     * @var
+     * @var string|null
      * @database type text
      * @database isNull
      * @database ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_NULL
      */
-    protected  $crudConfigLanguage = '';
+    protected ?string $crudConfigLanguage = '';
     /**
-     * @var
+     * @var string|null
      * @database type text
      * @database isNull
      * @database ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_NULL
      */
-    protected  $crudConfigForm = '';
+    protected ?string  $crudConfigForm = '';
 
     /**
      * @return string
@@ -123,7 +123,7 @@ class ContainerFactoryUserConfig_crud extends Base_abstract_crud
     }
 
     /**
-     * @return
+     * @return null
      */
     public function getCrudId()
     {
@@ -139,7 +139,7 @@ class ContainerFactoryUserConfig_crud extends Base_abstract_crud
     }
 
     /**
-     * @return
+     * @return string|null
      */
     public function getCrudConfigLanguage(): ?string
     {
@@ -147,7 +147,7 @@ class ContainerFactoryUserConfig_crud extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudConfigLanguage
+     * @param string|null $crudConfigLanguage
      */
     public function setCrudConfigLanguage(?string $crudConfigLanguage): void
     {
@@ -155,7 +155,7 @@ class ContainerFactoryUserConfig_crud extends Base_abstract_crud
     }
 
     /**
-     * @return
+     * @return string|null
      */
     public function getCrudConfigForm(): ?string
     {
@@ -163,7 +163,7 @@ class ContainerFactoryUserConfig_crud extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudConfigForm
+     * @param string|null $crudConfigForm
      */
     public function setCrudConfigForm(?string $crudConfigForm): void
     {

@@ -15,7 +15,7 @@ class ContainerFactoryLanguage_crud extends Base_abstract_crud
     protected static string $tableId = 'crudId';
 
     /**
-     * @var
+     * @var int|null
      * @database type int;11
      * @database isPrimary
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
@@ -51,7 +51,7 @@ class ContainerFactoryLanguage_crud extends Base_abstract_crud
     protected string $crudLanguageLanguage = '';
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId(): ?int
     {
@@ -59,7 +59,7 @@ class ContainerFactoryLanguage_crud extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudId
+     * @param int|null $crudId
      */
     public function setCrudId(?int $crudId): void
     {

@@ -149,17 +149,17 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
     }
 
     /**
-     * @return object
+     * @return ContainerExtensionTemplateParseCreateFormRequest
      */
-    public function getRequest(): object
+    public function getRequest(): ContainerExtensionTemplateParseCreateFormRequest
     {
         return $this->request;
     }
 
     /**
-     * @return object
+     * @return ContainerExtensionTemplateParseCreateFormResponse
      */
-    public function getResponse(): object
+    public function getResponse(): ContainerExtensionTemplateParseCreateFormResponse
     {
         return $this->response;
     }

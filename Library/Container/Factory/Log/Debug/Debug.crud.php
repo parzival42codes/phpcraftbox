@@ -4,14 +4,14 @@ class ContainerFactoryLogDebug_crud extends Base_abstract_crud
 {
     protected static string      $table    = 'debug';
     protected static string      $tableId  = 'crudId';
-    protected static  $database = 'cache';
+    protected static string  $database = 'cache';
 
     /**
-     * @var
+     * @var int|null
      */
     protected ?int $crudId = null;
     /**
-     * @var
+     * @var string|null
      */
     protected ?string $crudContent;
 
