@@ -74,7 +74,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
     {
         /** @var Base_abstract_crud $crud */
         $crud          = Container::get($class);
-        $crud->truncate();
+//        $crud->truncate();
 
         $queryDatabase = $crud->getInstallUpdateQuery();
 
