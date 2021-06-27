@@ -205,7 +205,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
         }
 
 
-        $iniCustomFile = CMS_ROOT . '/Custom/Custom.load.ini';
+        $iniCustomFile = CMS_ROOT . 'Custom/Custom.load.ini';
         if (is_file($iniCustomFile)) {
             $iniData = parse_ini_file($iniCustomFile);
         }

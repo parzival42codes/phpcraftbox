@@ -619,4 +619,18 @@ abstract class Base_abstract_crud
         $this->dataVariableEditedCounter = $dataVariableEditedCounter;
     }
 
+    public function truncate()
+    {
+        /** @var ContainerFactoryDatabaseQuery $query */
+        $query = Container::get('ContainerFactoryDatabaseQuery',
+                                __METHOD__,
+                                true,
+                                ContainerFactoryDatabaseQuery::MODE_OTHER,
+                                false);
+
+        $query->query('TRUNCATE ' . static::$table);
+        $query->construct();
+        $smtp = $query->execute();
+    }
+
 }

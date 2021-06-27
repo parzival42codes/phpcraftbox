@@ -74,6 +74,8 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
     {
         /** @var Base_abstract_crud $crud */
         $crud          = Container::get($class);
+        $crud->truncate();
+
         $queryDatabase = $crud->getInstallUpdateQuery();
 
         foreach ($queryDatabase as $databaseQueryItem) {
@@ -260,8 +262,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             }
 
             if (isset($languageCollect['class']) && isset($languageCollect['path']) && isset($languageCollect['class'])) {
-
-                simpleDebugLog($languageCollect);
 
                 foreach ($languageCollectValue as $languageCollectKey => $languageCollectValueItem) {
 
@@ -515,8 +515,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 $crud->setCrudMenuIcon($data['crud']['menuIcon'] ?? '');
 
                 $crud->setCrudMenuAccess($data['crud']['menuAccess'] ?? $data['crud']['class']);
-
-                simpleDebugLog($crud->getCrudMenuAccess());
 
                 $progressData['message'] = $crud->insert() . '|##|blue';
 

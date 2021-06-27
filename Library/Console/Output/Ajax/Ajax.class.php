@@ -12,7 +12,6 @@ class ConsoleOutputAjax extends ConsoleOutput_abstract
         /** @var DetailedException $exception */
         if ($exception instanceof DetailedException) {
             $exceptionParameter = $exception->getParameter();
-            simpleDebugLog($exceptionParameter);
         }
 
         simpleDebugDump($exception);

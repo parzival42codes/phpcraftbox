@@ -2,9 +2,9 @@
 
 class ContainerFactoryLogDebug_crud extends Base_abstract_crud
 {
-    protected static string      $table    = 'debug';
-    protected static string      $tableId  = 'crudId';
-    protected static string  $database = 'cache';
+    protected static string $table    = 'debug';
+    protected static string $tableId  = 'crudId';
+    protected static        $database = 'cache';
 
     /**
      * @var int|null
@@ -38,7 +38,7 @@ class ContainerFactoryLogDebug_crud extends Base_abstract_crud
             $query->execute();
 
             ContainerFactoryDatabaseEngineSqlite::addTableDatabase('cache',
-                                                                  'debug');
+                                                                   'debug');
         }
 
         parent::__construct($data);
@@ -47,7 +47,7 @@ class ContainerFactoryLogDebug_crud extends Base_abstract_crud
     /**
      * @return
      */
-    public function getCrudId():?int
+    public function getCrudId(): ?int
     {
         return $this->crudId;
     }
@@ -63,7 +63,7 @@ class ContainerFactoryLogDebug_crud extends Base_abstract_crud
     /**
      * @return string
      */
-    public function getCrudContent():string
+    public function getCrudContent(): string
     {
         return $this->crudContent;
     }
