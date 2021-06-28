@@ -1,3 +1,15 @@
+#cookieBanner {
+    @aboveTheFold: "1";
+    margin: 1em;
+    padding: 1em;
+    border: #000 solid;
+    bottom: 0;
+    display: flex;
+    position: fixed;
+    background: #FFF;
+    z-index: 10000;
+}
+
 /*#thisClass {*/
 
 /*}*/

@@ -42,4 +42,10 @@
 @style-screen-min-width-70em: only screen and (min-device-width: 70em);
 @style-screen-min-width-80em: only screen and (min-device-width: 80em);
 
+@style-screen-smartphone-portrait: only screen and (min-width: 320px) and (max-width: 479px);
+@style-screen-smartphone-landscape: only screen and (min-width: 480px) and (max-width: 767px);
+@style-screen-tablet-portrait: only screen and (min-width: 768px) and (max-width: 991px);
+@style-screen-tablet-landscape: only screen and (min-width: 992px) and (max-width: 1199px);
+@style-screen-desktop-normal: only screen and (min-width: 1200px);
+
 }

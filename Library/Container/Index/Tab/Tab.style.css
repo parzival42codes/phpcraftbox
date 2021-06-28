@@ -44,7 +44,15 @@
     text-decoration: none;
     color: #000;
     Border-Width: 1px;
-    color: black;
+@media: "#style-screen-smartphone-portrait";
+    width: 100%;
+    padding: 0.5em;
+@media: "#style-screen-smartphone-landscape";
+    width: 100%;
+    padding: 0.5em;
+@media: "#style-screen-tablet-portrait";
+    width: 100%;
+    padding: 0.5em;
 }
 
 .tab > ul > .tabButton > span {

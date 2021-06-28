@@ -111,7 +111,7 @@ summary {
     display: flex;
 }
 
-.flex-container-item .item{
+.flex-container-item .item {
     flex: 1;
 }
 
@@ -180,6 +180,18 @@ summary {
     padding: 0.2em 2em;
     cursor: pointer;
     display: inline-block;
+@media: "#style-screen-smartphone-portrait";
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em 2em;
+@media: "#style-screen-smartphone-landscape";
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em 2em;
+@media: "#style-screen-tablet-portrait";
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em 2em;
 }
 
 .btnSmall {

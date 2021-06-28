@@ -30,7 +30,7 @@
 }
 
 /*#debugBarBlock {
-@media: "#style-screen-handy-tablett";
+@media: "#style-screen-handy-tablet";
     font-size: 1em;
 @media: "#style-screen-tablet-landscape";
     font-size: 2em;

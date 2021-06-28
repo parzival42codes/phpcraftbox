@@ -65,7 +65,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudDescription('User Links');
             $crud->setCrudContent('
 <div class="card-container card-container--shadow">
-<div class="card-container-content" style="text-align: right;">
+<div class="card-container-content" style="text-align: center;">
 {insert/widget class="ApplicationUser" widget="username"} {insert/widget class="ApplicationUser" widget="link"}
 </div>
 </div>
