@@ -1,11 +1,55 @@
 <?php
 
-class Container extends Base
+class Container
 {
 
     protected static array $globalContainer   = [];
     protected static array $instanceContainer = [];
-    protected array        $container         = [];
+
+    protected array             $instances = [];
+    protected static ?Container $dic       = null;
+
+    public function __construct()
+    {
+
+    }
+
+    public function setDIC($index, $value)
+    {
+        $this->instances[$index] = $value;
+        return $this->instances[$index];
+    }
+
+    public function getDIC($index, $parameter = [])
+    {
+        if (isset($this->instances[$index])) {
+            if ($this->instances[$index] instanceof Closure) {
+                return $this->instances[$index]($parameter);
+            }
+
+            return $this->instances[$index];
+        }
+
+        $reflector = new ReflectionClass($index);
+        d($reflector->isInstantiable());
+        $constructor = $reflector->getConstructor();
+
+        d($constructor);
+
+        d($constructor->getParameters());
+
+        d($reflector);
+
+    }
+
+    public static function DIC(): Container
+    {
+        if (!self::$dic instanceof Container) {
+            self::$dic = new Container();
+        }
+
+        return self::$dic;
+    }
 
     public static function getInstance(string $index, ...$parameter): object
     {

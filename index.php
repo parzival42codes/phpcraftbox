@@ -16,21 +16,27 @@ Config::setDatabase();
 ContainerFactoryUserConfig::setDatabase();
 ContainerFactoryLanguage::setCore();
 
+$container = Container::DIC();
+
 if (ContainerFactorySession::check()) {
     if (!ContainerFactorySession::get('/user/id')) {
         ContainerFactorySession::destroy();
     }
     else {
-
+        $container->setDIC('/User',
+                           new ContainerFactoryUser(ContainerFactorySession::get('/user/id')));
         Container::getInstance('ContainerFactoryUser',
                                ContainerFactorySession::get('/user/id'));
     }
 }
 else {
+    $container->setDIC('/User',
+                       new ContainerFactoryUser(0));
     Container::getInstance('ContainerFactoryUser',
                            0);
 }
 
+$container->getDIC('ContainerFactoryRouter');
 
 /** @var ContainerFactoryRouter $router */
 $router = Container::getInstance('ContainerFactoryRouter');
