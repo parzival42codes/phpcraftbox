@@ -6,14 +6,14 @@ abstract class Base_abstract_crud
     protected static        $database                  = true;
     protected static array  $reflectionProperty        = [];
     protected static string $tableId                   = '';
-    protected string        $dataVariableCreated       = '';
-    protected string        $dataVariableEdited        = '';
-    protected int           $dataVariableEditedCounter = 0;
-    protected string        $dataVariableDeleted       = '';
+    private string          $dataVariableCreated       = '';
+    private string          $dataVariableEdited        = '';
+    private int             $dataVariableEditedCounter = 0;
+    private string          $dataVariableDeleted       = '';
     /**
      * @var array
      */
-    protected array $additionalQuerySelect = [];
+    private array $additionalQuerySelect = [];
 
     public function __construct(array $data = [])
     {

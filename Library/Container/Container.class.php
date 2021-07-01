@@ -3,51 +3,61 @@
 class Container
 {
 
-    protected static array $globalContainer   = [];
-    protected static array $instanceContainer = [];
+    private static array $globalContainer   = [];
+    private static array $instanceContainer = [];
 
-    protected array             $instances = [];
-    protected static ?Container $dic       = null;
+    private array             $container = [];
+    private static ?Container $dic       = null;
 
-    public function __construct()
+    public function __construct(array $container)
     {
-
+        $this->container = $container;
     }
 
-    public function setDIC($index, $value)
+    public function setDIC(string $index, $value)
     {
-        $this->instances[$index] = $value;
-        return $this->instances[$index];
+        $this->container[$index] = $value;
+        return $this->container[$index];
     }
 
     public function getDIC($index, $parameter = [])
     {
-        if (isset($this->instances[$index])) {
-            if ($this->instances[$index] instanceof Closure) {
-                return $this->instances[$index]($parameter);
+        if (isset($this->container[$index])) {
+            if ($this->container[$index] instanceof Closure) {
+                return $this->container[$index]($parameter);
             }
 
-            return $this->instances[$index];
+            return $this->container[$index];
         }
 
         $reflector = new ReflectionClass($index);
         d($reflector->isInstantiable());
         $constructor = $reflector->getConstructor();
 
-        d($constructor);
+        $parameter = $constructor->getParameters();
+        foreach ($parameter as $parameterItem) {
+            d($parameterItem->getName());
+            d($parameterItem->getClass());
+            d($parameterItem->getDeclaringClass());
+            d($parameterItem->getDeclaringFunction());
+//            d($parameterItem->getDefaultValue());
+//            d($parameterItem->getDefaultValueConstantName());
+            d($parameterItem->getPosition());
 
-        d($constructor->getParameters());
+            $type = $parameterItem->getType();
+            d($type->getName());
+        }
+
 
         d($reflector);
 
     }
 
-    public static function DIC(): Container
+    public static function DIC(array $initDIC = []): Container
     {
         if (!self::$dic instanceof Container) {
-            self::$dic = new Container();
+            self::$dic = new Container($initDIC);
         }
-
         return self::$dic;
     }
 

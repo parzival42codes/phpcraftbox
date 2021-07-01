@@ -72,15 +72,16 @@ class ContainerFactoryRouter extends Base
      */
     protected static array $parameterIndex = [];
 
-    public function __construct()
+    public function __construct(string $url = '')
     {
+        $this->analyzeUrl($url);
+
         if (empty(self::$routerCache)) {
 
-            /** @var ContainerFactoryDatabaseQuery $query */
-            $query = Container::get('ContainerFactoryDatabaseQuery',
-                                    __METHOD__ . '#select',
-                                    true,
-                                    ContainerFactoryDatabaseQuery::MODE_SELECT);
+            $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                       true,
+                                                       ContainerFactoryDatabaseQuery::MODE_SELECT);
+
             $query->setTable('index_router');
             $query->select('crudClass',
                            'crudType',
@@ -358,12 +359,12 @@ class ContainerFactoryRouter extends Base
     }
 
     /**
-     * @param  $key
-     * @param int             $filter
+     * @param     $key
+     * @param int $filter
      *
      * @return mixed
      */
-    public function getParameter( $key = null, int $filter = FILTER_SANITIZE_STRING)
+    public function getParameter($key = null, int $filter = FILTER_SANITIZE_STRING)
     {
         if ($key === null) {
             return $this->parameter;
@@ -378,8 +379,8 @@ class ContainerFactoryRouter extends Base
     }
 
     /**
-     * @param string          $key
-     * @param $parameter
+     * @param string $key
+     * @param        $parameter
      */
     public function setParameter(string $key, $parameter): void
     {
@@ -454,8 +455,8 @@ class ContainerFactoryRouter extends Base
     }
 
     /**
-     * @param string          $key
-     * @param $value
+     * @param string $key
+     * @param        $value
      */
     public function setQuery(string $key, $value): void
     {

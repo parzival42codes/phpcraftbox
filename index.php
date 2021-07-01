@@ -1,10 +1,5 @@
 <?php
 
-define('CMS_CACHE_MAIN',
-       'index');
-define('CMS_LIBRARY_IDENT',
-       'Index');
-
 ini_set('memory_limit',
         '512M');
 ini_set("max_execution_time",
@@ -13,30 +8,28 @@ ini_set("max_execution_time",
 require(dirname(__FILE__) . '/Library/config.inc.php');
 
 Config::setDatabase();
-ContainerFactoryUserConfig::setDatabase();
 ContainerFactoryLanguage::setCore();
-
-$container = Container::DIC();
 
 if (ContainerFactorySession::check()) {
     if (!ContainerFactorySession::get('/user/id')) {
         ContainerFactorySession::destroy();
     }
     else {
-        $container->setDIC('/User',
-                           new ContainerFactoryUser(ContainerFactorySession::get('/user/id')));
         Container::getInstance('ContainerFactoryUser',
                                ContainerFactorySession::get('/user/id'));
     }
 }
 else {
-    $container->setDIC('/User',
-                       new ContainerFactoryUser(0));
     Container::getInstance('ContainerFactoryUser',
                            0);
 }
 
-$container->getDIC('ContainerFactoryRouter');
+$container = Container::DIC([
+                                '/User'   => new ContainerFactoryUser((int)ContainerFactorySession::get('/user/id') ?? 0),
+                                '/Config' => new Config(),
+                                '/Router' => new ContainerFactoryRouter(Config::get('/server/http/path')),
+                                '/Page' => new ContainerIndexPage(),
+                            ]);
 
 /** @var ContainerFactoryRouter $router */
 $router = Container::getInstance('ContainerFactoryRouter');
@@ -44,6 +37,9 @@ $router = Container::getInstance('ContainerFactoryRouter');
 if (Config::get('/server/http/path') !== '') {
     $router->analyzeUrl(Config::get('/server/http/path'));
 }
+
+ContainerFactoryUserConfig::setDatabase();
+
 
 switch (Container::getInstance('ContainerFactoryRouter')
                  ->getTarget()) {

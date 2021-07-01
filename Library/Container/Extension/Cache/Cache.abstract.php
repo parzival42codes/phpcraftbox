@@ -12,10 +12,10 @@ abstract class ContainerExtensionCache_abstract extends Base
 
     protected array        $parameter           = [];
     protected string       $ident               = '';
-    protected        $cacheContent        = '';
+    protected              $cacheContent        = '';
     protected int          $target              = self::TARGET_INTERN;
     protected int          $ttl                 = 0;
-    protected        $ttlDatetime;
+    protected              $ttlDatetime;
     protected int          $size                = 0;
     protected bool         $persistent          = false;
     protected string       $dataVariableUpdated = '';
@@ -63,9 +63,7 @@ abstract class ContainerExtensionCache_abstract extends Base
                                        'int;11');
             $queryStructure->setColumn('dataVariableUpdated',
                                        'datetime');
-            $queryStructure->setPrimary([
-                                            'ident'
-                                        ]);
+            $queryStructure->setPrimary('ident');
 
             /** @var ContainerFactoryDatabaseQuery $query */
             $query = Container::get('ContainerFactoryDatabaseQuery',

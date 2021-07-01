@@ -43,18 +43,11 @@ class ePDOException extends Exception
 
 class ePDOStatement extends PDOStatement
 {
-
-    private static ?Container $container     = null;
-    private ePDO              $pdo;
-    private array             $bindValueData = [];
+    private ePDO  $pdo;
+    private array $bindValueData = [];
 
     protected function __construct(ePDO $pdo)
     {
-        if (self::$container === null) {
-            self::$container = new \Container();
-        }
-
-        $this->pdo = $pdo;
     }
 
     public function execute($params = [])
@@ -130,10 +123,10 @@ class ePDOStatement extends PDOStatement
         }
 
         return call_user_func_array(array(
-                                 $this,
-                                 'parent::bindValue'
-                             ),
-                             $args);
+                                        $this,
+                                        'parent::bindValue'
+                                    ),
+                                    $args);
     }
 
 }

@@ -320,9 +320,11 @@ CMS_CACHE_CORE_LINKREWRITE',
 
 //    ContainerFactorySession::setSessionHandler('Sqlite');
     ContainerFactorySession::setSessionHandler(null);
+
+    ContainerFactorySession::start();
+
 } catch (Throwable $exception) {
     d($exception);
     eol(true);
 }
 
-ContainerFactorySession::start();

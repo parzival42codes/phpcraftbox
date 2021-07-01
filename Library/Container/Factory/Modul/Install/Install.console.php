@@ -5,9 +5,9 @@ class ContainerFactoryModulInstall_console extends Console_abstract
 
     protected array $module
         = [
+            'Config',
             'Event',
             'ContainerExtensionDocumentation',
-            'Config',
             'ContainerFactoryModul',
             'ContainerFactoryLanguage',
             'CoreAutoload',
