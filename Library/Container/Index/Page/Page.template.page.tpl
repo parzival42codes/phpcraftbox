@@ -96,16 +96,23 @@
         {$pageContentAdditional}
         {$footerInclude}
 
-        <div id="cookieBanner">
+        <div id="cookieBanner" class="flex-container">
             <div style="flex: 2:">
                 {insert/language class="ContainerIndexPage" path="/cookie/banner"
-                language-de_DE="Diese Internetseite verwendet Cookies und Matomo für die Analyse und Statistik. Cookies helfen uns, die Benutzerfreundlichkeit unserer Website zu verbessern. Durch die weitere Nutzung der Website stimmen Sie der Verwendung zu. Weitere Informationen hierzu finden Sie in unserer <a href='https://www.XXX.de/datenschutz/' target='_blank' rel='nofollow'>Datenschutzerklärung</a>"
+                language-de_DE="Diese Internetseite verwendet Cookies und Matomo für die Analyse und Statistik. Cookies helfen uns, die Benutzerfreundlichkeit unserer Website zu verbessern. Weitere Informationen hierzu finden Sie in unserer <a href='https://www.XXX.de/datenschutz/' target='_blank' rel='nofollow'>Datenschutzerklärung</a>"
                 language-en_US="This website uses cookies and Matomo for analysis and statistics. Cookies help us to improve the user-friendliness of our website. By continuing to use the website, you consent to its use. You can find further information on this in our <a href=habenhttps://www.XXX.de/datenschutz/haben target='_blank' rel='nofollow'> data protection declaration </a>"}
             </div>
-            <div style="flex: 1;">
+            <div class="flex-container-item">
                 <div id="cookieBannerButton" class="btn">
-                    {insert/language class="ContainerIndexPage" path="/cookie/banner/consent"
-                    language-de_DE="Verstanden"
+                    {insert/language class="ContainerIndexPage" path="/cookie/banner/consent/no"
+                    language-de_DE="Abgelehnt"
+                    language-en_US="No Consent"}
+                </div>
+            </div>
+            <div class="flex-container-item">
+                <div id="cookieBannerButton" class="btn">
+                    {insert/language class="ContainerIndexPage" path="/cookie/banner/consent/yes"
+                    language-de_DE="Einverstanden"
                     language-en_US="Consent"}
                 </div>
             </div>

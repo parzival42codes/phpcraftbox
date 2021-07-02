@@ -107,6 +107,8 @@ class ApplicationAdministrationContent_crud extends Base_abstract_crud
                      [],
                      'content_index.crudContentIdent = ' . self::$table . '.crudIdent');
         $query->orderBy('crudIdent');
+
+        $query->construct();
         return $query;
     }
 

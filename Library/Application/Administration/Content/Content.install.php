@@ -3,7 +3,7 @@
 class ApplicationAdministrationContent_install extends ContainerFactoryModulInstall_abstract
 {
 
-    public function install():void
+    public function install(): void
     {
         $this->importMeta();
         $this->importRoute();
@@ -11,6 +11,7 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
         $this->importLanguage();
         $this->readLanguageFromFile('default');
         $this->readLanguageFromFile('install.impressum');
+        $this->readLanguageFromFile('install.privacy');
         $this->setGroupAccess(Core::getRootClass(__CLASS__),
                               [
                                   4
@@ -61,6 +62,48 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
             $crud->createIndexFromContentIdent();
 
             $progressData['message'] = 'createIndexFromContentIdent, impressum';
+
+            /*$after*/
+        });
+
+        $this->installFunction(function () {
+            /** @var array $data */ /*$before*/
+
+            /** @var ContainerExtensionTemplateLoad_cache_template $templateCache */
+            $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
+                                            'ApplicationAdministrationContent',
+                                            'install.privacy');
+
+            /** @var ApplicationAdministrationContent_crud $crud */
+            $crud = Container::get('ApplicationAdministrationContent_crud');
+            $crud->setCrudIdent('privacy');
+            $crud->setCrudRequired('Yes');
+            $crud->setCrudData('
+            [de_DE]
+            title = "Datenschutz"
+            description = "Datenschutz"
+            path = "/datenschutz"
+            [en_US]
+            title = "Privacy"
+            description = "Privacy"
+            path = "/privacy"
+            ');
+            $crud->setCrudContent($templateCache->getCacheContent()['install.privacy']);
+
+            $progressData['message'] = $crud->insertUpdate();
+
+            /*$after*/
+        });
+
+        $this->installFunction(function () {
+            /** @var array $data */ /*$before*/
+
+            /** @var ApplicationAdministrationContent_crud_index $crud */
+            $crud = Container::get('ApplicationAdministrationContent_crud_index');
+            $crud->setCrudContentIdent('privacy');
+            $crud->createIndexFromContentIdent();
+
+            $progressData['message'] = 'createIndexFromContentIdent, privacy';
 
             /*$after*/
         });
