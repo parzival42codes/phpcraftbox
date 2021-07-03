@@ -17,6 +17,14 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
             $crud->createIndexFromContentIdent();
         }
 
+        $indexCollect  = [];
+        $crudIndex     = new ApplicationAdministrationContent_crud_index();
+        $crudIndexList = $crudIndex->find();
+        /** @var ApplicationAdministrationContent_crud_index $crudIndexListItem */
+        foreach ($crudIndexList as $crudIndexListItem) {
+            $indexCollect[$crudIndexListItem->getCrudContentIdent()][] = $crudIndexListItem->getCrudLanguage() . ' - ' . $crudIndexListItem->getCrudPath();
+        }
+
         /** @var ApplicationAdministrationContent_crud $crud */ //
         /** @var ContainerFactoryLogPage_crud $crud */
         $crud  = Container::get('ApplicationAdministrationContent_crud');
@@ -60,7 +68,7 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
                               $crudContentAllItem->getCrudIdent());
             $linkCreateIndex = $router->getUrlReadable();
 
-            if ($crudContentAllItem->getAdditionalQuerySelect('countIndex') > 0) {
+            if (isset($indexCollect[$crudContentAllItem->getCrudIdent()])) {
                 $indexButton = '<a href"' . $linkCreateIndex . '" class="simpleModifySuccess withFill btn">' . ContainerFactoryLanguage::get('/ApplicationAdministrationContent/table/button/reCreate') . '</a>';
             }
             else {
@@ -71,6 +79,8 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
             $tableTcs[] = [
 //                'crudIdent'           => $crudContentAllItem->getCrudIdent(),
 'crudIdent'           => '<a href="index.php?application=ApplicationAdministrationContentEdit&route=edit&id=' . $crudContentAllItem->getCrudIdent() . '" class="block">' . $crudContentAllItem->getCrudIdent() . '</a>',
+'index'               => implode('<br />',
+    ($indexCollect[$crudContentAllItem->getCrudIdent()] ?? [])),
 'crudData'            => $contentData,
 'dataVariableCreated' => $dataVariableCreatedDateTime->format(ContainerFactoryLanguage::get('/ContainerFactoryLanguage/language/dateTime')),
 'dataVariableEdited'  => $dataVariableEditedDateTime->format(ContainerFactoryLanguage::get('/ContainerFactoryLanguage/language/dateTime')),

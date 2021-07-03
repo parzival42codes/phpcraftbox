@@ -10,6 +10,11 @@ titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/
 language-de_DE="Contentseite Ident"
 language-en_US="Content Page Ident "}"
 classCell="withFill"
+[index]
+titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/table/index"
+language-de_DE="Index"
+language-en_US="Index"}"
+[dataVariableCreated]
 [crudData]
 titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/table/crudData"
 language-de_DE="Daten"
