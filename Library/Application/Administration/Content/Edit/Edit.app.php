@@ -13,11 +13,9 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
     public function setContent(): string
     {
-        $this->pageData();
-
         /** @var ContainerFactoryRouter $router */
         $router   = Container::getInstance('ContainerFactoryRouter');
-        $this->id = $router->getParameter('id');
+        $this->id = (string)$router->getParameter('id');
 
         /** @var ApplicationAdministrationContent_crud $crud */
         $crud = Container::get('ApplicationAdministrationContent_crud');
@@ -31,11 +29,13 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
         elseif ($this->source === self::CONTENT_SOURCE_HISTORY) {
             /** @var ApplicationAdministrationContent_crud_history $crud */
             $crud = Container::get('ApplicationAdministrationContent_crud_history');
-            $crud->setCrudId($this->id);
+            $crud->setCrudId((int)$this->id);
             if (!empty($this->version)) {
                 $crud->findById(true);
             }
         }
+
+        $this->pageData($this->id);
 
         /** @var ContainerExtensionTemplateParseCreateFormResponse $response */
         $response = Container::get('ContainerExtensionTemplateParseCreateFormResponse',
@@ -72,8 +72,6 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
         $query->construct();
         $smtp = $query->execute();
-
-        /** @var ePDOStatement $smtp */
 
         while ($smtpData = $smtp->fetch()) {
             $crudArray[$smtpData['crudId']] = $smtpData['dataVariableCreated'];
@@ -191,12 +189,26 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
 //        eol();
 
+        $crudIndexCollect = [];
+        $crudIndex        = new ApplicationAdministrationContent_crud_index();
+        $crudIndexAll     = $crudIndex->find([
+                                                 'crudContentIdent' => $this->id
+                                             ]);
+        /** @var ApplicationAdministrationContent_crud_index $crudIndexAllItem */
+        foreach ($crudIndexAll as $crudIndexAllItem) {
+            $crudIndexCollect[] = '<a href="' . Config::get('/server/http/base/url') . $crudIndexAllItem->getCrudPath() . '" target="_blank" >' . $crudIndexAllItem->getCrudPath() . '</a>';
+        }
+
+        $template->assign('index',
+                          implode('<br />',
+                                  $crudIndexCollect));
+
         $template->parseQuote();
         $template->parse();
         return $template->get();
     }
 
-    protected function pageData(): void
+    protected function pageData($id): void
     {
 
         /** @var ContainerIndexPage $page */
@@ -216,6 +228,9 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
         $breadcrumb->addBreadcrumbItem(ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/breadcrumb'),
                                        'index.php?application=ApplicationAdministrationContentEdit');
+
+        $breadcrumb->addBreadcrumbItem($id,
+                                       'index.php?application=ApplicationAdministrationContentEdit&id=' . $id);
 
         /** @var ContainerFactoryMenu $menu */
         $menu = $this->getMenu();

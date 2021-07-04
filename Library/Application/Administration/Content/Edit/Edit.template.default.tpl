@@ -36,6 +36,19 @@
         <div class="card-container card-container--shadow"
              style="flex: 1;">
             <div class="card-container-header">
+                {insert/language class="ApplicationAdministrationContentEdit" path="/index"
+                language-de_DE="Index"
+                language-en_US="Index"}
+            </div>
+            <div class="card-container-content">
+                {$index}
+            </div>
+            <div class="card-container-footer">
+            </div>
+        </div>
+        <div class="card-container card-container--shadow"
+             style="flex: 1;">
+            <div class="card-container-header">
                 {insert/language class="ApplicationAdministrationContentEdit" path="/form/title"
                 language-de_DE="Identifikation"
                 language-en_US="Identification"}
