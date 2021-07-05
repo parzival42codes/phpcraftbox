@@ -203,6 +203,16 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
                           implode('<br />',
                                   $crudIndexCollect));
 
+        $container = Container::DIC();
+        /** @var ContainerFactoryRouter $router */
+        $router = $container->getDIC('/Router');
+        $router->setQuery('indexrefresh',
+                          1);
+        $linkCreateIndex = $router->getUrlReadable();
+
+        $template->assign('indexRefresh',
+                          '<a href="' . $linkCreateIndex . '" class="withFill btn">' . ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/button/recreate') . '</a>');
+
         $template->parseQuote();
         $template->parse();
         return $template->get();

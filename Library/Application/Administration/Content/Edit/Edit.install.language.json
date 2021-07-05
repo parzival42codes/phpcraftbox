@@ -55,6 +55,12 @@
         "en_US": "Data as INI"
       }
     },
+    "/button/recreate": {
+      "language": {
+        "de_DE": "Index erneuern",
+        "en_US": "Refresh Index"
+      }
+    },
     "/notification/saved": {
       "language": {
         "de_DE": "Der Content '%s' wurde gespeichert !"

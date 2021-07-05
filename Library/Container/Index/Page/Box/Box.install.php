@@ -3,7 +3,7 @@
 class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstract
 {
 
-   public function install(): void
+    public function install(): void
     {
         $this->importQueryDatabaseFromCrud('ContainerIndexPageBox_crud');
 
@@ -122,6 +122,30 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
                                       {insert/positions position="/page/box/main/footer"}
                                       </main>
                                       </div>');
+            $crud->setCrudAssignment('page');
+            $crud->setCrudActive(true);
+
+            $progressData['message'] = $crud->insert();
+
+            /*$after*/
+        });
+
+
+        $this->installFunction(function () {
+            /** @var array $data */ /*$before*/
+
+            /** @var ContainerIndexPageBox_crud $crud */
+            $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudClass(Core::getRootClass(__CLASS__));
+            $crud->setCrudRow(4);
+            $crud->setCrudFlex(1);
+            $crud->setCrudPosition(1);
+            $crud->setCrudDescription('Main');
+            $crud->setCrudContent('<div id="CMSFooter">
+<div class="card-container card-container--shadow">
+<div class="card-container-content">Footer</div>
+</div>
+</div>');
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 

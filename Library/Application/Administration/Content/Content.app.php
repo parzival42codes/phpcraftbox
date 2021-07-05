@@ -69,7 +69,7 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
             $linkCreateIndex = $router->getUrlReadable();
 
             if (isset($indexCollect[$crudContentAllItem->getCrudIdent()])) {
-                $indexButton = '<a href"' . $linkCreateIndex . '" class="simpleModifySuccess withFill btn">' . ContainerFactoryLanguage::get('/ApplicationAdministrationContent/table/button/reCreate') . '</a>';
+                $indexButton = '<a href="' . $linkCreateIndex . '" class="simpleModifySuccess withFill btn">' . ContainerFactoryLanguage::get('/ApplicationAdministrationContent/table/button/reCreate') . '</a>';
             }
             else {
                 $router->getUrlReadable();

@@ -74,8 +74,6 @@ class ContainerFactoryRouter extends Base
 
     public function __construct(string $url = '')
     {
-        $this->analyzeUrl($url);
-
         if (empty(self::$routerCache)) {
 
             $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
@@ -110,6 +108,8 @@ class ContainerFactoryRouter extends Base
 
         $this->typeSimple = self::$routerCache['simple'];
         $this->typeRegex  = self::$routerCache['regex'];
+
+        $this->analyzeUrl($url);
     }
 
     public static function get(string $url): void
@@ -477,17 +477,6 @@ class ContainerFactoryRouter extends Base
 
             if (self::$routerCacheIndex[$this->application][$this->route]['crudType'] === 'simple') {
                 $this->urlReadable = self::$routerCacheIndex[$this->application][$this->route]['crudPath'];
-
-                if (!empty($this->query)) {
-                    $query = [];
-                    foreach ($this->query as $queryKey => $queryItem) {
-                        if ($queryItem !== null) {
-                            $query[] = $queryKey . '=' . $queryItem;
-                        }
-                    }
-                    $this->urlReadable .= '?' . implode('&',
-                                                        $query);
-                }
             }
             else {
                 $path = self::$routerCacheIndex[$this->application][$this->route]['crudPath'];
@@ -505,18 +494,20 @@ class ContainerFactoryRouter extends Base
                         return $parameter;
                     },
                                                            $path);
-
-                if (!empty($this->query)) {
-                    $query = [];
-                    foreach ($this->query as $queryKey => $queryItem) {
-                        if ($queryItem !== null) {
-                            $query[] = $queryKey . '=' . $queryItem;
-                        }
-                    }
-                    $this->urlReadable .= '?' . implode('&',
-                                                        $query);
-                }
             }
+
+
+            if (!empty($this->query)) {
+                $query = [];
+                foreach ($this->query as $queryKey => $queryItem) {
+                    if ($queryItem !== null) {
+                        $query[] = $queryKey . '=' . $queryItem;
+                    }
+                }
+                $this->urlReadable .= '?' . implode('&',
+                                                    $query);
+            }
+
         }
 
         if ($raw === false) {

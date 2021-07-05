@@ -18,6 +18,11 @@
 class ContainerFactoryRequest extends Base
 {
 
+    const REQUEST_TYPE_POST   = 'POST';
+    const REQUEST_TYPE_GET    = 'GET';
+    const REQUEST_TYPE_COOKIE = 'COOKIE';
+
+
     const REQUEST_UNKNOWN              = 'UNKNOWN';
     const REQUEST_GET                  = 'GET';
     const REQUEST_POST                 = 'POST';
@@ -26,7 +31,6 @@ class ContainerFactoryRequest extends Base
     const REQUEST_FORM                 = 'FORM';
     const REQUEST_TRANPORT_TYPE_NORMAL = 'NORMAL';
     const REQUEST_TRANPORT_TYPE_AJAX   = 'AJAX';
-
 
     protected ?string $request        = '';
     protected ?bool   $requestExists  = false;
@@ -54,15 +58,15 @@ class ContainerFactoryRequest extends Base
         $this->requestFilter = $filter ?? FILTER_SANITIZE_STRING;
 
         switch ($this->requestType) {
-            case 'GET':
+            case self::REQUEST_TYPE_GET:
                 $this->request       = (string)($_GET[$key] ?? $this->requestDefault);
                 $this->requestExists = isset($_GET[$key]);
                 break;
-            case 'POST':
+            case self::REQUEST_TYPE_POST:
                 $this->request       = (string)($_POST[$key] ?? $this->requestDefault);
                 $this->requestExists = isset($_POST[$key]);
                 break;
-            case 'COOKIE':
+            case self::REQUEST_TYPE_COOKIE:
                 $this->request       = (string)($_COOKIE[$key] ?? $this->requestDefault);
                 $this->requestExists = isset($_COOKIE[$key]);
                 break;

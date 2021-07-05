@@ -24,11 +24,15 @@ else {
                            0);
 }
 
+$cookieBannerRequest = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_COOKIE,
+                                                   'cookieBanner');
+
 $container = Container::DIC([
-                                '/User'   => new ContainerFactoryUser((int)ContainerFactorySession::get('/user/id') ?? 0),
-                                '/Config' => new Config(),
-                                '/Router' => new ContainerFactoryRouter(Config::get('/server/http/path')),
-                                '/Page' => new ContainerIndexPage(),
+                                '/User'                => new ContainerFactoryUser((int)ContainerFactorySession::get('/user/id') ?? 0),
+                                '/Config'              => new Config(),
+                                '/Router'              => new ContainerFactoryRouter(Config::get('/server/http/path')),
+                                '/Page'                => new ContainerIndexPage(),
+                                '/Cookie/CookieBanner' => (int)($cookieBannerRequest->exists() && $cookieBannerRequest->get() == 1),
                             ]);
 
 /** @var ContainerFactoryRouter $router */

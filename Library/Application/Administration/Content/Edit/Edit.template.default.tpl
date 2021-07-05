@@ -44,6 +44,7 @@
                 {$index}
             </div>
             <div class="card-container-footer">
+                {$indexRefresh}
             </div>
         </div>
         <div class="card-container card-container--shadow"
