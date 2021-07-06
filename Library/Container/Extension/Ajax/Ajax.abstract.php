@@ -20,6 +20,15 @@ abstract class ContainerExtensionAjax_abstract extends Base
 
     public function __construct()
     {
+        try {
+
+
+            simpleDebugDump($_POST);
+        } catch (Throwable $e) {
+            simpleDebugDump($e);
+        }
+
+
 //
 //        $exceptionCatch = Container::get('ContainerFactoryExceptioncatch',
 //            function () {

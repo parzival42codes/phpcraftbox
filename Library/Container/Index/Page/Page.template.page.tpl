@@ -107,21 +107,20 @@ Weitere Informationen hierzu finden Sie in unserer <a href='https://www.XXX.de/d
                     language-en_US="This website uses cookies and Matomo for analysis and statistics. Cookies help us to improve the user-friendliness of our website. By continuing to use the website, you consent to its use. You can find further information on this in our <a href=habenhttps://www.XXX.de/datenschutz/haben target='_blank' rel='nofollow'> data protection declaration </a>"}
                 </div>
                 <div class="flex-container-item">
-                    Diese Internetseite verwendet außer den technisch notwendigen Cookies noch:<br />
+                    Diese Internetseite verwendet außer den technisch notwendigen Cookies noch:<br/>
                     <ul>
                         <li>Matomo für die Analyse und Statistik.</li>
                     </ul>
                 </div>
-                <div class="flex-container-item" style="text-align: right;">
-                    <div id="cookieBannerButtonYes"
-                         class="btn">
+                <div class="flex-container-item"
+                     style="text-align: right;">
+                    <div class="cookieBannerButton btn">
                         {insert/language class="ContainerIndexPage" path="/cookie/banner/consent/yes"
                         language-de_DE="Einverstanden"
                         language-en_US="Consent"}
                     </div>
 
-                    <div id="cookieBannerButtonNo"
-                         class="btn">
+                    <div class="cookieBannerButton btn">
                         {insert/language class="ContainerIndexPage" path="/cookie/banner/consent/no"
                         language-de_DE="Abgelehnt"
                         language-en_US="No Consent"}

@@ -1,11 +1,11 @@
 #cookieBanner {
     @aboveTheFold: "1";
-    margin: 0 auto;
+    margin: 0 auto 5em auto;
     padding: 1em;
     border: #000 solid;
     background: #FFF;
     z-index: 10000;
-    width: 50%;
+    width: 75%;
 }
 
 #cookieBannerButtonYes, #cookieBannerButtonNo {

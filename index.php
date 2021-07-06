@@ -53,9 +53,10 @@ switch (Container::getInstance('ContainerFactoryRouter')
         exit;
         break;
     case 'ajax':
-        /** @var ContainerFactoryRouter $router */
         $classPhp = $router->getApplication() . '_ajax';
-        Container::get($classPhp);
+        /** @var ContainerExtensionAjax_abstract $classPhpAjax */
+        $classPhpAjax = new $classPhp();
+        print $classPhpAjax->get();
         break;
     case 'free':
         $class  = $router->getApplication() . '_free';

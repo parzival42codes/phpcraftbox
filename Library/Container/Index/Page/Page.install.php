@@ -7,6 +7,7 @@ class ContainerIndexPage_install extends ContainerFactoryModulInstall_abstract
     {
         $this->importLanguage();
         $this->importMeta();
+        $this->importRoute();
     }
 
 
