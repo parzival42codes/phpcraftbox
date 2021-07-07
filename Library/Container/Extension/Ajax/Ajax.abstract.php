@@ -5,7 +5,7 @@ abstract class ContainerExtensionAjax_abstract extends Base
 
     protected string $language = '';
     protected string $class    = '';
-    protected ?array $data     = null;
+    protected array  $data     = [];
     protected array  $trigger  = [];
     private array    $output
                                = [
@@ -22,8 +22,14 @@ abstract class ContainerExtensionAjax_abstract extends Base
     {
         try {
 
+            $postKeysList = array_keys($_POST);
+            foreach ($postKeysList as $postKeysListItem) {
+                $request                                 = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_POST,
+                                                                                       $postKeysListItem);
+                $this->data[$postKeysListItem]           = $request->get();
+                $this->output['data'][$postKeysListItem] = $this->data[$postKeysListItem];
+            }
 
-            simpleDebugDump($_POST);
         } catch (Throwable $e) {
             simpleDebugDump($e);
         }

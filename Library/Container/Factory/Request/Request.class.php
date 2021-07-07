@@ -43,11 +43,11 @@ class ContainerFactoryRequest extends Base
     /**
      * ContainerFactoryRequest constructor.
      *
-     * @param string $requestType POST / GET / COOKIE /FORM / FILES / REQUEST / SERVER
-     * @param string $key         Key of the reading Request
-     * @param        $requestDefault
-     * @param        $filter
-     * @param        $options
+     * @param string      $requestType POST / GET / COOKIE /FORM / FILES / REQUEST / SERVER
+     * @param string      $key         Key of the reading Request
+     * @param string|null $requestDefault
+     * @param string|null $filter
+     * @param null        $options
      */
     public function __construct(string $requestType, string $key, ?string $requestDefault = null, ?string $filter = null, $options = null)
     {
