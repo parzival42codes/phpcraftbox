@@ -27,8 +27,15 @@ else {
 $cookieBannerRequest = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_COOKIE,
                                                    'cookieBanner');
 
+if (ContainerFactorySession::check()) {
+    $user = (int)ContainerFactorySession::get('/user/id');
+}
+else {
+    $user = 0;
+}
+
 $container = Container::DIC([
-                                '/User'                => new ContainerFactoryUser((int)ContainerFactorySession::get('/user/id') ?? 0),
+                                '/User'                => $user,
                                 '/Config'              => new Config(),
                                 '/Router'              => new ContainerFactoryRouter(Config::get('/server/http/path')),
                                 '/Page'                => new ContainerIndexPage(),

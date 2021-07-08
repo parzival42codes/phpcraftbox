@@ -25,7 +25,7 @@ class ContainerFactoryHeader
         $this->headerRemove[] = $remove;
     }
 
-    public function setCookie(string $cookie): void
+    public function setCookie(ContainerFactoryHeaderCookie $cookie): void
     {
         $this->cookie[] = $cookie;
     }
@@ -50,13 +50,17 @@ class ContainerFactoryHeader
         }
 
         foreach ($this->cookie as $cookie) {
+            /** @var ContainerFactoryHeaderCookie $cookie */
             setcookie($cookie->getName(),
                       $cookie->getValue(),
-                      $cookie->getExpire(),
-                      $cookie->getPath(),
-                      $cookie->getDomain(),
-                      $cookie->getSecure(),
-                      $cookie->getHttponly());
+                      [
+                          'path'     => $cookie->getPath(),
+                          'expires'  => time() + $cookie->getExpire(),
+                          'domain'   => $cookie->getDomain(),
+                          'secure'   => (bool)$cookie->getSecure(),
+                          'httponly' => (bool)$cookie->getHttponly(),
+                          'samesite' => $cookie->getSamesite(),
+                      ]);
         }
     }
 

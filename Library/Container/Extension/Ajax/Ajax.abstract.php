@@ -2,6 +2,10 @@
 
 abstract class ContainerExtensionAjax_abstract extends Base
 {
+    protected array $postData
+        = [
+
+        ];
 
     protected string $language = '';
     protected string $class    = '';
@@ -14,24 +18,27 @@ abstract class ContainerExtensionAjax_abstract extends Base
             'content'     => null,
             'meta'        => [],
             'debug'       => [],
-            'data'        => [],
             'trigger'     => [],
         ];
 
     public function __construct()
     {
         try {
-
-            $postKeysList = array_keys($_POST);
-            foreach ($postKeysList as $postKeysListItem) {
-                $request                                 = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_POST,
-                                                                                       $postKeysListItem);
-                $this->data[$postKeysListItem]           = $request->get();
-                $this->output['data'][$postKeysListItem] = $this->data[$postKeysListItem];
+            foreach ($this->postData as $postData) {
+                $request               = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_POST,
+                                                                     $postData);
+                $this->data[$postData] = $request->get();
             }
+
+            $this->execute();
+
+            /** @var ContainerFactoryHeader $header */
+            $header = Container::getInstance('ContainerFactoryHeader');
+            $header->send();
 
         } catch (Throwable $e) {
             simpleDebugDump($e);
+            simpleDebugDump($e->getTrace());
         }
 
 
@@ -171,7 +178,7 @@ abstract class ContainerExtensionAjax_abstract extends Base
 //                                                              'CoreErrorhandler');
     }
 
-    abstract function execute(): array;
+    abstract function execute(): void;
 
     public function get(): string
     {
