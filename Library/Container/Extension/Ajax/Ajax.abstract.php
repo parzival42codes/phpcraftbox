@@ -2,10 +2,8 @@
 
 abstract class ContainerExtensionAjax_abstract extends Base
 {
-    protected array $postData
-        = [
-
-        ];
+    protected array                  $postData = [];
+    protected ContainerFactoryHeader $header;
 
     protected string $language = '';
     protected string $class    = '';
@@ -23,7 +21,10 @@ abstract class ContainerExtensionAjax_abstract extends Base
 
     public function __construct()
     {
+        $this->header = new ContainerFactoryHeader();
+
         try {
+
             foreach ($this->postData as $postData) {
                 $request               = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_POST,
                                                                      $postData);
@@ -41,6 +42,8 @@ abstract class ContainerExtensionAjax_abstract extends Base
             simpleDebugDump($e->getTrace());
         }
 
+        $this->header->set('content-type','application/json; charset=utf-8');
+        $this->header->send();
 
 //
 //        $exceptionCatch = Container::get('ContainerFactoryExceptioncatch',

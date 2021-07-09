@@ -3,6 +3,8 @@
 class ContainerIndexPage_ajax extends ContainerExtensionAjax_abstract
 {
 
+    protected array $postData = [];
+
     public function execute(): void
     {
         $cookie = new ContainerFactoryHeaderCookie();
@@ -10,7 +12,7 @@ class ContainerIndexPage_ajax extends ContainerExtensionAjax_abstract
         $cookie->setValue('1');
 
         /** @var ContainerFactoryHeader $header */
-        $header = Container::getInstance('ContainerFactoryHeader');
+        $this->header->setCookie($cookie);
         $header->setCookie($cookie);
     }
 
