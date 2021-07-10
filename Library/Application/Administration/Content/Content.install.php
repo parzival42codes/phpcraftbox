@@ -18,7 +18,6 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
                               ]);
 
         $this->importQueryDatabaseFromCrud('ApplicationAdministrationContent_crud');
-        $this->importQueryDatabaseFromCrud('ApplicationAdministrationContent_crud_index');
         $this->importQueryDatabaseFromCrud('ApplicationAdministrationContent_crud_history');
 
 //        $this->queryDatabase($this->database());
@@ -56,19 +55,6 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
         $this->installFunction(function () {
             /** @var array $data */ /*$before*/
 
-            /** @var ApplicationAdministrationContent_crud_index $crud */
-            $crud = Container::get('ApplicationAdministrationContent_crud_index');
-            $crud->setCrudContentIdent('impressum');
-            $crud->createIndexFromContentIdent();
-
-            $progressData['message'] = 'createIndexFromContentIdent, impressum';
-
-            /*$after*/
-        });
-
-        $this->installFunction(function () {
-            /** @var array $data */ /*$before*/
-
             /** @var ContainerExtensionTemplateLoad_cache_template $templateCache */
             $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                             'ApplicationAdministrationContent',
@@ -82,11 +68,9 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
             [de_DE]
             title = "Datenschutz"
             description = "Datenschutz"
-            path = "/datenschutz"
             [en_US]
             title = "Privacy"
             description = "Privacy"
-            path = "/privacy"
             ');
             $crud->setCrudContent($templateCache->getCacheContent()['install.privacy']);
 
@@ -95,17 +79,5 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
             /*$after*/
         });
 
-        $this->installFunction(function () {
-            /** @var array $data */ /*$before*/
-
-            /** @var ApplicationAdministrationContent_crud_index $crud */
-            $crud = Container::get('ApplicationAdministrationContent_crud_index');
-            $crud->setCrudContentIdent('privacy');
-            $crud->createIndexFromContentIdent();
-
-            $progressData['message'] = 'createIndexFromContentIdent, privacy';
-
-            /*$after*/
-        });
     }
 }

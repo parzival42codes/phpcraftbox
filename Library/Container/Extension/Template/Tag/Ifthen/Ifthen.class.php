@@ -17,10 +17,6 @@ class ContainerExtensionTemplateTagIfthen extends Base
                     case 'notEmpty':
 
                         $valueContent = $templateObject->getAssign($htmlTags['value']);
-
-                        debugDump($valueContent);
-                        debugDump($content);
-
                         if (!empty($valueContent)) {
                             return $content;
                         }
@@ -28,10 +24,11 @@ class ContainerExtensionTemplateTagIfthen extends Base
                             return '';
                         }
                     case 'assigned':
-                        if ($htmlTags['wanted'] === $templateObject->getAssign($htmlTags['assigned'])) {
+                        if ($htmlTags['wanted'] == $templateObject->getAssign($htmlTags['assigned'])) {
+                            return $content;
                         }
                         else {
-
+                            return '';
                         }
                 }
 

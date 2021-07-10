@@ -13,7 +13,6 @@ class ContainerIndexPage_ajax extends ContainerExtensionAjax_abstract
 
         /** @var ContainerFactoryHeader $header */
         $this->header->setCookie($cookie);
-        $header->setCookie($cookie);
     }
 
 }

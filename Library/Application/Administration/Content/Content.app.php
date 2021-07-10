@@ -10,21 +10,6 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
         /** @var ContainerFactoryRouter $router */
         $router = clone Container::getInstance('ContainerFactoryRouter');
 
-        if ($router->getQuery('createIndex')) {
-            /** @var ApplicationAdministrationContent_crud_index $crud */
-            $crud = Container::get('ApplicationAdministrationContent_crud_index');
-            $crud->setCrudContentIdent($router->getQuery('createIndex'));
-            $crud->createIndexFromContentIdent();
-        }
-
-        $indexCollect  = [];
-        $crudIndex     = new ApplicationAdministrationContent_crud_index();
-        $crudIndexList = $crudIndex->find();
-        /** @var ApplicationAdministrationContent_crud_index $crudIndexListItem */
-        foreach ($crudIndexList as $crudIndexListItem) {
-            $indexCollect[$crudIndexListItem->getCrudContentIdent()][] = $crudIndexListItem->getCrudLanguage() . ' - ' . $crudIndexListItem->getCrudPath();
-        }
-
         /** @var ApplicationAdministrationContent_crud $crud */ //
         /** @var ContainerFactoryLogPage_crud $crud */
         $crud  = Container::get('ApplicationAdministrationContent_crud');
@@ -68,23 +53,12 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
                               $crudContentAllItem->getCrudIdent());
             $linkCreateIndex = $router->getUrlReadable();
 
-            if (isset($indexCollect[$crudContentAllItem->getCrudIdent()])) {
-                $indexButton = '<a href="' . $linkCreateIndex . '" class="simpleModifySuccess withFill btn">' . ContainerFactoryLanguage::get('/ApplicationAdministrationContent/table/button/reCreate') . '</a>';
-            }
-            else {
-                $router->getUrlReadable();
-                $indexButton = '<a href="' . $linkCreateIndex . '" class="simpleModifyError withFill btn btn">' . ContainerFactoryLanguage::get('/ApplicationAdministrationContent/table/button/create') . '</a>';
-            }
-
             $tableTcs[] = [
 //                'crudIdent'           => $crudContentAllItem->getCrudIdent(),
 'crudIdent'           => '<a href="index.php?application=ApplicationAdministrationContentEdit&route=edit&id=' . $crudContentAllItem->getCrudIdent() . '" class="block">' . $crudContentAllItem->getCrudIdent() . '</a>',
-'index'               => implode('<br />',
-    ($indexCollect[$crudContentAllItem->getCrudIdent()] ?? [])),
 'crudData'            => $contentData,
 'dataVariableCreated' => $dataVariableCreatedDateTime->format(ContainerFactoryLanguage::get('/ContainerFactoryLanguage/language/dateTime')),
 'dataVariableEdited'  => $dataVariableEditedDateTime->format(ContainerFactoryLanguage::get('/ContainerFactoryLanguage/language/dateTime')),
-'createIndex'         => $indexButton,
             ];
         }
 

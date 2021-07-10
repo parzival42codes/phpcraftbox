@@ -14,7 +14,7 @@ class ContainerFactoryHeaderCookie
 
     public function __construct()
     {
-        $this->expire = Config::get('/environment/cookie/expire');
+        $this->expire = time() + Config::get('/environment/cookie/expire');
     }
 
     public function setName(string $value): void

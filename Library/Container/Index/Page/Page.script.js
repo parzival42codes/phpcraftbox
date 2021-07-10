@@ -4,15 +4,11 @@ $(function () {
         'path': "/ajax/page/cookie/banner",
         'dataType': 'json',
         'onSuccess': function (elementSettings, resultData) {
-            console.log(elementSettings);
-            console.log(resultData);
+            $('#cookieBanner').remove();
         }
     });
 
     $('.cookieBannerButton').on("click", function () {
-        // $('#cookieBanner').remove();
-        _globalFunctions['menuOpenCloseVertical'].trigger({
-            "foo": "bar"
-        });
+        _globalFunctions['menuOpenCloseVertical'].trigger();
     });
 });

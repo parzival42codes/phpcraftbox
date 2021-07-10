@@ -10,10 +10,6 @@ titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/
 language-de_DE="Contentseite Ident"
 language-en_US="Content Page Ident "}"
 classCell="withFill"
-[index]
-titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/table/index"
-language-de_DE="Index"
-language-en_US="Index"}"
 [dataVariableCreated]
 [crudData]
 titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/table/crudData"
@@ -27,11 +23,6 @@ language-en_US="Created"}"
 titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/table/dataVariableUpdated"
 language-de_DE="Bearbeitet"
 language-en_US="Updated"}"
-[createIndex]
-titleHeader = "{insert/language class="ApplicationAdministrationContent" path="/table/createIndex"
-language-de_DE="Index erstellen"
-language-en_US="Create Index"}"
-
 [/data]
 
 <div class="flex-container">

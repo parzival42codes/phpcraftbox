@@ -187,31 +187,8 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
             });
 
-//        eol();
-
-        $crudIndexCollect = [];
-        $crudIndex        = new ApplicationAdministrationContent_crud_index();
-        $crudIndexAll     = $crudIndex->find([
-                                                 'crudContentIdent' => $this->id
-                                             ]);
-        /** @var ApplicationAdministrationContent_crud_index $crudIndexAllItem */
-        foreach ($crudIndexAll as $crudIndexAllItem) {
-            $crudIndexCollect[] = '<a href="' . Config::get('/server/http/base/url') . $crudIndexAllItem->getCrudPath() . '" target="_blank" >' . $crudIndexAllItem->getCrudPath() . '</a>';
-        }
-
-        $template->assign('index',
-                          implode('<br />',
-                                  $crudIndexCollect));
-
-        $container = Container::DIC();
-        /** @var ContainerFactoryRouter $router */
-        $router = $container->getDIC('/Router');
-        $router->setQuery('indexrefresh',
-                          1);
-        $linkCreateIndex = $router->getUrlReadable();
-
-        $template->assign('indexRefresh',
-                          '<a href="' . $linkCreateIndex . '" class="withFill btn">' . ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/button/recreate') . '</a>');
+        $template->assign('link',
+                          Config::get('/server/http/base/url') . '/' . $crud->getCrudIdent());
 
         $template->parseQuote();
         $template->parse();
@@ -289,13 +266,7 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
             $crudHistory->setCrudIdent($this->id);
             $crudHistory->setCrudData($crud->getCrudData());
             $crudHistory->setCrudContent($crud->getCrudContent());
-            $crudHistory->insert();
-
-            /** @var ApplicationAdministrationContent_crud_index $crudIndex */
-            $crudIndex = Container::get('ApplicationAdministrationContent_crud_index');
-            $crudIndex->setCrudContentIdent($crud->getCrudIdent());
-            $crudIndex->createIndexFromContentIdent();
-#
+            $crudHistory->insert();#
         }
     }
 

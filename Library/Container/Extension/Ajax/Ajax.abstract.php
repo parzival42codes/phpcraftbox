@@ -33,16 +33,14 @@ abstract class ContainerExtensionAjax_abstract extends Base
 
             $this->execute();
 
-            /** @var ContainerFactoryHeader $header */
-            $header = Container::getInstance('ContainerFactoryHeader');
-            $header->send();
+            $this->header->set('content-type',
+                               'application/json; charset=utf-8');
 
         } catch (Throwable $e) {
             simpleDebugDump($e);
             simpleDebugDump($e->getTrace());
         }
 
-        $this->header->set('content-type','application/json; charset=utf-8');
         $this->header->send();
 
 //

@@ -5,25 +5,18 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
 
     public function setContent(): string
     {
-        $ident  = Container::get('ApplicationAdministrationContentView/ident');
-
-        /** @var ApplicationAdministrationContent_crud_index $crudIndex */
-        $crudIndex = Container::get('ApplicationAdministrationContent_crud_index');
-        $crudIndex->setCrudIdent($ident);
-        $crudIndex->findById();
-
-        /** @var ApplicationAdministrationContent_crud $crud */
-        $crud = Container::get('ApplicationAdministrationContent_crud');
-        $crud->setCrudIdent($crudIndex->getCrudContentIdent());
-        $crud->findById();
+        $ident = Container::get('ApplicationAdministrationContentView/ident');
+        $crud  = new ApplicationAdministrationContent_crud();
+        $crud->setCrudIdent($ident);
+        $crud->findById(true);
 
         /** @var ContainerIndexPage $page */
-        $page = Container::getInstance('ContainerIndexPage');
-        $page->setPageTitle($crudIndex->getCrudTitle());
+//        $page = Container::getInstance('ContainerIndexPage');
+//        $page->setPageTitle('');
 
         $breadcrumb = $page->getBreadcrumb();
-        $breadcrumb->addBreadcrumbItem($crudIndex->getCrudTitle(),
-                                       $crudIndex->getCrudPath());
+//        $breadcrumb->addBreadcrumbItem($crud->getCrudTitle(),
+//                                       $crud->getCrudPath());
 
         return $crud->getCrudContent();
 
