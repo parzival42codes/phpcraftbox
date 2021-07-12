@@ -121,7 +121,6 @@ class ContainerIndexPage
 
         $container = Container::DIC();
 
-
         /** @var ContainerExtensionTemplate $templatePage */
         $templatePage = $this->templatePage;
         $templatePage->assign('cookieBanner',

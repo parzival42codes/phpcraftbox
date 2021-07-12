@@ -2,28 +2,30 @@
      class="card-container card-container--shadow">
     <div class="card-container-header">Impressum</div>
     <div class="card-container-content">
-        Angaben gem. § 5 TMG:<br/>
-        <br/>
-        Vorname, Name
-        <br/>
-        Adresse
-        <br/>
-        PLZ
-        <br/>
-        <u>Kontaktaufnahme:</u><br/>
-        <br/>
-        Telefon:<br/>
-        <br/>
-        Fax:<br/>
-        <br/>
-        E-Mail:<br/>
-        <br/>
-        <br/>
-        <br/>
-        <b>Haftungsausschluss – Disclaimer:</b>
-        <br/>
-        <u>Haftung für Inhalte</u><br/>
-        <br/>
+        <p>
+            Angaben gem. § 5 TMG:<br/>
+            <br/>
+            Vorname, Name
+            <br/>
+            Adresse
+            <br/>
+            PLZ
+            <br/>
+            <u>Kontaktaufnahme:</u><br/>
+            <br/>
+            Telefon:<br/>
+            <br/>
+            Fax:<br/>
+            <br/>
+            E-Mail:<br/>
+            <br/>
+            <br/>
+        </p>
+        <p>
+            <b>Haftungsausschluss – Disclaimer:</b>
+            <br/>
+            <u>Haftung für Inhalte</u><br/>
+            <br/>
         <p>Alle Inhalte unseres Internetauftritts wurden mit größter Sorgfalt und nach bestem Gewissen erstellt. Für die
             Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als
             Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
@@ -39,9 +41,9 @@
             Rechtsverletzung
             möglich. Bei Bekanntwerden von den o.g. Rechtsverletzungen werden wir diese Inhalte unverzüglich
             entfernen.</p>
-        <br/>
-        <u>Haftungsbeschränkung für externe Links</u>
-        <br/>
+        <p>
+            <u>Haftungsbeschränkung für externe Links</u>
+        </p>
         <p>Unsere Webseite enthält Links auf externe Webseiten Dritter. Auf die Inhalte dieser direkt oder indirekt
             verlinkten
             Webseiten haben wir keinen Einfluss. Daher können wir für die „externen Links“ auch keine Gewähr auf
@@ -59,7 +61,7 @@
             ausschließlich in dem Fall nur bestehen, wenn wir von den Inhalten Kenntnis erlangen und es uns technisch
             möglich
             und zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern.</p>
-        <br/>
+
         <p>Diese Haftungsausschlusserklärung gilt auch innerhalb des eigenen Internetauftrittes „Name Ihrer Domain“
             gesetzten
             Links und Verweise von Fragestellern, Blogeinträgern, Gästen des Diskussionsforums. Für illegale,
@@ -69,13 +71,12 @@
             Informationen entstehen, haftet allein der Diensteanbieter der Seite, auf welche verwiesen wurde, nicht
             derjenige,
             der über Links auf die jeweilige Veröffentlichung lediglich verweist.</p>
-        <br/>
         <p>
             Werden uns Rechtsverletzungen bekannt, werden die externen Links durch uns unverzüglich entfernt.
         </p>
-        <br/>
-        <u>Urheberrecht</u>
-
+        <p>
+            <u>Urheberrecht</u>
+        </p>
         <p>
             Die auf unserer Webseite veröffentlichen Inhalte und Werke unterliegen dem deutschen Urheberrecht
             (http://www.gesetze-im-internet.de/bundesrecht/urhg/gesamt.pdf) . Die Vervielfältigung, Bearbeitung,

@@ -10,21 +10,20 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
         $crud->setCrudIdent($ident);
         $crud->findById(true);
 
-        $crudData = json_decode($crud->getCrudData());
-        $title = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                           $crudData['title']);
-        d($title);
+        $crudData = json_decode($crud->getCrudData(),
+                                true);
 
-        d($crud);
-        eol();
+        $title       = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
+                                                                 $crudData['title']);
+        $description = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
+                                                                 $crudData['description']);
 
-        /** @var ContainerIndexPage $page */
-//        $page = Container::getInstance('ContainerIndexPage');
-//        $page->setPageTitle('');
+        /** @var ContainerIndexPage $page */ //
+        $page = Container::getInstance('ContainerIndexPage');
 
         $breadcrumb = $page->getBreadcrumb();
-//        $breadcrumb->addBreadcrumbItem($crud->getCrudTitle(),
-//                                       $crud->getCrudPath());
+        $breadcrumb->addBreadcrumbItem($title,
+                                       $description);
 
         return $crud->getCrudContent();
 

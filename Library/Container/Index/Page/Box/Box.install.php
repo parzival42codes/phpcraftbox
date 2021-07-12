@@ -143,7 +143,17 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudDescription('Main');
             $crud->setCrudContent('<div id="CMSFooter">
 <div class="card-container card-container--shadow">
-<div class="card-container-content">Footer</div>
+<div class="card-container-content" style="display: flex;">
+<div style="flex: 1;">
+{insert/positions position="/Content/Footer/Left"}
+</div>
+<div style="flex: 1;">
+{insert/positions position="/Content/Footer/Middle"}
+</div>
+<div style="flex: 1;">
+{insert/positions position="/Content/Footer/Right"}
+</div>
+</div>
 </div>
 </div>');
             $crud->setCrudAssignment('page');
