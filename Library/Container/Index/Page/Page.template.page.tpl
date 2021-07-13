@@ -61,6 +61,8 @@
 
         }
 
+        {insert/positions position="/Page/header"}
+
         {$javascriptHeader}
 
         //<save>

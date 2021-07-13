@@ -134,6 +134,11 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
         $this->installFunction(function () {
             /** @var array $data */ /*$before*/
 
+            /** @var ContainerExtensionTemplateLoad_cache_template $templateCache */
+            $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
+                                            'ContainerIndexPageBox',
+                                            'install.footer');
+
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
@@ -141,21 +146,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudFlex(1);
             $crud->setCrudPosition(1);
             $crud->setCrudDescription('Main');
-            $crud->setCrudContent('<div id="CMSFooter">
-<div class="card-container card-container--shadow">
-<div class="card-container-content" style="display: flex;">
-<div style="flex: 1;">
-{insert/positions position="/Content/Footer/Left"}
-</div>
-<div style="flex: 1;">
-{insert/positions position="/Content/Footer/Middle"}
-</div>
-<div style="flex: 1;">
-{insert/positions position="/Content/Footer/Right"}
-</div>
-</div>
-</div>
-</div>');
+            $crud->setCrudContent($templateCache->getCacheContent()['install.footer']);
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 
