@@ -61,7 +61,7 @@
 
         }
 
-        {insert/positions position="/Page/header"}
+        {insert/positions position="/Page/header/javascript"}
 
         {$javascriptHeader}
 
