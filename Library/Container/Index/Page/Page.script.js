@@ -1,6 +1,6 @@
 $(function () {
 
-    _globalFunctions['menuOpenCloseVertical'] = $.CMSAjax({
+    _globalFunctions['ajaxPageCookieBanner'] = $.CMSAjax({
         'path': "/ajax/page/cookie/banner",
         'dataType': 'json',
         'onSuccess': function (elementSettings, resultData) {
@@ -9,6 +9,11 @@ $(function () {
     });
 
     $('.cookieBannerButton').on("click", function () {
-        _globalFunctions['menuOpenCloseVertical'].trigger();
+        let $this = $(this);
+        _globalFunctions['ajaxPageCookieBanner'].trigger(
+            {
+                "value": $this.data('value')
+            }
+        );
     });
 });

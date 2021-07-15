@@ -111,11 +111,18 @@ class CoreIndex
                      'max-age=31536000; includeSubdomains');
 
         $secureHeader = [
-            'default-src \'self\';',
-            'script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' ' . \Config::get('/CoreIndex/cspScriptSrc') . ';',
-            'style-src \'self\' \'unsafe-inline\' fonts.googleapis.com www.tinymce.com ' . \Config::get('/CoreIndex/cspScriptStyle') . ';',
-            'child-src \'self\' ' . \Config::get('/CoreIndex/cspScriptChild') . ';',
-            'font-src \'self\';',
+            'default-src \'self\'' . (string)Config::get('/environment/registry/system/Content-Security-Policy/default-src',
+                                                         '') . ';',
+            'connect-src ' . Config::get('/server/http/base/url') . ' ' . (string)Config::get('/environment/registry/system/Content-Security-Policy/connect-src',
+                                                                                              '') . ';',
+            'script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' ' . (string)Config::get('/environment/registry/system/Content-Security-Policy/script-src',
+                                                                                           '') . ';',
+            'style-src \'self\' \'unsafe-inline\' ' . (string)Config::get('/environment/registry/system/Content-Security-Policy/style-src',
+                                                                          '') . ';',
+            'child-src \'self\' ' . (string)Config::get('/environment/registry/system/Content-Security-Policy/child-src',
+                                                        '') . ';',
+            'font-src \'self\'' . (string)Config::get('/environment/registry/system/Content-Security-Policy/font-src',
+                                                      '') . ';',
             'img-src \'self\' data: *',
         ];
 

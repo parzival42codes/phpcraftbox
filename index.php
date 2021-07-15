@@ -35,11 +35,12 @@ else {
 }
 
 $container = Container::DIC([
-                                '/User'                => $user,
-                                '/Config'              => new Config(),
-                                '/Router'              => new ContainerFactoryRouter(Config::get('/server/http/path')),
-                                '/Page'                => new ContainerIndexPage(),
-                                '/Cookie/CookieBanner' => (int)($cookieBannerRequest->exists()),
+                                '/User'                      => $user,
+                                '/Config'                    => new Config(),
+                                '/Router'                    => new ContainerFactoryRouter(Config::get('/server/http/path')),
+                                '/Page'                      => new ContainerIndexPage(),
+                                '/Cookie/CookieBanner'       => (int)($cookieBannerRequest->exists()),
+                                '/Cookie/CookieBanner/value' => (int)($cookieBannerRequest->get()),
                             ]);
 
 /** @var ContainerFactoryRouter $router */

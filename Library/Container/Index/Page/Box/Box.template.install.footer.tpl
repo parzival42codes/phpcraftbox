@@ -11,12 +11,16 @@
             <div style="flex: 1;">
                 {insert/positions position="/Content/Footer/Right"}
                 <p>
-                    <a href="{insert/positions position="/_/base/url"}/impressum">{insert/language class="ContainerIndexPageBox" path="/footer/link/impressum"
+                    <a href="{insert/positions position="/_/base/url"}/impressum"
+                    class="linkArrow"
+                    >{insert/language class="ContainerIndexPageBox" path="/footer/link/impressum"
                         language-de_DE="Impressum"
                         language-en_US="Impressum"}</a>
                 </p>
                 <p>
-                    <a href="{insert/positions position="/_/base/url"}/privacy">{insert/language class="ContainerIndexPageBox" path="/footer/link/privacy"
+                    <a href="{insert/positions position="/_/base/url"}/privacy"
+                       class="linkArrow"
+                    >{insert/language class="ContainerIndexPageBox" path="/footer/link/privacy"
                         language-de_DE="Datenschutz"
                         language-en_US="Privacy"}</a>
                 </p>

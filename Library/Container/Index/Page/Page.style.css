@@ -13,6 +13,14 @@
     padding: 0.5em;
 }
 
+#cookieBanner ul {
+    margin-left: 1em;
+}
+
+#cookieBanner ul li {
+    list-style: initial;
+}
+
 /*#thisClass {*/
 
 /*}*/

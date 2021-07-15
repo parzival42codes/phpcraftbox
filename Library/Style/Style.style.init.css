@@ -230,3 +230,7 @@ summary {
     display: inline-block;
 }
 
+.linkArrow:before {
+    background: yellow;
+    content:'\25BA'
+}
