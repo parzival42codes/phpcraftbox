@@ -27,7 +27,7 @@ class ContainerExtensionTemplateParseInsertPositions extends ContainerExtensionT
             self::$positionInsertion[$smtpData['crudPosition']] = trim($smtpData['crudContentConcat']);
         }
 
-        self::$positionInsertion['_/base/url'] = Config::get('/server/http/base/url');
+        self::$positionInsertion['/_/base/url'] = Config::get('/server/http/base/url');
     }
 
     public static function insert(string $position, string $content): void
@@ -42,5 +42,10 @@ class ContainerExtensionTemplateParseInsertPositions extends ContainerExtensionT
     {
         $parameter = $this->getParameter();
         return (self::$positionInsertion[$parameter['position']] ?? ($parameter['default'] ?? ''));
+    }
+
+    public static function add(string $key, string $value)
+    {
+        self::$positionInsertion[$key] = $value;
     }
 }

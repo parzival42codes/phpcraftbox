@@ -230,7 +230,8 @@ summary {
     display: inline-block;
 }
 
-.linkArrow:before {
-    background: yellow;
-    content:'\25BA'
+.linkArrow::before {
+    content:'\25b6';
+    padding-right: 0.5em;
+    font-size: 0.75em;
 }
