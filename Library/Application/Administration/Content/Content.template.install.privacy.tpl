@@ -3,7 +3,7 @@
     <div class="card-container-header">Datenschutz</div>
     <div class="card-container-content">
         <p>
-            Die Nutzung unserer Website {nsert/config class="Core" path="/page/title"} ist in der Regel ohne Angabe personenbezogener Daten
+            Die Nutzung unserer Website {insert/config class="Core" path="/page/title"} ist in der Regel ohne Angabe personenbezogener Daten
             möglich.<br/><br/>
             Soweit auf unserer Seite personenbezogene Daten (beispielsweise Name, Anschrift, E-Mail-Adressen,
             im Rahmen einer Warenbestellung, Eröffnung und bei Registrierung für unseren Newsletter) doch erhoben werden
