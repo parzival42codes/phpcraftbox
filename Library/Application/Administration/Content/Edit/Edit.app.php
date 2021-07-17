@@ -115,10 +115,6 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
         $request->addElement('contentContent',
                              $elementContentContent);
 
-        /** @var ContainerFactoryLanguageParseIni $contentData */
-        $contentData = Container::get('ContainerFactoryLanguageParseIni',
-                                      $crud->getCrudData());
-
         /** @var ContainerExtensionTemplateParseCreateFormElementText $elementContentIdent */
         $elementContentIdent = Container::get('ContainerExtensionTemplateParseCreateFormElementText');
         $elementContentIdent->setLabel(ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/form/contentIdent/label'));
@@ -141,7 +137,7 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
         $elementContentData = Container::get('ContainerExtensionTemplateParseCreateFormElementTextarea');
         $elementContentData->setLabel(ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/form/contentData/label'));
         $elementContentData->setValue($response->get('contentData',
-                                                     $contentData->getIniClean()));
+                                                     $crud->getCrudData()));
         $elementContentData->setInfo(ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/form/contentData/info'));
         $elementContentData->addModify('ContainerExtensionTemplateParseCreateFormModifyValidatorRequired');
 

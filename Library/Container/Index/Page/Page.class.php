@@ -354,8 +354,10 @@ class ContainerIndexPage
 
         $templatePageAboveTheFold = Container::get('ContainerIndexPage_cache_abovethefold');
 
+        $headerCssHash = $templatePage->addParseFinal('<style type="text/css">' . $templatePageAboveTheFold->getCacheContent() . $this->pageContent['headerCss'] . '</style>');
+
         $templatePage->assign('headerCss',
-                              '<style type="text/css">' . $templatePageAboveTheFold->getCacheContent() . $this->pageContent['headerCss'] . '</style>');
+                              $headerCssHash);
 
         $templatePage->assign('headerInclude',
             (($this->pageContent['headerInclude'] === '') ? '' : $this->pageContent['headerInclude']));
@@ -441,10 +443,8 @@ class ContainerIndexPage
         $templatePage->parse();
 
         $templatePage->parseFinal();
-        $templatePage->parseFinal();
 
 //        d($templatePage->get());
-
 //        eol(true);
 
         if (

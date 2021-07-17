@@ -9,6 +9,8 @@ source = "CoreAutoloadDebugTable"
 titleHeader = "{insert/language class="ContainerFactoryLanguage" path="/standard/template/class" import="template"}"
 [function]
 titleHeader = "{insert/language class="ContainerFactoryLanguage" path="/standard/template/function" import="template"}"
+[microtime]
+titleHeader = "{insert/language class="ContainerFactoryLanguage" path="/standard/template/microtime" import="template"}"
 [file]
 titleHeader = "{insert/language class="ContainerFactoryLanguage" path="/standard/template/file" import="template"}"
 [line]

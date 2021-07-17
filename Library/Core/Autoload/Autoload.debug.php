@@ -12,6 +12,7 @@ class CoreAutoload_debug extends CoreDebug_abstract
         }
 
         foreach ($this->collectClass as $collectClassKey => $collectClassItem) {
+            $this->collectClass[$collectClassKey]['microtime']        = ContainerHelperCalculate::calculateMicroTimeDisplay($collectClassItem['microtime']);
             $this->collectClass[$collectClassKey]['classDefinedFile'] = ContainerFactoryFile::getFilenameWrap(($collectClassItem['classDefinedFile'] ?? ''));
             $this->collectClass[$collectClassKey]['file']             = ContainerFactoryFile::getFilenameWrap(($collectClassItem['trace'][2]['file'] ?? ''));
             $this->collectClass[$collectClassKey]['line']             = ($collectClassItem['trace'][2]['line'] ?? '');
