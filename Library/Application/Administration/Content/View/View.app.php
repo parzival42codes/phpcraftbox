@@ -29,6 +29,7 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
 
         123
         456
+        789
 
     }
 
