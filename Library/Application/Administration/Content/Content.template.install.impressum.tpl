@@ -2,7 +2,8 @@
      class="card-container card-container--shadow">
     <div class="card-container-header">Impressum</div>
     <div class="card-container-content">
-        <p>
+        <CMS function="_markdown">
+                <p>
             Angaben gem. § 5 TMG:<br/>
             <br/>
             Vorname, Name
@@ -21,6 +22,7 @@
             <br/>
             <br/>
         </p>
+
         <p>
             <b>Haftungsausschluss – Disclaimer:</b>
             <br/>
@@ -94,5 +96,6 @@
             Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis.
             Bei
             Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte unverzüglich entfernen.</p>
+        </CMS>
     </div>
 </div>
