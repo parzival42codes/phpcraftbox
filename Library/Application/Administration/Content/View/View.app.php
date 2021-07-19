@@ -28,8 +28,6 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
         return $crud->getCrudContent();
 
         789
-        123
-        456
 
     }
 
