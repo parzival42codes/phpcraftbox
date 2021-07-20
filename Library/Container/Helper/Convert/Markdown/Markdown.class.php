@@ -2,22 +2,31 @@
 
 class ContainerHelperConvertMarkdown extends Base
 {
-    protected string $contentMarkdownItem = '';
-    protected array  $contentMarkdown     = [];
-    protected bool   $paragraph           = false;
+    protected array  $contentMarkdownExploded = [];
+    protected string $contentMarkdownItem     = '';
+    protected int    $contentMarkdownCounter  = 0;
+    protected array  $contentMarkdown         = [];
+    protected bool   $paragraph               = false;
 
     public function convert($content): string
     {
         # https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
         d($content);
-        $contentExploded = explode("\n",
-                                   $content);
+        $this->contentMarkdownExploded = explode("\n",
+                                                 $content);
 
-        foreach ($contentExploded as $contentMarkdownKey => $contentMarkdownItem) {
-            $contentMarkdownItemTrimmed = trim($contentMarkdownItem);
+        $contentExplodedCount = (count($this->contentMarkdownExploded) - 1);
 
-            if (empty($contentMarkdownItemTrimmed)) {
+        for ($i = 0; $i <= $contentExplodedCount; $i++) {
+            $this->contentMarkdownCounter = $i;
+            $contentMarkdownItemTrimmed   = trim($this->contentMarkdownExploded[$i]);
+
+            $identFind = explode(' ',
+                                 $this->contentMarkdownItem,
+                                 2);
+
+            if (empty($identFind[0])) {
                 $this->switchParagraph();
             }
             else {
@@ -25,15 +34,22 @@ class ContainerHelperConvertMarkdown extends Base
                     $this->contentMarkdown[] = $contentMarkdownItemTrimmed;
                 }
                 else {
-                    $this->contentMarkdownItem = $contentMarkdownItemTrimmed;
-                    if ($this->markdownHeader()) {
-                        continue;
-                    }
-                    else {
-                        $this->contentMarkdown[] = $contentMarkdownItemTrimmed;
+                    switch ($identFind[0]) {
+                        case '#';
+                        case '##';
+                        case '###';
+                        case '####';
+                        case '#####';
+                        case '######';
+                            $this->markdownHeader($identFind[0],
+                                                  $identFind[1]);
+                            break;
+                        default:
+                            $this->contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
                     }
                 }
             }
+
         }
 
         d(implode("\n",
@@ -48,36 +64,40 @@ class ContainerHelperConvertMarkdown extends Base
         return ($contentItem !== strip_tags($contentItem));
     }
 
-    protected function markdownHeader(): bool
+    protected function markdownHeader($find, $content): bool
     {
-        if (
-            strpos($this->contentMarkdownItem,
-                   '#') === 0
-        ) {
-            $headerCheck = explode(' ',
-                                   $this->contentMarkdownItem,
-                                   2);
-
-            $strLen                  = strlen($headerCheck[0]);
-            $this->contentMarkdown[] = '<h' . $strLen . '>' . $headerCheck[1] . '</ h' . $strLen . '>';
-
-            return true;
-        }
-        else {
-            return false;
-        }
+        $strLen                  = strlen($find[0]);
+        $this->contentMarkdown[] = '<h' . $strLen . '>' . $content . '</h' . $strLen . '>';
     }
 
     protected function switchParagraph(): void
     {
+        $prevEmpty = empty($this->contentMarkdownExploded[($this->contentMarkdownCounter - 1)] ?? null);
+        $nextEmpty = empty($this->contentMarkdownExploded[($this->contentMarkdownCounter + 1)] ?? null);
+
+        if ($prevEmpty && $nextEmpty) {
+            $this->contentMarkdown[] = '<br />';
+            return;
+        }
+
         if ($this->paragraph === true) {
             $this->paragraph         = false;
             $this->contentMarkdown[] = '</p>';
+
+            if (!$nextEmpty) {
+                $this->paragraph         = true;
+                $this->contentMarkdown[] = '<p>';
+            }
+            else {
+                $this->contentMarkdown[] = '<br />';
+            }
+
         }
         else {
             $this->paragraph         = true;
             $this->contentMarkdown[] = '<p>';
         }
+
     }
 
 }
