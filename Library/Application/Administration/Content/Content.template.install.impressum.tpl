@@ -3,26 +3,21 @@
     <div class="card-container-header">Impressum</div>
     <div class="card-container-content">
         <CMS function="_markdown">
-                <p>
-            Angaben gem. § 5 TMG:<br/>
-            <br/>
-            Vorname, Name
-            <br/>
-            Adresse
-            <br/>
-            PLZ
-            <br/>
-            <u>Kontaktaufnahme:</u><br/>
-            <br/>
-            Telefon:<br/>
-            <br/>
-            Fax:<br/>
-            <br/>
-            E-Mail:<br/>
-            <br/>
-            <br/>
-        </p>
+            # Impressum
 
+            Angaben gem. § 5 TMG:
+
+            Stefan Schlombs
+            Am Dattelner Meer 8
+            45771 Datteln
+
+            Kontaktaufnahme:
+
+            Telefon:
+
+            Fax:
+
+            E-Mail:
         <p>
             <b>Haftungsausschluss – Disclaimer:</b>
             <br/>

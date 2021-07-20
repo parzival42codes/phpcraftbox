@@ -96,6 +96,8 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
                          [
                              '{' => '&#123;',
                              '}' => '&#125;',
+                             '<' => '&#60;',
+                             '>' => '&#62;',
                          ]);
 
         /** @var ContainerExtensionTemplateParseCreateFormElementTextarea $elementContentContent */
