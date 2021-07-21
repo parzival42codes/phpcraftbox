@@ -3,14 +3,13 @@
 class ContainerHelperConvertMarkdown extends Base
 {
     protected array  $contentMarkdownExploded = [];
-    protected string $contentMarkdownItem     = '';
     protected int    $contentMarkdownCounter  = 0;
     protected array  $contentMarkdown         = [];
     protected bool   $paragraph               = false;
 
     public function convert($content): string
     {
-        # https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+        # https://www.markdownguide.org/basic-syntax/
 
         d($content);
         $this->contentMarkdownExploded = explode("\n",
@@ -23,14 +22,14 @@ class ContainerHelperConvertMarkdown extends Base
             $contentMarkdownItemTrimmed   = trim($this->contentMarkdownExploded[$i]);
 
             $identFind = explode(' ',
-                                 $this->contentMarkdownItem,
+                                 $contentMarkdownItemTrimmed,
                                  2);
 
             if (empty($identFind[0])) {
                 $this->switchParagraph();
             }
             else {
-                if ($this->checkHtmlTags($contentMarkdownItemTrimmed)) {
+                if ($this->checkHtmlTags($identFind[1])) {
                     $this->contentMarkdown[] = $contentMarkdownItemTrimmed;
                 }
                 else {
@@ -64,7 +63,7 @@ class ContainerHelperConvertMarkdown extends Base
         return ($contentItem !== strip_tags($contentItem));
     }
 
-    protected function markdownHeader($find, $content): bool
+    protected function markdownHeader($find, $content): void
     {
         $strLen                  = strlen($find[0]);
         $this->contentMarkdown[] = '<h' . $strLen . '>' . $content . '</h' . $strLen . '>';
@@ -85,10 +84,12 @@ class ContainerHelperConvertMarkdown extends Base
             $this->contentMarkdown[] = '</p>';
 
             if (!$nextEmpty) {
+                d($this->contentMarkdownExploded[($this->contentMarkdownCounter + 1)]);
                 $this->paragraph         = true;
                 $this->contentMarkdown[] = '<p>';
             }
             else {
+                d($this->contentMarkdownExploded[($this->contentMarkdownCounter + 1)]);
                 $this->contentMarkdown[] = '<br />';
             }
 
