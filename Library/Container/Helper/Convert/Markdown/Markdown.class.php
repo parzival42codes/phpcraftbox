@@ -2,18 +2,21 @@
 
 class ContainerHelperConvertMarkdown extends Base
 {
-    protected array  $contentMarkdownExploded = [];
-    protected int    $contentMarkdownCounter  = 0;
-    protected array  $contentMarkdown         = [];
-    protected bool   $paragraph               = false;
+    protected array $contentMarkdownExploded = [];
+    protected int   $contentMarkdownCounter  = 0;
+    protected array $contentMarkdown         = [];
+    protected bool  $paragraph               = false;
+    protected bool  $list                    = false;
+    protected bool  $blockquote              = false;
 
     public function convert($content): string
     {
         # https://www.markdownguide.org/basic-syntax/
 
         d($content);
-        $this->contentMarkdownExploded = explode("\n",
-                                                 $content);
+        $this->contentMarkdownExploded   = explode("\n",
+                                                   $content);
+        $this->contentMarkdownExploded[] = '';
 
         $contentExplodedCount = (count($this->contentMarkdownExploded) - 1);
 
@@ -26,46 +29,99 @@ class ContainerHelperConvertMarkdown extends Base
                                  2);
 
             if (empty($identFind[0])) {
+                $this->switchListClose();
+                $this->switchBlockquoteClose();
                 $this->switchParagraph();
             }
             else {
-                if ($this->checkHtmlTags($identFind[1])) {
-                    $this->contentMarkdown[] = $contentMarkdownItemTrimmed;
+                switch ($identFind[0]) {
+                    case '#';
+                    case '##';
+                    case '###';
+                    case '####';
+                    case '#####';
+                    case '######';
+                        $this->switchListClose();
+                        $this->switchBlockquoteClose();
+                        $this->markdownHeader($identFind[0],
+                                              $identFind[1]);
+                        break;
+                    case '---';
+                    case '***';
+                    case '___';
+                        $this->switchListClose();
+                        $this->switchBlockquoteClose();
+                        $this->contentMarkdown[] = '<hr />';
+                        break;
+                    case '*';
+                    case '-';
+                        $this->switchList($identFind[1]);
+                        break;
+                    case '>';
+                        $this->switchBlockquote($identFind[1]);
+                        break;
+                    default:
+                        $this->switchListClose();
+                        $this->switchBlockquoteClose();
+                        $this->contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
                 }
-                else {
-                    switch ($identFind[0]) {
-                        case '#';
-                        case '##';
-                        case '###';
-                        case '####';
-                        case '#####';
-                        case '######';
-                            $this->markdownHeader($identFind[0],
-                                                  $identFind[1]);
-                            break;
-                        default:
-                            $this->contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
-                    }
-                }
+
             }
 
         }
 
-        d(implode("\n",
-                  $this->contentMarkdown));
-        eol();
+        $content = implode("\n",
+                           $this->contentMarkdown);
+
+        $content = preg_replace_callback("!\*\*(.*?)\*\*!i",
+                                         [
+                                             $this,
+                                             'callbackRegexBold'
+                                         ],
+                                         $content);
+
+        $content = preg_replace_callback("!\_\_(.*?)\_\_!i",
+                                         [
+                                             $this,
+                                             'callbackRegexBold'
+                                         ],
+                                         $content);
+
+        $content = preg_replace_callback("!\_(.*?)\_!i",
+                                         [
+                                             $this,
+                                             'callbackRegexItalic'
+                                         ],
+                                         $content);
+
+        $content = preg_replace_callback("!\*(.*?)\*!i",
+                                         [
+                                             $this,
+                                             'callbackRegexItalic'
+                                         ],
+                                         $content);
+
+        $content = preg_replace_callback("!\<blockquote\>(.*?)\<\/blockquote\>!si",
+                                         [
+                                             $this,
+                                             'callbackRegexBlockquote'
+                                         ],
+                                         $content);
+
+//        d($content);
+//        eol();
 
         return $content;
     }
 
-    protected function checkHtmlTags($contentItem): bool
+    protected function hasHtmlTags($contentItem): bool
     {
         return ($contentItem !== strip_tags($contentItem));
     }
 
     protected function markdownHeader($find, $content): void
     {
-        $strLen                  = strlen($find[0]);
+        $strLen                  = strlen($find);
         $this->contentMarkdown[] = '<h' . $strLen . '>' . $content . '</h' . $strLen . '>';
     }
 
@@ -84,12 +140,10 @@ class ContainerHelperConvertMarkdown extends Base
             $this->contentMarkdown[] = '</p>';
 
             if (!$nextEmpty) {
-                d($this->contentMarkdownExploded[($this->contentMarkdownCounter + 1)]);
                 $this->paragraph         = true;
                 $this->contentMarkdown[] = '<p>';
             }
             else {
-                d($this->contentMarkdownExploded[($this->contentMarkdownCounter + 1)]);
                 $this->contentMarkdown[] = '<br />';
             }
 
@@ -101,4 +155,54 @@ class ContainerHelperConvertMarkdown extends Base
 
     }
 
+    protected function switchList($content): void
+    {
+        if ($this->list === false) {
+            $this->list              = true;
+            $this->contentMarkdown[] = '<ul>';
+        }
+
+        $this->contentMarkdown[] = '<li>' . $content . '</li>';
+    }
+
+    protected function switchListClose(): void
+    {
+        if ($this->list === true) {
+            $this->list              = false;
+            $this->contentMarkdown[] = '</ul>';
+        }
+    }
+
+    protected function switchBlockquote($content): void
+    {
+        if ($this->blockquote === false) {
+            $this->blockquote        = true;
+            $this->contentMarkdown[] = '<blockquote>';
+        }
+
+        $this->contentMarkdown[] = $content . '<br />';
+    }
+
+    protected function switchBlockquoteClose(): void
+    {
+        if ($this->blockquote === true) {
+            $this->blockquote        = false;
+            $this->contentMarkdown[] = '</blockquote>';
+        }
+    }
+
+    protected function callbackRegexBold($var): string
+    {
+        return '<strong>' . $var[1] . '</strong>';
+    }
+
+    protected function callbackRegexItalic($var): string
+    {
+        return '<em>' . $var[1] . '</em>';
+    }
+
+    protected function callbackRegexBlockquote($content): string
+    {
+        return $this->convert($content[1]);
+    }
 }
