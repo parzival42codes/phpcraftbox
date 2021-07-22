@@ -10,9 +10,9 @@ class ContainerExtensionTemplateTagMarkdown extends Base
     {
         $template->setRegisteredFunctions('_markdown',
             function ($content, $htmlTags, $templateObject) {
-                $markdown = new ContainerHelperConvertMarkdown();
+                $markdown = new ContainerHelperConvertMarkdown($content);
 
-                return $markdown->convert($content);
+                return $markdown->get();
             });
     }
 

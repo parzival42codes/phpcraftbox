@@ -5,24 +5,30 @@ class ContainerHelperConvertMarkdown extends Base
     protected array $contentMarkdownExploded = [];
     protected int   $contentMarkdownCounter  = 0;
     protected array $contentMarkdown         = [];
+    protected int   $contentLevel            = 0;
     protected bool  $paragraph               = false;
     protected bool  $list                    = false;
     protected bool  $blockquote              = false;
 
-    public function convert($content): string
+    public function __construct($content)
+    {
+        $this->convert($content);
+    }
+    public function convert($content)
     {
         # https://www.markdownguide.org/basic-syntax/
 
         d($content);
-        $this->contentMarkdownExploded   = explode("\n",
-                                                   $content);
-        $this->contentMarkdownExploded[] = '';
+        d($this->contentLevel);
+        $this->contentMarkdownExploded[$this->contentLevel]   = explode("\n",
+                                                                        $content);
+        $this->contentMarkdownExploded[$this->contentLevel][] = '';
 
-        $contentExplodedCount = (count($this->contentMarkdownExploded) - 1);
+        $contentExplodedCount = (count($this->contentMarkdownExploded[$this->contentLevel]) - 1);
 
         for ($i = 0; $i <= $contentExplodedCount; $i++) {
             $this->contentMarkdownCounter = $i;
-            $contentMarkdownItemTrimmed   = trim($this->contentMarkdownExploded[$i]);
+            $contentMarkdownItemTrimmed   = trim($this->contentMarkdownExploded[$this->contentLevel][$i]);
 
             $identFind = explode(' ',
                                  $contentMarkdownItemTrimmed,
@@ -69,6 +75,11 @@ class ContainerHelperConvertMarkdown extends Base
             }
 
         }
+
+    }
+
+    public function get()
+    {
 
         $content = implode("\n",
                            $this->contentMarkdown);
@@ -127,8 +138,8 @@ class ContainerHelperConvertMarkdown extends Base
 
     protected function switchParagraph(): void
     {
-        $prevEmpty = empty($this->contentMarkdownExploded[($this->contentMarkdownCounter - 1)] ?? null);
-        $nextEmpty = empty($this->contentMarkdownExploded[($this->contentMarkdownCounter + 1)] ?? null);
+        $prevEmpty = empty($this->contentMarkdownExploded[$this->contentLevel][($this->contentMarkdownCounter - 1)] ?? null);
+        $nextEmpty = empty($this->contentMarkdownExploded[$this->contentLevel][($this->contentMarkdownCounter + 1)] ?? null);
 
         if ($prevEmpty && $nextEmpty) {
             $this->contentMarkdown[] = '<br />';
@@ -180,7 +191,7 @@ class ContainerHelperConvertMarkdown extends Base
             $this->contentMarkdown[] = '<blockquote>';
         }
 
-        $this->contentMarkdown[] = $content . '<br />';
+        $this->contentMarkdown[] = $content;
     }
 
     protected function switchBlockquoteClose(): void
@@ -201,8 +212,10 @@ class ContainerHelperConvertMarkdown extends Base
         return '<em>' . $var[1] . '</em>';
     }
 
-    protected function callbackRegexBlockquote($content): string
+    protected function callbackRegexBlockquote($content): void
     {
-        return $this->convert($content[1]);
+        $this->contentLevel++;
+        $this->convert($content[1]);
+        $this->contentLevel--;
     }
 }
