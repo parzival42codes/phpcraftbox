@@ -231,7 +231,13 @@ summary {
 }
 
 .linkArrow::before {
-    content:'\25b6';
+    content: '\25b6';
     padding-right: 0.5em;
     font-size: 0.75em;
+}
+
+blockquote {
+    @aboveTheFold: "1";
+    margin: 0.5em;
+    padding: 0.5em;
 }
