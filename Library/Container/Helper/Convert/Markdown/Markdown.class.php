@@ -6,10 +6,7 @@ class ContainerHelperConvertMarkdown extends Base
 
     public function __construct($content)
     {
-//        d($content);
         $this->contentMarkdown = $this->convert($content);
-//        d($this->contentMarkdown);
-//        eol();
     }
 
     public function convert($content): string
@@ -22,9 +19,8 @@ class ContainerHelperConvertMarkdown extends Base
 
         $contentMarkdown = [];
 
-        $contentMarkdownExploded   = explode("\n",
-                                             $content);
-        $contentMarkdownExploded[] = '';
+        $contentMarkdownExploded = explode("\n",
+                                           $content);
 
         $contentExplodedCount = (count($contentMarkdownExploded) - 1);
 
@@ -35,60 +31,64 @@ class ContainerHelperConvertMarkdown extends Base
                                  $contentMarkdownItemTrimmed,
                                  2);
 
-            if (empty($identFind[0])) {
-                $this->switchListClose($contentMarkdown,
-                                       $list);
-                $this->switchBlockquoteClose($contentMarkdown,
-                                             $blockquote);
-                $this->switchParagraph($contentMarkdown,
-                                       $contentMarkdownExploded,
-                                       $i,
-                                       $paragraph);
-            }
-            else {
-                switch ($identFind[0]) {
-                    case '#';
-                    case '##';
-                    case '###';
-                    case '####';
-                    case '#####';
-                    case '######';
-                        $this->switchListClose($contentMarkdown,
-                                               $list);
-                        $this->switchBlockquoteClose($contentMarkdown,
-                                                     $blockquote);
-                        $this->markdownHeader($contentMarkdown,
-                                              $identFind[0],
-                                              $identFind[1]);
-                        break;
-                    case '---';
-                    case '***';
-                    case '___';
-                        $this->switchListClose($contentMarkdown,
-                                               $list);
-                        $this->switchBlockquoteClose($contentMarkdown,
-                                                     $blockquote);
-                        $contentMarkdown[] = '<hr />';
-                        break;
-                    case '*';
-                    case '-';
-                        $this->switchList($contentMarkdown,
-                                          $identFind[1],
-                                          $list);
-                        break;
-                    case '>';
-                        $this->switchBlockquote($contentMarkdown,
-                            ($identFind[1] ?? ''),
-                                                $blockquote);
-                        break;
-                    default:
-                        $this->switchListClose($contentMarkdown,
-                                               $list);
-                        $this->switchBlockquoteClose($contentMarkdown,
-                                                     $blockquote);
-                        $contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
-                }
+            switch ($identFind[0]) {
+                case '#';
+                case '##';
+                case '###';
+                case '####';
+                case '#####';
+                case '######';
+                    $this->switchParagraphClose($contentMarkdown,
+                                                $paragraph);
+                    $this->switchListClose($contentMarkdown,
+                                           $list);
+                    $this->switchBlockquoteClose($contentMarkdown,
+                                                 $blockquote);
+                    $this->markdownHeader($contentMarkdown,
+                                          $identFind[0],
+                                          $identFind[1]);
+                    break;
+                case '---';
+                case '***';
+                case '___';
+                    $this->switchParagraphClose($contentMarkdown,
+                                                $paragraph);
+                    $this->switchListClose($contentMarkdown,
+                                           $list);
+                    $this->switchBlockquoteClose($contentMarkdown,
+                                                 $blockquote);
+                    $contentMarkdown[] = '<hr />';
+                    break;
+                case '*';
+                case '-';
+                    $this->switchParagraphClose($contentMarkdown,
+                                                $paragraph);
+                    $this->switchList($contentMarkdown,
+                                      $identFind[1],
+                                      $list);
+                    break;
+                case '>';
+                    $this->switchParagraphClose($contentMarkdown,
+                                                $paragraph);
+                    $this->switchBlockquote($contentMarkdown,
+                        ($identFind[1] ?? ''),
+                                            $blockquote);
+                    break;
+                default:
+                    $this->switchParagraph($contentMarkdown,
+                                           $contentMarkdownExploded,
+                                           $i,
+                                           $paragraph);
 
+                    $this->switchListClose($contentMarkdown,
+                                           $list);
+                    $this->switchBlockquoteClose($contentMarkdown,
+                                                 $blockquote);
+
+                    if (!empty($contentMarkdownItemTrimmed)) {
+                        $contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
+
+                    }
             }
 
         }
@@ -124,6 +124,13 @@ class ContainerHelperConvertMarkdown extends Base
                                          ],
                                          $content);
 
+        $content = preg_replace_callback("!\`(.*?)\`!i",
+                                         [
+                                             $this,
+                                             'callbackRegexCodeSingle'
+                                         ],
+                                         $content);
+
         return preg_replace_callback("!\<blockquote\>(.*?)\<\/blockquote\>!si",
                                      [
                                          $this,
@@ -144,34 +151,27 @@ class ContainerHelperConvertMarkdown extends Base
         $contentMarkdown[] = '<h' . $strLen . '>' . $content . '</h' . $strLen . '>';
     }
 
-    protected function switchParagraph(&$contentMarkdown, $contentMarkdownExploded, $i, &$paragraph): void
+    protected function switchParagraph(&$contentMarkdown, &$contentMarkdownExploded, $i, &$paragraph): void
     {
-        $prevEmpty = empty($contentMarkdownExploded[($i - 1)] ?? null);
-        $nextEmpty = empty($contentMarkdownExploded[($i + 1)] ?? null);
+        $isEmpty   = empty($contentMarkdownExploded[$i]);
 
-        if ($prevEmpty && $nextEmpty) {
-            $contentMarkdown[] = '<br />';
+        if ($isEmpty) {
             return;
         }
 
-        if ($paragraph === true) {
-            $paragraph         = false;
-            $contentMarkdown[] = '</p>';
-
-            if (!$nextEmpty) {
-                $paragraph         = true;
-                $contentMarkdown[] = '<p>';
-            }
-            else {
-                $contentMarkdown[] = '<br />';
-            }
-
-        }
-        else {
+        if ($paragraph === false) {
             $paragraph         = true;
             $contentMarkdown[] = '<p>';
         }
 
+    }
+
+    protected function switchParagraphClose(&$contentMarkdown, &$paragraph): void
+    {
+        if ($paragraph === true) {
+            $paragraph         = false;
+            $contentMarkdown[] = '</p>';
+        }
     }
 
     protected function switchList(&$contentMarkdown, $content, &$list): void
@@ -223,5 +223,10 @@ class ContainerHelperConvertMarkdown extends Base
     protected function callbackRegexBlockquote($content): string
     {
         return '<blockquote>' . $this->convert($content[1] . '</blockquote>');
+    }
+
+    protected function callbackRegexCodeSingle($content): string
+    {
+        return '<code>' . $content[1] . '</code>';
     }
 }
