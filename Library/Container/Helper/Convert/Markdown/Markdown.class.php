@@ -85,10 +85,10 @@ class ContainerHelperConvertMarkdown extends Base
                     $this->switchBlockquoteClose($contentMarkdown,
                                                  $blockquote);
 
-                    if (!empty($contentMarkdownItemTrimmed)) {
+//                    if (!empty($contentMarkdownItemTrimmed)) {
                         $contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
 
-                    }
+//                    }
             }
 
         }
@@ -131,6 +131,13 @@ class ContainerHelperConvertMarkdown extends Base
                                          ],
                                          $content);
 
+        $content = preg_replace_callback("!\[(.*?)\]\((.*)\)!i",
+                                         [
+                                             $this,
+                                             'callbackRegexLink'
+                                         ],
+                                         $content);
+
         return preg_replace_callback("!\<blockquote\>(.*?)\<\/blockquote\>!si",
                                      [
                                          $this,
@@ -153,7 +160,7 @@ class ContainerHelperConvertMarkdown extends Base
 
     protected function switchParagraph(&$contentMarkdown, &$contentMarkdownExploded, $i, &$paragraph): void
     {
-        $isEmpty   = empty($contentMarkdownExploded[$i]);
+        $isEmpty = empty($contentMarkdownExploded[$i]);
 
         if ($isEmpty) {
             return;
@@ -228,5 +235,15 @@ class ContainerHelperConvertMarkdown extends Base
     protected function callbackRegexCodeSingle($content): string
     {
         return '<code>' . $content[1] . '</code>';
+    }
+
+    protected function callbackRegexLink($content): string
+    {
+        $contentTitleExplode = explode(' ',
+                                       $content[2],
+                                       2);
+
+        return '<a href="' . $contentTitleExplode[0] . '" ' . ((isset($contentTitleExplode[1]) ? 'title=' . $contentTitleExplode[1] : '')) . '>' . $content[1] . '</a>';
+
     }
 }
