@@ -73,7 +73,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
     public function importQueryDatabaseFromCrud(string $class): void
     {
         /** @var Base_abstract_crud $crud */
-        $crud          = Container::get($class);
+        $crud = Container::get($class);
 //        $crud->truncate();
 
         $queryDatabase = $crud->getInstallUpdateQuery();
@@ -342,6 +342,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 /** @var Config_crud $configCrud */
                 $configCrud = Container::get('Config_crud');
                 $configCrud->setCrudClass($data['crud']['rootClass']);
+                $configCrud->setCrudIdent($data['crud']['rootClass'] . $data['crud']['key']);
                 $configCrud->setCrudConfigKey($data['crud']['key']);
                 $configCrud->setCrudConfigValue($data['crud']['value']);
                 $configCrud->setCrudConfigValueDefault($data['crud']['valueDefault'] ?? $data['crud']['value']);
@@ -403,7 +404,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
                 /** @var ContainerFactoryUserConfig_crud $configCrud */
                 $configCrud = Container::get('ContainerFactoryUserConfig_crud');
-                $configCrud->setCrudIdent('/'.$data['crud']['rootClass'] . $data['crud']['key']);
+                $configCrud->setCrudIdent('/' . $data['crud']['rootClass'] . $data['crud']['key']);
                 $configCrud->setCrudClass($data['crud']['rootClass']);
                 $configCrud->setCrudConfigKey($data['crud']['key']);
                 $configCrud->setCrudConfigValueDefault($data['crud']['value']);

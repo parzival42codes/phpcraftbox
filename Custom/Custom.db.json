@@ -1,0 +1,8 @@
+{
+  "type": "install.config",
+  "content": {
+    "config": {
+      "/Core/Content-Security-Policy/connect-src": "https://matomo.loc"
+    }
+  }
+}
