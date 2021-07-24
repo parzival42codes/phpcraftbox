@@ -53,6 +53,14 @@ abstract class Base_abstract_crud
         }
     }
 
+    /**
+     * @return string
+     */
+    public static function getTableId(): string
+    {
+        return static::$tableId;
+    }
+
     public function getProperties(): array
     {
         return static::$reflectionProperty[get_called_class()];
