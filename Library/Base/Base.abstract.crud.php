@@ -222,6 +222,8 @@ abstract class Base_abstract_crud
                                             null,
                                             [
                                                 'debug' => [
+                                                    'query' => $query->getQueryParsed(),
+                                                    'dbdata' => $dbData,
                                                     'id' => $id,
                                                 ]
                                             ]);

@@ -14,29 +14,32 @@ class ConsoleCustom_install extends ContainerFactoryModulInstall_abstract
                 $this->installFunction(function () {
                     /** @var array $data */ /*$before*/
 
-                    simpleDebugLog($data);
-
                     $crudName = ucfirst($data['crud']);
                     /** @var Base_abstract_crud $crud */
                     $crud = new $crudName();
 
                     $rp = new ReflectionProperty($crud,
-                                                 $crud::getTableId());
+                                                 $data['column']);
                     settype($data['ident'],
                             $rp->getType()
                                ->getName());
 
                     call_user_func([
                                        $crud,
-                                       'set' . ucfirst($crud::getTableId())
+                                       'set' . ucfirst($data['column'])
                                    ],
                                    $data['ident']);
 
-                    $crud->findById();
+                    simpleDebugLog($data);
+                    simpleDebugLog($crud);
+
+                    $crud->findByColumn($data['column'],
+                                        true);
+
 
                     foreach ($data['values'] as $key => $value) {
                         $rp = new ReflectionProperty($crud,
-                                                     $value);
+                                                     $key);
                         settype($value,
                                 $rp->getType()
                                    ->getName());

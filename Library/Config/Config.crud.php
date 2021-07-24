@@ -156,7 +156,7 @@ class Config_crud extends Base_abstract_crud
     }
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId()
     {
