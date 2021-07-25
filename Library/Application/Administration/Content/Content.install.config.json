@@ -2,11 +2,10 @@
   "type": "install.config",
   "content": {
     "/active": {
-      "value": "max",
+      "value": "0",
       "language": {
         "de_DE": "Debugmodus aktiv ?",
         "en_US": "Debuc active ?"
       }
     }
-  }
 }

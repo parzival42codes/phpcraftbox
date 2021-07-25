@@ -4,7 +4,7 @@
     <div class="card-container-content">
         <CMS function="_markdown">
             Anbieter:
-            Max Mustermann
+            {insert/config class="ApplicationAdministrationContent" path="/address/firstname"} {insert/config class="ApplicationAdministrationContent" path="/address/lastname"}
             Musterstraße 1
             80999 München
 
