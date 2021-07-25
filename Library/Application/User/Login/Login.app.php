@@ -92,7 +92,8 @@ class ApplicationUserLogin_app extends ApplicationAdministration_abstract
         /** @var ContainerExtensionTemplateParseCreateFormElementText $elementEmail */
         $elementEmail = Container::get('ContainerExtensionTemplateParseCreateFormElementText');
 
-        $elementEmail->setValue(Config::get('/environment/install/user/email'));
+        $elementEmail->setValue(((int)Config::get('/environment/debug/active',
+                                            0) === 1) ? 'admin@phptoolbox.loc': '');
         //$elementEmail->setValue($response->get('email'));
         $elementEmail->setLabel(ContainerFactoryLanguage::get('/ApplicationUserLogin/form/email/label'));
         $elementEmail->setInfo(ContainerFactoryLanguage::get('/ApplicationUserLogin/form/email/info'));
@@ -107,7 +108,8 @@ class ApplicationUserLogin_app extends ApplicationAdministration_abstract
 
         /** @var ContainerExtensionTemplateParseCreateFormElementPassword $elementPassword */
         $elementPassword = Container::get('ContainerExtensionTemplateParseCreateFormElementPassword');
-        $elementPassword->setValue(\Config::get('/environment/install/user/password'));
+        $elementPassword->setValue(((int)Config::get('/environment/debug/active',
+                                                     0) === 1) ? 'admin' : '');
         $elementPassword->setLabel(ContainerFactoryLanguage::get('/ApplicationUserLogin/form/password/label'));
         $elementPassword->setInfo(ContainerFactoryLanguage::get('/ApplicationUserLogin/form/password/info'));
         $elementPassword->addModify('ContainerExtensionTemplateParseCreateFormModifyValidatorRequired');

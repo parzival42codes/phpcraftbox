@@ -14,9 +14,9 @@ class ContainerFactoryUser_install extends ContainerFactoryModulInstall_abstract
 
             /** @var ContainerFactoryUser_crud $crud */
             $crud = Container::get('ContainerFactoryUser_crud');
-            $crud->setCrudUsername(\Config::get('/environment/install/user/username'));
-            $crud->setCrudEmail(\Config::get('/environment/install/user/email'));
-            $crud->setCrudPassword(password_hash(\Config::get('/environment/install/user/password'),
+            $crud->setCrudUsername('admin');
+            $crud->setCrudEmail('admin@phpcraftbox.loc');
+            $crud->setCrudPassword(password_hash('admin',
                                                  PASSWORD_DEFAULT));
             $crud->setCrudUserGroupId(4);
             $crud->setCrudActivated(true);
