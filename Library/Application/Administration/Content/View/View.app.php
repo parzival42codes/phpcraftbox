@@ -25,6 +25,9 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
         $breadcrumb->addBreadcrumbItem($title,
                                        $description);
 
+        $page->setPageTitle($title);
+        $page->setPageDescription($description);
+
         return $crud->getCrudContent();
 
     }

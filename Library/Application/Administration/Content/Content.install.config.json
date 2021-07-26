@@ -63,6 +63,41 @@
         "de_DE": "Webseite",
         "en_US": "Website"
       }
+    },
+    "/editorial/firstname": {
+      "value": "Max",
+      "language": {
+        "de_DE": "Vorname",
+        "en_US": "Firstname"
+      }
+    },
+    "/editorial/lastname": {
+      "value": "Mustermann",
+      "language": {
+        "de_DE": "Nachname",
+        "en_US": "Lastname"
+      }
+    },
+    "/editorial/street": {
+      "value": "Musterstr. 1",
+      "language": {
+        "de_DE": "Straße",
+        "en_US": "Street"
+      }
+    },
+    "/editorial/zipcode": {
+      "value": "12345",
+      "language": {
+        "de_DE": "Postleitzahl",
+        "en_US": "Zipcode"
+      }
+    },
+    "/editorial/city": {
+      "value": "Musterstadt",
+      "language": {
+        "de_DE": "Stadt",
+        "en_US": "CIty"
+      }
     }
   }
 }

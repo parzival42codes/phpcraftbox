@@ -13,14 +13,16 @@ class ContainerHelperConvertMarkdown extends Base
     {
         # https://www.markdownguide.org/basic-syntax/
 
+        $template = new ContainerExtensionTemplate();
+        $template->set(trim($content));
+        $template->parse();
+
         $paragraph  = false;
         $list       = false;
         $blockquote = false;
 
-        $contentMarkdown = [];
-
         $contentMarkdownExploded = explode("\n",
-                                           $content);
+                                           $template->get());
 
         $contentExplodedCount = (count($contentMarkdownExploded) - 1);
 
@@ -86,7 +88,7 @@ class ContainerHelperConvertMarkdown extends Base
                                                  $blockquote);
 
 //                    if (!empty($contentMarkdownItemTrimmed)) {
-                        $contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
+                    $contentMarkdown[] = $contentMarkdownItemTrimmed . '<br />';
 
 //                    }
             }
