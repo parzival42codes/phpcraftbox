@@ -8,6 +8,7 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
         $this->importMeta();
         $this->importRoute();
         $this->importMenu();
+        $this->importConfig();
         $this->importLanguage();
         $this->readLanguageFromFile('default');
         $this->readLanguageFromFile('install.impressum');

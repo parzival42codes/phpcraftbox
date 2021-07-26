@@ -1,11 +1,68 @@
 {
   "type": "install.config",
   "content": {
-    "/active": {
-      "value": "0",
+    "/address/firstname": {
+      "value": "Max",
       "language": {
-        "de_DE": "Debugmodus aktiv ?",
-        "en_US": "Debuc active ?"
+        "de_DE": "Vorname",
+        "en_US": "Firstname"
+      }
+    },
+    "/address/lastname": {
+      "value": "Mustermann",
+      "language": {
+        "de_DE": "Nachname",
+        "en_US": "Lastname"
+      }
+    },
+    "/address/street": {
+      "value": "Musterstr. 1",
+      "language": {
+        "de_DE": "Straße",
+        "en_US": "Street"
+      }
+    },
+    "/address/zipcode": {
+      "value": "12345",
+      "language": {
+        "de_DE": "Postleitzahl",
+        "en_US": "Zipcode"
+      }
+    },
+    "/address/city": {
+      "value": "Musterstadt",
+      "language": {
+        "de_DE": "Stadt",
+        "en_US": "CIty"
+      }
+    },
+    "/address/phone": {
+      "value": "0 123 456",
+      "language": {
+        "de_DE": "Telefon",
+        "en_US": "Phone"
+      }
+    },
+    "/address/telefax": {
+      "value": "0 123 457",
+      "language": {
+        "de_DE": "Telefax",
+        "en_US": "Telefax"
+      }
+    },
+    "/address/email": {
+      "value": "max.mustermann@dummy.org",
+      "language": {
+        "de_DE": "Stadt",
+        "en_US": "CIty"
+      }
+    },
+    "/address/website": {
+      "value": "mustermann.org",
+      "language": {
+        "de_DE": "Webseite",
+        "en_US": "Website"
       }
     }
+  }
 }

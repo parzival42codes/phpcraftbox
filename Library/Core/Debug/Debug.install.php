@@ -6,7 +6,6 @@ class CoreDebug_install extends ContainerFactoryModulInstall_abstract
    public function install(): void
     {
         $this->importLanguage();
-        $this->importConfig();
         $this->importMeta();
 
         $this->queryDatabase($this->database());

@@ -5,14 +5,14 @@
         <CMS function="_markdown">
             Anbieter:
             {insert/config class="ApplicationAdministrationContent" path="/address/firstname"} {insert/config class="ApplicationAdministrationContent" path="/address/lastname"}
-            Musterstraße 1
-            80999 München
+            {insert/config class="ApplicationAdministrationContent" path="/address/street"}
+            {insert/config class="ApplicationAdministrationContent" path="/address/zipcode"} {insert/config class="ApplicationAdministrationContent" path="/address/city"}
 
             Kontakt:
-            Telefon: 089/1234567-8
-            Telefax: 089/1234567-9
-            E-Mail: mail@mustermann.de
-            Website: www.mustermann.de
+            Telefon: {insert/config class="ApplicationAdministrationContent" path="/address/phone"}
+            Telefax: {insert/config class="ApplicationAdministrationContent" path="/address/telefax"}
+            E-Mail: {insert/config class="ApplicationAdministrationContent" path="/address/email"}
+            Website: {insert/config class="ApplicationAdministrationContent" path="/address/website"}
 
 
 

@@ -186,7 +186,7 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
             });
 
         $template->assign('link',
-                          Config::get('/server/http/base/url') . '/' . $crud->getCrudIdent());
+                          Config::get('/server/http/base/url') . $crud->getCrudIdent());
 
         $template->parseQuote();
         $template->parse();
