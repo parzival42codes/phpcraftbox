@@ -18,26 +18,42 @@ class ConsoleCustom_install extends ContainerFactoryModulInstall_abstract
                     /** @var Base_abstract_crud $crud */
                     $crud = new $crudName();
 
-                    $rp = new ReflectionProperty($crud,
-                                                 $data['column']);
-                    settype($data['ident'],
-                            $rp->getType()
-                               ->getName());
+                    if ($data['ident'] !== null) {
 
-                    call_user_func([
-                                       $crud,
-                                       'set' . ucfirst($data['column'])
-                                   ],
-                                   $data['ident']);
+                        $rp = new ReflectionProperty($crud,
+                                                     $data['column']);
+                        settype($data['ident'],
+                                $rp->getType()
+                                   ->getName());
 
-                    simpleDebugLog($data);
-                    simpleDebugLog($crud);
+                        call_user_func([
+                                           $crud,
+                                           'set' . ucfirst($data['column'])
+                                       ],
+                                       $data['ident']);
 
-                    $crud->findByColumn($data['column'],
-                                        true);
+                        $crud->findByColumn($data['column'],
+                                            true);
 
+                    }
 
                     foreach ($data['values'] as $key => $value) {
+
+                        if (
+                            strpos($value,
+                                   '??File:') === 0
+                        ) {
+                            $templateFile = substr($value,
+                                                   7);
+
+                            $templateCache = new ContainerExtensionTemplateLoad_cache_template('Db',
+                                                                                               $templateFile);
+
+                            $template = new ContainerExtensionTemplate();
+                            $template->set($templateCache->getCacheContent()[$templateFile]);
+                            $value = $template->get();
+                        }
+
                         $rp = new ReflectionProperty($crud,
                                                      $key);
                         settype($value,

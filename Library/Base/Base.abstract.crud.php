@@ -222,9 +222,9 @@ abstract class Base_abstract_crud
                                             null,
                                             [
                                                 'debug' => [
-                                                    'query' => $query->getQueryParsed(),
+                                                    'query'  => $query->getQueryParsed(),
                                                     'dbdata' => $dbData,
-                                                    'id' => $id,
+                                                    'id'     => $id,
                                                 ]
                                             ]);
             }
@@ -581,13 +581,17 @@ abstract class Base_abstract_crud
             isset($classComment['paramData']['@database']['dataVariableCreated'])
             ) {
                 $structure->setColumn('dataVariableCreated',
-                                      'datetime');
+                                      'datetime',
+                                      true,
+                                      '0000-00-00 00:00:00');
             }
             if (
             isset($classComment['paramData']['@database']['dataVariableEdited'])
             ) {
                 $structure->setColumn('dataVariableEdited',
-                                      'datetime');
+                                      'datetime',
+                                      true,
+                                      '0000-00-00 00:00:00');
             }
             if (
             isset($classComment['paramData']['@database']['dataVariableEditedCounter'])
@@ -601,7 +605,9 @@ abstract class Base_abstract_crud
             isset($classComment['paramData']['@database']['dataVariableDeleted'])
             ) {
                 $structure->setColumn('dataVariableDeleted',
-                                      'datetime');
+                                      'datetime',
+                                      true,
+                                      '0000-00-00 00:00:00');
             }
         }
 
