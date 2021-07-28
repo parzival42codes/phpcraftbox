@@ -354,7 +354,7 @@ class ContainerFactoryDatabaseQuery extends Base
             }
 
             if ($tableData['dataVariableDeleted'] === true) {
-                $this->setParameterWhere('`' . $this->table . '`' . '.dataVariableDeleted',
+                $this->setParameterWhere('dataVariableDeleted',
                                          '0');
             }
         }
