@@ -323,6 +323,9 @@ CMS_CACHE_CORE_LINKREWRITE',
 
     ContainerFactorySession::start();
 
+    setlocale(LC_TIME,
+              (string)Config::get('/environment/language'));
+
 } catch (Throwable $exception) {
     d($exception);
     eol(true);
