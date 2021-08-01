@@ -594,6 +594,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 $modulCrud->setCrudHasJavascript((int)($data['iniData']['has']['javascript'] ?? 0));
                 $modulCrud->setCrudHasCss((int)($data['iniData']['has']['css'] ?? 0));
                 $modulCrud->setCrudHasContent((int)($data['iniData']['has']['content'] ?? 0));
+                $modulCrud->setCrudHasSearch((int)($data['iniData']['has']['search'] ?? 0));
 
                 $modulCrud->setCrudActive($data['iniData']['active'] ?? 0);
 
@@ -628,6 +629,9 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
         /** @var array $metaCollect */
         $metaCollect = $classComment['paramData']['@modul'];
 
+        simpleDebugLog($rootClass);
+        simpleDebugLog($metaCollect);
+
         if (!empty($classComment['title'])) {
             $metaCollect['name'] = trim($classComment['title']);
         }
@@ -658,16 +662,8 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             }
         }
 
-        $metaCollect['hasCSSFiles'] = '';
-        $hasCSS                     = isset($metaCollect['hasCSS']);
-        if ($hasCSS === true) {
-            if (empty($metaCollect['hasCSS'])) {
-                $metaCollect['hasCSSFiles'] = '';
-            }
-            else {
-                $metaCollect['hasCSSFiles'] = $metaCollect['hasCSS'];
-            }
-        }
+        $metaCollect['hasContent'] = isset($metaCollect['hasContent']);
+        $metaCollect['hasSearch']  = isset($metaCollect['hasSearch']);
 
         if (isset($metaCollect['groupAccess'])) {
             $this->setGroupAccess($rootClass,
@@ -708,6 +704,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             'hasJavascript'         => ($hasJavascript ? 1 : 0),
             'hasJavascriptFiles'    => ($metaCollect['hasJavascriptFiles'] ?? ''),
             'hasContent'            => (($metaCollect['hasContent'] ?? false) ? 1 : 0),
+            'hasSearch'             => (($metaCollect['hasSearch'] ?? false) ? 1 : 0),
             'active'                => (($metaCollect['active'] ?? false) ? 0 : 1),
         ];
 
@@ -730,6 +727,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             $modulCrud->setCrudHasCss((int)$data['modulMeta']['hasCSS']);
             $modulCrud->setCrudHasCssFiles($data['modulMeta']['hasCSSFiles']);
             $modulCrud->setCrudHasContent((int)($data['modulMeta']['hasContent']));
+            $modulCrud->setCrudHasSearch((int)($data['modulMeta']['hasSearch']));
 
             $modulCrud->setCrudActive($data['modulMeta']['active']);
 

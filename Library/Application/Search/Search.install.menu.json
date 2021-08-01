@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationSearch",
+    "menuClassMain": "ApplicationSearch",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "10|Suche",
+        "menuDescription": "",
+        "menuPath": "/",
+        "menuAccess": "ApplicationSearch"
+      }
+    }
+  }
+}

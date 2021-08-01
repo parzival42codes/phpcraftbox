@@ -71,6 +71,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             'ContainerHelperViewDifference',
             'Application',
             'ApplicationIndex',
+            'ApplicationSearch',
             'ApplicationUser',
             'ApplicationUserProfil',
             'ApplicationUserMessage',
