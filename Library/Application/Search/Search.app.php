@@ -22,10 +22,19 @@ class ApplicationSearch_app extends Application_abstract
                                         $this->___getRootClass(),
                                         'default');
 
+        /** @var ContainerExtensionTemplate $template */
+        $template = Container::get('ContainerExtensionTemplate');
+        $template->set($templateCache->getCacheContent()['default']);
+
         /** @var ContainerExtensionTemplateParseCreateForm_helper $formHelper */
         $formHelper = Container::get('ContainerExtensionTemplateParseCreateForm_helper',
                                      $this->___getRootClass(),
                                      'register');
+
+        $formHelper->addFormElement('search',
+                                    'text');
+        $template->assign('search',
+                          $formHelper->getElements());
 
         /** @var ContainerExtensionTemplateParseCreateFormResponse $formHelperResponse */
         $formHelperResponse = $formHelper->getResponse();
@@ -40,15 +49,31 @@ class ApplicationSearch_app extends Application_abstract
                                       'crudHasSearch' => 1
                                   ]);
 
+        $formContent = '';
         /** @var ContainerFactoryModul_crud $crudSearchItem */
         foreach ($crudSearch as $crudSearchItem) {
             $searchName = $crudSearchItem->getCrudModul() . '_search';
             /** @var ApplicationSearch_abstract $searchModul */
             $searchModul = new $searchName();
-            $searchModul->getForm($formHelper);
+            $formContent .= $searchModul->getForm($formHelper);
         }
 
-        d($crudSearch);
-        eol();
+        $template->assign('registerHeader',
+                          $formHelper->getHeader());
+
+        $template->assign('content',
+                          $formContent);
+
+        $template->assign('registerFooter',
+                          $formHelper->getFooter(),
+                          true);
+
+//        d($formHelper);
+//        d($crudSearch);
+//        d($template);
+//        eol();
+
+        $template->parse();
+        return $template->get();
     }
 }

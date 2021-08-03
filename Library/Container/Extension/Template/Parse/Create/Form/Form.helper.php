@@ -175,6 +175,7 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
             'File',
             'Radio',
             'Select',
+            'Date',
         ];
 
         if (

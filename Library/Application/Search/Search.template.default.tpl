@@ -1,8 +1,16 @@
+{$registerHeader}
+
 <div class="card-container card-container--shadow">
     <div class="card-container-header">
-        Foo
+        {insert/language class="ApplicationSearch" path="/form/search/search"
+        language-de_DE="Suche"
+        language-en_US="Search"}
     </div>
     <div class="card-container-content">
-        Bar
+        {$search}
     </div>
 </div>
+
+{$content}
+
+{$registerFooter}
