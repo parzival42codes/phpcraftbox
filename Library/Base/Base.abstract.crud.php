@@ -362,6 +362,8 @@ abstract class Base_abstract_crud
             $query->groupBy($groupItem);
         }
 
+        $query = $this->modifyFindQuery($query);
+
         $query->construct();
         $smtp = $query->execute();
         return ($smtp->fetch()['c'] ?? 0);
