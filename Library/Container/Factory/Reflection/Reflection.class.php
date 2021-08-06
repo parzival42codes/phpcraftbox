@@ -47,7 +47,7 @@ class ContainerFactoryReflection extends Base
             self::$reflectionData[$class]['class'] = \Core::convertClassDocBlock($reflectionClass->getDocComment());
         }
         else {
-            throw new DetailedException('classNotFound',
+            throw new DetailedException('reflectionClassNotFound',
                                         0,
                                         null,
                                         [

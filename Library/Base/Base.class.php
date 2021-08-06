@@ -45,7 +45,7 @@ abstract class Base
             return $returnValue;
         }
         else {
-            throw new DetailedException('classNotFound',
+            throw new DetailedException('classMethodNotFound',
                                         0,
                                         null,
                                         [

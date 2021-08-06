@@ -164,8 +164,12 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
         return $this->response;
     }
 
-    public function addFormElement(string $name, string $type, array $parameter = [], array $modify = [], string $part = 'default'): void
+    public function addFormElement(string $name, string $type, array $parameter = [], array $modify = [], string $class = null): void
     {
+        if ($class !== null) {
+            $this->class = $class;
+        }
+
         $elementType = ucfirst($type);
         $optional    = [
             'Text',
