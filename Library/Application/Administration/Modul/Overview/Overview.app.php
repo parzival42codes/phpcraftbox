@@ -15,7 +15,7 @@ class ApplicationAdministrationModulOverview_app extends ApplicationAdministrati
                                                        RecursiveIteratorIterator::LEAVES_ONLY);
         $iteratorArray = iterator_to_array($iterator);
 
-        $allModule   = [];
+        $allModule = [];
 
         /** @var SplFileInfo $iteratorArrayItemObj */
         foreach ($iteratorArray as $iteratorArrayItemObj) {
@@ -37,16 +37,16 @@ class ApplicationAdministrationModulOverview_app extends ApplicationAdministrati
         $tableTcs = [];
 
         /** @var ContainerFactoryModul_crud $crud */
-        $crud           = Container::get('ContainerFactoryModul_crud');
+        $crud         = Container::get('ContainerFactoryModul_crud');
         $crudModulAll = $crud->find([//                                          'crudParentModul' => '',
-                                      ],
-                                      [],
-                                      [
-                                          'crudModul',
-                                          'crudParentModul'
-                                      ],
-                                      $pagination->getPagesView(),
-                                      $pagination->getPageOffset());
+                                    ],
+                                    [
+                                        'crudModul',
+                                        'crudParentModul'
+                                    ],
+                                    [],
+                                    $pagination->getPagesView(),
+                                    $pagination->getPageOffset());
 
 
 //        eol();
@@ -79,8 +79,8 @@ class ApplicationAdministrationModulOverview_app extends ApplicationAdministrati
             $dataVariableEditedDateTime  = new DateTime($crudModulAllItem->getDataVariableEdited());
 
             if (
-            !in_array($crudModulAllItem->getCrudModul(),
-                      $allModule)
+                !in_array($crudModulAllItem->getCrudModul(),
+                          $allModule)
             ) {
                 $tooltipString = $crudModulAllItem->getCrudModul();
             }
@@ -112,9 +112,9 @@ class ApplicationAdministrationModulOverview_app extends ApplicationAdministrati
 
     }
 
-    protected function pageData():void
+    protected function pageData(): void
     {
-/** @var ContainerIndexPage $page */
+        /** @var ContainerIndexPage $page */
         $page = Container::getInstance('ContainerIndexPage');
 
         $page->setPageTitle(ContainerFactoryLanguage::get('/ApplicationAdministrationModulOverview/breadcrumb'));

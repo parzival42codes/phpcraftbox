@@ -28,10 +28,10 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
         /** @var ApplicationAdministrationContent_crud $crud */
         $crud           = Container::get('ApplicationAdministrationContent_crud');
         $crudContentAll = $crud->find([],
-                                      [],
                                       [
                                           'crudIdent DESC'
                                       ],
+                                      [],
                                       $pagination->getPagesView(),
                                       $pagination->getPageOffset());
 

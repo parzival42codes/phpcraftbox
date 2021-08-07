@@ -170,7 +170,6 @@ class ApplicationAdministrationUserGroupEdit_app extends ApplicationAdministrati
         /** @var ContainerFactoryUserGroupAccess_crud $crud */
         $crud    = Container::get('ContainerFactoryUserGroupAccess_crud');
         $crudRed = $crud->find([],
-                               [],
                                [
                                    'crudPath ASC'
                                ]);

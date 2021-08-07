@@ -88,10 +88,6 @@ Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming 
                                 $wordLength = rand($rndStart,
                                                    $rndEnd);
 
-                                simpleDebugLog($rndStart);
-                                simpleDebugLog($rndEnd);
-                                simpleDebugLog($wordLength);
-
                                 $loremIpsumExploded = explode(' ',
                                                               $loremIpsum,
                                                               $wordLength);

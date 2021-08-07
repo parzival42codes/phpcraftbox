@@ -102,6 +102,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             'ApplicationAdministrationLanguage',
             'ApplicationIndexErrorNotfound',
             'ApplicationAdministration',
+            'ContainerFactoryComment',
             'ContainerExternResources',
             'ThrirdpartyJavascriptJquery',
             'ThrirdpartyJavascriptParsley',

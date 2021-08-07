@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 /**
  * Class ContainerFactoryUser_crud
@@ -24,7 +24,7 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
      * @database type int;11
      * @database isIndex
      */
-    protected int $crudUser;
+    protected int $crudUser = 0;
     /**
      * @var string
      * @database isIndex
