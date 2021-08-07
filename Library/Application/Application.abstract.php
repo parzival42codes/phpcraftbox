@@ -8,13 +8,13 @@ abstract class Application_abstract extends Base
     protected string $crudMain = '';
 
     protected int    $header     = 200;
-    protected  $class      = '';
+    protected string $class      = '';
     protected string $javascript = '';
     protected string $content    = '';
     protected array  $template   = [];
     protected array  $parameter  = [];
 
-    protected array        $breadcrumb          = [];
+    protected array $breadcrumb = [];
 
     protected ContainerFactoryMenu $menu;
 

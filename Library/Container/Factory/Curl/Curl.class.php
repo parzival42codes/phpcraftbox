@@ -3,13 +3,13 @@
 class ContainerFactoryCurl extends Base
 {
 
-    protected CurlHandle $curlConnection;
-    protected      $curlStatus;
-    protected string     $curlError = '';
-    protected string     $curlUrl   = '';
-    protected int        $curlPort  = 80;
-    protected string     $curlFile  = '';
-    protected      $returnData;
+    protected        $curlConnection;
+    protected        $curlStatus;
+    protected string $curlError = '';
+    protected string $curlUrl   = '';
+    protected int    $curlPort  = 80;
+    protected string $curlFile  = '';
+    protected        $returnData;
 
     public function __construct()
     {

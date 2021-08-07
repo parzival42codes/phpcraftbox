@@ -2,10 +2,10 @@
 
 class Config extends Base_abstract_keyvalue
 {
-    protected static array $registry            = [];
-    protected static array $convertArrayContent = [];
-    protected string       $prefix              = 'config';
-    protected string       $group               = '';
+    private static array $registry            = [];
+    private static array $convertArrayContent = [];
+    protected string     $prefix              = 'config';
+    protected string     $group               = '';
 
     public static function setCore(array $core): void
     {
@@ -13,7 +13,7 @@ class Config extends Base_abstract_keyvalue
         self::$registry = self::$convertArrayContent;
     }
 
-    protected static function convertArray(array $array, string $path = ''): void
+    private static function convertArray(array $array, string $path = ''): void
     {
         foreach ($array as $key => $item) {
             if (is_array($item) === true) {
@@ -31,7 +31,7 @@ class Config extends Base_abstract_keyvalue
         return self::$registry;
     }
 
-    public static function get(string $path,  $default = null)
+    public static function get(string $path, $default = null)
     {
         if (
         array_key_exists($path,

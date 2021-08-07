@@ -44,7 +44,7 @@ class ContainerIndexPage
     protected string                       $route               = '';
     protected string                       $routeKey            = '';
     protected string                       $template            = '';
-    protected                        $templatePage        = null;
+    protected                              $templatePage        = null;
     protected array                        $footer
                                                                 = [
             'header'          => [],
@@ -119,8 +119,12 @@ class ContainerIndexPage
         define('CMS_SYSTEM_MEMORY_PAGE_START',
                memory_get_usage());
 
+        $container = Container::DIC();
+
         /** @var ContainerExtensionTemplate $templatePage */
         $templatePage = $this->templatePage;
+        $templatePage->assign('cookieBanner',
+                              $container->getDIC('/Cookie/CookieBanner'));
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
@@ -350,8 +354,10 @@ class ContainerIndexPage
 
         $templatePageAboveTheFold = Container::get('ContainerIndexPage_cache_abovethefold');
 
+        $headerCssHash = $templatePage->addParseFinal('<style type="text/css">' . $templatePageAboveTheFold->getCacheContent() . $this->pageContent['headerCss'] . '</style>');
+
         $templatePage->assign('headerCss',
-                              '<style type="text/css">' . $templatePageAboveTheFold->getCacheContent() . $this->pageContent['headerCss'] . '</style>');
+                              $headerCssHash);
 
         $templatePage->assign('headerInclude',
             (($this->pageContent['headerInclude'] === '') ? '' : $this->pageContent['headerInclude']));
@@ -437,10 +443,8 @@ class ContainerIndexPage
         $templatePage->parse();
 
         $templatePage->parseFinal();
-        $templatePage->parseFinal();
 
 //        d($templatePage->get());
-
 //        eol(true);
 
         if (
@@ -477,22 +481,22 @@ console.log("Page Generated @ Page End - Debug: ' . ContainerHelperCalculate::ca
         $this->pageData[$key] = $content;
     }
 
-    public function addPageFooterInclude(string $footerInclude):void
+    public function addPageFooterInclude(string $footerInclude): void
     {
         $this->pageContent['footerInclude'] .= $footerInclude;
     }
 
-    public function setPageTitle(string $title):void
+    public function setPageTitle(string $title): void
     {
         $this->pageContent['title'] = $title;
     }
 
-    public function setPageDescription(string $value):void
+    public function setPageDescription(string $value): void
     {
         $this->pageContent['description'] = $value;
     }
 
-    public function setRouteKey(string $routeKey):void
+    public function setRouteKey(string $routeKey): void
     {
         $this->routeKey = $routeKey;
     }
@@ -514,17 +518,17 @@ console.log("Page Generated @ Page End - Debug: ' . ContainerHelperCalculate::ca
      *
      * @return void
      */
-    public function addPageContentLeft(string $content, int $position = 1):void
+    public function addPageContentLeft(string $content, int $position = 1): void
     {
         $this->pageContentLeft[$position][] = $content;
     }
 
-    public function addPageContentMain(string $content):void
+    public function addPageContentMain(string $content): void
     {
         $this->pageContentMain[] = $content;
     }
 
-    public function setFooter(string $part, string $content):void
+    public function setFooter(string $part, string $content): void
     {
         $this->footer[$part][] = $content;
     }

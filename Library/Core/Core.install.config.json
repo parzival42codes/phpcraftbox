@@ -26,6 +26,27 @@
     },
     "/gzip/level": {
       "value": "9"
+    },
+    "/Content-Security-Policy/default-src": {
+      "value": ""
+    },
+    "/Content-Security-Policy/connect-src": {
+      "value": ""
+    },
+    "/Content-Security-Policy/script-src": {
+      "value": ""
+    },
+    "/Content-Security-Policy/style-src": {
+      "value": ""
+    },
+    "/Content-Security-Policy/child-src": {
+      "value": ""
+    },
+    "/Content-Security-Policy/font-src": {
+      "value": ""
+    },
+    "/Content-Security-Policy/img-src": {
+      "value": ""
     }
   }
 }

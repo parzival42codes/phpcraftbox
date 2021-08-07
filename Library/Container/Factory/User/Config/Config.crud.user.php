@@ -6,12 +6,12 @@ class ContainerFactoryUserConfig_crud_user extends Base_abstract_crud
     protected static string $tableId = 'crudId';
 
     /**
-     * @var
+     * @var int|null
      * @database type int;11
      * @database isPrimary
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected  $crudId = null;
+    protected ?int $crudId = null;
     /**
      * @var int
      * @database type int;11
@@ -36,14 +36,14 @@ class ContainerFactoryUserConfig_crud_user extends Base_abstract_crud
      */
     protected string $crudConfigKey = '';
     /**
-     * @var
+     * @var string
      * @database type text
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_NONE
      */
-    protected  $crudConfigValue = '';
+    protected string $crudConfigValue = '';
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId(): ?int
     {
@@ -91,9 +91,9 @@ class ContainerFactoryUserConfig_crud_user extends Base_abstract_crud
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getCrudConfigValue()
+    public function getCrudConfigValue(): string
     {
         return $this->crudConfigValue;
     }

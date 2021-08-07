@@ -91,6 +91,20 @@ class ContainerExtensionTemplateParseCreateFilterHelper extends Base
                 $request->addElement($filterKey,
                                      $element);
             }
+            elseif ($filter['type'] === 'date') {
+                /** @var ContainerExtensionTemplateParseCreateFormElementSelect $element */
+                $element = Container::get('ContainerExtensionTemplateParseCreateFormElementDate',
+                                          $filter['data']);
+                $element->setLabel($filter['title']);
+                $element->setValue(($this->filterValues[$filterKey] ?? ($filter[$filterKey] ?? '')));
+
+//                if (isset($filter['option']['modify'])) {
+//                    $element->addModify('ContainerExtensionTemplateParseCreateFormModifyValidatorRequired');
+//                }
+
+                $request->addElement($filterKey,
+                                     $element);
+            }
         }
 
         $this->formResponse();

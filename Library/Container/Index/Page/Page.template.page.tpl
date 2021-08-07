@@ -12,6 +12,7 @@
     <meta name="generator"
           content="CMS2000"/>
 
+
     {$headerCss}
 
     <script type="text/javascript">
@@ -61,6 +62,8 @@
 
         }
 
+        {insert/positions position="/Page/header/javascript"}
+
         {$javascriptHeader}
 
         //<save>
@@ -96,14 +99,54 @@
         {$pageContentAdditional}
         {$footerInclude}
 
-    </div>
-</div>
+        <CMS function="_ifthen"
+             ifthen="assigned"
+             wanted="0"
+             assigned="cookieBanner"
+        >
+            <div style="width: 100%;position: fixed;bottom: 0;">
+                <div id="cookieBanner"
+                     class="flex-container">
+                    <div class="flex-container-item">
+                        {insert/language class="ContainerIndexPage" path="/cookie/banner"
+                        language-de_DE="
+Sie haben an dieser Stelle die Möglichkeit, die technisch nicht notwendigen Cookies abzulehnen oder zuzulassen.<br/>
+Weitere Informationen hierzu finden Sie in unserer <a href='{insert/positions position="/_/base/url"}/privacy' target='_blank' rel='nofollow'>Datenschutzerklärung</a>"
+                        language-en_US="This website uses cookies and Matomo for analysis and statistics. Cookies help us to improve the user-friendliness of our website. By continuing to use the website, you consent to its use. You can find further information on this in our <a href='{insert/positions position="/_/base/url"}/privacy' target='_blank' rel='nofollow'> data protection declaration </a>"}
+                    </div>
+                    <div class="flex-container-item">
+                        Diese Internetseite verwendet außer den technisch notwendigen Cookies noch:<br/>
+                        <ul>
+                            {insert/positions position="/Page/CookieBanner/list"}
+                        </ul>
+                    </div>
+                    <div class="flex-container-item"
+                         style="text-align: right;">
+                        <div class="cookieBannerButton btn"
+                             data-value="1"
+                        >
+                            {insert/language class="ContainerIndexPage" path="/cookie/banner/consent/yes"
+                            language-de_DE="Einverstanden"
+                            language-en_US="Consent"}
+                        </div>
 
-{insert/positions position="/ContainerIndexPage/Template/Positions/Footer/Include"}
+                        <div class="cookieBannerButton btn"
+                        data-value="0"
+                        >
+                            {insert/language class="ContainerIndexPage" path="/cookie/banner/consent/no"
+                            language-de_DE="Abgelehnt"
+                            language-en_US="No Consent"}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </CMS>
 
-<script type="text/javascript">
-    {$javascriptFooter}
-</script>
+        {insert/positions position="/ContainerIndexPage/Template/Positions/Footer/Include"}
+
+        <script type="text/javascript">
+            {$javascriptFooter}
+        </script>
 
 </body>
 </html>

@@ -94,6 +94,11 @@ class ContainerFactoryModul_crud extends Base_abstract_crud
      * @var integer
      * @database type tinyint;4
      */
+    protected int $crudHasSearch = 0;
+    /**
+     * @var integer
+     * @database type tinyint;4
+     */
     protected int $crudActive = 0;
 
     /**
@@ -334,6 +339,22 @@ class ContainerFactoryModul_crud extends Base_abstract_crud
     public function setCrudActive(int $crudActive): void
     {
         $this->crudActive = $crudActive;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCrudHasSearch(): int
+    {
+        return $this->crudHasSearch;
+    }
+
+    /**
+     * @param int $crudHasSearch
+     */
+    public function setCrudHasSearch(int $crudHasSearch): void
+    {
+        $this->crudHasSearch = $crudHasSearch;
     }
 
 

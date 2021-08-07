@@ -320,9 +320,14 @@ CMS_CACHE_CORE_LINKREWRITE',
 
 //    ContainerFactorySession::setSessionHandler('Sqlite');
     ContainerFactorySession::setSessionHandler(null);
+
+    ContainerFactorySession::start();
+
+    setlocale(LC_TIME,
+              (string)Config::get('/environment/language'));
+
 } catch (Throwable $exception) {
     d($exception);
     eol(true);
 }
 
-ContainerFactorySession::start();

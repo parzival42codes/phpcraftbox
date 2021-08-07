@@ -25,12 +25,12 @@ class ContainerFactoryLog_crud_notification extends Base_abstract_crud
     const NOTIFICATION_LOG          = 'log';
 
     /**
-     * @var
+     * @var int|null
      * @database type int;11
      * @database isPrimary
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected  $crudId = null;
+    protected ?int $crudId = null;
     /**
      * @var string
      * @database type varchar;250
@@ -43,7 +43,7 @@ class ContainerFactoryLog_crud_notification extends Base_abstract_crud
      */
     protected string $crudMessage = '';
     /**
-     * @var
+     * @var string|null
      * @database type text
      * @database isNull
      */
@@ -64,10 +64,10 @@ class ContainerFactoryLog_crud_notification extends Base_abstract_crud
      */
     protected string $crudType = ContainerFactoryLog_crud_notification::NOTIFICATION_PAGE_DISPLAY;
     /**
-     * @var
+     * @var string
      * @database type varchar;250
      */
-    protected  $crudClassIdent = '';
+    protected string $crudClassIdent = '';
     /**
      * @var string
      * @database type varchar;250
@@ -85,7 +85,7 @@ class ContainerFactoryLog_crud_notification extends Base_abstract_crud
     protected int $crudUserId = 0;
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId(): ?int
     {
@@ -93,7 +93,7 @@ class ContainerFactoryLog_crud_notification extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudId
+     * @param int|null $crudId
      */
     public function setCrudId(?int $crudId): void
     {
@@ -133,7 +133,7 @@ class ContainerFactoryLog_crud_notification extends Base_abstract_crud
     }
 
     /**
-     * @return
+     * @return string|null
      */
     public function getCrudData(): ?string
     {
@@ -141,7 +141,7 @@ class ContainerFactoryLog_crud_notification extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudData
+     * @param string|null $crudData
      */
     public function setCrudData(?string $crudData = ''): void
     {

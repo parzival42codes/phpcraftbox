@@ -63,7 +63,7 @@ class ContainerExtensionTemplate extends Base
     /**
      * @var array
      */
-    protected array $finalTemplateValues = [];
+    protected static array $finalTemplateValues = [];
 
     protected array $registeredFunctions = [];
 
@@ -499,13 +499,7 @@ class ContainerExtensionTemplate extends Base
 //                                       5);
 
             if ($this->onErrorShowAssignReplace === true) {
-
-                $hash                             = '<!-- ' . md5($this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder) . ' -->';
-                $this->finalTemplateValues[$hash] = $this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder;
-
-                return $hash;
-
-//                return htmlspecialchars($this->delimiterStart . $replace[1] . $this->delimiterEnd);
+                return $this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder;
             }
 
             return $this->delimiterStart . $replace[1] . $this->delimiterEnd;
@@ -640,17 +634,8 @@ class ContainerExtensionTemplate extends Base
 //                                               1);
                 }
 
-                $hash                             = '<!-- ' . md5($this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder) . ' -->';
-                $this->finalTemplateValues[$hash] = $this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder;
 
-                return $hash;
-
-                //            if ($this->onErrorShowAssignReplace === true) {
-//                return $this->delimiterStart . $replace[1] . $this->delimiterEnd;
-                //            } else {
-                //                return '';
-                //            }
-
+                return $this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder;
             }
             else {
 
@@ -669,10 +654,7 @@ class ContainerExtensionTemplate extends Base
 //                                           [],
 //                                           1);
 
-                $hash                             = '<!-- ' . md5($this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder) . ' -->';
-                $this->finalTemplateValues[$hash] = $this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder;
-
-                return $hash;
+                return $this->delimiterStartBorder . $replace[0] . $this->delimiterEndBorder;
             }
         }
 
@@ -742,9 +724,21 @@ class ContainerExtensionTemplate extends Base
         $this->template = $cacheDataData;
     }
 
+    public function addParseFinal(string $value): string
+    {
+        $uniqueId = uniqid('page_',
+                           true);
+
+        $key = '<!-- templateTagParse # ' . $uniqueId . ' ->';
+
+        self::$finalTemplateValues[$key] = $value;
+
+        return $key;
+    }
+
     public function parseFinal(): void
     {
         $this->template = strtr($this->template,
-                                $this->finalTemplateValues);
+                                self::$finalTemplateValues);
     }
 }

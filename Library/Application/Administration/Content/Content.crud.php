@@ -100,14 +100,4 @@ class ApplicationAdministrationContent_crud extends Base_abstract_crud
         $this->crudData = $crudData;
     }
 
-    protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery
-    {
-        $query->selectRaw('count(*) as countIndex');
-        $query->join('content_index',
-                     [],
-                     'content_index.crudContentIdent = ' . self::$table . '.crudIdent');
-        $query->orderBy('crudIdent');
-        return $query;
-    }
-
 }

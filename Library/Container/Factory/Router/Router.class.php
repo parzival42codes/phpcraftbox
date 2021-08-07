@@ -72,15 +72,14 @@ class ContainerFactoryRouter extends Base
      */
     protected static array $parameterIndex = [];
 
-    public function __construct()
+    public function __construct(string $url = '')
     {
         if (empty(self::$routerCache)) {
 
-            /** @var ContainerFactoryDatabaseQuery $query */
-            $query = Container::get('ContainerFactoryDatabaseQuery',
-                                    __METHOD__ . '#select',
-                                    true,
-                                    ContainerFactoryDatabaseQuery::MODE_SELECT);
+            $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                       true,
+                                                       ContainerFactoryDatabaseQuery::MODE_SELECT);
+
             $query->setTable('index_router');
             $query->select('crudClass',
                            'crudType',
@@ -109,6 +108,8 @@ class ContainerFactoryRouter extends Base
 
         $this->typeSimple = self::$routerCache['simple'];
         $this->typeRegex  = self::$routerCache['regex'];
+
+        $this->analyzeUrl($url);
     }
 
     public static function get(string $url): void
@@ -358,12 +359,12 @@ class ContainerFactoryRouter extends Base
     }
 
     /**
-     * @param  $key
-     * @param int             $filter
+     * @param     $key
+     * @param int $filter
      *
      * @return mixed
      */
-    public function getParameter( $key = null, int $filter = FILTER_SANITIZE_STRING)
+    public function getParameter($key = null, int $filter = FILTER_SANITIZE_STRING)
     {
         if ($key === null) {
             return $this->parameter;
@@ -378,8 +379,8 @@ class ContainerFactoryRouter extends Base
     }
 
     /**
-     * @param string          $key
-     * @param $parameter
+     * @param string $key
+     * @param        $parameter
      */
     public function setParameter(string $key, $parameter): void
     {
@@ -454,8 +455,8 @@ class ContainerFactoryRouter extends Base
     }
 
     /**
-     * @param string          $key
-     * @param $value
+     * @param string $key
+     * @param        $value
      */
     public function setQuery(string $key, $value): void
     {
@@ -476,17 +477,6 @@ class ContainerFactoryRouter extends Base
 
             if (self::$routerCacheIndex[$this->application][$this->route]['crudType'] === 'simple') {
                 $this->urlReadable = self::$routerCacheIndex[$this->application][$this->route]['crudPath'];
-
-                if (!empty($this->query)) {
-                    $query = [];
-                    foreach ($this->query as $queryKey => $queryItem) {
-                        if ($queryItem !== null) {
-                            $query[] = $queryKey . '=' . $queryItem;
-                        }
-                    }
-                    $this->urlReadable .= '?' . implode('&',
-                                                        $query);
-                }
             }
             else {
                 $path = self::$routerCacheIndex[$this->application][$this->route]['crudPath'];
@@ -504,18 +494,20 @@ class ContainerFactoryRouter extends Base
                         return $parameter;
                     },
                                                            $path);
-
-                if (!empty($this->query)) {
-                    $query = [];
-                    foreach ($this->query as $queryKey => $queryItem) {
-                        if ($queryItem !== null) {
-                            $query[] = $queryKey . '=' . $queryItem;
-                        }
-                    }
-                    $this->urlReadable .= '?' . implode('&',
-                                                        $query);
-                }
             }
+
+
+            if (!empty($this->query)) {
+                $query = [];
+                foreach ($this->query as $queryKey => $queryItem) {
+                    if ($queryItem !== null) {
+                        $query[] = $queryKey . '=' . $queryItem;
+                    }
+                }
+                $this->urlReadable .= '?' . implode('&',
+                                                    $query);
+            }
+
         }
 
         if ($raw === false) {

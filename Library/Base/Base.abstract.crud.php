@@ -2,18 +2,18 @@
 
 abstract class Base_abstract_crud
 {
-    protected static string      $table                     = '';
-    protected static $database                  = true;
-    protected static array       $reflectionProperty        = [];
-    protected static string      $tableId                   = '';
-    protected string             $dataVariableCreated       = '';
-    protected string             $dataVariableEdited        = '';
-    protected int                $dataVariableEditedCounter = 0;
-    protected string             $dataVariableDeleted       = '';
+    protected static string $table                     = '';
+    protected static        $database                  = true;
+    protected static array  $reflectionProperty        = [];
+    protected static string $tableId                   = '';
+    private string          $dataVariableCreated       = '';
+    private string          $dataVariableEdited        = '';
+    private int             $dataVariableEditedCounter = 0;
+    private string          $dataVariableDeleted       = '';
     /**
      * @var array
      */
-    protected array $additionalQuerySelect = [];
+    private array $additionalQuerySelect = [];
 
     public function __construct(array $data = [])
     {
@@ -51,6 +51,14 @@ abstract class Base_abstract_crud
                 }
             }
         }
+    }
+
+    /**
+     * @return string
+     */
+    public static function getTableId(): string
+    {
+        return static::$tableId;
     }
 
     public function getProperties(): array
@@ -204,12 +212,19 @@ abstract class Base_abstract_crud
                 return false;
             }
             else {
+                $id = call_user_func([
+                                         $this,
+                                         'get' . ucfirst(static::$tableId)
+                                     ]);
+
                 throw new DetailedException('idNotFound',
                                             0,
                                             null,
                                             [
                                                 'debug' => [
-                                                    'id' => $id,
+                                                    'query'  => $query->getQueryParsed(),
+                                                    'dbdata' => $dbData,
+                                                    'id'     => $id,
                                                 ]
                                             ]);
             }
@@ -347,6 +362,8 @@ abstract class Base_abstract_crud
             $query->groupBy($groupItem);
         }
 
+        $query = $this->modifyFindQuery($query);
+
         $query->construct();
         $smtp = $query->execute();
         return ($smtp->fetch()['c'] ?? 0);
@@ -455,7 +472,7 @@ abstract class Base_abstract_crud
     /**
      * @param string $key
      *
-     * @return
+     * @return string|null
      */
     public function getAdditionalQuerySelect(string $key): ?string
     {
@@ -464,7 +481,7 @@ abstract class Base_abstract_crud
 
     /**
      * @param string      $key
-     * @param  $value
+     * @param string|null $value
      */
     public function setAdditionalQuerySelect(string $key, ?string $value): void
     {
@@ -523,7 +540,7 @@ abstract class Base_abstract_crud
                         break;
                     case 'ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT';
                         $columnDefault = ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT;
-                        $columnNull = false;
+                        $columnNull    = false;
                         break;
                     default:
                         $columnDefault = $dataBaseCollectItemParameter['default'];
@@ -566,13 +583,17 @@ abstract class Base_abstract_crud
             isset($classComment['paramData']['@database']['dataVariableCreated'])
             ) {
                 $structure->setColumn('dataVariableCreated',
-                                      'datetime');
+                                      'datetime',
+                                      true,
+                                      '0000-00-00 00:00:00');
             }
             if (
             isset($classComment['paramData']['@database']['dataVariableEdited'])
             ) {
                 $structure->setColumn('dataVariableEdited',
-                                      'datetime');
+                                      'datetime',
+                                      true,
+                                      '0000-00-00 00:00:00');
             }
             if (
             isset($classComment['paramData']['@database']['dataVariableEditedCounter'])
@@ -586,7 +607,9 @@ abstract class Base_abstract_crud
             isset($classComment['paramData']['@database']['dataVariableDeleted'])
             ) {
                 $structure->setColumn('dataVariableDeleted',
-                                      'datetime');
+                                      'datetime',
+                                      true,
+                                      '0000-00-00 00:00:00');
             }
         }
 
@@ -612,6 +635,20 @@ abstract class Base_abstract_crud
     public function setDataVariableEditedCounter(int $dataVariableEditedCounter): void
     {
         $this->dataVariableEditedCounter = $dataVariableEditedCounter;
+    }
+
+    public function truncate()
+    {
+        /** @var ContainerFactoryDatabaseQuery $query */
+        $query = Container::get('ContainerFactoryDatabaseQuery',
+                                __METHOD__,
+                                true,
+                                ContainerFactoryDatabaseQuery::MODE_OTHER,
+                                false);
+
+        $query->query('TRUNCATE ' . static::$table);
+        $query->construct();
+        $smtp = $query->execute();
     }
 
 }

@@ -55,7 +55,7 @@ class ContainerFactoryLogPage_crud extends Base_abstract_crud
     protected string $crudData = '';
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId(): ?int
     {
@@ -63,7 +63,7 @@ class ContainerFactoryLogPage_crud extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudId
+     * @param int|null $crudId
      */
     public function setCrudId(?int $crudId): void
     {
@@ -168,7 +168,7 @@ class ContainerFactoryLogPage_crud extends Base_abstract_crud
 
 
     /**
-     * @param $query
+     * @param ContainerFactoryDatabaseQuery $query
      *
      * @return ContainerFactoryDatabaseQuery
      */

@@ -1,10 +1,5 @@
 <?php
 
-define('CMS_CACHE_MAIN',
-       'index');
-define('CMS_LIBRARY_IDENT',
-       'Index');
-
 ini_set('memory_limit',
         '512M');
 ini_set("max_execution_time",
@@ -13,7 +8,6 @@ ini_set("max_execution_time",
 require(dirname(__FILE__) . '/Library/config.inc.php');
 
 Config::setDatabase();
-ContainerFactoryUserConfig::setDatabase();
 ContainerFactoryLanguage::setCore();
 
 if (ContainerFactorySession::check()) {
@@ -21,7 +15,6 @@ if (ContainerFactorySession::check()) {
         ContainerFactorySession::destroy();
     }
     else {
-
         Container::getInstance('ContainerFactoryUser',
                                ContainerFactorySession::get('/user/id'));
     }
@@ -31,6 +24,24 @@ else {
                            0);
 }
 
+$cookieBannerRequest = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_COOKIE,
+                                                   Config::get('/environment/cookie/name') . 'cookiebanner');
+
+if (ContainerFactorySession::check()) {
+    $user = (int)ContainerFactorySession::get('/user/id');
+}
+else {
+    $user = 0;
+}
+
+$container = Container::DIC([
+                                '/User'                      => $user,
+                                '/Config'                    => new Config(),
+                                '/Router'                    => new ContainerFactoryRouter(Config::get('/server/http/path')),
+                                '/Page'                      => new ContainerIndexPage(),
+                                '/Cookie/CookieBanner'       => (int)($cookieBannerRequest->exists()),
+                                '/Cookie/CookieBanner/value' => (int)($cookieBannerRequest->get()),
+                            ]);
 
 /** @var ContainerFactoryRouter $router */
 $router = Container::getInstance('ContainerFactoryRouter');
@@ -38,6 +49,9 @@ $router = Container::getInstance('ContainerFactoryRouter');
 if (Config::get('/server/http/path') !== '') {
     $router->analyzeUrl(Config::get('/server/http/path'));
 }
+
+ContainerFactoryUserConfig::setDatabase();
+
 
 switch (Container::getInstance('ContainerFactoryRouter')
                  ->getTarget()) {
@@ -47,9 +61,10 @@ switch (Container::getInstance('ContainerFactoryRouter')
         exit;
         break;
     case 'ajax':
-        /** @var ContainerFactoryRouter $router */
         $classPhp = $router->getApplication() . '_ajax';
-        Container::get($classPhp);
+        /** @var ContainerExtensionAjax_abstract $classPhpAjax */
+        $classPhpAjax = new $classPhp();
+        print $classPhpAjax->get();
         break;
     case 'free':
         $class  = $router->getApplication() . '_free';

@@ -98,12 +98,4 @@ class ApplicationAdministrationContent_crud_history extends Base_abstract_crud
         $this->crudIdent = $crudIdent;
     }
 
-    protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery
-    {
-        $query->join('content_index',
-                     ['crudContentIdent'],
-                     'content_index.crudContentIdent = ' . self::$table . '.crudIdent');
-        return $query;
-    }
-
 }

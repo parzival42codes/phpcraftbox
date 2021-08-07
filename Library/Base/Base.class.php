@@ -2,7 +2,6 @@
 
 abstract class Base
 {
-
     protected string $rootClass = '';
 
     public function __call(string $name, array $arguments)
@@ -46,7 +45,7 @@ abstract class Base
             return $returnValue;
         }
         else {
-            throw new DetailedException('classNotFound',
+            throw new DetailedException('classMethodNotFound',
                                         0,
                                         null,
                                         [
@@ -59,44 +58,6 @@ abstract class Base
         }
     }
 
-
-    /*
-        protected function ___binaryOptions($optionsValue)
-        {
-
-            $options = decbin($optionsValue);
-            $optionsConvert = str_split($options);
-
-            foreach ($optionsConvert as $optionsConvertKey => $optionsConvertValue) {
-                if ($optionsConvertValue === true) {
-                    $this->___binOptionsConverted[$optionsConvertKey] = true;
-                } else {
-                    $this->___binOptionsConverted[$optionsConvertKey] = false;
-                }
-            }
-
-            debugDump($optionsValue);
-            debugDump($options);
-            debugDump($optionsConvert);
-
-
-                    if (count(self::$___binOptions) > 0) {
-                        debugDump(self::$___binOptions);
-
-                        $start = 1;
-                        foreach (self::$___binOptions as $binOptions) {
-                            self::$___binOptionsConverted[$start] = $binOptions;
-                            $start = $start * $start;
-                        }
-
-                        if (!empty(self::$___binOptionsConverted)) {
-                            debugDump(self::$___binOptionsConverted);
-                        }
-                    }
-
-
-        }
-    */
     /**
      * @return string
      */

@@ -3,8 +3,6 @@
 /**
  * Config Administration
  *
- * Config Administration
- *
  * @author  Stefan Schlombs
  * @version 1.0.0
  * @modul   versionRequiredSystem 1.0.0
@@ -44,7 +42,7 @@ class ApplicationAdministrationLanguage_app extends Application_abstract
         $configMenu->setMenuAccessList($user->getUserAccess());
 
         $menuPath = array_keys($collectClasses);
-        /** @var ContainerFactoryLanguage_crud $crudLanguageItem */
+
         foreach ($menuPath as $menuPathItem) {
             $menuPathItemData = explode('/',
                                         $menuPathItem);

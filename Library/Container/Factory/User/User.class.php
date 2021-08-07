@@ -5,8 +5,8 @@ class ContainerFactoryUser extends Base
 
     protected int    $userId        = 0;
     protected string $userName      = '';
-    protected  $userGroupId   = 0;
-    protected  $userGroupName = '';
+    protected        $userGroupId   = 0;
+    protected        $userGroupName = '';
     protected array  $userAccess    = [];
 
     public function __construct(int $userId = 0)

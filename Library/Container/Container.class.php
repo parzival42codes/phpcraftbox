@@ -1,11 +1,65 @@
 <?php
 
-class Container extends Base
+class Container
 {
 
-    protected static array $globalContainer   = [];
-    protected static array $instanceContainer = [];
-    protected array        $container         = [];
+    private static array $globalContainer   = [];
+    private static array $instanceContainer = [];
+
+    private array             $container = [];
+    private static ?Container $dic       = null;
+
+    public function __construct(array $container)
+    {
+        $this->container = $container;
+    }
+
+    public function setDIC(string $index, $value)
+    {
+        $this->container[$index] = $value;
+        return $this->container[$index];
+    }
+
+    public function getDIC($index, $parameter = [])
+    {
+        if (isset($this->container[$index])) {
+            if ($this->container[$index] instanceof Closure) {
+                return $this->container[$index]($parameter);
+            }
+
+            return $this->container[$index];
+        }
+
+        $reflector = new ReflectionClass($index);
+        d($reflector->isInstantiable());
+        $constructor = $reflector->getConstructor();
+
+        $parameter = $constructor->getParameters();
+        foreach ($parameter as $parameterItem) {
+            d($parameterItem->getName());
+            d($parameterItem->getClass());
+            d($parameterItem->getDeclaringClass());
+            d($parameterItem->getDeclaringFunction());
+//            d($parameterItem->getDefaultValue());
+//            d($parameterItem->getDefaultValueConstantName());
+            d($parameterItem->getPosition());
+
+            $type = $parameterItem->getType();
+            d($type->getName());
+        }
+
+
+        d($reflector);
+
+    }
+
+    public static function DIC(array $initDIC = []): Container
+    {
+        if (!self::$dic instanceof Container) {
+            self::$dic = new Container($initDIC);
+        }
+        return self::$dic;
+    }
 
     public static function getInstance(string $index, ...$parameter): object
     {

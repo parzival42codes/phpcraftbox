@@ -28,7 +28,6 @@ class ContainerExtensionTemplateLoad_cache_template extends ContainerExtensionCa
             $fileTemplate = Container::get('ContainerFactoryFile',
                                            $class . '.template.' . $templatesItem . '.tpl');
 
-
             if ($fileTemplate->exists() === true) {
                 $fileTemplate->load();
                 $this->cacheContent[$templatesItem] = $fileTemplate->get();

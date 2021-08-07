@@ -28,7 +28,7 @@ class ContainerFactoryLogStatistic_crud extends Base_abstract_crud
     protected string $crudDay = '';
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId(): ?int
     {
@@ -36,7 +36,7 @@ class ContainerFactoryLogStatistic_crud extends Base_abstract_crud
     }
 
     /**
-     * @param  $crudId
+     * @param string|null $crudId
      */
     public function setCrudId(?string $crudId): void
     {

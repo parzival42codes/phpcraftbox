@@ -4,12 +4,11 @@
          style="flex: 2;">
         <div class="card-container-header">
             {insert/language class="ApplicationAdministrationContentEdit" path="/form/title"
-            language-de_DE="Bearbeitung es Inhalts Benutzergruppen"
+            language-de_DE="Bearbeitung es Inhalts"
             language-en_US="Content Edit"}
         </div>
         <div class="card-container-content"
              id="ApplicationAdministrationContent-edit">
-
 
             <div class="flex-container"
                  style="flex-direction: column;">
@@ -53,6 +52,10 @@
                     </div>
 
                 </div>
+
+                <p>
+                    <a href="{$link}" class="btn" target="_blank">{$link}</a>
+                </p>
 
             </div>
         </div>

@@ -5,25 +5,28 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
 
     public function setContent(): string
     {
-        $ident  = Container::get('ApplicationAdministrationContentView/ident');
+        $ident = Container::get('ApplicationAdministrationContentView/ident');
+        $crud  = new ApplicationAdministrationContent_crud();
+        $crud->setCrudIdent($ident);
+        $crud->findById(true);
 
-        /** @var ApplicationAdministrationContent_crud_index $crudIndex */
-        $crudIndex = Container::get('ApplicationAdministrationContent_crud_index');
-        $crudIndex->setCrudIdent($ident);
-        $crudIndex->findById();
+        $crudData = json_decode($crud->getCrudData(),
+                                true);
 
-        /** @var ApplicationAdministrationContent_crud $crud */
-        $crud = Container::get('ApplicationAdministrationContent_crud');
-        $crud->setCrudIdent($crudIndex->getCrudContentIdent());
-        $crud->findById();
+        $title       = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
+                                                                 $crudData['title']);
+        $description = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
+                                                                 $crudData['description']);
 
-        /** @var ContainerIndexPage $page */
+        /** @var ContainerIndexPage $page */ //
         $page = Container::getInstance('ContainerIndexPage');
-        $page->setPageTitle($crudIndex->getCrudTitle());
 
         $breadcrumb = $page->getBreadcrumb();
-        $breadcrumb->addBreadcrumbItem($crudIndex->getCrudTitle(),
-                                       $crudIndex->getCrudPath());
+        $breadcrumb->addBreadcrumbItem($title,
+                                       $description);
+
+        $page->setPageTitle($title);
+        $page->setPageDescription($description);
 
         return $crud->getCrudContent();
 

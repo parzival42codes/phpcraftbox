@@ -3,17 +3,18 @@
 class ContainerFactoryHeaderCookie
 {
 
-    protected string $name     = '';
-    protected string $value    = '';
-    protected int    $expire   = 0;
-    protected string $path     = '/';
-    protected string $domain   = '';
-    protected bool   $secure   = false;
-    protected bool   $httponly = true;
+    private string $name     = '';
+    private string $value    = '';
+    private int    $expire   = 0;
+    private string $path     = '/';
+    private string $domain   = '';
+    private string $samesite = 'Lax';
+    private bool   $secure   = false;
+    private bool   $httponly = true;
 
     public function __construct()
     {
-
+        $this->expire = time() + Config::get('/environment/cookie/expire');
     }
 
     public function setName(string $value): void
@@ -23,7 +24,7 @@ class ContainerFactoryHeaderCookie
 
     public function getName(): string
     {
-        return $this->name;
+        return Config::get('/environment/cookie/name') . $this->name;
     }
 
     public function setValue(string $value): void
@@ -84,6 +85,22 @@ class ContainerFactoryHeaderCookie
     public function getHttponly(): bool
     {
         return $this->httponly;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSamesite(): string
+    {
+        return $this->samesite;
+    }
+
+    /**
+     * @param string $samesite
+     */
+    public function setSamesite(string $samesite): void
+    {
+        $this->samesite = $samesite;
     }
 
 }

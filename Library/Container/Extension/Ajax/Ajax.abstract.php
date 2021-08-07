@@ -2,10 +2,12 @@
 
 abstract class ContainerExtensionAjax_abstract extends Base
 {
+    protected array                  $postData = [];
+    protected ContainerFactoryHeader $header;
 
     protected string $language = '';
     protected string $class    = '';
-    protected ?array $data     = null;
+    protected array  $data     = [];
     protected array  $trigger  = [];
     private array    $output
                                = [
@@ -14,12 +16,33 @@ abstract class ContainerExtensionAjax_abstract extends Base
             'content'     => null,
             'meta'        => [],
             'debug'       => [],
-            'data'        => [],
             'trigger'     => [],
         ];
 
     public function __construct()
     {
+        $this->header = new ContainerFactoryHeader();
+
+        try {
+
+            foreach ($this->postData as $postData) {
+                $request               = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_POST,
+                                                                     $postData);
+                $this->data[$postData] = $request->get();
+            }
+
+            $this->execute();
+
+            $this->header->set('content-type',
+                               'application/json; charset=utf-8');
+
+        } catch (Throwable $e) {
+            simpleDebugDump($e);
+            simpleDebugDump($e->getTrace());
+        }
+
+        $this->header->send();
+
 //
 //        $exceptionCatch = Container::get('ContainerFactoryExceptioncatch',
 //            function () {
@@ -156,7 +179,7 @@ abstract class ContainerExtensionAjax_abstract extends Base
 //                                                              'CoreErrorhandler');
     }
 
-    abstract function execute(): array;
+    abstract function execute(): void;
 
     public function get(): string
     {

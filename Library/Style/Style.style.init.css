@@ -108,10 +108,9 @@ summary {
 
 .flex-container-item {
     flex: 1;
-    display: flex;
 }
 
-.flex-container-item .item{
+.flex-container-item .item {
     flex: 1;
 }
 
@@ -180,6 +179,18 @@ summary {
     padding: 0.2em 2em;
     cursor: pointer;
     display: inline-block;
+@media: "#style-screen-smartphone-portrait";
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em 2em;
+@media: "#style-screen-smartphone-landscape";
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em 2em;
+@media: "#style-screen-tablet-portrait";
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.5em 2em;
 }
 
 .btnSmall {
@@ -219,3 +230,14 @@ summary {
     display: inline-block;
 }
 
+.linkArrow::before {
+    content: '\25b6';
+    padding-right: 0.5em;
+    font-size: 0.75em;
+}
+
+blockquote {
+    @aboveTheFold: "1";
+    margin: 0;
+    padding: 0 0 0 1em;
+}

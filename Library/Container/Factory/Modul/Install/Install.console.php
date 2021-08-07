@@ -5,9 +5,9 @@ class ContainerFactoryModulInstall_console extends Console_abstract
 
     protected array $module
         = [
+            'Config',
             'Event',
             'ContainerExtensionDocumentation',
-            'Config',
             'ContainerFactoryModul',
             'ContainerFactoryLanguage',
             'CoreAutoload',
@@ -71,6 +71,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             'ContainerHelperViewDifference',
             'Application',
             'ApplicationIndex',
+            'ApplicationSearch',
             'ApplicationUser',
             'ApplicationUserProfil',
             'ApplicationUserMessage',
@@ -193,7 +194,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             }
         }
 
-        foreach ($this->module as $parameterKey => $parameterItem) {
+        foreach ($this->module as $parameterItem) {
             /** @var ContainerFactoryModulInstall_abstract $installModule */
 
             $installModule = Container::get($parameterItem . '_install',
@@ -204,8 +205,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
 //            d($this->getClassConstructor());
         }
 
-
-        $iniCustomFile = CMS_ROOT . '/Custom/Custom.load.ini';
+        $iniCustomFile = CMS_ROOT . 'Custom/Custom.load.ini';
         if (is_file($iniCustomFile)) {
             $iniData = parse_ini_file($iniCustomFile);
         }
@@ -241,6 +241,9 @@ class ContainerFactoryModulInstall_console extends Console_abstract
                 $installModule->isCustom($toInstallItem);
             }
         }
+
+        $installModule = new ConsoleCustom_install($this);
+        $installModule->install();
     }
 
 }

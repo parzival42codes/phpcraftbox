@@ -4,33 +4,14 @@ class ApplicationAdministrationContentView_content extends Base
 {
     public function get(string $path): ?object
     {
-        /** @var ApplicationAdministrationContent_crud_index $crud */
-        $crud       = Container::get('ApplicationAdministrationContent_crud_index');
-        $crudResult = $crud->find([
-                                      'crudPath'     => $path,
-                                      'crudLanguage' => \Config::get('/environment/config/iso_language_code'),
-                                  ]);
+        $crud = new ApplicationAdministrationContent_crud();
+        $crud->setCrudIdent($path);
+        $crudResult = $crud->findById(true);
 
-        $crudResultFirst = reset($crudResult);
+        Container::set('ApplicationAdministrationContentView/ident',
+                       $crud->getCrudIdent());
 
-        if (!empty($crudResultFirst)) {
-            $domains = explode(';',
-                               $crudResultFirst->getCrudDomain());
-
-            if (
-                empty($crudResultFirst->getCrudDomain()) || in_array($crudResultFirst->getCrudDomain(),
-                                                                     $domains)
-            ) {
-                Container::set('ApplicationAdministrationContentView/ident',
-                               $crudResultFirst->getCrudIdent());
-
-                return  Container::get('Application',
-                                              'ApplicationAdministrationContentView');
-
-            }
-        }
-
-        return null;
+        return new Application('ApplicationAdministrationContentView');
     }
 
 }

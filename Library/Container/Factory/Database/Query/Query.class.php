@@ -25,7 +25,7 @@ class ContainerFactoryDatabaseQuery extends Base
     protected static array $tableStructure            = [];
     protected string       $name                      = '';
     protected              $smtp;
-    protected              $mode                      = '';
+    protected string       $mode                      = '';
     protected string       $databaseConnection        = 'primary';
     protected              $databaseConnectionHandler = null;
     protected string       $table                     = '';
@@ -354,7 +354,7 @@ class ContainerFactoryDatabaseQuery extends Base
             }
 
             if ($tableData['dataVariableDeleted'] === true) {
-                $this->setParameterWhere('`' . $this->table . '`' . '.dataVariableDeleted',
+                $this->setParameterWhere('dataVariableDeleted',
                                          '0');
             }
         }

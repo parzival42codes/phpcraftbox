@@ -149,23 +149,27 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
     }
 
     /**
-     * @return object
+     * @return ContainerExtensionTemplateParseCreateFormRequest
      */
-    public function getRequest(): object
+    public function getRequest(): ContainerExtensionTemplateParseCreateFormRequest
     {
         return $this->request;
     }
 
     /**
-     * @return object
+     * @return ContainerExtensionTemplateParseCreateFormResponse
      */
-    public function getResponse(): object
+    public function getResponse(): ContainerExtensionTemplateParseCreateFormResponse
     {
         return $this->response;
     }
 
-    public function addFormElement(string $name, string $type, array $parameter = [], array $modify = [], string $part = 'default'): void
+    public function addFormElement(string $name, string $type, array $parameter = [], array $modify = [], string $class = null): void
     {
+        if ($class !== null) {
+            $this->class = $class;
+        }
+
         $elementType = ucfirst($type);
         $optional    = [
             'Text',
@@ -175,6 +179,7 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
             'File',
             'Radio',
             'Select',
+            'Date',
         ];
 
         if (

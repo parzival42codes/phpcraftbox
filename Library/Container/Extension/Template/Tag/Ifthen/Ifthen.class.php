@@ -11,23 +11,25 @@ class ContainerExtensionTemplateTagIfthen extends Base
     {
         $template->setRegisteredFunctions('_ifthen',
             function ($content, $htmlTags, $templateObject) {
+                /** @var ContainerExtensionTemplate $templateObject */
 
                 switch ($htmlTags['ifthen']) {
                     case 'notEmpty':
-                        /** @var ContainerExtensionTemplate $templateObject */
 
                         $valueContent = $templateObject->getAssign($htmlTags['value']);
-
-                        debugDump($valueContent);
-                        debugDump($content);
-
                         if (!empty($valueContent)) {
                             return $content;
                         }
                         else {
                             return '';
                         }
-
+                    case 'assigned':
+                        if ($htmlTags['wanted'] == $templateObject->getAssign($htmlTags['assigned'])) {
+                            return $content;
+                        }
+                        else {
+                            return '';
+                        }
                 }
 
 

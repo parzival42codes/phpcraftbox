@@ -3,7 +3,7 @@
 class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstract
 {
 
-   public function install(): void
+    public function install(): void
     {
         $this->importQueryDatabaseFromCrud('ContainerIndexPageBox_crud');
 
@@ -65,7 +65,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudDescription('User Links');
             $crud->setCrudContent('
 <div class="card-container card-container--shadow">
-<div class="card-container-content" style="text-align: right;">
+<div class="card-container-content" style="text-align: center;">
 {insert/widget class="ApplicationUser" widget="username"} {insert/widget class="ApplicationUser" widget="link"}
 </div>
 </div>
@@ -122,6 +122,31 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
                                       {insert/positions position="/page/box/main/footer"}
                                       </main>
                                       </div>');
+            $crud->setCrudAssignment('page');
+            $crud->setCrudActive(true);
+
+            $progressData['message'] = $crud->insert();
+
+            /*$after*/
+        });
+
+
+        $this->installFunction(function () {
+            /** @var array $data */ /*$before*/
+
+            /** @var ContainerExtensionTemplateLoad_cache_template $templateCache */
+            $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
+                                            'ContainerIndexPageBox',
+                                            'install.footer');
+
+            /** @var ContainerIndexPageBox_crud $crud */
+            $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudClass(Core::getRootClass(__CLASS__));
+            $crud->setCrudRow(4);
+            $crud->setCrudFlex(1);
+            $crud->setCrudPosition(1);
+            $crud->setCrudDescription('Main');
+            $crud->setCrudContent($templateCache->getCacheContent()['install.footer']);
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 

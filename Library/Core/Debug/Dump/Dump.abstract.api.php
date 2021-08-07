@@ -3,9 +3,9 @@
 abstract class  CoreDebugDump_abstract_api extends Base
 {
     protected array  $language   = [];
-    protected  $dump;
-    protected string $title      = '';
-    protected string $content    = '';
+    protected        $dump;
+    protected        $title      = '';
+    protected        $content    = '';
     protected string $additional = '';
 
 
@@ -16,7 +16,7 @@ abstract class  CoreDebugDump_abstract_api extends Base
         $this->execute();
     }
 
-    abstract function execute():void;
+    abstract function execute(): void;
 
     function setLanguage(array $language): void
     {

@@ -25,6 +25,12 @@ class Config_crud extends Base_abstract_crud
     /**
      * @var string
      * @database type varchar;250
+     * @database isIndex
+     */
+    protected string $crudIdent = '';
+    /**
+     * @var string
+     * @database type varchar;250
      */
     protected string $crudClass = '';
     /**
@@ -150,7 +156,7 @@ class Config_crud extends Base_abstract_crud
     }
 
     /**
-     * @return
+     * @return int|null
      */
     public function getCrudId()
     {
@@ -195,5 +201,21 @@ class Config_crud extends Base_abstract_crud
     public function setCrudConfigForm(?string $crudConfigForm): void
     {
         $this->crudConfigForm = $crudConfigForm;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudIdent(): string
+    {
+        return $this->crudIdent;
+    }
+
+    /**
+     * @param string $crudIdent
+     */
+    public function setCrudIdent(string $crudIdent): void
+    {
+        $this->crudIdent = $crudIdent;
     }
 }

@@ -8,7 +8,9 @@ class CoreAutoload
     public static function autoLoadClass(string $class): void
     {
 
+        $microtimeStart = microtime(true);
         self::load($class);
+        $microtimeEnd = microtime(true);
 
         if (
         method_exists($class,
@@ -26,6 +28,7 @@ class CoreAutoload
         ) {
             CoreDebug::setRawDebugData(__CLASS__,
                                        [
+                                           'microtime' => ($microtimeEnd - $microtimeStart),
                                            'class' => $class,
                                            'load'  => (int)method_exists($class,
                                                                          '_load'),

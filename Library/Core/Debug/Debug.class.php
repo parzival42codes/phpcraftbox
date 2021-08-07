@@ -13,7 +13,7 @@ final class  CoreDebug
     protected static array $debugCache = [];
 
     protected string $keySys     = '_SystemInformation';
-    protected  $keySysItem = null;
+    protected        $keySysItem = null;
 
     public static function getSourceCodeInFile(string $file, int $line, int $rows = 50): string
     {
@@ -462,7 +462,7 @@ final class  CoreDebug
         }
     }
 
-    public static function setRawDebugData(string $class, array $data, string $key = null, bool $keyArray = false, string $cacheKey = null, string $cache = null): void
+    public static function setRawDebugData(string $class, array $data = [], string $key = null, bool $keyArray = false, string $cacheKey = null, string $cache = null): void
     {
 
         if ($key === null) {

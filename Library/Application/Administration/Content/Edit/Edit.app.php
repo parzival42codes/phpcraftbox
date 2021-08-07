@@ -13,11 +13,9 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
     public function setContent(): string
     {
-        $this->pageData();
-
         /** @var ContainerFactoryRouter $router */
         $router   = Container::getInstance('ContainerFactoryRouter');
-        $this->id = $router->getParameter('id');
+        $this->id = (string)$router->getParameter('id');
 
         /** @var ApplicationAdministrationContent_crud $crud */
         $crud = Container::get('ApplicationAdministrationContent_crud');
@@ -31,11 +29,13 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
         elseif ($this->source === self::CONTENT_SOURCE_HISTORY) {
             /** @var ApplicationAdministrationContent_crud_history $crud */
             $crud = Container::get('ApplicationAdministrationContent_crud_history');
-            $crud->setCrudId($this->id);
+            $crud->setCrudId((int)$this->id);
             if (!empty($this->version)) {
                 $crud->findById(true);
             }
         }
+
+        $this->pageData($this->id);
 
         /** @var ContainerExtensionTemplateParseCreateFormResponse $response */
         $response = Container::get('ContainerExtensionTemplateParseCreateFormResponse',
@@ -73,8 +73,6 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
         $query->construct();
         $smtp = $query->execute();
 
-        /** @var ePDOStatement $smtp */
-
         while ($smtpData = $smtp->fetch()) {
             $crudArray[$smtpData['crudId']] = $smtpData['dataVariableCreated'];
         }
@@ -98,6 +96,8 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
                          [
                              '{' => '&#123;',
                              '}' => '&#125;',
+                             '<' => '&#60;',
+                             '>' => '&#62;',
                          ]);
 
         /** @var ContainerExtensionTemplateParseCreateFormElementTextarea $elementContentContent */
@@ -116,10 +116,6 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
         $request->addElement('contentContent',
                              $elementContentContent);
-
-        /** @var ContainerFactoryLanguageParseIni $contentData */
-        $contentData = Container::get('ContainerFactoryLanguageParseIni',
-                                      $crud->getCrudData());
 
         /** @var ContainerExtensionTemplateParseCreateFormElementText $elementContentIdent */
         $elementContentIdent = Container::get('ContainerExtensionTemplateParseCreateFormElementText');
@@ -143,7 +139,7 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
         $elementContentData = Container::get('ContainerExtensionTemplateParseCreateFormElementTextarea');
         $elementContentData->setLabel(ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/form/contentData/label'));
         $elementContentData->setValue($response->get('contentData',
-                                                     $contentData->getIniClean()));
+                                                     $crud->getCrudData()));
         $elementContentData->setInfo(ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/form/contentData/info'));
         $elementContentData->addModify('ContainerExtensionTemplateParseCreateFormModifyValidatorRequired');
 
@@ -189,14 +185,15 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
             });
 
-//        eol();
+        $template->assign('link',
+                          Config::get('/server/http/base/url') . $crud->getCrudIdent());
 
         $template->parseQuote();
         $template->parse();
         return $template->get();
     }
 
-    protected function pageData(): void
+    protected function pageData($id): void
     {
 
         /** @var ContainerIndexPage $page */
@@ -216,6 +213,9 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
         $breadcrumb->addBreadcrumbItem(ContainerFactoryLanguage::get('/ApplicationAdministrationContentEdit/breadcrumb'),
                                        'index.php?application=ApplicationAdministrationContentEdit');
+
+        $breadcrumb->addBreadcrumbItem($id,
+                                       'index.php?application=ApplicationAdministrationContentEdit&id=' . $id);
 
         /** @var ContainerFactoryMenu $menu */
         $menu = $this->getMenu();
@@ -264,13 +264,7 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
             $crudHistory->setCrudIdent($this->id);
             $crudHistory->setCrudData($crud->getCrudData());
             $crudHistory->setCrudContent($crud->getCrudContent());
-            $crudHistory->insert();
-
-            /** @var ApplicationAdministrationContent_crud_index $crudIndex */
-            $crudIndex = Container::get('ApplicationAdministrationContent_crud_index');
-            $crudIndex->setCrudContentIdent($crud->getCrudIdent());
-            $crudIndex->createIndexFromContentIdent();
-#
+            $crudHistory->insert();#
         }
     }
 

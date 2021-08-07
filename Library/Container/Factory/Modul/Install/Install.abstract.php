@@ -73,7 +73,9 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
     public function importQueryDatabaseFromCrud(string $class): void
     {
         /** @var Base_abstract_crud $crud */
-        $crud          = Container::get($class);
+        $crud = Container::get($class);
+//        $crud->truncate();
+
         $queryDatabase = $crud->getInstallUpdateQuery();
 
         foreach ($queryDatabase as $databaseQueryItem) {
@@ -261,8 +263,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
             if (isset($languageCollect['class']) && isset($languageCollect['path']) && isset($languageCollect['class'])) {
 
-                simpleDebugLog($languageCollect);
-
                 foreach ($languageCollectValue as $languageCollectKey => $languageCollectValueItem) {
 
                     $this->installFunction(function () {
@@ -342,6 +342,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 /** @var Config_crud $configCrud */
                 $configCrud = Container::get('Config_crud');
                 $configCrud->setCrudClass($data['crud']['rootClass']);
+                $configCrud->setCrudIdent('/' . $data['crud']['rootClass'] . $data['crud']['key']);
                 $configCrud->setCrudConfigKey($data['crud']['key']);
                 $configCrud->setCrudConfigValue($data['crud']['value']);
                 $configCrud->setCrudConfigValueDefault($data['crud']['valueDefault'] ?? $data['crud']['value']);
@@ -403,7 +404,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
                 /** @var ContainerFactoryUserConfig_crud $configCrud */
                 $configCrud = Container::get('ContainerFactoryUserConfig_crud');
-                $configCrud->setCrudIdent('/'.$data['crud']['rootClass'] . $data['crud']['key']);
+                $configCrud->setCrudIdent('/' . $data['crud']['rootClass'] . $data['crud']['key']);
                 $configCrud->setCrudClass($data['crud']['rootClass']);
                 $configCrud->setCrudConfigKey($data['crud']['key']);
                 $configCrud->setCrudConfigValueDefault($data['crud']['value']);
@@ -516,8 +517,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
                 $crud->setCrudMenuAccess($data['crud']['menuAccess'] ?? $data['crud']['class']);
 
-                simpleDebugLog($crud->getCrudMenuAccess());
-
                 $progressData['message'] = $crud->insert() . '|##|blue';
 
                 /*$after*/
@@ -595,6 +594,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 $modulCrud->setCrudHasJavascript((int)($data['iniData']['has']['javascript'] ?? 0));
                 $modulCrud->setCrudHasCss((int)($data['iniData']['has']['css'] ?? 0));
                 $modulCrud->setCrudHasContent((int)($data['iniData']['has']['content'] ?? 0));
+                $modulCrud->setCrudHasSearch((int)($data['iniData']['has']['search'] ?? 0));
 
                 $modulCrud->setCrudActive($data['iniData']['active'] ?? 0);
 
@@ -629,6 +629,9 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
         /** @var array $metaCollect */
         $metaCollect = $classComment['paramData']['@modul'];
 
+        simpleDebugLog($rootClass);
+        simpleDebugLog($metaCollect);
+
         if (!empty($classComment['title'])) {
             $metaCollect['name'] = trim($classComment['title']);
         }
@@ -659,16 +662,8 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             }
         }
 
-        $metaCollect['hasCSSFiles'] = '';
-        $hasCSS                     = isset($metaCollect['hasCSS']);
-        if ($hasCSS === true) {
-            if (empty($metaCollect['hasCSS'])) {
-                $metaCollect['hasCSSFiles'] = '';
-            }
-            else {
-                $metaCollect['hasCSSFiles'] = $metaCollect['hasCSS'];
-            }
-        }
+        $metaCollect['hasContent'] = isset($metaCollect['hasContent']);
+        $metaCollect['hasSearch']  = isset($metaCollect['hasSearch']);
 
         if (isset($metaCollect['groupAccess'])) {
             $this->setGroupAccess($rootClass,
@@ -709,6 +704,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             'hasJavascript'         => ($hasJavascript ? 1 : 0),
             'hasJavascriptFiles'    => ($metaCollect['hasJavascriptFiles'] ?? ''),
             'hasContent'            => (($metaCollect['hasContent'] ?? false) ? 1 : 0),
+            'hasSearch'             => (($metaCollect['hasSearch'] ?? false) ? 1 : 0),
             'active'                => (($metaCollect['active'] ?? false) ? 0 : 1),
         ];
 
@@ -731,6 +727,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             $modulCrud->setCrudHasCss((int)$data['modulMeta']['hasCSS']);
             $modulCrud->setCrudHasCssFiles($data['modulMeta']['hasCSSFiles']);
             $modulCrud->setCrudHasContent((int)($data['modulMeta']['hasContent']));
+            $modulCrud->setCrudHasSearch((int)($data['modulMeta']['hasSearch']));
 
             $modulCrud->setCrudActive($data['modulMeta']['active']);
 

@@ -1,0 +1,8 @@
+{
+  "simple": {
+    "default": {
+      "path": "/ajax/page/cookie/banner",
+      "target": "ajax"
+    }
+  }
+}
