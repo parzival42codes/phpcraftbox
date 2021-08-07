@@ -1,0 +1,17 @@
+{
+  "type": "install.language",
+  "content": {
+    "/permitted": {
+      "language": {
+        "de_DE": "Gast",
+        "en_US": "Guest."
+      }
+    },
+    "/session/username": {
+      "language": {
+        "de_DE": "Benutzer",
+        "en_US": "User."
+      }
+    }
+  }
+}

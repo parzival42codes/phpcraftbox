@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 class ConsoleCustom_install extends ContainerFactoryModulInstall_abstract
 {
@@ -82,12 +82,28 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 
 Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo';
 
-                            simpleDebugLog($valueConfig);
+                            if (isset($valueConfig[2])) {
+                                $rndStart   = (int)$valueConfig[1];
+                                $rndEnd     = (int)$valueConfig[2];
+                                $wordLength = rand($rndStart,
+                                                   $rndEnd);
 
-                            $loremIpsumExploded = explode(' ',
-                                                          $loremIpsum,
-                                (((int)$valueConfig[1] ?? 9) + 1));
-                            array_pop($loremIpsumExploded);
+                                simpleDebugLog($rndStart);
+                                simpleDebugLog($rndEnd);
+                                simpleDebugLog($wordLength);
+
+                                $loremIpsumExploded = explode(' ',
+                                                              $loremIpsum,
+                                                              $wordLength);
+                                array_pop($loremIpsumExploded);
+                            }
+                            else {
+                                $loremIpsumExploded = explode(' ',
+                                                              $loremIpsum,
+                                    (((int)$valueConfig[1] ?? 9) + 1));
+                                array_pop($loremIpsumExploded);
+                            }
+
                             $value = implode(' ',
                                              $loremIpsumExploded);
 

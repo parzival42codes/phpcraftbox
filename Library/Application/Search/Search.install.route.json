@@ -1,7 +1,7 @@
 {
   "simple": {
     "default": {
-      "path": "/",
+      "path": "/search",
       "target": "index"
     }
   }
