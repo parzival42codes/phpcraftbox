@@ -24,6 +24,9 @@ class ContainerFactoryComment extends Base
 
     public function get()
     {
+        $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
+                                                                           'item');
+
         $crud     = new ContainerFactoryComment_crud();
         $crudFind = $crud->find([
                                     'crudPath' => $this->path
@@ -32,7 +35,19 @@ class ContainerFactoryComment extends Base
                                     'dataVariableCreated DESC'
                                 ]);
 
+        $content = '';
+
+        foreach ($crudFind as $crudFindItem) {
+            $template = new ContainerExtensionTemplate();
+            $template->set($templateCache->getCacheContent()['item']);
+
+            $template->parse();
+            $content .= $template->get();
+        }
+
         d($crudFind);
+        d($content);
+
         eol();
     }
 

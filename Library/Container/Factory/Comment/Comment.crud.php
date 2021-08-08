@@ -24,7 +24,7 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
      * @database type int;11
      * @database isIndex
      */
-    protected int $crudUser = 0;
+    protected int $crudUserId = 0;
     /**
      * @var string
      * @database isIndex
@@ -52,22 +52,6 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
     public function setCrudId($crudId): void
     {
         $this->crudId = $crudId;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getCrudUser(): int
-    {
-        return $this->crudUser;
-    }
-
-    /**
-     * @param mixed $crudUser
-     */
-    public function setCrudUser(int $crudUser): void
-    {
-        $this->crudUser = $crudUser;
     }
 
     /**
@@ -100,6 +84,33 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
     public function setCrudContent(string $crudContent): void
     {
         $this->crudContent = $crudContent;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCrudUserId(): int
+    {
+        return $this->crudUserId;
+    }
+
+    /**
+     * @param mixed $crudUserId
+     */
+    public function setCrudUserId(int $crudUserId): void
+    {
+        $this->crudUserId = $crudUserId;
+    }
+
+    protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery
+    {
+        $query->join('user',
+                     [
+                         'crudUsername',
+                     ],
+                     'user.crudId = comment.crudUserId');
+
+        return $query;
     }
 
 
