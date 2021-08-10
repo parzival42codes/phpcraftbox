@@ -110,6 +110,12 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
                      ],
                      'user.crudId = comment.crudUserId');
 
+        $query->join('user_group',
+                     [
+                         'crudLanguage',
+                     ],
+                     'user_group.crudId = user.crudUserGroupId');
+
         return $query;
     }
 

@@ -5,6 +5,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
 
     public function install(): void
     {
+        $this->importLanguage();
         $this->importQueryDatabaseFromCrud('ContainerFactoryUserGroup_crud');
         $this->importQueryDatabaseFromCrud('ContainerFactoryUserGroup_crud_groupaccess');
 
@@ -13,11 +14,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
 
             /** @var ContainerFactoryUserGroup_crud $crud */
             $crud = Container::get('ContainerFactoryUserGroup_crud');
-            $crud->setCrudData('
-            [de_DE]
-            name = "Gast"
-            description = "Gastzugang"
-            ');
+            $crud->setCrudLanguage('{insert/language class="ContainerFactoryUserGroup" path="/group/name/guest"}');
             $crud->setCrudProtected(1);
             $crud->setCrudId(1);
 
@@ -31,11 +28,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
 
             /** @var ContainerFactoryUserGroup_crud $crud */
             $crud = Container::get('ContainerFactoryUserGroup_crud');
-            $crud->setCrudData('
-            [de_DE]
-            name = "User"
-            description = "User"
-            ');
+            $crud->setCrudLanguage('{insert/language class="ContainerFactoryUserGroup" path="/group/name/user"}');
             $crud->setCrudProtected(1);
             $crud->setCrudId(2);
 
@@ -49,11 +42,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
 
             /** @var ContainerFactoryUserGroup_crud $crud */
             $crud = Container::get('ContainerFactoryUserGroup_crud');
-            $crud->setCrudData('
-            [de_DE]
-            name = "Moderator"
-            description = "Moderator"
-            ');
+            $crud->setCrudLanguage('{insert/language class="ContainerFactoryUserGroup" path="/group/name/moderator"}');
             $crud->setCrudProtected(1);
             $crud->setCrudId(3);
 
@@ -67,11 +56,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
 
             /** @var ContainerFactoryUserGroup_crud $crud */
             $crud = Container::get('ContainerFactoryUserGroup_crud');
-            $crud->setCrudData('
-            [de_DE]
-            name = "Admin"
-            description = "Admin"
-            ');
+            $crud->setCrudLanguage('{insert/language class="ContainerFactoryUserGroup" path="/group/name/admin"}');
             $crud->setCrudProtected(1);
             $crud->setCrudId(4);
 

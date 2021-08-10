@@ -17,7 +17,7 @@ class ContainerFactoryUserGroup_crud extends Base_abstract_crud
      * @var string
      * @database type varchar;250
      */
-    protected string $crudData = '';
+    protected string $crudLanguage = '';
     /**
      * @var int
      * @database type int;11
@@ -41,22 +41,6 @@ class ContainerFactoryUserGroup_crud extends Base_abstract_crud
     }
 
     /**
-     * @return string
-     */
-    public function getCrudData(): string
-    {
-        return $this->crudData;
-    }
-
-    /**
-     * @param string $crudData
-     */
-    public function setCrudData(string $crudData): void
-    {
-        $this->crudData = $crudData;
-    }
-
-    /**
      * @return int
      */
     public function getCrudProtected(): int
@@ -70,6 +54,22 @@ class ContainerFactoryUserGroup_crud extends Base_abstract_crud
     public function setCrudProtected(int $crudProtected): void
     {
         $this->crudProtected = $crudProtected;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudLanguage(): string
+    {
+        return $this->crudLanguage;
+    }
+
+    /**
+     * @param string $crudLanguage
+     */
+    public function setCrudLanguage(string $crudLanguage): void
+    {
+        $this->crudLanguage = $crudLanguage;
     }
 
 }

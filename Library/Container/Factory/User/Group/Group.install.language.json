@@ -1,0 +1,29 @@
+{
+  "type": "install.language",
+  "content": {
+    "/group/name/guest": {
+      "language": {
+        "de_DE": "Gast",
+        "en_US": "Guest"
+      }
+    },
+    "/group/name/user": {
+      "language": {
+        "de_DE": "Benutzer",
+        "en_US": "User"
+      }
+    },
+    "/group/name/moderator": {
+      "language": {
+        "de_DE": "Moderator",
+        "en_US": "Moderator"
+      }
+    },
+    "/group/name/admin": {
+      "language": {
+        "de_DE": "Administrator",
+        "en_US": "Admin"
+      }
+    }
+  }
+}

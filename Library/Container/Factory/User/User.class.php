@@ -35,12 +35,7 @@ class ContainerFactoryUser extends Base
         $ContainerFactoryUserGroupCrud->setCrudId($this->userGroupId);
         $ContainerFactoryUserGroupCrud->findById(true);
 
-        /** @var ContainerFactoryLanguageParseIni $iniStringParse */
-        $iniStringParse = Container::get('ContainerFactoryLanguageParseIni',
-                                         $ContainerFactoryUserGroupCrud->getCrudData());
-
-        $iniStringParseData  = $iniStringParse->get();
-        $this->userGroupName = ($iniStringParseData['name'] ?? '?');
+        $this->userGroupName = $ContainerFactoryUserGroupCrud->getCrudLanguage();
 
         /** @var ContainerFactoryUserGroup_crud_groupaccess $crudAccess */
         $crudAccess     = Container::get('ContainerFactoryUserGroup_crud_groupaccess');

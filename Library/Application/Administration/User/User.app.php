@@ -55,11 +55,7 @@ class ApplicationAdministrationUser_app extends Application_abstract
         $crudUserGroupFound = $crudUserGroup->find();
         /** @var ContainerFactoryUserGroup_crud $crudUserGroupFoundItem */
         foreach ($crudUserGroupFound as $crudUserGroupFoundItem) {
-            /** @var ContainerFactoryLanguageParseIni $groupLanguage */
-            $groupLanguage                                              = Container::get('ContainerFactoryLanguageParseIni',
-                                                                                         $crudUserGroupFoundItem->getCrudData());
-            $groupLanguageItem                                          = $groupLanguage->get();
-            $crudUserGroupCollect[$crudUserGroupFoundItem->getCrudId()] = $groupLanguageItem['name'];
+            $crudUserGroupCollect[$crudUserGroupFoundItem->getCrudId()] = $crudUserGroupFoundItem->getCrudLanguage();
         }
 
         $filter->addFilter('crudUserGroupId',
@@ -171,12 +167,6 @@ class ApplicationAdministrationUser_app extends Application_abstract
 
         /** @var ContainerFactoryUser_crud $crudImport */
         foreach ($crudImports as $crudImport) {
-
-            /** @var ContainerFactoryLanguageParseIni $groupLanguage */
-            $groupLanguage     = Container::get('ContainerFactoryLanguageParseIni',
-                                                $crudImport->getAdditionalQuerySelect('user_group_crudData'));
-            $groupLanguageItem = $groupLanguage->get();
-
             /** @var ContainerFactoryRouter $editRouter */
             $editRouter = Container::get('ContainerFactoryRouter');
             $editRouter->setRoute('edit');
@@ -188,7 +178,7 @@ class ApplicationAdministrationUser_app extends Application_abstract
                 'crudId'          => $crudImport->getCrudId(),
                 'crudUsername'    => $crudImport->getCrudUsername(),
                 'crudUserGroupId' => $crudImport->getCrudUserGroupId(),
-                'groupName'       => $groupLanguageItem['name'],
+                'groupName'       => $crudImport->getAdditionalQuerySelect('user_group_crudLanguage'),
                 'crudEmail'       => $crudImport->getCrudEmail(),
                 'crudActivated'   => $crudImport->isCrudActivated(),
                 'crudEmailCheck'  => $crudImport->isCrudEmailCheck(),

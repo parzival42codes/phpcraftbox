@@ -13,10 +13,10 @@ class ContainerFactoryComment extends Base
 
     public function count()
     {
-        $crud     = new ContainerFactoryComment_crud();
+        $crud      = new ContainerFactoryComment_crud();
         $crudCount = $crud->count([
-                                    'crudPath' => $this->path
-                                ]);
+                                      'crudPath' => $this->path
+                                  ]);
 
         d($crudCount);
         eol();
@@ -37,18 +37,33 @@ class ContainerFactoryComment extends Base
 
         $content = '';
 
+        /** @var ContainerFactoryComment_crud $crudFindItem */
         foreach ($crudFind as $crudFindItem) {
             $template = new ContainerExtensionTemplate();
             $template->set($templateCache->getCacheContent()['item']);
+
+            $crudItemDate = new DateTime($crudFindItem->getDataVariableCreated());
+
+
+            $template->assign('content',
+                              $crudFindItem->getCrudContent());
+            $template->assign('user',
+                              $crudFindItem->getAdditionalQuerySelect('user_crudUsername'));
+            $template->assign('userGroup',
+                              $crudFindItem->getAdditionalQuerySelect('user_group_crudLanguage'));
+            $template->assign('date',
+                              $crudItemDate->format((string)Config::get('/environment/datetime/format')));
+
+//            d($crudFindItem);
+//            d($template);
 
             $template->parse();
             $content .= $template->get();
         }
 
-        d($crudFind);
-        d($content);
+//        eol();
 
-        eol();
+        return $content;
     }
 
 }
