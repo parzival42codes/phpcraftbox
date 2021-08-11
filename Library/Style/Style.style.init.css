@@ -164,6 +164,13 @@ summary {
     padding: 0.5em 1em;
 }
 
+.card-container h2 {
+    @aboveTheFold: "1";
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
 .card-container-footer {
     @aboveTheFold: "1";
     overflow: hidden;
