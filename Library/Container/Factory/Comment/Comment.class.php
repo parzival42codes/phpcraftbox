@@ -1,5 +1,18 @@
 <?php declare(strict_types=1);
 
+/**
+ * Comments
+ *
+ * @author   Stefan Schlombs
+ * @version  1.0.0
+ * @modul    versionRequiredSystem 1.0.0
+ * @modul    language_path_de_DE Kommentare
+ * @modul    language_name_de_DE Kommentare
+ * @modul    language_path_en_US Comment
+ * @modul    language_name_en_US Comment
+ * @modul hasCSS
+ */
+
 class ContainerFactoryComment extends Base
 {
 

@@ -1,0 +1,23 @@
+.ContainerFactoryComment .container {
+    padding: 1em;
+    margin: 1em;
+    background-color: yellow;
+}
+
+.ContainerFactoryComment .header {
+    padding: 1em;
+    margin: 1em;
+    background-color: blue;
+}
+
+.ContainerFactoryComment .content {
+    padding: 1em;
+    margin: 1em;
+    background-color: green;
+}
+
+.ContainerFactoryComment .footer {
+    padding: 1em;
+    margin: 1em;
+    background-color: gray;
+}
