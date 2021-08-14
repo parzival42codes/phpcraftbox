@@ -5,7 +5,7 @@ class ContainerFactoryComment_install extends ContainerFactoryModulInstall_abstr
 
     public function install(): void
     {
-        $this->importMetaFromModul('');
+        $this->importMetaFromModul();
         $this->importQueryDatabaseFromCrud('ContainerFactoryComment_crud');
         $this->importLanguage();
 

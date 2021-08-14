@@ -1,0 +1,7 @@
+{
+    "regex": {
+        "default": {
+            "path": "/blog/view/{id|[0-9]+}/{title|.*}"
+        }
+    }
+}

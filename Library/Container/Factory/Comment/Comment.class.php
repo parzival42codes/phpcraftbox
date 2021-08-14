@@ -10,9 +10,8 @@
  * @modul    language_name_de_DE Kommentare
  * @modul    language_path_en_US Comment
  * @modul    language_name_en_US Comment
- * @modul hasCSS
+ * @modul    hasCSS
  */
-
 class ContainerFactoryComment extends Base
 {
 
@@ -38,7 +37,7 @@ class ContainerFactoryComment extends Base
     public function get()
     {
         $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
-                                                                           'item');
+                                                                           'default,item');
 
         $crud     = new ContainerFactoryComment_crud();
         $crudFind = $crud->find([
@@ -76,7 +75,14 @@ class ContainerFactoryComment extends Base
 
 //        eol();
 
-        return $content;
+        $template = new ContainerExtensionTemplate();
+        $template->set($templateCache->getCacheContent()['default']);
+
+        $template->assign('content',
+                          $content);
+
+        $template->parse();
+        return $template->get();
     }
 
 }
