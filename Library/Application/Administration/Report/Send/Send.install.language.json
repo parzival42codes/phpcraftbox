@@ -1,0 +1,11 @@
+{
+  "type": "install.language",
+  "content": {
+    "/breadcrumb": {
+      "language": {
+        "de_DE": "Blog",
+        "en_US": "Blog"
+      }
+    }
+  }
+}

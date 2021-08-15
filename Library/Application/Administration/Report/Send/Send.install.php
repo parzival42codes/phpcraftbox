@@ -1,9 +1,9 @@
 <?php
 
-class ApplicationAdministrationReport_install extends ContainerFactoryModulInstall_abstract
+class ApplicationAdministrationReportSend_install extends ContainerFactoryModulInstall_abstract
 {
 
-    public function install(): void
+    public function install():void
     {
         $this->importRoute();
         $this->importMenu();

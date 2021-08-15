@@ -1,7 +1,7 @@
 {
-    "regex": {
+    "simple": {
         "default": {
-            "path": "/blog/view/{id|[0-9]+}/{title|.*}"
+            "path": "/administration/report"
         }
     }
 }
