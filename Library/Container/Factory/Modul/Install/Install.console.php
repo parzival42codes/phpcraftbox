@@ -100,6 +100,8 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             'ApplicationAdministrationContentView',
             'ApplicationAdministrationConfig',
             'ApplicationAdministrationLanguage',
+            'ApplicationAdministrationReport',
+            'ApplicationAdministrationReportSend',
             'ApplicationIndexErrorNotfound',
             'ApplicationAdministration',
             'ContainerFactoryComment',

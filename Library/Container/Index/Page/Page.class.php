@@ -302,13 +302,15 @@ class ContainerIndexPage
         $pageContent = $template->get();
 
         $linkrewrite = function ($link) {
-
-            $strposIndex = strpos($link[2],
+             $strposIndex = strpos($link[2],
                                   'index.php');
             if ($strposIndex !== false) {
                 /** @var ContainerFactoryRouter $router */
                 $router = Container::get('ContainerFactoryRouter');
                 $router->analyzeUrl($link[2]);
+
+                $router->getUrlReadable();
+
                 return 'href="' . $router->getUrlReadable(true) . '"';
             }
             else {

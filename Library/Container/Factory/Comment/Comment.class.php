@@ -49,6 +49,10 @@ class ContainerFactoryComment extends Base
 
         $content = '';
 
+        $modul = new ContainerFactoryModul_crud();
+        $modul->setCrudModul(Core::getRootClass(__CLASS__));
+        $modul->findByColumn('crudModul',true);
+
         /** @var ContainerFactoryComment_crud $crudFindItem */
         foreach ($crudFind as $crudFindItem) {
             $template = new ContainerExtensionTemplate();
@@ -56,7 +60,10 @@ class ContainerFactoryComment extends Base
 
             $crudItemDate = new DateTime($crudFindItem->getDataVariableCreated());
 
-
+            $template->assign('hash',
+                              $modul->getCrudHash());
+            $template->assign('id',
+                              $crudFindItem->getCrudId());
             $template->assign('content',
                               $crudFindItem->getCrudContent());
             $template->assign('user',
@@ -70,6 +77,11 @@ class ContainerFactoryComment extends Base
 //            d($template);
 
             $template->parse();
+
+//            d($modul);
+//            d($template->get());
+//            eol();
+
             $content .= $template->get();
         }
 

@@ -1,0 +1,15 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationReport",
+    "menuClassMain": "ApplicationAdministrationReport",
+    "menuAccess": "ApplicationAdministrationReport",
+    "language": {
+      "de_DE": {
+        "menuTitle": "10|Meldungen",
+        "menuDescription": "",
+        "menuPath": "/Administration/Meldungen"
+      }
+    }
+  }
+}

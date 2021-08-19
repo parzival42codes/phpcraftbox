@@ -8,7 +8,7 @@
     </div>
     <div class="flex-container footer">
         <div style="flex: 1;">&nbsp;</div>
-        <div style="flex: 2;text-align: right;"><a href="#"
+        <div style="flex: 2;text-align: right;"><a href="index.php?application=ApplicationAdministrationReportSend&hash={$hash}&id={$id}"
                                                    class="btn">{insert/language class="ContainerFactoryComment" path="/item/redButton"
                 language-de_DE="Beitrag melden"
                 language-en_US="Report / block post"}</a></div>

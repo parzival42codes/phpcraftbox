@@ -1,7 +1,7 @@
 {
     "regex": {
         "default": {
-            "path": "/report/{id|[0-9]+}/{title|.*}"
+            "path": "/report/{hash|[a-zA-Z0-9]+}/{id|[0-9]+}"
         }
     }
 }

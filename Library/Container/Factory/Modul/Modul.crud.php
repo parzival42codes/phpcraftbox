@@ -31,6 +31,12 @@ class ContainerFactoryModul_crud extends Base_abstract_crud
     /**
      * @var string
      * @database type varchar;250
+     * @database isIndex
+     */
+    protected string $crudHash = '';
+    /**
+     * @var string
+     * @database type varchar;250
      */
     protected string $crudDescription = '';
     /**
@@ -355,6 +361,22 @@ class ContainerFactoryModul_crud extends Base_abstract_crud
     public function setCrudHasSearch(int $crudHasSearch): void
     {
         $this->crudHasSearch = $crudHasSearch;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudHash(): string
+    {
+        return $this->crudHash;
+    }
+
+    /**
+     * @param string $crudHash
+     */
+    public function setCrudHash(string $crudHash): void
+    {
+        $this->crudHash = $crudHash;
     }
 
 

@@ -715,6 +715,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             $modulCrud = Container::get('ContainerFactoryModul_crud');
             $modulCrud->setCrudModul($data['modulMeta']['modul']);
             $modulCrud->setCrudParentModul($data['modulMeta']['parentModul']);
+            $modulCrud->setCrudHash(md5($data['modulMeta']['modul'] . (string)Config::get('/environment/secret/modul')));
             $modulCrud->setCrudName($data['modulMeta']['name']);
             $modulCrud->setCrudDescription($data['modulMeta']['description']);
             $modulCrud->setCrudMeta($data['modulMeta']['meta']);

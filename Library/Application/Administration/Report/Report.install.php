@@ -5,8 +5,9 @@ class ApplicationAdministrationReport_install extends ContainerFactoryModulInsta
 
     public function install(): void
     {
-        $this->importRoute();
+        $this->importMetaFromModul('_app');
         $this->importMenu();
+        $this->importRoute();
         $this->importLanguage();
         $this->readLanguageFromFile('default');
     }

@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
 
 /**
- * Blog View
+ * Report
  *
  * @author   Stefan Schlombs
  * @version  1.0.0
@@ -17,6 +17,11 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
 
     public function setContent(): string
     {
+        /** @var ContainerExtensionTemplateParseCreateForm_helper $formHelper */
+        $formHelper = Container::get('ContainerExtensionTemplateParseCreateForm_helper',
+                                     $this->___getRootClass(),
+                                     'report');
+
         $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
                                                                            'default');
 
@@ -24,41 +29,24 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
         $template = Container::get('ContainerExtensionTemplate');
         $template->set($templateCache->getCacheContent()['default']);
 
-        $container = Container::DIC();
-        /** @var ContainerFactoryRouter $router */
-        $router = $container->getDIC('/Router');
+        $formHelper->addFormElement('username',
+                                    'text',
+                                    [],
+                                    [
+                                        'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired',
+                                    ]);
 
-        $crud = new ApplicationBlog_crud();
-        $crud->setCrudId((int)$router->getParameter('id'));
-        $crud->findById(true);
-        $this->pageData($crud->getCrudTitle());
+        $template->assign('form',
+                          $formHelper->getElements());
 
-        $crudView = ($crud->getCrudViewCount() + 1);
-        $crud->setCrudViewCount($crudView);
-        $crud->update();
+        $template->assign('formHeader',
+                          $formHelper->getHeader());
 
-        $template->assign('title',
-                          $crud->getCrudTitle());
-        $template->assign('content',
-                          $crud->getCrudText());
-
-        $category = $crud->getAdditionalQuerySelect('custom_blog_category_crudPath') . '/' . $crud->getAdditionalQuerySelect('custom_blog_category_crudTitle');
-
-        $template->assign('category',
-                          $crud->getAdditionalQuerySelect('custom_blog_category_crudPath') . '/' . $crud->getAdditionalQuerySelect('custom_blog_category_crudTitle'));
-        $template->assign('viewCount',
-                          $crud->getCrudViewCount());
-        $template->assign('commentCount',
-                          $crud->getAdditionalQuerySelect('commentCount'));
-
-        $comment = new ContainerFactoryComment($category . '/' . $crud->getCrudId());
-
-        $template->assign('comments',
-                          $comment->get());
+        $template->assign('formFooter',
+                          $formHelper->getFooter());
 
         $template->parse();
         return $template->get();
-
     }
 
     private function pageData($title): void

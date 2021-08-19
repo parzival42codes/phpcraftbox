@@ -3,9 +3,13 @@
   "content": {
     "/breadcrumb": {
       "language": {
-        "de_DE": "Blog",
-        "en_US": "Blog"
+        "de_DE": "Melden",
+        "en_US": "Report"
       }
+    },
+    "/form/report/label": {
+      "de_DE": "Hier können Sie Zusätzliche Informationen mitteilen",
+      "en_US": "Password"
     }
   }
 }
