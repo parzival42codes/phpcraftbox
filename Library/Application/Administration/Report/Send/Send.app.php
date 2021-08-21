@@ -25,6 +25,23 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
         $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
                                                                            'default');
 
+        $container = Container::DIC();
+        /** @var ContainerFactoryRouter $router */
+        $router = $container->getDIC('/Router');
+
+
+        $crudModul = new ContainerFactoryModul_crud();
+        $crudModul->setCrudHash($router->getParameter('hash'));
+        $crudModul->findByColumn('crudHash',
+                                 true);
+
+        /** @var ApplicationAdministrationReport_abstract $report */
+        $report = $crudModul->getCrudModul() . '_report';
+$crud->
+
+        d($crudModul);
+        eol();
+
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
         $template->set($templateCache->getCacheContent()['default']);
