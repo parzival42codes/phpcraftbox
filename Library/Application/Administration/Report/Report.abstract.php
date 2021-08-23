@@ -9,5 +9,6 @@ abstract class ApplicationAdministrationReport_abstract extends Base
     }
 
     abstract function getCrud (): string;
+    abstract function getContent (): string;
 
 }

@@ -6,6 +6,7 @@ class ApplicationAdministrationReport_install extends ContainerFactoryModulInsta
     public function install(): void
     {
         $this->importMetaFromModul('_app');
+        $this->importQueryDatabaseFromCrud('ApplicationAdministrationReport_crud');
         $this->importMenu();
         $this->importRoute();
         $this->importLanguage();

@@ -7,10 +7,6 @@ class ContainerExtensionTemplateParseCreateFormElementSelect extends
     {
         $attribut = $this->getStdAttribut();
 
-        $attribut->set('type',
-                       null,
-                       'text');
-
         $attribut->set('class',
                        true,
                        'ContainerExtensionTemplateParseCreateForm-select');

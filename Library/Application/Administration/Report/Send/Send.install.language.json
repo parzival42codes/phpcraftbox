@@ -8,8 +8,16 @@
       }
     },
     "/form/report/label": {
+      "de_DE": "Bitte geben Sie den Grund für das melden des Inhalts an",
+      "en_US": "Please provide the reason for reporting the content"
+    },
+    "/form/report/option/cpa": {
+      "de_DE": "Verstoß gegen das Urheberrechtsschutzgesetz",
+      "en_US": "Violation of the Copyright Protection Act"
+    },
+    "/form/content/label": {
       "de_DE": "Hier können Sie Zusätzliche Informationen mitteilen",
-      "en_US": "Password"
+      "en_US": "Here you can provide additional information"
     }
   }
 }

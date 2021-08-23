@@ -24,37 +24,7 @@ class ApplicationAdministrationReport_app extends ApplicationAdministration_abst
         $template = Container::get('ContainerExtensionTemplate');
         $template->set($templateCache->getCacheContent()['default']);
 
-        $container = Container::DIC();
-        /** @var ContainerFactoryRouter $router */
-        $router = $container->getDIC('/Router');
 
-        $crud = new ApplicationBlog_crud();
-        $crud->setCrudId((int)$router->getParameter('id'));
-        $crud->findById(true);
-        $this->pageData($crud->getCrudTitle());
-
-        $crudView = ($crud->getCrudViewCount() + 1);
-        $crud->setCrudViewCount($crudView);
-        $crud->update();
-
-        $template->assign('title',
-                          $crud->getCrudTitle());
-        $template->assign('content',
-                          $crud->getCrudText());
-
-        $category = $crud->getAdditionalQuerySelect('custom_blog_category_crudPath') . '/' . $crud->getAdditionalQuerySelect('custom_blog_category_crudTitle');
-
-        $template->assign('category',
-                          $crud->getAdditionalQuerySelect('custom_blog_category_crudPath') . '/' . $crud->getAdditionalQuerySelect('custom_blog_category_crudTitle'));
-        $template->assign('viewCount',
-                          $crud->getCrudViewCount());
-        $template->assign('commentCount',
-                          $crud->getAdditionalQuerySelect('commentCount'));
-
-        $comment = new ContainerFactoryComment($category . '/' . $crud->getCrudId());
-
-        $template->assign('comments',
-                          $comment->get());
 
         $template->parse();
         return $template->get();

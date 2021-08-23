@@ -35,32 +35,77 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
         $crudModul->findByColumn('crudHash',
                                  true);
 
-        /** @var ApplicationAdministrationReport_abstract $report */
-        $report = $crudModul->getCrudModul() . '_report';
-$crud->
+        $crudReport = new ApplicationAdministrationReport_crud();
+        $crudReport->setCrudModul($crudModul->getCrudModul());
+        $crudReport->setCrudModulId($router->getParameter('id'));
+        $crudReport->findByColumn([
+                                      'crudModul',
+                                      'crudModulId',
+                                  ]);
 
-        d($crudModul);
-        eol();
+        debugDump($crudReport);
+
+        /** @var ApplicationAdministrationReport_abstract $report */
+        $reportName = $crudModul->getCrudModul() . '_report';
+
+        $report   = new $reportName();
+        $crudName = $report->getCrud();
+
+        /** @var Base_abstract_crud $crud */
+        $crud = new $crudName();
+
+        $crudIdName      = $crud::getTableId();
+        $crudContentName = $report->getContent();
+
+        $crudSetName = 'set' . ucfirst($crudIdName);
+        $crud->$crudSetName($router->getParameter('id'));
+        $crud->findByColumn($crudIdName,
+                            true);
+
+        $formHelperResponse = $formHelper->getResponse();
+        if (
+            $formHelperResponse->isHasResponse()
+        ) {
+            $this->formResponse($formHelper,
+                                $crud,
+                                $crudReport);
+        }
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
         $template->set($templateCache->getCacheContent()['default']);
 
-        $formHelper->addFormElement('username',
-                                    'text',
-                                    [],
+        $formHelper->addFormElement('report',
+                                    'select',
+                                    [
+                                        [
+                                            ApplicationAdministrationReport_crud::STATUS_COPYRIGHT_PROTECTION_ACT => ContainerFactoryLanguage::get('/ApplicationAdministrationReportSend/form/report/option/cpa'),
+                                        ],
+                                    ],
                                     [
                                         'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired',
                                     ]);
 
+        $elementObj = $formHelper->getElement('report');
+        $elementObj->setFlex(1);
+
+        $formHelper->addFormElement('content',
+                                    'textarea');
+
+        $elementObj = $formHelper->getElement('content');
+        $elementObj->setFlex(2);
+
         $template->assign('form',
-                          $formHelper->getElements());
+                          $formHelper->getElements(true));
 
         $template->assign('formHeader',
                           $formHelper->getHeader());
 
         $template->assign('formFooter',
                           $formHelper->getFooter());
+
+        $template->assign('content',
+                          $crud->$crudContentName());
 
         $template->parse();
         return $template->get();
@@ -89,6 +134,20 @@ $crud->
 
         $menu = $this->getMenu();
         $menu->setMenuClassMain($this->___getRootClass());
+
+    }
+
+    public function formResponse(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Base_abstract_crud $crud, ApplicationAdministrationReport_crud $crudReport)
+    {
+        $response = $formHelper->getResponse();
+        if (!$response->hasError()) {
+
+            $crudReport->setCrudContent($response->get('content'));
+            $crudReport->setCrudReport($response->get('report'));
+            $crudReport->insertUpdate();
+
+
+        }
 
     }
 
