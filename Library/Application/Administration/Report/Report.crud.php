@@ -57,6 +57,13 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
      */
     protected string $crudStatus = '';
 
+
+    /**
+     * @var string
+     * @database type text
+     */
+    protected string $crudReply = '';
+
     /**
      * @return mixed
      */
@@ -167,6 +174,22 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     public function setCrudReport(string $crudReport): void
     {
         $this->crudReport = $crudReport;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudReply(): string
+    {
+        return $this->crudReply;
+    }
+
+    /**
+     * @param string $crudReply
+     */
+    public function setCrudReply(string $crudReply): void
+    {
+        $this->crudReply = $crudReply;
     }
 
 }

@@ -252,4 +252,39 @@ abstract class Application_abstract extends Base
         return $this->menu;
     }
 
+    public function createPageData()
+    {
+        $rootClass = Core::getRootClass(get_called_class());
+
+        /** @var ContainerIndexPage $page */
+        $page = Container::getInstance('ContainerIndexPage');
+
+        $breadcrumb = ContainerFactoryLanguage::get('/' . $rootClass . '/breadcrumb',
+                                                    '');
+        $pageTitle  = ContainerFactoryLanguage::get('/' . $rootClass . '/meta/title',
+                                                    $breadcrumb);
+
+        $page->setPageTitle($pageTitle);
+
+        $breadcrumbObj = $page->getBreadcrumb();
+
+        $container = Container::DIC();
+        /** @var ContainerFactoryRouter $router */
+        $router = $container->getDIC('/Router');
+
+        $breadcrumbObj->addBreadcrumbItem($breadcrumb,
+                                          $router->getUrlReadable());
+
+        $menu = $this->getMenu();
+        $menu->setMenuClassMain($this->___getRootClass());
+
+        $this->pageData();
+
+    }
+
+    private function pageData()
+    {
+
+    }
+
 }

@@ -37,6 +37,7 @@ li, ul {
 
 .simpleModifyInfo {
     @aboveTheFold: "1";
+    background-color: #style-color-info-background !important;
     color: #style-color-info !important;
 }
 
