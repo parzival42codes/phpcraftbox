@@ -10,6 +10,7 @@ abstract class Base_abstract_crud
     private string          $dataVariableEdited        = '';
     private int             $dataVariableEditedCounter = 0;
     private string          $dataVariableDeleted       = '';
+    private string          $dataVariableReport        = '';
     /**
      * @var array
      */
@@ -32,8 +33,8 @@ abstract class Base_abstract_crud
 
         foreach ($data as $dataItem) {
             if (
-            property_exists(get_called_class(),
-                            $dataItem)
+                property_exists(get_called_class(),
+                                $dataItem)
             ) {
                 $this->$dataItem = $data[$dataItem];
             }
@@ -156,6 +157,16 @@ abstract class Base_abstract_crud
         $queryItem->construct();
         $queryItem->execute();
 
+        $tableId = static::$tableId;
+        if ($this->$tableId === null) {
+            call_user_func([
+                               $this,
+                               'set' . ucfirst(static::$tableId)
+                           ],
+                           $queryItem->getLastID());
+        }
+
+
         return 'CRUD: ' . get_called_class() . ': Insert - Update: ' . implode(' | ',
                                                                                $crudActionData);
 
@@ -234,7 +245,7 @@ abstract class Base_abstract_crud
             foreach ($dbData as $key => $value) {
                 if (
                     strpos($key,
-                           'crud') === 0 || $key === 'dataVariableCreated' || $key === 'dataVariableEdited' || $key === 'dataVariableEditedCounter' || $key === 'dataVariableDeleted'
+                           'crud') === 0 || $key === 'dataVariableCreated' || $key === 'dataVariableEdited' || $key === 'dataVariableEditedCounter' || $key === 'dataVariableDeleted' || $key === 'dataVariableReport'
                 ) {
 
                     call_user_func([
@@ -309,7 +320,7 @@ abstract class Base_abstract_crud
             foreach ($smtpData as $key => $value) {
                 if (
                     strpos($key,
-                           'crud') === 0 || $key === 'dataVariableCreated' || $key === 'dataVariableEdited' || $key === 'dataVariableEditedCounter' || $key === 'dataVariableDeleted'
+                           'crud') === 0 || $key === 'dataVariableCreated' || $key === 'dataVariableEdited' || $key === 'dataVariableEditedCounter' || $key === 'dataVariableDeleted' || $key === 'dataVariableReport'
                 ) {
                     call_user_func([
                                        $crudItem,
@@ -415,6 +426,7 @@ abstract class Base_abstract_crud
     public function getDataVariableCreated(): string
     {
         return $this->dataVariableCreated;
+
     }
 
     /**
@@ -522,7 +534,7 @@ abstract class Base_abstract_crud
 
             $columnNull = false;
             if (
-            isset($dataBaseCollectIndex['isNull'])
+                isset($dataBaseCollectIndex['isNull'])
             ) {
                 $columnNull = true;
             }
@@ -555,14 +567,14 @@ abstract class Base_abstract_crud
                                   ($dataBaseCollectItemParameter['comment']) ?? '');
 
             if (
-            isset($dataBaseCollectIndex['isPrimary'])
+                isset($dataBaseCollectIndex['isPrimary'])
             ) {
                 $structure->setPrimary($dataBaseCollectKey);
 
             }
 
             if (
-            isset($dataBaseCollectIndex['isUnique'])
+                isset($dataBaseCollectIndex['isUnique'])
             ) {
                 $structure->setUnique($dataBaseCollectKey);
             }
@@ -572,7 +584,7 @@ abstract class Base_abstract_crud
             }
 
             if (
-            isset($dataBaseCollectIndex['isFulltext'])
+                isset($dataBaseCollectIndex['isFulltext'])
             ) {
                 $structure->setFulltext($dataBaseCollectKey);
             }
@@ -580,7 +592,7 @@ abstract class Base_abstract_crud
 
         if (isset($classComment['paramData']['@database'])) {
             if (
-            isset($classComment['paramData']['@database']['dataVariableCreated'])
+                isset($classComment['paramData']['@database']['dataVariableCreated'])
             ) {
                 $structure->setColumn('dataVariableCreated',
                                       'datetime',
@@ -588,7 +600,7 @@ abstract class Base_abstract_crud
                                       '0000-00-00 00:00:00');
             }
             if (
-            isset($classComment['paramData']['@database']['dataVariableEdited'])
+                isset($classComment['paramData']['@database']['dataVariableEdited'])
             ) {
                 $structure->setColumn('dataVariableEdited',
                                       'datetime',
@@ -596,7 +608,7 @@ abstract class Base_abstract_crud
                                       '0000-00-00 00:00:00');
             }
             if (
-            isset($classComment['paramData']['@database']['dataVariableEditedCounter'])
+                isset($classComment['paramData']['@database']['dataVariableEditedCounter'])
             ) {
                 $structure->setColumn('dataVariableEditedCounter',
                                       'int;11',
@@ -604,12 +616,19 @@ abstract class Base_abstract_crud
                                       0);
             }
             if (
-            isset($classComment['paramData']['@database']['dataVariableDeleted'])
+                isset($classComment['paramData']['@database']['dataVariableDeleted'])
             ) {
                 $structure->setColumn('dataVariableDeleted',
                                       'datetime',
                                       true,
                                       '0000-00-00 00:00:00');
+            }
+            if (
+                isset($classComment['paramData']['@database']['dataVariableReport'])
+            ) {
+                $structure->setColumn('dataVariableReport',
+                                      'int',
+                                      true);
             }
         }
 
@@ -649,6 +668,22 @@ abstract class Base_abstract_crud
         $query->query('TRUNCATE ' . static::$table);
         $query->construct();
         $smtp = $query->execute();
+    }
+
+    /**
+     * @return string
+     */
+    public function getDataVariableReport(): string
+    {
+        return $this->dataVariableReport;
+    }
+
+    /**
+     * @param string $dataVariableReport
+     */
+    public function setDataVariableReport(string $dataVariableReport): void
+    {
+        $this->dataVariableReport = $dataVariableReport;
     }
 
 }

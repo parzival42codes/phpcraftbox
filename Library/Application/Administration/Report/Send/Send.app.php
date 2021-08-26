@@ -168,6 +168,12 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
             $crudReport->setCrudContent($response->get('content'));
             $crudReport->setCrudReport($response->get('report'));
             $crudReport->insertUpdate();
+
+            d($crudReport);
+            eol();
+
+            $crud->setDataVariableReport($crudReport->getCrudId());
+            $crud->update();
         }
 
     }

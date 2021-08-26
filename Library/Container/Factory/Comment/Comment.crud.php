@@ -3,6 +3,7 @@
 /**
  * Class ContainerFactoryUser_crud
  *
+ * @database dataVariableReport
  * @database dataVariableCreated
  *
  */

@@ -352,6 +352,9 @@ class ContainerFactoryDatabaseQuery extends Base
             if ($tableData['dataVariableEditedCounter'] === true) {
                 $this->select[] = '`' . $this->table . '`' . '.dataVariableEditedCounter';
             }
+            if ($tableData['dataVariableReport'] === true) {
+                $this->select[] = '`' . $this->table . '`' . '.dataVariableReport';
+            }
 
             if ($tableData['dataVariableDeleted'] === true) {
                 $this->setParameterWhere('dataVariableDeleted',
@@ -418,6 +421,9 @@ class ContainerFactoryDatabaseQuery extends Base
             'dataVariableDeleted'       => $connectionEngine::tableColumnIsInDatabase($this->databaseConnection,
                                                                                       $table,
                                                                                       'dataVariableDeleted'),
+            'dataVariableReport'        => $connectionEngine::tableColumnIsInDatabase($this->databaseConnection,
+                                                                                      $table,
+                                                                                      'dataVariableReport'),
         ];
 
 
@@ -493,7 +499,6 @@ class ContainerFactoryDatabaseQuery extends Base
         $tableData = $this->getTableStructure($this->table);
 
         if ($this->automaticSetData === true) {
-
 
             if ($tableData['dataVariableCreated'] === true) {
                 $insertKeys[] = 'dataVariableCreated';
