@@ -79,9 +79,13 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
             if (
                 $formHelperResponse->isHasResponse()
             ) {
-                $this->formResponse($formHelper,
-                                    $crud,
-                                    $crudReport);
+                $result = $this->formResponse($formHelper,
+                                              $crud,
+                                              $crudReport);
+
+                if (!empty($result)) {
+                    return $result;
+                }
             }
 
 
@@ -161,7 +165,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
 
     }
 
-    public function formResponse(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Base_abstract_crud $crud, ApplicationAdministrationReport_crud $crudReport)
+    public function formResponse(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Base_abstract_crud $crud, ApplicationAdministrationReport_crud $crudReport): string
     {
         $response = $formHelper->getResponse();
         if (!$response->hasError()) {
@@ -169,12 +173,20 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
             $crudReport->setCrudReport($response->get('report'));
             $crudReport->insertUpdate();
 
-            d($crudReport);
-            eol();
-
             $crud->setDataVariableReport($crudReport->getCrudId());
             $crud->update();
+
+            $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
+                                                                               'send');
+
+            /** @var ContainerExtensionTemplate $template */
+            $template = Container::get('ContainerExtensionTemplate');
+            $template->set($templateCache->getCacheContent()['send']);
+            return $template->get();
+
         }
+
+        return '';
 
     }
 

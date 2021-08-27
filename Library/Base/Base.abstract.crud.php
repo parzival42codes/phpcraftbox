@@ -10,13 +10,13 @@ abstract class Base_abstract_crud
     private string          $dataVariableEdited        = '';
     private int             $dataVariableEditedCounter = 0;
     private string          $dataVariableDeleted       = '';
-    private string          $dataVariableReport        = '';
+    private ?int            $dataVariableReport        = null;
     /**
      * @var array
      */
     private array $additionalQuerySelect = [];
 
-    public function __construct(array $data = [])
+    public function __construct()
     {
         if (empty(static::$table) || empty(static::$tableId)) {
             throw new DetailedException('tableValueOrTableIdValueIsEmpty',
@@ -29,15 +29,6 @@ abstract class Base_abstract_crud
                                                 static::$tableId,
                                             ]
                                         ]);
-        }
-
-        foreach ($data as $dataItem) {
-            if (
-                property_exists(get_called_class(),
-                                $dataItem)
-            ) {
-                $this->$dataItem = $data[$dataItem];
-            }
         }
 
         if (empty(static::$reflectionProperty) || empty(static::$reflectionProperty[get_called_class()])) {
@@ -82,6 +73,17 @@ abstract class Base_abstract_crud
             $crudActionData[] = $this->$property;
             $queryItem->setUpdate($property,
                                   $this->$property);
+        }
+
+        $commentThis = new ContainerFactoryReflection(get_called_class());
+
+        $classComment = $commentThis->getReflectionClassComment();
+        if (isset($classComment['paramData']['@database'])) {
+            if (isset($classComment['paramData']['@database']['dataVariableReport'])) {
+                $property = 'dataVariableReport';
+                $queryItem->setUpdate($property,
+                                      $this->$property);
+            }
         }
 
         $id = call_user_func([
@@ -506,10 +508,7 @@ abstract class Base_abstract_crud
      */
     public function getInstallUpdateQuery(): array
     {
-        /** @var ContainerFactoryReflection $commentThis */
-        $commentThis     = Container::get('ContainerFactoryReflection',
-                                          get_called_class());
-        $dataBaseCollect = [];
+        $commentThis = new ContainerFactoryReflection(get_called_class());
 
         $classComment = $commentThis->getReflectionClassComment();
         $properties   = $commentThis->getProperties();
@@ -671,17 +670,17 @@ abstract class Base_abstract_crud
     }
 
     /**
-     * @return string
+     * @return int|null
      */
-    public function getDataVariableReport(): string
+    public function getDataVariableReport(): ?int
     {
         return $this->dataVariableReport;
     }
 
     /**
-     * @param string $dataVariableReport
+     * @param int|null $dataVariableReport
      */
-    public function setDataVariableReport(string $dataVariableReport): void
+    public function setDataVariableReport(?int $dataVariableReport): void
     {
         $this->dataVariableReport = $dataVariableReport;
     }

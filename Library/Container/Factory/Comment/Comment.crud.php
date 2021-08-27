@@ -116,6 +116,13 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
                          'crudLanguage',
                      ],
                      'user_group.crudId = user.crudUserGroupId');
+        $query->join('report',
+                     [
+                         'crudReport',
+                         'crudContent',
+                         'crudStatus',
+                     ],
+                     'report.crudId = comment.dataVariableReport');
 
         return $query;
     }
