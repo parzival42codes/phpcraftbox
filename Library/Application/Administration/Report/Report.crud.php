@@ -11,8 +11,6 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     protected static string $table   = 'report';
     protected static string $tableId = 'crudId';
 
-    const STATUS_COPYRIGHT_PROTECTION_ACT = 'cpa';
-
     /**
      * @var
      * @database type int;11
@@ -46,10 +44,11 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     protected string $crudContent = '';
 
     /**
-     * @var string
-     * @database type text
+     * @var ?integer
+     * @database type int;11
+     * @database isNull
      */
-    protected string $crudReport = '';
+    protected ?int $crudType = null;
 
     /**
      * @var string
@@ -142,38 +141,6 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     public function setCrudContent(string $crudContent): void
     {
         $this->crudContent = $crudContent;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCrudStatus(): string
-    {
-        return $this->crudStatus;
-    }
-
-    /**
-     * @param string $crudStatus
-     */
-    public function setCrudStatus(string $crudStatus): void
-    {
-        $this->crudStatus = $crudStatus;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCrudReport(): string
-    {
-        return $this->crudReport;
-    }
-
-    /**
-     * @param string $crudReport
-     */
-    public function setCrudReport(string $crudReport): void
-    {
-        $this->crudReport = $crudReport;
     }
 
     /**

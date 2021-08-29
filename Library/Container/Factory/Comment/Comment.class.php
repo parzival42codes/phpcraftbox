@@ -53,6 +53,10 @@ class ContainerFactoryComment extends Base
         $modul->setCrudModul(Core::getRootClass(__CLASS__));
         $modul->findByColumn('crudModul',true);
 
+//        d($crudFind);
+//        d($modul);
+//        eol();
+
         /** @var ContainerFactoryComment_crud $crudFindItem */
         foreach ($crudFind as $crudFindItem) {
             $template = new ContainerExtensionTemplate();

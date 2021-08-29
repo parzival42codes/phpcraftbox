@@ -88,6 +88,11 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
                 }
             }
 
+            $crudReportType = new ApplicationAdministrationReport_crud_type();
+            $crudReportTypeFind = $crudReportType->find();
+
+            d($crudReportTypeFind);
+            eol();
 
             $formHelper->addFormElement('report',
                                         'select',
