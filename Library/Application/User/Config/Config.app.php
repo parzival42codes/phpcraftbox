@@ -47,8 +47,7 @@ class ApplicationUserConfig_app extends Application_abstract
             $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
                 true);
             if (!empty($languageContainer)) {
-                $name = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                                  $languageContainer);
+                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
             }
             else {
                 $name = $crudConfigItem->getCrudConfigKey();
@@ -89,8 +88,7 @@ class ApplicationUserConfig_app extends Application_abstract
                 true);
 
             if (!empty($languageContainer)) {
-                $name = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                                  $languageContainer);
+                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
             }
             else {
                 $name = $crud->getCrudConfigKey();
@@ -162,8 +160,7 @@ class ApplicationUserConfig_app extends Application_abstract
                                         [
                                             [
                                                 'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                                ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                    ($languageContainer ?? []))
+                                                ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
                                             ],
                                         ]);
         }
@@ -185,8 +182,7 @@ class ApplicationUserConfig_app extends Application_abstract
                                         'checkbox',
                                         [
                                             [
-                                                1 => ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                    ($languageContainer ?? []))
+                                                1 => ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
                                             ],
                                         ],
                                         [

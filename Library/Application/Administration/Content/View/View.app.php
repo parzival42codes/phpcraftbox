@@ -13,10 +13,8 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
         $crudData = json_decode($crud->getCrudData(),
                                 true);
 
-        $title       = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                                 $crudData['title']);
-        $description = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                                 $crudData['description']);
+        $title       = ContainerFactoryLanguage::getLanguageText($crudData['title']);
+        $description = ContainerFactoryLanguage::getLanguageText($crudData['description']);
 
         /** @var ContainerIndexPage $page */ //
         $page = Container::getInstance('ContainerIndexPage');

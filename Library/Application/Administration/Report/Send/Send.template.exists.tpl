@@ -2,7 +2,7 @@
     <div class="card-container-header simpleModifyWarning">
         {insert/language class="ApplicationAdministrationReportSend" path="/exists/header"
         language-de_DE="Dieser Eintrag wurde bereits gemeldet !"
-        language-en_US="This entry has already been reported!"}: {$report}
+        language-en_US="This entry has already been reported!"}: {$type}
     </div>
     <div class="card-container-content">
         <p>{$content}</p>

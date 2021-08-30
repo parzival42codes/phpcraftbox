@@ -43,8 +43,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
             $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
                 true);
             if (!empty($languageContainer)) {
-                $name = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                                  $languageContainer);
+                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
             }
             else {
                 $name = $crudConfigItem->getCrudConfigKey();
@@ -85,8 +84,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                 true);
 
             if (!empty($languageContainer)) {
-                $name = ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                                  $languageContainer);
+                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
             }
             else {
                 $name = $crud->getCrudConfigKey();
@@ -156,8 +154,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                         [
                                             [
                                                 'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                                ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                    ($languageContainer ?? []))
+                                                ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
                                             ],
                                         ]);
         }
@@ -179,8 +176,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                         'checkbox',
                                         [
                                             [
-                                                1 => ContainerFactoryLanguage::getLanguageText((string)Config::get('/environment/language'),
-                                                    ($languageContainer ?? []))
+                                                1 => ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
                                             ],
                                         ],
                                         [
@@ -278,7 +274,6 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         /** @var ContainerFactoryRouter $router */
         $router = Container::get('ContainerFactoryRouter');
         $router->analyzeUrl('index.php?application=' . $thisClassName . '');
-
 
 
         $breadcrumb = $page->getBreadcrumb();

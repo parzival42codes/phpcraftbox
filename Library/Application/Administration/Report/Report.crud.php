@@ -1,11 +1,5 @@
 <?php declare(strict_types=1);
 
-/**
- * Class ContainerFactoryUser_crud
- *
- * @database dataVariableCreated
- *
- */
 class ApplicationAdministrationReport_crud extends Base_abstract_crud
 {
     protected static string $table   = 'report';
@@ -157,6 +151,47 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     public function setCrudReply(string $crudReply): void
     {
         $this->crudReply = $crudReply;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCrudType(): ?int
+    {
+        return $this->crudType;
+    }
+
+    /**
+     * @param int|null $crudType
+     */
+    public function setCrudType(?int $crudType): void
+    {
+        $this->crudType = $crudType;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudStatus(): string
+    {
+        return $this->crudStatus;
+    }
+
+    /**
+     * @param string $crudStatus
+     */
+    public function setCrudStatus(string $crudStatus): void
+    {
+        $this->crudStatus = $crudStatus;
+    }
+
+    protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery
+    {
+        $query->join('report_type',
+                     ['crudAbbreviation','crudContent'],
+                     'report_type.crudId = ' . self::$table . '.crudType');
+
+        return $query;
     }
 
 }

@@ -19,7 +19,7 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
      * @database isPrimary
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected  $crudId = null;
+    protected $crudId = null;
     /**
      * @var
      * @database type int;11
@@ -118,11 +118,17 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
                      'user_group.crudId = user.crudUserGroupId');
         $query->join('report',
                      [
-                         'crudReport',
+                         'crudType',
                          'crudContent',
                          'crudStatus',
                      ],
                      'report.crudId = comment.dataVariableReport');
+        $query->join('report_type',
+                     [
+                         'crudAbbreviation',
+                         'crudContent'
+                     ],
+                     'report_type.crudId = report.crudType');
 
         return $query;
     }

@@ -37,7 +37,7 @@ class ContainerFactoryComment extends Base
     public function get()
     {
         $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
-                                                                           'default,item');
+                                                                           'default,item,item.send');
 
         $crud     = new ContainerFactoryComment_crud();
         $crudFind = $crud->find([
@@ -51,7 +51,8 @@ class ContainerFactoryComment extends Base
 
         $modul = new ContainerFactoryModul_crud();
         $modul->setCrudModul(Core::getRootClass(__CLASS__));
-        $modul->findByColumn('crudModul',true);
+        $modul->findByColumn('crudModul',
+                             true);
 
 //        d($crudFind);
 //        d($modul);
@@ -59,8 +60,19 @@ class ContainerFactoryComment extends Base
 
         /** @var ContainerFactoryComment_crud $crudFindItem */
         foreach ($crudFind as $crudFindItem) {
-            $template = new ContainerExtensionTemplate();
-            $template->set($templateCache->getCacheContent()['item']);
+
+            if (!$crudFindItem->getAdditionalQuerySelect('report_type_crudContent')) {
+                $template = new ContainerExtensionTemplate();
+                $template->set($templateCache->getCacheContent()['item']);
+            }
+            else {
+                $template = new ContainerExtensionTemplate();
+                $template->set($templateCache->getCacheContent()['item.send']);
+
+                $template->assign('typeText',
+                                  ContainerFactoryLanguage::getLanguageText(json_decode($crudFindItem->getAdditionalQuerySelect('report_type_crudContent'),
+                                                                                        true)));
+            }
 
             $crudItemDate = new DateTime($crudFindItem->getDataVariableCreated());
 
@@ -76,6 +88,7 @@ class ContainerFactoryComment extends Base
                               $crudFindItem->getAdditionalQuerySelect('user_group_crudLanguage'));
             $template->assign('date',
                               $crudItemDate->format((string)Config::get('/environment/datetime/format')));
+
 
 //            d($crudFindItem);
 //            d($template);

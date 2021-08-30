@@ -88,24 +88,31 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
                 }
             }
 
-            $crudReportType = new ApplicationAdministrationReport_crud_type();
+            $crudReportType     = new ApplicationAdministrationReport_crud_type();
             $crudReportTypeFind = $crudReportType->find();
 
-            d($crudReportTypeFind);
-            eol();
+//            d($crudReportTypeFind);
+//            eol();
 
-            $formHelper->addFormElement('report',
+            $crudReportCollect = [];
+            /** @var ApplicationAdministrationReport_crud_type $crudReportTypeItem */
+            foreach ($crudReportTypeFind as $crudReportTypeItem) {
+                $keyName                     = $crudReportTypeItem->getCrudId();
+                $languageText                = ContainerFactoryLanguage::getLanguageText(json_decode($crudReportTypeItem->getCrudContent(),
+                                                                                                     true));
+                $crudReportCollect[$keyName] = $languageText;
+            }
+
+            $formHelper->addFormElement('type',
                                         'select',
                                         [
-                                            [
-                                                ApplicationAdministrationReport_crud::STATUS_COPYRIGHT_PROTECTION_ACT => ContainerFactoryLanguage::get('/ApplicationAdministrationReportSend/form/report/option/cpa'),
-                                            ],
+                                            $crudReportCollect,
                                         ],
                                         [
                                             'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired',
                                         ]);
 
-            $elementObj = $formHelper->getElement('report');
+            $elementObj = $formHelper->getElement('type');
             $elementObj->setFlex(1);
 
             $formHelper->addFormElement('content',
@@ -131,8 +138,11 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
         else {
             $templateExists = new ContainerExtensionTemplate();
             $templateExists->set($templateCache->getCacheContent()['exists']);
+
+            $reportText = ContainerFactoryLanguage::getLanguageText(json_decode($crudReport->getAdditionalQuerySelect('report_type_crudContent'),
+                                                                                true));
             $templateExists->assign('report',
-                                    ContainerFactoryLanguage::get('/ApplicationAdministrationReportSend/form/report/option/' . $crudReport->getCrudReport()));
+                                    $reportText);
             $templateExists->assign('content',
                                     $crudReport->getCrudContent());
             $templateExists->parse();
@@ -175,7 +185,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
         $response = $formHelper->getResponse();
         if (!$response->hasError()) {
             $crudReport->setCrudContent($response->get('content'));
-            $crudReport->setCrudReport($response->get('report'));
+            $crudReport->setCrudType((int)$response->get('type'));
             $crudReport->insertUpdate();
 
             $crud->setDataVariableReport($crudReport->getCrudId());
