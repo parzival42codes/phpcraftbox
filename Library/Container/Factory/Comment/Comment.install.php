@@ -9,8 +9,11 @@ class ContainerFactoryComment_install extends ContainerFactoryModulInstall_abstr
         $this->importQueryDatabaseFromCrud('ContainerFactoryComment_crud');
         $this->importLanguage();
 
-        $this->setGroupAccess(Core::getRootClass(__CLASS__).'/permitted',
-                              [ ]);
+        $this->setGroupAccess(Core::getRootClass(__CLASS__) . '/permitted',
+                              [
+                                  3,
+                                  4
+                              ]);
     }
 
 

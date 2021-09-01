@@ -18,7 +18,7 @@ class ContainerFactoryUser_crud extends Base_abstract_crud
      * @database isPrimary
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected  $crudId = null;
+    protected $crudId = null;
     /**
      * @var string
      * @database type varchar;250
@@ -190,7 +190,9 @@ class ContainerFactoryUser_crud extends Base_abstract_crud
     protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery
     {
         $query->join('user_group',
-                     ['crudData'],
+                     [
+                         'crudLanguage'
+                     ],
                      'user_group.crudId = ' . self::$table . '.crudUserGroupId');
         return $query;
     }

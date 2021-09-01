@@ -58,6 +58,11 @@ class ContainerFactoryComment extends Base
 //        d($modul);
 //        eol();
 
+        /** @var ContainerFactoryUser $user */
+        $user = Container::getInstance('ContainerFactoryUser');
+
+        $userReportView = $user->checkUserAccess('ContainerFactoryComment/permitted');
+
         /** @var ContainerFactoryComment_crud $crudFindItem */
         foreach ($crudFind as $crudFindItem) {
 
@@ -66,12 +71,20 @@ class ContainerFactoryComment extends Base
                 $template->set($templateCache->getCacheContent()['item']);
             }
             else {
-                $template = new ContainerExtensionTemplate();
-                $template->set($templateCache->getCacheContent()['item.send']);
 
-                $template->assign('typeText',
-                                  ContainerFactoryLanguage::getLanguageText(json_decode($crudFindItem->getAdditionalQuerySelect('report_type_crudContent'),
-                                                                                        true)));
+                if ($userReportView === true) {
+
+                    $template = new ContainerExtensionTemplate();
+                    $template->set($templateCache->getCacheContent()['item.send']);
+
+                    $template->assign('typeText',
+                                      ContainerFactoryLanguage::getLanguageText(json_decode($crudFindItem->getAdditionalQuerySelect('report_type_crudContent'),
+                                                                                            true)));
+                }
+                else {
+                    $template = new ContainerExtensionTemplate();
+                    $template->set($templateCache->getCacheContent()['item.report']);
+                }
             }
 
             $crudItemDate = new DateTime($crudFindItem->getDataVariableCreated());

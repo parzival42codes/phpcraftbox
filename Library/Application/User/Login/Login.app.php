@@ -55,7 +55,7 @@ class ApplicationUserLogin_app extends ApplicationAdministration_abstract
         $responseResult = $this->formResponse($response);
 
         if (
-        !is_null($responseResult)
+            !is_null($responseResult)
         ) {
             /** @var ContainerIndexPage $page */
             $page = Container::getInstance('ContainerIndexPage');
@@ -93,7 +93,7 @@ class ApplicationUserLogin_app extends ApplicationAdministration_abstract
         $elementEmail = Container::get('ContainerExtensionTemplateParseCreateFormElementText');
 
         $elementEmail->setValue(((int)Config::get('/environment/debug/active',
-                                            0) === 1) ? 'admin@phptoolbox.loc': '');
+                                                  0) === 1) ? 'admin@phpcraftbox.loc' : '');
         //$elementEmail->setValue($response->get('email'));
         $elementEmail->setLabel(ContainerFactoryLanguage::get('/ApplicationUserLogin/form/email/label'));
         $elementEmail->setInfo(ContainerFactoryLanguage::get('/ApplicationUserLogin/form/email/info'));
@@ -159,29 +159,25 @@ class ApplicationUserLogin_app extends ApplicationAdministration_abstract
             if (!$response->hasError()) {
 
                 /** @var ContainerFactoryUser_crud $user */
-                $user     = Container::get('ContainerFactoryUser_crud');
-                $userFind = $user->find([
-                                            'crudEmail' => $response->get('email')
-                                        ]);
+                $user = Container::get('ContainerFactoryUser_crud');
+                $user->setCrudEmail($response->get('email'));
+                $user->findByColumn('crudEmail');
 
-                /** @var ContainerFactoryUser_crud $userFound */
-                $userFound = reset($userFind);
-
-                if (empty($userFound) || empty($userFound->getCrudId())) {
+                if ($user->getCrudId() === null) {
                     return $this->pageNotificationPasswordError();
                 }
 
-                if ($userFound->isCrudActivated() === false) {
+                if ($user->isCrudActivated() === false) {
                     return $this->pageNotificationNotActivated();
                 }
 
-                if ($userFound->isCrudEmailCheck() === false) {
+                if ($user->isCrudEmailCheck() === false) {
                     return $this->pageNotificationNotEMailCheck();
                 }
 
                 if (
-                !password_verify($response->get('password'),
-                                 $userFound->getCrudPassword())
+                    !password_verify($response->get('password'),
+                                     $user->getCrudPassword())
                 ) {
                     return $this->pageNotificationPasswordError();
 
@@ -197,7 +193,7 @@ class ApplicationUserLogin_app extends ApplicationAdministration_abstract
 
                     ContainerFactorySession::start(true);
                     ContainerFactorySession::set('/user/id',
-                                                 $userFound->getCrudId());
+                                                 $user->getCrudId());
 
                     /** @var ContainerFactoryLog_crud_notification $crud */
                     $crud = Container::get('ContainerFactoryLog_crud_notification');
