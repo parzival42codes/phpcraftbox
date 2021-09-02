@@ -5,6 +5,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
 
     protected array $module
         = [
+            'Core',
             'Config',
             'Event',
             'ContainerExtensionDocumentation',
@@ -13,7 +14,6 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             'CoreAutoload',
             //  'Data',
             'ContainerFactoryFile',
-            'Core',
             'CoreErrorhandler',
             'CorePdo',
             'CoreDebug',
@@ -247,6 +247,13 @@ class ContainerFactoryModulInstall_console extends Console_abstract
 
         $installModule = new ConsoleCustom_install($this);
         $installModule->install();
+
+        if (class_exists('CustomInstall_install')) {
+            $customInstall = new CustomInstall_install($this);
+            $customInstall->install();
+        }
+
+
     }
 
 }

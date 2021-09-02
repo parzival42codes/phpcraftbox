@@ -5,7 +5,7 @@ class Core_install extends ContainerFactoryModulInstall_abstract
 
    public function install(): void
     {
-        $this->importConfig();
+        $this->importQueryDatabaseFromCrud('Core_crud');
     }
 
 

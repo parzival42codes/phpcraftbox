@@ -148,7 +148,7 @@ class ApplicationUserRegister_app extends Application_abstract
             $template = Container::get('ContainerExtensionTemplate');
             $template->set($templateCache->getCacheContent()['register.mail']);
             $template->assign('pageTitle',
-                              Config::get('/Core/page/title'));
+                              Config::get('/CoreIndex/page/title'));
 
             $template->parse();
 
@@ -158,7 +158,7 @@ class ApplicationUserRegister_app extends Application_abstract
                                                                           'de_DE' => 'Ihre Registrierung bei %s.',
                                                                           'en_US' => 'Your registration at %s',
                                                                       ]),
-                                        Config::get('/Core/page/title')),
+                                        Config::get('/CoreIndex/page/title')),
                                 $template->get(),
                                 self::class,
                                 'doActivateUser',

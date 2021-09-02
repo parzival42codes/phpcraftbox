@@ -210,7 +210,7 @@ class ApplicationUserMessageReply_app extends Application_abstract
             $mailer = Container::get('ContainerFactoryMail');
             $mailer->addAddress($userEmail);
             $mailer->setSubject(sprintf(ContainerFactoryLanguage::get('/' . $this->___getRootClass() . '/mail/subject'),
-                                        Config::get('/Core/page/title')));
+                                        Config::get('/CoreIndex/page/title')));
 
             $mailer->setBody($template->get());
 

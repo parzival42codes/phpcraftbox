@@ -335,7 +335,7 @@ class ContainerIndexPage
 
         $coreLoad = '';
 
-        $pushHeaderCSS = \Config::get('/server/http/base/url') . '/resources/css/' . ucfirst($styleSelected) . '/core' . ((\Config::get('/Core/gzip') == 1) ? '_gzip' : '') . '.css';
+        $pushHeaderCSS = \Config::get('/server/http/base/url') . '/resources/css/' . ucfirst($styleSelected) . '/core' . ((\Config::get('/CoreIndex/gzip') == 1) ? '_gzip' : '') . '.css';
 
         $coreLoad .= '<link rel="stylesheet" type="text/css" media="dummy" href="' . $pushHeaderCSS . '" onload="if (media != \'screen\') media = \'screen\'" />';
         $coreLoad .= '<noscript><link rel="stylesheet"f media="screen" href="' . $pushHeaderCSS . '" /></noscript>';
@@ -344,7 +344,7 @@ class ContainerIndexPage
         $contentJsObject = Container::get('ContainerExternResourcesJavascript');
 
         $hashLoadJSCounter = 1;
-        $coreLoad          .= '<script src="' . \Config::get('/server/http/base/url') . '/resources/javascript/core/javascript' . ((\Config::get('/Core/gzip') == 1) ? '_gzip' : '') . '.js" defer></script>' . PHP_EOL;
+        $coreLoad          .= '<script src="' . \Config::get('/server/http/base/url') . '/resources/javascript/core/javascript' . ((\Config::get('/CoreIndex/gzip') == 1) ? '_gzip' : '') . '.js" defer></script>' . PHP_EOL;
 
         $templatePage->assign('coreLoad',
                               $coreLoad);
@@ -389,7 +389,7 @@ class ContainerIndexPage
         $templatePage->assign('CMSUrl',
                               \Config::get('/server/http/base/url'));
         $templatePage->assign('CMSGzip',
-            ((\Config::get('/Core/gzip') === true) ? '_gzip' : ''));
+            ((\Config::get('/CoreIndex/gzip') === true) ? '_gzip' : ''));
 
         $templatePage->assign('headerTitle',
                               htmlspecialchars(strtr(($this->pageContent['title'] ?? '?'),

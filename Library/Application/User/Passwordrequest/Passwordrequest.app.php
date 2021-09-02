@@ -188,7 +188,7 @@ class ApplicationUserPasswordrequest_app extends ApplicationAdministration_abstr
             $template = Container::get('ContainerExtensionTemplate');
             $template->set($templateCache->getCacheContent()['request.mail']);
             $template->assign('pageTitle',
-                              Config::get('/Core/page/title'));
+                              Config::get('/CoreIndex/page/title'));
             $template->assign('url',
                               $router->getUrlReadable());
 
@@ -198,7 +198,7 @@ class ApplicationUserPasswordrequest_app extends ApplicationAdministration_abstr
             $mailer = Container::get('ContainerFactoryMail');
             $mailer->addAddress($crud->getCrudEmail());
             $mailer->setSubject(sprintf(ContainerFactoryLanguage::get('/ApplicationUserPasswordrequest/mail/password/request/header'),
-                                        Config::get('/Core/page/title')));
+                                        Config::get('/CoreIndex/page/title')));
 
             $mailer->setBody($template->get());
 

@@ -68,7 +68,7 @@ class ContainerExternResources_free extends Base
             if ($gzip === true) {
 
                 $cssContent = ContainerHelperData::Gzip($cssContent,
-                                                        (int)Config::get('/Core/gzip/level'));
+                                                        (int)Config::get('/CoreIndex/gzip/level'));
 
                 $helperHeaderExtern->header('css',
                                             $cssContent);
@@ -132,7 +132,7 @@ class ContainerExternResources_free extends Base
 
             if ($gzip === true) {
                 $contentJs = ContainerHelperData::Gzip($contentJs,
-                                                       (int)Config::get('/Core/gzip/level'));
+                                                       (int)Config::get('/CoreIndex/gzip/level'));
 
                 $helperHeaderExtern->header('js',
                                             $contentJs);

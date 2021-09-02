@@ -111,17 +111,17 @@ class CoreIndex
                      'max-age=31536000; includeSubdomains');
 
         $secureHeader = [
-            'default-src \'self\'' . (string)Config::get('/Core/Content-Security-Policy/default-src',
+            'default-src \'self\'' . (string)Config::get('/CoreIndex/Content-Security-Policy/default-src',
                                                          '') . ';',
-            'connect-src ' . Config::get('/server/http/base/url') . ' ' . (string)Config::get('/Core/Content-Security-Policy/connect-src',
+            'connect-src ' . Config::get('/server/http/base/url') . ' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/connect-src',
                                                                                               '') . ';',
-            'script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' ' . (string)Config::get('/Core/Content-Security-Policy/script-src',
+            'script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/script-src',
                                                                                            '') . ';',
-            'style-src \'self\' \'unsafe-inline\' ' . (string)Config::get('/Core/Content-Security-Policy/style-src',
+            'style-src \'self\' \'unsafe-inline\' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/style-src',
                                                                           '') . ';',
-            'child-src \'self\' ' . (string)Config::get('/Core/Content-Security-Policy/child-src',
+            'child-src \'self\' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/child-src',
                                                         '') . ';',
-            'font-src \'self\'' . (string)Config::get('/Core/Content-Security-Policy/font-src',
+            'font-src \'self\'' . (string)Config::get('/CoreIndex/Content-Security-Policy/font-src',
                                                       '') . ';',
             'img-src \'self\' data: *',
         ];
@@ -157,10 +157,10 @@ console.log("Page Generated @ index End; ' . ContainerHelperCalculate::calculate
 </script>
 ';
         }
-        if (\Config::get('/Core/gzip') == 1) {
+        if (\Config::get('/CoreIndex/gzip') == 1) {
 
             $output = ContainerHelperData::Gzip($output,
-                                                (int)Config::get('/Core/gzip/level'));
+                                                (int)Config::get('/CoreIndex/gzip/level'));
 
             if (isset($_SERVER['HTTP_ACCEPT_ENCODING'])) {
                 if (

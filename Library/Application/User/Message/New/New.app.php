@@ -190,7 +190,7 @@ class ApplicationUserMessageNew_app extends Application_abstract
             $mailer = Container::get('ContainerFactoryMail');
             $mailer->addAddress($crudUser->getCrudEmail());
             $mailer->setSubject(sprintf(ContainerFactoryLanguage::get('/' . $this->___getRootClass() . '/mail/subject'),
-                                        Config::get('/Core/page/title')));
+                                        Config::get('/CoreIndex/page/title')));
 
             $mailer->setBody($template->get());
 
