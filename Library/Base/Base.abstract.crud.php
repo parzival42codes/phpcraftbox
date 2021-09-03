@@ -11,6 +11,7 @@ abstract class Base_abstract_crud
     private int             $dataVariableEditedCounter = 0;
     private string          $dataVariableDeleted       = '';
     private ?int            $dataVariableReport        = null;
+    private ?int            $lastInsertId              = null;
     /**
      * @var array
      */
@@ -122,6 +123,7 @@ abstract class Base_abstract_crud
         $queryItem->setOptionInsertUpdateIgnore($ignore);
         $queryItem->construct();
         $queryItem->execute();
+        $this->lastInsertId = $queryItem->getLastID();
 
         $tableId = static::$tableId;
         if ($this->$tableId === null) {
@@ -158,6 +160,7 @@ abstract class Base_abstract_crud
 
         $queryItem->construct();
         $queryItem->execute();
+        $this->lastInsertId = $queryItem->getLastID();
 
         $tableId = static::$tableId;
         if ($this->$tableId === null) {
@@ -176,7 +179,8 @@ abstract class Base_abstract_crud
 
     public function findById(bool $exception = false): bool
     {
-        return $this->findByColumn(static::$tableId);
+        return $this->findByColumn(static::$tableId,
+                                   $exception);
     }
 
 
@@ -683,6 +687,14 @@ abstract class Base_abstract_crud
     public function setDataVariableReport(?int $dataVariableReport): void
     {
         $this->dataVariableReport = $dataVariableReport;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getLastInsertId(): ?int
+    {
+        return $this->lastInsertId;
     }
 
 }

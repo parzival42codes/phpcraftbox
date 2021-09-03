@@ -211,7 +211,7 @@ abstract class Console_abstract extends Base
                 $step                    = (int)$this->progress;
                 $stepEnd                 = $step + Config::get('/environment/console/ajax_step');
                 $msTime                  = microtime(true);
-                $progressData['message'] = [];
+                $progressData['message'] = '';
 
                 for ($i = $step; $i <= $this->progressCounter; $i++) {
                     try {
@@ -323,7 +323,7 @@ abstract class Console_abstract extends Base
 
         $this->classConstructor->addMethod('Step' . $this->progressCounter,
                                            $progressFunction,
-                                           '',
+                                           '$progressData',
                                            'array',
                                            ContainerFactoryClass::ACCESS_PROTECTED);
 

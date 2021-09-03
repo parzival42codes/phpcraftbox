@@ -50,10 +50,13 @@ class CoreIndex
             foreach ($applicationSearchResult as $applicationSearchResultItem) {
                 $contentObj = Container::get($applicationSearchResultItem->getCrudModul() . '_content');
 
-                $application = $contentObj->get($urlReadableRaw);
-                if ($application instanceof Application_abstract) {
-                    break;
+                try {
+                    $application = $contentObj->get($urlReadableRaw);
+                } catch (Throwable $e) {
+                    continue;
                 }
+
+                break;
 
             }
 

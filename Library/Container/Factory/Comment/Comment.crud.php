@@ -10,7 +10,7 @@
 class ContainerFactoryComment_crud extends Base_abstract_crud
 {
 
-    protected static string $table   = 'comment';
+    protected static string $table   = 'comments';
     protected static string $tableId = 'crudId';
 
     /**

@@ -51,6 +51,17 @@ class Custom extends Base
             }
         }
 
+        if (is_dir(CMS_PATH_CUSTOM_LOCAL . 'Plugin')) {
+            $directory = new DirectoryIterator(CMS_PATH_CUSTOM_LOCAL . 'Plugin');
+            foreach ($directory as $directoryItem) {
+                if (!$directoryItem->isDot() && $directoryItem->isDir()) {
+                    $customClassName                                    = 'Plugin' . $directoryItem->getFilename();
+                    $customObject                                       = Container::get($customClassName . '_custom');
+                    $customIndex['Local_Plugin'][$customClassName] = true;
+                }
+            }
+        }
+
         $customWork = [
             'remove' => $prepareIndex,
             'add'    => $prepareIndex,
@@ -101,7 +112,7 @@ class Custom extends Base
             /** @var Custom_crud $addItem */
             foreach ($add as $addKey => $addItem) {
                 $customData[$addItem->getCrudStatus()][$addKey] = self::getModulData($addKey,
-                                                                       $addItem->getCrudStatus());
+                                                                                     $addItem->getCrudStatus());
 
             }
         }

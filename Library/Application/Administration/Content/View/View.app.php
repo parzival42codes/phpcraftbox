@@ -8,7 +8,12 @@ class ApplicationAdministrationContentView_app extends ApplicationAdministration
         $ident = Container::get('ApplicationAdministrationContentView/ident');
         $crud  = new ApplicationAdministrationContent_crud();
         $crud->setCrudIdent($ident);
-        $crud->findById(true);
+
+        try {
+            $crud->findById(true);
+        } catch (Throwable $exception) {
+            return '';
+        }
 
         $crudData = json_decode($crud->getCrudData(),
                                 true);

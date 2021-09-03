@@ -245,9 +245,6 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             }
         }
 
-        $installModule = new ConsoleCustom_install($this);
-        $installModule->install();
-
         if (class_exists('CustomInstall_install')) {
             $customInstall = new CustomInstall_install($this);
             $customInstall->install();
