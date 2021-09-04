@@ -109,7 +109,7 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
                      [
                          'crudUsername',
                      ],
-                     'user.crudId = comment.crudUserId');
+                     'user.crudId = comments.crudUserId');
 
         $query->join('user_group',
                      [
@@ -122,7 +122,7 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
                          'crudContent',
                          'crudStatus',
                      ],
-                     'report.crudId = comment.dataVariableReport');
+                     'report.crudId = comments.dataVariableReport');
         $query->join('report_type',
                      [
                          'crudAbbreviation',

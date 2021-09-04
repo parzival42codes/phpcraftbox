@@ -141,7 +141,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
 
             $reportText = ContainerFactoryLanguage::getLanguageText(json_decode($crudReport->getAdditionalQuerySelect('report_type_crudContent'),
                                                                                 true));
-            $templateExists->assign('report',
+            $templateExists->assign('typeText',
                                     $reportText);
             $templateExists->assign('content',
                                     $crudReport->getCrudContent());
@@ -187,6 +187,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
             $crudReport->setCrudContent($response->get('content'));
             $crudReport->setCrudType((int)$response->get('type'));
             $crudReport->insertUpdate();
+            $crudReport->findById();
 
             $crud->setDataVariableReport($crudReport->getCrudId());
             $crud->update();
@@ -197,6 +198,11 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
             $template->set($templateCache->getCacheContent()['send']);
+
+            $template->assign('typeText',
+                              ContainerFactoryLanguage::getLanguageText(json_decode($crudReport->getAdditionalQuerySelect('report_type_crudContent'),
+                                                                                    true)));
+
             return $template->get();
 
         }

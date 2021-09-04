@@ -37,7 +37,7 @@ class ContainerFactoryComment extends Base
     public function get()
     {
         $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
-                                                                           'default,item,item.send');
+                                                                           'default,item,item.send,item.report');
 
         $crud     = new ContainerFactoryComment_crud();
         $crudFind = $crud->find([
@@ -73,19 +73,19 @@ class ContainerFactoryComment extends Base
             else {
 
                 if ($userReportView === true) {
-
                     $template = new ContainerExtensionTemplate();
                     $template->set($templateCache->getCacheContent()['item.send']);
-
-                    $template->assign('typeText',
-                                      ContainerFactoryLanguage::getLanguageText(json_decode($crudFindItem->getAdditionalQuerySelect('report_type_crudContent'),
-                                                                                            true)));
                 }
                 else {
                     $template = new ContainerExtensionTemplate();
                     $template->set($templateCache->getCacheContent()['item.report']);
                 }
+
+                $template->assign('typeText',
+                                  ContainerFactoryLanguage::getLanguageText(json_decode($crudFindItem->getAdditionalQuerySelect('report_type_crudContent'),
+                                                                                        true)));
             }
+
 
             $crudItemDate = new DateTime($crudFindItem->getDataVariableCreated());
 

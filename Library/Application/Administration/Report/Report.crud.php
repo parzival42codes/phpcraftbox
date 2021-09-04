@@ -6,14 +6,14 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     protected static string $tableId = 'crudId';
 
     /**
-     * @var
+     * @var int|null
      * @database type int;11
      * @database isPrimary
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected  $crudId = null;
+    protected ?int $crudId = null;
     /**
-     * @var
+     * @var int
      * @database type int;11
      * @database isIndex
      */
@@ -50,7 +50,6 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
      */
     protected string $crudStatus = '';
 
-
     /**
      * @var string
      * @database type text
@@ -58,23 +57,23 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     protected string $crudReply = '';
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getCrudId()
+    public function getCrudId(): ?int
     {
         return $this->crudId;
     }
 
     /**
-     * @param mixed $crudId
+     * @param int|null $crudId
      */
-    public function setCrudId($crudId): void
+    public function setCrudId(?int $crudId): void
     {
         $this->crudId = $crudId;
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCrudUserId(): int
     {
@@ -82,7 +81,7 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     }
 
     /**
-     * @param mixed $crudUserId
+     * @param int $crudUserId
      */
     public function setCrudUserId(int $crudUserId): void
     {
@@ -124,17 +123,17 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     /**
      * @return string
      */
-    public function getCrudContent(): string
+    public function getCrudStatus(): string
     {
-        return $this->crudContent;
+        return $this->crudStatus;
     }
 
     /**
-     * @param string $crudContent
+     * @param string $crudStatus
      */
-    public function setCrudContent(string $crudContent): void
+    public function setCrudStatus(string $crudStatus): void
     {
-        $this->crudContent = $crudContent;
+        $this->crudStatus = $crudStatus;
     }
 
     /**
@@ -154,35 +153,19 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
     }
 
     /**
-     * @return int|null
-     */
-    public function getCrudType(): ?int
-    {
-        return $this->crudType;
-    }
-
-    /**
-     * @param int|null $crudType
-     */
-    public function setCrudType(?int $crudType): void
-    {
-        $this->crudType = $crudType;
-    }
-
-    /**
      * @return string
      */
-    public function getCrudStatus(): string
+    public function getCrudContent(): string
     {
-        return $this->crudStatus;
+        return $this->crudContent;
     }
 
     /**
-     * @param string $crudStatus
+     * @param string $crudContent
      */
-    public function setCrudStatus(string $crudStatus): void
+    public function setCrudContent(string $crudContent): void
     {
-        $this->crudStatus = $crudStatus;
+        $this->crudContent = $crudContent;
     }
 
     protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery
