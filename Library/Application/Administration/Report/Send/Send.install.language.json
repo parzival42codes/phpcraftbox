@@ -7,7 +7,7 @@
         "en_US": "Report"
       }
     },
-    "/form/report/label": {
+    "/form/type/label": {
       "de_DE": "Bitte geben Sie den Grund für das melden des Inhalts an",
       "en_US": "Please provide the reason for reporting the content"
     },

@@ -203,6 +203,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
                               ContainerFactoryLanguage::getLanguageText(json_decode($crudReport->getAdditionalQuerySelect('report_type_crudContent'),
                                                                                     true)));
 
+            $template->parse();
             return $template->get();
 
         }

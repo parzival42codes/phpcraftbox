@@ -168,6 +168,22 @@ class ApplicationAdministrationReport_crud extends Base_abstract_crud
         $this->crudContent = $crudContent;
     }
 
+    /**
+     * @return int|null
+     */
+    public function getCrudType(): ?int
+    {
+        return $this->crudType;
+    }
+
+    /**
+     * @param int|null $crudType
+     */
+    public function setCrudType(?int $crudType): void
+    {
+        $this->crudType = $crudType;
+    }
+
     protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery
     {
         $query->join('report_type',
