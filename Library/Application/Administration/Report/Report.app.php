@@ -6,7 +6,7 @@
  * @author   Stefan Schlombs
  * @version  1.0.0
  * @modul    versionRequiredSystem 1.0.0
- * @modul    groupAccess 1,2,3,4
+ * @modul    groupAccess 4
  * @modul    language_path_de_DE /Administration/Meldung
  * @modul    language_name_de_DE Meldungen
  * @modul    language_path_en_US /Administration/Report
