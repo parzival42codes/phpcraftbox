@@ -69,11 +69,10 @@ class ContainerFactoryDatabaseQuery_debug extends CoreDebug_abstract
         $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                                Core::getRootClass(__CLASS__),
                                                'debug');
-        $templateCacheContent = $templateCache->getCacheContent();
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCacheContent['debug']);
+        $template->set($templateCache->getCacheContent()['debug']);
         $template->assign('DebugTableQuery_DebugTableQuery',
                           $tableTcs);
 
