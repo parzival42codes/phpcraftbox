@@ -1,11 +1,10 @@
 {
   "type": "install.language",
   "content": {
-    "/debug/header": {
-      "group": "debug",
+    "/template/header": {
       "language": {
         "de_DE": {
-          "value": "Flaschenhälse {$bottleneck} von {$count} Aufrufen"
+          "value": "Logeinträge: {$count} | Log: {$countLog} | Info: {$countInfo} | Warning: {$countWarn} | Error: {$countError}"
         }
       }
     }

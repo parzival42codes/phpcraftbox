@@ -191,6 +191,10 @@ try {
     Config::setCore($config);
     unset($config);
 
+    define('PCB_ENV_DEBUG',Config::get('/environment/debug/active',
+                                       false));
+
+
     $accessPath = '/core/access/' . strtolower($_SERVER['PHP_AUTH_USER'] ?? '');
     $errorMsg   = 'ACCESS DENIED !';
 

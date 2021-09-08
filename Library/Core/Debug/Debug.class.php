@@ -8,6 +8,7 @@ final class  CoreDebug
             'CoreDebugProfiler' => [],
             'CoreDebugDump'     => [],
             'CoreErrorhandler'  => [],
+            'CoreDebugLog'      => [],
         ];
 
     protected static array $debugCache = [];
@@ -155,8 +156,8 @@ final class  CoreDebug
         foreach ($scope['rawDataKeys'] as $key) {
 
             if (
-            in_array($key,
-                     $exclude)
+                in_array($key,
+                         $exclude)
             ) {
                 continue;
             }
