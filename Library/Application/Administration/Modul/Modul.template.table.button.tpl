@@ -6,6 +6,7 @@
         <label class="template--form--icon-switch"
                for="icon-switch{$hash}">
             <input type="checkbox"
+                   {$disabled}
                    id="icon-switch{$hash}"
                    {$checked}>
             <span class="slider round"></span>

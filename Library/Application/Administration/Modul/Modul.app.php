@@ -42,6 +42,9 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
             foreach ($customClasses[$statusListValue] as $customClassesItem) {
                 ++$counter;
 
+                CoreDebugLog::addLog('Class: ' . $customClassesItem['class'],
+                                     $statusListValue);
+
                 /** @var ContainerExtensionTemplate $templateBtn */
                 $templateBtn = Container::get('ContainerExtensionTemplate');
                 $templateBtn->set($templateCache->getCacheContent()['table.button']);
@@ -118,6 +121,8 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
                                                   'checked');
                     $templateBtnUnInstall->assign('button',
                                                   'un_install');
+                    $templateBtnUnInstall->assign('disabled',
+                                                  'disabled');
                     $templateBtn->assign('hash',
                         ('uninstall' . $counter));
 
@@ -130,6 +135,8 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
                                                  'checked');
                     $templateBtnInActive->assign('button',
                                                  'in_active');
+                    $templateBtnUnInstall->assign('disabled',
+                                                  '');
                     $templateBtn->assign('hash',
                         ('inactive' . $counter));
 
@@ -166,9 +173,9 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
 
     }
 
-    protected function pageData():void
+    protected function pageData(): void
     {
-/** @var ContainerIndexPage $page */
+        /** @var ContainerIndexPage $page */
         $page = Container::getInstance('ContainerIndexPage');
 
         $page->setPageTitle(ContainerFactoryLanguage::get('/ApplicationAdministrationModul/breadcrumb'));
