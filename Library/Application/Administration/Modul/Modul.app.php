@@ -57,6 +57,15 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
                 $templateBtnUnInstall = clone $templateBtn;
                 $templateBtnInActive  = clone $templateBtn;
 
+                $templateBtnUnInstall->assign('disabled',
+                                              '');
+                $templateBtnUnInstall->assign('disabledClass',
+                                              '');
+                $templateBtnInActive->assign('disabled',
+                                             '');
+                $templateBtnInActive->assign('disabledClass',
+                                             '');
+
                 if ($statusListValue === 'UnInstall') {
 
                     $templateBtnUnInstall->assign('action',
@@ -79,6 +88,11 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
                                                  'in_active');
                     $templateBtnInActive->assign('hash',
                         ('inactive' . $counter));
+
+                    $templateBtnInActive->assign('disabled',
+                                                  'disabled');
+                    $templateBtnInActive->assign('disabledClass',
+                                                  'labelClosed');
 
                     $templateBtnInActive->parse();
                     $customClassesItem['InActive'] = $templateBtnInActive->get();
@@ -123,6 +137,8 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
                                                   'un_install');
                     $templateBtnUnInstall->assign('disabled',
                                                   'disabled');
+                    $templateBtnUnInstall->assign('disabledClass',
+                                                  'labelClosed');
                     $templateBtn->assign('hash',
                         ('uninstall' . $counter));
 
@@ -135,8 +151,6 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
                                                  'checked');
                     $templateBtnInActive->assign('button',
                                                  'in_active');
-                    $templateBtnUnInstall->assign('disabled',
-                                                  '');
                     $templateBtn->assign('hash',
                         ('inactive' . $counter));
 

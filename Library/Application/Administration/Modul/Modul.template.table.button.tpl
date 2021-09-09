@@ -1,5 +1,5 @@
 <form>
-<span class="ApplicationAdministrationModul_button_{$button}"
+<span class="ApplicationAdministrationModul_button ApplicationAdministrationModul_button_{$button}"
       data-status="{$status}"
       data-action="{$action}"
       data-modul="{$class}">
@@ -9,7 +9,7 @@
                    {$disabled}
                    id="icon-switch{$hash}"
                    {$checked}>
-            <span class="slider round"></span>
+            <span class="slider round {$disabledClass}"></span>
         </label>
 </span>
 </form>

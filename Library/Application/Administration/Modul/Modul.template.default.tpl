@@ -1,4 +1,4 @@
-<div id="ApplicationAdministrationLContent" data-securekey="{$generatedSecureKey}">
+<div id="ApplicationAdministrationModulCustom" data-securekey="{$generatedSecureKey}">
     <div class="card-container card-container--shadow">
         <div class="card-container-header">
             {insert/language class="ApplicationAdministrationModul" path="/table/contentTableHeader"
