@@ -33,10 +33,6 @@
       "de_DE": "Password wiederholen",
       "en_US": "Password repeat"
     },
-    "/form/infoUserId/label": {
-      "de_DE": "User ID",
-      "en_US": "User ID"
-    },
     "/form/infoRegisterDate/label": {
       "de_DE": "Registrierungsdatum",
       "en_US": "Register Date"

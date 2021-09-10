@@ -44,7 +44,7 @@ class ApplicationAdministrationUserEdit_app extends Application_abstract
         /** @var ContainerExtensionTemplateParseCreateFormResponse $formHelperResponse */
         $formHelperResponse = $formHelper->getResponse();
         if (
-        $formHelperResponse->isHasResponse()
+            $formHelperResponse->isHasResponse()
         ) {
             $this->formResponse($formHelper,
                                 $crud);
@@ -57,30 +57,6 @@ class ApplicationAdministrationUserEdit_app extends Application_abstract
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
         $template->set($templateCache->getCacheContent()['default']);
-
-        $formHelper->addFormElement('infoUserId',
-                                    'plain',
-                                    [],
-                                    [
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                            $crud->getCrudId()
-                                        ],
-                                    ]);
-
-        $formHelper->addFormElement('infoRegisterDate',
-                                    'plain',
-                                    [],
-                                    [
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                            $registerDate->format((string)Config::get('/environment/datetime/format'))
-                                        ]
-                                    ]);
-
-
-        $template->assign('registerInfo',
-                          $formHelper->getElements(true));
 
         $formHelper->addFormElement('username',
                                     'text',
@@ -113,13 +89,7 @@ class ApplicationAdministrationUserEdit_app extends Application_abstract
         $cudUserGroupCollect = [];
         /** @var ContainerFactoryUserGroup_crud $cudUserGroupResultItem */
         foreach ($cudUserGroupResult as $cudUserGroupResultItem) {
-
-            /** @var ContainerFactoryLanguageParseIni $groupLanguage */
-            $groupLanguage = Container::get('ContainerFactoryLanguageParseIni',
-                                            $cudUserGroupResultItem->getCrudData());
-            $contentData   = $groupLanguage->get();
-
-            $cudUserGroupCollect[$cudUserGroupResultItem->getCrudId()] = $contentData['name'] . ' (' . $contentData['description'] . ')';
+            $cudUserGroupCollect[$cudUserGroupResultItem->getCrudId()] = $cudUserGroupResultItem->getCrudLanguage() . ')';
         };
 
         $formHelper->addFormElement('usergroup',
@@ -212,6 +182,12 @@ class ApplicationAdministrationUserEdit_app extends Application_abstract
         $template->assign('registerFooter',
                           $formHelper->getFooter());
 
+        $template->assign('infoUserId',
+            ($crud->getCrudId() ?? ''));
+
+        $template->assign('infoRegisterDate',
+                          $registerDate->format((string)Config::get('/environment/datetime/format')));
+
         ApplicationAdministrationUser_app::createMenu($this->___getRootClass());
 
         $template->parse();
@@ -236,8 +212,8 @@ class ApplicationAdministrationUserEdit_app extends Application_abstract
             $activates = $response->get('activate');
 
             if (
-            in_array('crudActivated',
-                     $activates)
+                in_array('crudActivated',
+                         $activates)
             ) {
                 $crud->setCrudActivated(true);
             }
@@ -246,8 +222,8 @@ class ApplicationAdministrationUserEdit_app extends Application_abstract
             }
 
             if (
-            in_array('crudEmailCheck',
-                     $activates)
+                in_array('crudEmailCheck',
+                         $activates)
             ) {
                 $crud->setCrudEmailCheck(true);
             }
