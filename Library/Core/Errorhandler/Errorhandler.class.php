@@ -367,7 +367,7 @@ class CoreErrorhandler
             $errorExceptionStdMessage = \ContainerFactoryLanguage::get('/CoreErrorhandler/exception/template/message',
                                                                        '');
 
-            $errorPath = '/' . $class . '/exception/' . $exception;
+            $errorPath = '/' . Core::getRootClass($class) . '/exception/' . $exception;
             $need      = 'Need: ' . $errorPath;
 
             $languageArrayTitle   = array_values($data['title'] ?? []);

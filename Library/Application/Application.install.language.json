@@ -21,6 +21,12 @@
           "value": ""
         }
       }
+    },
+    "/exception/applicationAccessDenied/title": {
+      "de_DE": "Zugriff Verweigert"
+    },
+    "/exception/applicationAccessDenied": {
+      "de_DE": "Sie haben nicht die nötigen Rechte, um diese Seite anzuzeigen"
     }
   }
 }
