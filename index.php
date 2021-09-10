@@ -24,6 +24,14 @@ else {
                            0);
 }
 
+/** @var ContainerFactoryUser $user */
+$user = Container::getInstance('ContainerFactoryUser',
+                               0);
+
+CoreDebugLog::addLog('User',
+                     'Login as # ' . $user->getUserId() . ', ' . $user->getUserName() . ' | User Group # ' . $user->getUserGroupId() . ', ' . $user->getUserGroupName() . ' | Access: ' . implode(', ',
+                                                                                                                                                                                                  array_flip($user->getUserAccess())));
+
 $cookieBannerRequest = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_TYPE_COOKIE,
                                                    Config::get('/environment/cookie/name') . 'cookiebanner');
 

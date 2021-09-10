@@ -6,7 +6,7 @@ class ContainerFactoryUser extends Base
     protected int    $userId        = 0;
     protected string $userName      = '';
     protected        $userGroupId   = 0;
-    protected        $userGroupName = '';
+    protected string $userGroupName = '';
     protected array  $userAccess    = [];
 
     public function __construct(int $userId = 0)
@@ -124,6 +124,14 @@ class ContainerFactoryUser extends Base
     public function setUserGroupId(int $userGroupId): void
     {
         $this->userGroupId = $userGroupId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUserGroupName(): string
+    {
+        return $this->userGroupName;
     }
 
 }

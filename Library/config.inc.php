@@ -191,8 +191,9 @@ try {
     Config::setCore($config);
     unset($config);
 
-    define('PCB_ENV_DEBUG',Config::get('/environment/debug/active',
-                                       false));
+    define('PCB_ENV_DEBUG',
+           Config::get('/environment/debug/active',
+                       false));
 
 
     $accessPath = '/core/access/' . strtolower($_SERVER['PHP_AUTH_USER'] ?? '');
@@ -329,6 +330,9 @@ CMS_CACHE_CORE_LINKREWRITE',
 
     setlocale(LC_TIME,
               (string)Config::get('/environment/language'));
+
+    CoreDebugLog::addLog('Config.inc',
+                         'Locale => ' . Config::get('/environment/language'));
 
 } catch (Throwable $exception) {
     d($exception);
