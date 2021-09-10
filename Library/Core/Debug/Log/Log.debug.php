@@ -42,7 +42,9 @@ class CoreDebugLog_debug extends CoreDebug_abstract
             $tableTcs[] = [
                 'icon'      => $elem['icon'],
                 'type'      => $elem['type'],
-                'ident'     => $elem['ident'],
+                'ident'     => str_replace(' ',
+                                           '&nbsp;',
+                                           $elem['ident']),
                 'text'      => $elem['text'],
                 'microtime' => ContainerHelperCalculate::calculateMicroTimeDisplay($elem['microtime']),
                 'file'      => ($elem['backtrace'][0]['file'] ?? '??'),

@@ -6,7 +6,7 @@
     </div>
     <div class="card-container-content">
         <div class="flex-container">
-            <div class="flex-container-item">
+            <div class="flex-container-item flex-container">
                 {$items}
             </div>
             <div class="flex-container-item">
