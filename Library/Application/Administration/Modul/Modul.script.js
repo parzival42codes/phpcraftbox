@@ -9,12 +9,12 @@ $(document).ready(function () {
         let isChecked = $this.children('label').children('input').is(':checked');
 
         if (isChecked === true) {
-            isChecked.find('input').attr('disabled', 'disabled');
-            isChecked.find('span').addClass('labelClosed');
+            $inActive.find('input').removeAttr('disabled');
+            $inActive.find('span').removeClass('labelClosed');
             $this.attr('data-action', 'install');
         } else if (isChecked === false) {
-            isChecked.find('input').removeAttr('disabled');
-            isChecked.find('span').removeClass('labelClosed');
+            $inActive.find('input').attr('disabled', 'disabled');
+            $inActive.find('span').addClass('labelClosed');
             $this.attr('data-action', 'uninstall');
         }
 

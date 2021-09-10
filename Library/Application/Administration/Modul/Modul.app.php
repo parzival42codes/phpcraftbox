@@ -42,7 +42,7 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
             foreach ($customClasses[$statusListValue] as $customClassesItem) {
                 ++$counter;
 
-                CoreDebugLog::addLog('Class: ' . $customClassesItem['class'],
+                CoreDebugLog::addLog('Modul Custom Class:: ' . $customClassesItem['class'],
                                      $statusListValue);
 
                 /** @var ContainerExtensionTemplate $templateBtn */
