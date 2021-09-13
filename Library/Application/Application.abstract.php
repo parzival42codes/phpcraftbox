@@ -276,7 +276,7 @@ abstract class Application_abstract extends Base
                                           $router->getUrlReadable());
 
         $menu = $this->getMenu();
-        $menu->setMenuClassMain($this->___getRootClass());
+        $menu->setMenuClassMain($rootClass);
 
         $this->pageData();
 
