@@ -223,7 +223,21 @@ abstract class Base_abstract_crud
 
         $dbData = $smtp->fetch();
 
-        if (empty($dbData)) {
+        if ($dbData === false) {
+
+            $newThisClassName = static::class;
+            $newThis          = new $newThisClassName();
+            foreach (static::$reflectionProperty[get_called_class()] as $crudItem) {
+                $value = call_user_func([
+                                            $newThis,
+                                            'get' . ucfirst($crudItem)
+                                        ]);
+                call_user_func([
+                                   $this,
+                                   'set' . ucfirst($crudItem)
+                               ],
+                               $value);
+            }
 
             if ($exception === false) {
                 return false;
