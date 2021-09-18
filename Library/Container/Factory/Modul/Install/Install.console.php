@@ -71,6 +71,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             'ContainerFactoryCgui',
             'ContainerFactoryDatabaseQuery',
             'ContainerHelperViewDifference',
+            'ContainerHelperDatetime',
             'Application',
             'ApplicationIndex',
             'ApplicationSearch',
