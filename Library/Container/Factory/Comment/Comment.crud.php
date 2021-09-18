@@ -14,62 +14,36 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
     protected static string $tableId = 'crudId';
 
     /**
-     * @var
+     * @var ?int
      * @database type int;11
      * @database isPrimary
      * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected $crudId = null;
+    protected ?int $crudId = null;
     /**
-     * @var
+     * @var int
      * @database type int;11
      * @database isIndex
      */
     protected int $crudUserId = 0;
     /**
      * @var string
-     * @database isIndex
      * @database type varchar;250
+     * @database isIndex
      */
-    protected string $crudPath = '';
+    protected string $crudModul= '';
+    /**
+     * @var int
+     * @database type int;11
+     * @database isIndex
+     */
+    protected int $crudModulId = 0;
 
     /**
      * @var string
      * @database type text
      */
     protected string $crudContent = '';
-
-    /**
-     * @return mixed
-     */
-    public function getCrudId()
-    {
-        return $this->crudId;
-    }
-
-    /**
-     * @param mixed $crudId
-     */
-    public function setCrudId($crudId): void
-    {
-        $this->crudId = $crudId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCrudPath(): string
-    {
-        return $this->crudPath;
-    }
-
-    /**
-     * @param string $crudPath
-     */
-    public function setCrudPath(string $crudPath): void
-    {
-        $this->crudPath = $crudPath;
-    }
 
     /**
      * @return string
@@ -88,7 +62,7 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCrudUserId(): int
     {
@@ -96,11 +70,59 @@ class ContainerFactoryComment_crud extends Base_abstract_crud
     }
 
     /**
-     * @param mixed $crudUserId
+     * @param int $crudUserId
      */
     public function setCrudUserId(int $crudUserId): void
     {
         $this->crudUserId = $crudUserId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudModul(): string
+    {
+        return $this->crudModul;
+    }
+
+    /**
+     * @param string $crudModul
+     */
+    public function setCrudModul(string $crudModul): void
+    {
+        $this->crudModul = $crudModul;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCrudModulId(): int
+    {
+        return $this->crudModulId;
+    }
+
+    /**
+     * @param int $crudModulId
+     */
+    public function setCrudModulId(int $crudModulId): void
+    {
+        $this->crudModulId = $crudModulId;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getCrudId(): ?int
+    {
+        return $this->crudId;
+    }
+
+    /**
+     * @param int|null $crudId
+     */
+    public function setCrudId(?int $crudId): void
+    {
+        $this->crudId = $crudId;
     }
 
     protected function modifyFindQuery(ContainerFactoryDatabaseQuery $query): ContainerFactoryDatabaseQuery

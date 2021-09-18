@@ -15,12 +15,14 @@
 class ContainerFactoryComment extends Base
 {
 
-    protected string             $path = '';
+    protected string             $modul   = '';
+    protected int                $modulId = 0;
     protected Base_abstract_crud $crud;
 
-    public function __construct($path)
+    public function __construct(string $modul, int $modulId)
     {
-        $this->path = $path;
+        $this->modul   = $modul;
+        $this->modulId = $modulId;
     }
 
     public function count()
@@ -41,7 +43,8 @@ class ContainerFactoryComment extends Base
 
         $crud     = new ContainerFactoryComment_crud();
         $crudFind = $crud->find([
-                                    'crudPath' => $this->path
+                                    ContainerFactoryComment_crud::getTable() . '.crudModul'   => $this->modul,
+                                    ContainerFactoryComment_crud::getTable() . '.crudModulId' => $this->modulId,
                                 ],
                                 [
                                     'dataVariableCreated DESC'
