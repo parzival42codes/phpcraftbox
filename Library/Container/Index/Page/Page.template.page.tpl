@@ -12,6 +12,9 @@
     <meta name="generator"
           content="CMS2000"/>
 
+    {insert/positions position="/ContainerIndexPage/Template/Positions/Head"}
+
+    {insert/positions position="/ContainerIndexPage/Template/Positions/Head/Css"}
 
     {$headerCss}
 
@@ -62,7 +65,7 @@
 
         }
 
-        {insert/positions position="/Page/header/javascript"}
+        {insert/positions position="/ContainerIndexPage/Template/Positions/Head/Javascript"}
 
         {$javascriptHeader}
 

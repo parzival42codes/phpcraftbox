@@ -1,0 +1,165 @@
+{
+  "type": "install.language",
+  "content": {
+    "daytime": {
+      "morning": {
+        "_language": {
+          "de_de": "Morgens"
+        }
+      },
+      "highnoon": {
+        "_language": {
+          "de_de": "Mittags"
+        }
+      },
+      "evening": {
+        "_language": {
+          "de_de": "Abends"
+        }
+      },
+      "night": {
+        "_language": {
+          "de_de": "Nachts"
+        }
+      }
+    },
+    "month": {
+      "1": {
+        "_language": {
+          "de_de": "Januar"
+        }
+      },
+      "2": {
+        "_language": {
+          "de_de": "Februar"
+        }
+      },
+      "3": {
+        "_language": {
+          "de_de": "März"
+        }
+      },
+      "4": {
+        "_language": {
+          "de_de": "April"
+        }
+      },
+      "5": {
+        "_language": {
+          "de_de": "Mai"
+        }
+      },
+      "6": {
+        "_language": {
+          "de_de": "Juni"
+        }
+      },
+      "7": {
+        "_language": {
+          "de_de": "Juli"
+        }
+      },
+      "8": {
+        "_language": {
+          "de_de": "August"
+        }
+      },
+      "9": {
+        "_language": {
+          "de_de": "September"
+        }
+      },
+      "10": {
+        "_language": {
+          "de_de": "Oktober"
+        }
+      },
+      "11": {
+        "_language": {
+          "de_de": "November"
+        }
+      },
+      "12": {
+        "_language": {
+          "de_de": "Dezember"
+        }
+      }
+    },
+    "named": {
+      "daytime": {
+        "today": {
+          "_language": {
+            "de_de": "Heute am"
+          }
+        },
+        "yesterday": {
+          "_language": {
+            "de_de": "Gestern am"
+          }
+        },
+        "atLastMonth": {
+          "_language": {
+            "de_de": "Vor einem Monat am"
+          }
+        },
+        "atLastYear": {
+          "_language": {
+            "de_de": "Vor einem Jahr am"
+          }
+        },
+        "lastMonth": {
+          "_language": {
+            "de_de": "letzter Monat am"
+          }
+        },
+        "lastYear": {
+          "_language": {
+            "de_de": "letztes Jahr am"
+          }
+        }
+      },
+      "never": {
+        "_language": {
+          "de_de": "Nie"
+        }
+      },
+      "ever": {
+        "_language": {
+          "de_de": "Immer"
+        }
+      }
+    },
+    "difference": {
+      "y": {
+        "_language": {
+          "de_de": "Jahre"
+        }
+      },
+      "m": {
+        "_language": {
+          "de_de": "Monate"
+        }
+      },
+      "d": {
+        "_language": {
+          "de_de": "Tage"
+        }
+      },
+      "h": {
+        "_language": {
+          "de_de": "Stunden"
+        }
+      },
+      "i": {
+        "_language": {
+          "de_de": "Minuten"
+        }
+      },
+      "s": {
+        "_language": {
+          "de_de": "Sekunden"
+        }
+      }
+    }
+  }
+}

@@ -21,6 +21,12 @@ class Event_crud extends Base_abstract_crud
     /**
      * @var string
      * @database type varchar;250
+     * @database isIndex
+     */
+    protected string $crudModul ='';
+    /**
+     * @var string
+     * @database type varchar;250
      */
     protected string $crudTriggerClass = '';
     /**
@@ -91,6 +97,22 @@ class Event_crud extends Base_abstract_crud
     public function setCrudTriggerMethod(string $crudTriggerMethod): void
     {
         $this->crudTriggerMethod = $crudTriggerMethod;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudModul(): string
+    {
+        return $this->crudModul;
+    }
+
+    /**
+     * @param string $crudModul
+     */
+    public function setCrudModul(string $crudModul): void
+    {
+        $this->crudModul = $crudModul;
     }
 
 

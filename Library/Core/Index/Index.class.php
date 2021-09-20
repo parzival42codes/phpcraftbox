@@ -9,6 +9,8 @@ class CoreIndex
         define('EVENT_ENABLE',
                true);
 
+        $scope = [];
+
         ContainerExtensionTemplateParseInsertPositions::load();
 
         /** @var ContainerFactoryLogStatistic $statistic */
@@ -104,6 +106,20 @@ class CoreIndex
                 break;
         }
 
+        $scope['headerCMS'] = [
+            'default-src' => [],
+            'connect-src' => [],
+            'script-src'  => [],
+            'style-src'   => [],
+            'child-src'   => [],
+            'font-src'    => [],
+            'img-src'     => [],
+        ];
+
+        \Event::trigger('/Core/Index/Header',
+                        __FUNCTION__,
+                        $scope);
+
         $header->set('Referrer-Policy',
                      'no-referrer-when-downgrade');
         $header->set('X-Frame-Options',
@@ -114,18 +130,18 @@ class CoreIndex
                      'max-age=31536000; includeSubdomains');
 
         $secureHeader = [
-            'default-src \'self\'' . (string)Config::get('/CoreIndex/Content-Security-Policy/default-src',
-                                                         '') . ';',
-            'connect-src ' . Config::get('/server/http/base/url') . ' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/connect-src',
-                                                                                              '') . ';',
-            'script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/script-src',
-                                                                                           '') . ';',
-            'style-src \'self\' \'unsafe-inline\' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/style-src',
-                                                                          '') . ';',
-            'child-src \'self\' ' . (string)Config::get('/CoreIndex/Content-Security-Policy/child-src',
-                                                        '') . ';',
-            'font-src \'self\'' . (string)Config::get('/CoreIndex/Content-Security-Policy/font-src',
-                                                      '') . ';',
+            'default-src \'self\' ' . implode(' ',
+                                              $scope['headerCMS']['default-src']) . ';',
+            'connect-src ' . Config::get('/server/http/base/url') . ' ' . implode(' ',
+                                                                                  $scope['headerCMS']['connect-src']) . ';',
+            'script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' ' . implode(' ',
+                                                                               $scope['headerCMS']['script-src']) . ';',
+            'style-src \'self\' \'unsafe-inline\' ' . implode(' ',
+                                                              $scope['headerCMS']['style-src']) . ';',
+            'child-src \'self\' ' . implode(' ',
+                                            $scope['headerCMS']['child-src']) . ';',
+            'font-src \'self\'' . implode(' ',
+                                          $scope['headerCMS']['font-src']) . ';',
             'img-src \'self\' data: *',
         ];
 

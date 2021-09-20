@@ -530,6 +530,32 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
     }
 
+    public function setEvent(string $path, string $triggerClass, string $triggerMethod): void
+    {
+        $rootClass = Core::getRootClass(get_called_class());
+
+        $this->installFunction(function () {
+            /** @var array $data */ /*$before*/
+
+            $crud = new Event_crud();
+            $crud->setCrudModul($data['rootClass']);
+            $crud->setCrudPath($data['path']);
+            $crud->setCrudTriggerClass($data['triggerClass']);
+            $crud->setCrudTriggerMethod($data['triggerMethod']);
+
+            $progressData['message'] = $crud->insert();
+
+            /*$after*/
+        },
+            [
+                'path'          => $path,
+                'triggerClass'  => $triggerClass,
+                'triggerMethod' => $triggerMethod,
+                'rootClass'     => $rootClass,
+            ]);
+
+    }
+
     public function importMeta(): void
     {
         $rootClass = Core::getRootClass(get_called_class());

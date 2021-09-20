@@ -192,7 +192,7 @@ abstract class Base_abstract_crud
     }
 
 
-    public function findByColumn($columnList, bool $exception = false): bool
+    public function findByColumn($columnList, ?bool $exception = false): bool
     {
 
         /** @var ContainerFactoryDatabaseQuery $query */
@@ -231,7 +231,7 @@ abstract class Base_abstract_crud
 
         $dbData = $smtp->fetch();
 
-        if ($dbData === false) {
+        if ($dbData === false && $exception !== null) {
 
             $newThisClassName = static::class;
             $newThis          = new $newThisClassName();

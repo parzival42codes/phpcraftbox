@@ -32,6 +32,9 @@ class ContainerExtensionTemplateParseInsertPositions extends ContainerExtensionT
 
     public static function insert(string $position, string $content): void
     {
+        CoreDebugLog::addLog('/Template/Position/Insert',
+                             $position);
+
         if (!isset(self::$positionInsertion[$position])) {
             self::$positionInsertion[$position] = '';
         }
@@ -41,11 +44,21 @@ class ContainerExtensionTemplateParseInsertPositions extends ContainerExtensionT
     function parse(): string
     {
         $parameter = $this->getParameter();
-        return (self::$positionInsertion[$parameter['position']] ?? ($parameter['default'] ?? ''));
+        $position  = (self::$positionInsertion[$parameter['position']] ?? ($parameter['default'] ?? ''));
+
+        CoreDebugLog::addLog('/Template/Position/Parse',
+                             $position);
+
+
+        return $position;
     }
 
     public static function add(string $key, string $value)
     {
+        CoreDebugLog::addLog('/Template/Position/Add',
+                             $key . ' => ' . $value);
+
+
         self::$positionInsertion[$key] = $value;
     }
 }

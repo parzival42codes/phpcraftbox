@@ -22,10 +22,10 @@ class Event
     protected static bool $eventImportActive = false;
 
     /**
-     * @param string      $path
-     * @param $object
-     * @param array       $scope
-     * @param mixed       ...$parameter
+     * @param string $path
+     * @param        $object
+     * @param array  $scope
+     * @param mixed  ...$parameter
      */
     public static function triggerBase(string $path, object $object = null, array &$scope = [], ...$parameter): void
     {
@@ -60,7 +60,7 @@ class Event
         }
     }
 
-    public static function trigger(string $path, ...$parameter): void
+    public static function trigger(string $path, $object = null, ?array &$scope = [], ...$parameter): void
     {
         if (!defined('EVENT_ENABLE') || EVENT_ENABLE === false) {
             return;
@@ -70,13 +70,16 @@ class Event
             if (isset(self::$eventContainer[$path])) {
                 foreach (self::$eventContainer[$path] as $triggering) {
 
-                    call_user_func([
-                                       $triggering[0],
-                                       $triggering[1]
-                                   ],
-
-                        ...
-                                   $parameter);
+                    call_user_func_array([
+                                             $triggering[0],
+                                             $triggering[1]
+                                         ],
+                                         [
+                                             $triggering,
+                                             $object,
+                                             &$scope,
+                                             ...$parameter
+                                         ]);
                 }
 
                 \CoreDebug::setRawDebugData(__CLASS__,

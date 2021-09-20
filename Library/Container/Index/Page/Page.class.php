@@ -94,6 +94,7 @@ class ContainerIndexPage
 
     public function __construct()
     {
+        $scope = [];
         /** @var ContainerExtensionTemplateLoad_cache_template $templateCache */
         $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                         __CLASS__,
@@ -139,8 +140,8 @@ class ContainerIndexPage
 //        eol();
 
         if (
-        \Config::get('/environment/debug/active',
-                     CMS_DEBUG_ACTIVE)
+            \Config::get('/environment/debug/active',
+                         CMS_DEBUG_ACTIVE)
         ) {
             $this->addPageJavascript(\CoreDebug::getJavascriptSource());
 //            $this->pageContent['footerInclude'] = $application->getDebugBar();
@@ -302,7 +303,7 @@ class ContainerIndexPage
         $pageContent = $template->get();
 
         $linkrewrite = function ($link) {
-             $strposIndex = strpos($link[2],
+            $strposIndex = strpos($link[2],
                                   'index.php');
             if ($strposIndex !== false) {
                 /** @var ContainerFactoryRouter $router */
@@ -329,7 +330,7 @@ class ContainerIndexPage
 
         \Event::trigger('pageContentReady',
                         __FUNCTION__,
-                        $this);
+                        $scope);
 
         $styleSelected = \Config::get('/Style/selected');
 
