@@ -140,8 +140,8 @@ class CoreIndex
                                                               $scope['headerCMS']['style-src']) . ';',
             'child-src \'self\' ' . implode(' ',
                                             $scope['headerCMS']['child-src']) . ';',
-            'font-src \'self\'' . implode(' ',
-                                          $scope['headerCMS']['font-src']) . ';',
+            'font-src \'self\' ' . implode(' ',
+                                           $scope['headerCMS']['font-src']) . ';',
             'img-src \'self\' data: *',
         ];
 
