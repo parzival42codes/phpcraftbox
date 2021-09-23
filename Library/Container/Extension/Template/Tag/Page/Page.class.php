@@ -8,7 +8,7 @@ class ContainerExtensionTemplateTagPage extends Base
      */
     public static function setFunction(ContainerExtensionTemplate $template): void
     {
-        $template->setRegisteredFunctions('_page',
+        $template::setRegisteredFunctions('_page',
             function (string $content, array $htmlTags, ContainerExtensionTemplate $templateObject) {
                 return $templateObject->addParseFinal($content);
             });

@@ -166,7 +166,7 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
         $template->assign('APP_SOURCE',
                           $this->source);
 
-        $template->setRegisteredFunctions('historyEditFormFooter',
+        $template::setRegisteredFunctions('historyEditFormFooter',
             function ($content, $htmlTags, $templateObject) {
                 /** @var ContainerExtensionTemplate $templateObject */
 

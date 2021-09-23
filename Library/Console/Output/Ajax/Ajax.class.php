@@ -24,7 +24,7 @@ class ConsoleOutputAjax extends ConsoleOutput_abstract
         if ($step === true || $isFinal === true) {
 
             if ($isFinal === true) {
-              #  unlink(CMS_PATH_STORAGE_CACHE . '/class/console/console_' . $consoleID . '.php');
+              unlink(CMS_PATH_STORAGE_CACHE . '/class/console/console_' . $consoleID . '.php');
             }
 
             $propertyData = $object->getStepProperty($i);

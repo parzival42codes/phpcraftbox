@@ -6,7 +6,7 @@ class ContainerExtensionTemplateTagTable extends Base
 
     public static function setFunction(ContainerExtensionTemplate $template): string
     {
-        $template->setRegisteredFunctions('_table',
+        $template::setRegisteredFunctions('_table',
             function ($content, $htmlTags, $templateObject) {
 
                 /** @var ContainerExtensionTemplate $template */

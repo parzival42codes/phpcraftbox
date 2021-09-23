@@ -3,14 +3,15 @@
 abstract class Base
 {
     protected string $rootClass = '';
+    protected array  $scope     = [];
 
     public function __call(string $name, array $arguments)
     {
         $methodeName = '_' . $name;
 
         if (
-        method_exists($this,
-                      $methodeName)
+            method_exists($this,
+                          $methodeName)
         ) {
             $scope = [];
 
@@ -29,8 +30,8 @@ abstract class Base
             unset($argumentsScope);
 
             \Event::triggerBase(\Event::TRIGGER_OPEN,
-                            $this,
-                            $scope);
+                                $this,
+                                $scope);
 
             $returnValue = call_user_func_array([
                                                     $this,
@@ -39,8 +40,8 @@ abstract class Base
                                                 $arguments);
 
             \Event::triggerBase(\Event::TRIGGER_CLOSE,
-                            $this,
-                            $scope);
+                                $this,
+                                $scope);
 
             return $returnValue;
         }

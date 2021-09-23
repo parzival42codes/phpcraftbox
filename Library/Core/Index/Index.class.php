@@ -13,6 +13,10 @@ class CoreIndex
 
         ContainerExtensionTemplateParseInsertPositions::load();
 
+        \Event::trigger('/Core/Index',
+                        __FUNCTION__,
+                        $scope);
+
         /** @var ContainerFactoryLogStatistic $statistic */
         $statistic = Container::get('ContainerFactoryLogStatistic',
                                     'pageCall');

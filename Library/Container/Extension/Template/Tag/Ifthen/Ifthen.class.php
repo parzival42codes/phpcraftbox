@@ -9,7 +9,7 @@ class ContainerExtensionTemplateTagIfthen extends Base
      */
     public static function setFunction(ContainerExtensionTemplate $template): void
     {
-        $template->setRegisteredFunctions('_ifthen',
+        $template::setRegisteredFunctions('_ifthen',
             function ($content, $htmlTags, $templateObject) {
                 /** @var ContainerExtensionTemplate $templateObject */
 

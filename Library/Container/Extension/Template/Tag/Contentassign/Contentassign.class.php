@@ -9,7 +9,7 @@ class ContainerExtensionTemplateTagContentassign extends Base
      */
     public static function setFunction(ContainerExtensionTemplate $template): void
     {
-        $template->setRegisteredFunctions('_contentassign',
+        $template::setRegisteredFunctions('_contentassign',
             function ($content, $htmlTags, $templateObject) {
 
                 /** @var ContainerExtensionTemplate $templateObject */

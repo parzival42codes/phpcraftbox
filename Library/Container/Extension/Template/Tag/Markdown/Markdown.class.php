@@ -8,7 +8,7 @@ class ContainerExtensionTemplateTagMarkdown extends Base
      */
     public static function setFunction(ContainerExtensionTemplate $template): void
     {
-        $template->setRegisteredFunctions('_markdown',
+        $template::setRegisteredFunctions('_markdown',
             function ($content, $htmlTags, $templateObject) {
                 $markdown = new ContainerHelperConvertMarkdown($content);
 

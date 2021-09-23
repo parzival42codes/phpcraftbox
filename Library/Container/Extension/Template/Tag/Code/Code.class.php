@@ -8,7 +8,7 @@ class ContainerExtensionTemplateTagCode extends Base
      */
     public static function setFunction(ContainerExtensionTemplate $template): void
     {
-        $template->setRegisteredFunctions('_code',
+        $template::setRegisteredFunctions('_code',
             function ($content, $htmlTags, $templateObject) {
                 return '<span class="codeBox">' . nl2br(strtr(trim($content),
                                                               [

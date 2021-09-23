@@ -65,7 +65,7 @@ class ContainerExtensionTemplate extends Base
      */
     protected static array $finalTemplateValues = [];
 
-    protected array $registeredFunctions = [];
+    protected static array $registeredFunctions = [];
 
     protected array        $dataCatch      = [];
     protected static array $dataCatchCache = [];
@@ -269,26 +269,26 @@ class ContainerExtensionTemplate extends Base
      *
      * @return callable
      */
-    public function getRegisteredFunctions(string $key): callable
+    public static function getRegisteredFunctions(string $key): callable
     {
-        return $this->registeredFunctions[$key];
+        return self::$registeredFunctions[$key];
     }
 
     /**
      * @param string   $key
      * @param callable $value
      */
-    public function setRegisteredFunctions(string $key, callable $value): void
+    public static function setRegisteredFunctions(string $key, callable $value): void
     {
-        $this->registeredFunctions[$key] = $value;
+        self::$registeredFunctions[$key] = $value;
     }
 
     /**
      * @param string $key
      */
-    public function removeRegisteredFunctions(string $key): void
+    public static function removeRegisteredFunctions(string $key): void
     {
-        unset($this->registeredFunctions[$key]);
+        unset(self::$registeredFunctions[$key]);
     }
 
     /**
@@ -368,12 +368,12 @@ class ContainerExtensionTemplate extends Base
         }
 
 //        d($htmlTagsCollected);
-//        d($this->registeredFunctions[$htmlTagsCollected['function']]);
+//        d(self::$registeredFunctions[$htmlTagsCollected['function']]);
 //        d($htmlTagsCollected['function']);
 //        eol(true);
 
-        if (isset($this->registeredFunctions[$htmlTagsCollected['function']])) {
-            return call_user_func_array($this->registeredFunctions[$htmlTagsCollected['function']],
+        if (isset(self::$registeredFunctions[$htmlTagsCollected['function']])) {
+            return call_user_func_array(self::$registeredFunctions[$htmlTagsCollected['function']],
                                         [
                                             $matches[2],
                                             $htmlTagsCollected,
@@ -612,12 +612,37 @@ class ContainerExtensionTemplate extends Base
 
                     if (class_exists($parseClassName)) {
                         $scope['type'] = self::PARSE_TYPE_COMPLEX;
-                        $parseClass    = Container::get('ContainerExtensionTemplateParse');
+                        $parseClass    = new ContainerExtensionTemplateParse();
 
-                        return $this->delimiterStartBorder . $parseClass->get($parseClassName,
-                                                                              $replace[1],
-                                                                              $parseFindParameter,
-                                                                              $this) . $this->delimiterEndBorder;
+                        try {
+                            $result = $parseClass->get($parseClassName,
+                                                       $replace[1],
+                                                       $parseFindParameter,
+                                                       $this);
+                            return $this->delimiterStartBorder . $result . $this->delimiterEndBorder;
+
+                        } catch (Throwable $exception) {
+                            \CoreErrorhandler::trigger(__METHOD__,
+                                                       'templateParseException',
+                                                       [
+                                                           'type'    => $replace[0],
+                                                           'class'   => $replace[1],
+                                                           'message' => $exception->getMessage(),
+                                                       ],
+                                                       [],
+                                                       1);
+
+                            return "";
+                        }
+                    }
+                    else {
+                        \CoreErrorhandler::trigger(__METHOD__,
+                                                   'templateParseClassNotFound',
+                                                   [
+                                                       'class' => $replace[0],
+                                                   ],
+                                                   [],
+                                                   1);
                     }
 
                 }

@@ -8,7 +8,7 @@ class ContainerExtensionTemplateTagDontparse extends Base
      */
     public static function setFunction(ContainerExtensionTemplate $template): void
     {
-        $template->setRegisteredFunctions('_dontparse',
+        $template::setRegisteredFunctions('_dontparse',
             function ($content, $htmlTags, $templateObject) {
 
 //                $uniqueID = 'template_tag_dontparse_' . uniqid();
