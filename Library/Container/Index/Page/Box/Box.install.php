@@ -12,6 +12,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('page_box_logo');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
             $crud->setCrudRow(2);
             $crud->setCrudFlex(1);
@@ -25,7 +26,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -35,6 +36,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('page_box_title');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
             $crud->setCrudRow(2);
             $crud->setCrudFlex(2);
@@ -48,7 +50,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -58,6 +60,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('page_box_user');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
             $crud->setCrudRow(2);
             $crud->setCrudFlex(1);
@@ -73,7 +76,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -83,6 +86,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('page_box_content_left');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
             $crud->setCrudRow(3);
             $crud->setCrudFlex(1);
@@ -98,7 +102,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -108,6 +112,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('page_box_content_main');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
             $crud->setCrudRow(3);
             $crud->setCrudFlex(5);
@@ -125,7 +130,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -141,6 +146,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('page_box_footer');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
             $crud->setCrudRow(4);
             $crud->setCrudFlex(1);
@@ -150,7 +156,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });

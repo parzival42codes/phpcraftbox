@@ -27,6 +27,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('administration_header');
             $crud->setCrudClass('ApplicationAdministration');
             $crud->setCrudRow(1);
             $crud->setCrudFlex(1);
@@ -36,7 +37,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudAssignment('administration');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -51,6 +52,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('administration_main');
             $crud->setCrudClass('ApplicationAdministration');
             $crud->setCrudRow(1);
             $crud->setCrudFlex(4);
@@ -60,7 +62,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudAssignment('administration');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -75,6 +77,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('administration_right');
             $crud->setCrudClass('ApplicationAdministration');
             $crud->setCrudRow(1);
             $crud->setCrudFlex(2);
@@ -84,7 +87,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudAssignment('administration');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });

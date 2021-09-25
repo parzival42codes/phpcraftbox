@@ -7,12 +7,11 @@ class ContainerIndexPageBox_crud extends Base_abstract_crud
     protected static string $tableId = 'crudId';
 
     /**
-     * @var
-     * @database type int;11
+     * @var ?string
+     * @database type varchar;100
      * @database isPrimary
-     * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected ?int $crudId = null;
+    protected string $crudId = '';
     /**
      * @var int
      * @database type int;11
@@ -192,17 +191,17 @@ class ContainerIndexPageBox_crud extends Base_abstract_crud
     }
 
     /**
-     * @return
+     * @return string
      */
-    public function getCrudId(): ?int
+    public function getCrudId(): ?string
     {
         return $this->crudId;
     }
 
     /**
-     * @param  $crudId
+     * @param string $crudId
      */
-    public function setCrudId(?int $crudId): void
+    public function setCrudId(string $crudId): void
     {
         $this->crudId = $crudId;
     }

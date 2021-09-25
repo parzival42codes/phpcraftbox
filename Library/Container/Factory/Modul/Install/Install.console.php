@@ -130,47 +130,6 @@ class ContainerFactoryModulInstall_console extends Console_abstract
                                 false);
 
         $dropTables = [
-            'index_router',
-            'config',
-            'custom',
-            'debug_statistic',
-            'event_attach',
-            'event_trigger',
-            'user',
-            'user_emailcheck',
-            'user_config',
-            'user_config_user',
-            'user_group',
-            'user_group_access',
-            'user_group_to_access',
-            'form_response',
-            'index_module',
-            'language',
-            'menu',
-            'page_box',
-            //            'storage',
-            'task_index',
-            'documentation',
-            'token',
-            'log_notification',
-            'template_positions',
-            'content',
-            'content_index',
-            'content_history',
-            'general_memory',
-            'custom_developer_skeleton',
-        ];
-
-        $queryString = 'DROP TABLE IF EXISTS `' . implode('`,`',
-                                                          $dropTables) . '`;';
-        $query->query($queryString);
-        $query->construct();
-
-        $query->execute();
-
-//   eol(true);
-
-        $dropTables = [
             'cache' => [
                 [
                     'cache'

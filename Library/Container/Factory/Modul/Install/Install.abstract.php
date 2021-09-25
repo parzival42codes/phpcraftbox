@@ -158,7 +158,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                         $crud->setCrudLanguageValue($data['crud']["value"]);
                         $crud->setCrudLanguageValueDefault($data['crud']["valueDefault"] ?? $data['crud']["value"]);
 
-                        $progressData["message"] = $crud->insert() . " |##|blue";
+                        $progressData["message"] = $crud->insert(true) . " |##|blue";
 
                         /*$after*/
                     },
@@ -195,7 +195,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                         $crud->setCrudLanguageValue($data['crud']["value"]);
                         $crud->setCrudLanguageValueDefault($data['crud']["valueDefault"] ?? $data['crud']["value"]);
 
-                        $progressData["message"] = $crud->insert() . " |##|blue";
+                        $progressData["message"] = $crud->insert(true) . " |##|blue";
 
                         /*$after*/
                     },
@@ -276,7 +276,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                         $crud->setCrudLanguageValue($data['crud']["value"]);
                         $crud->setCrudLanguageValueDefault($data['crud']["valueDefault"] ?? $data['crud']["value"]);
 
-                        $progressData["message"] = $crud->insert() . " |##|blue";
+                        $progressData["message"] = $crud->insert(true) . " |##|blue";
 
                         /*$after*/
                     },
@@ -350,7 +350,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 $configCrud->setCrudConfigLanguage(json_encode(($data['crud']['language'] ?? [])));
                 $configCrud->setCrudConfigForm(json_encode(($data['crud']['form'] ?? [])));
 
-                $progressData['message'] = $configCrud->insert() . ' |##|blue';
+                $progressData['message'] = $configCrud->insert(true) . ' |##|blue';
 
                 /*$after*/
             },
@@ -412,7 +412,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 $configCrud->setCrudConfigLanguage(json_encode(($data['crud']['language'] ?? [])));
                 $configCrud->setCrudConfigForm(json_encode(($data['crud']['form'] ?? [])));
 
-                $progressData['message'] = $configCrud->insert() . ' |##|blue';
+                $progressData['message'] = $configCrud->insert(true) . ' |##|blue';
 
                 /*$after*/
             },
@@ -454,7 +454,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                     $crud->setCrudTarget(($data['crud']['target'] ?? 'index'));
                     $crud->setCrudPath($data['crud']['path']);
 
-                    $progressData['message'] = $crud->insert() . '|##|blue';
+                    $progressData['message'] = $crud->insert(true) . '|##|blue';
 
                     /*$after*/
                 },
@@ -517,7 +517,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
                 $crud->setCrudMenuAccess($data['crud']['menuAccess'] ?? $data['crud']['class']);
 
-                $progressData['message'] = $crud->insert() . '|##|blue';
+                $progressData['message'] = $crud->insert(true) . '|##|blue';
 
                 /*$after*/
             },
@@ -543,7 +543,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             $crud->setCrudTriggerClass($data['triggerClass']);
             $crud->setCrudTriggerMethod($data['triggerMethod']);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         },
@@ -624,7 +624,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
                 $modulCrud->setCrudActive($data['iniData']['active'] ?? 0);
 
-                $modulCrud->insert();
+                $modulCrud->insert(true);
 
                 $progressData['message'] = 'Import Meta: ' . $data['iniData']['_rootClass'] . '|##|blue';
 
@@ -758,7 +758,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
             $modulCrud->setCrudActive($data['modulMeta']['active']);
 
-            $modulCrud->insert();
+            $modulCrud->insert(true);
 
             $progressData['message'] = 'Import Meta Class: ' . $data['modulMeta']['modul'] . '|##|blue';
 
@@ -785,7 +785,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             $crud->setCrudType($data['crud']["type"]);
             $crud->setCrudContent($data['crud']["content"]);
 
-            $progressData["message"] = $crud->insert() . " |##|blue";
+            $progressData["message"] = $crud->insert(true) . " |##|blue";
 
             /*$after*/
         },
@@ -810,7 +810,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             $crud->setCrudClass($data['crud']["rootClass"]);
             $crud->setCrudPath($data['crud']["path"]);
 
-            $progressData["message"] = $crud->insert() . " |##|blue";
+            $progressData["message"] = $crud->insert(true) . " |##|blue";
 
             /*$after*/
         },
@@ -830,7 +830,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 $crud->setCrudUserGroupId((int)$data['crud']["group"]);
                 $crud->setCrudAccess($data['crud']["path"]);
 
-                $progressData["message"] = $crud->insert() . " |##|blue";
+                $progressData["message"] = $crud->insert(true) . " |##|blue";
 
                 /*$after*/
             },

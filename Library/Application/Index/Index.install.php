@@ -18,6 +18,7 @@ class ApplicationIndex_install extends ContainerFactoryModulInstall_abstract
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
+            $crud->setCrudId('index_main');
             $crud->setCrudClass('ApplicationAdministration');
             $crud->setCrudRow(1);
             $crud->setCrudFlex(1);
@@ -27,7 +28,7 @@ class ApplicationIndex_install extends ContainerFactoryModulInstall_abstract
             $crud->setCrudAssignment('index');
             $crud->setCrudActive(true);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
