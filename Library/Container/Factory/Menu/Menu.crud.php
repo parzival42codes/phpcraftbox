@@ -8,6 +8,7 @@ class ContainerFactoryMenu_crud extends Base_abstract_crud
 
     /**
      * @var string
+     * @database isPrimary
      * @database type varchar;250
      */
     protected string $crudClass = '';
@@ -29,8 +30,6 @@ class ContainerFactoryMenu_crud extends Base_abstract_crud
     /**
      * @var ?string
      * @database type varchar;250
-     * @database isNull
-     * @database ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_NULL
      */
     protected ?string $crudMenuAccess = '';
 

@@ -18,7 +18,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudProtected(1);
             $crud->setCrudId(1);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -32,7 +32,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudProtected(1);
             $crud->setCrudId(2);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -46,7 +46,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudProtected(1);
             $crud->setCrudId(3);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });
@@ -60,7 +60,7 @@ class ContainerFactoryUserGroup_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudProtected(1);
             $crud->setCrudId(4);
 
-            $progressData['message'] = $crud->insert();
+            $progressData['message'] = $crud->insert(true);
 
             /*$after*/
         });

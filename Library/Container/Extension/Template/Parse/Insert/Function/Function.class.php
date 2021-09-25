@@ -20,7 +20,8 @@ class ContainerExtensionTemplateParseInsertFunction extends ContainerExtensionTe
         $key       = $parameter['function'];
 
         CoreDebugLog::addLog('/Template/Insert/Function/Parse',
-                             $key);
+                             $key . ' => ' . var_export($parameter,
+                                                        true));
 
         return call_user_func(self::$insertion[$key],
                               $parameter);

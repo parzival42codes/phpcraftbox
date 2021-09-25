@@ -156,18 +156,11 @@ class ContainerFactoryDatabaseEngineMysqlTable extends Base
         $smtp           = $query->execute();
         $tableIndexData = $smtp->fetchAll();
 
-        if ($tableIndexData == false) {
-            throw new DetailedException('indexesError',
-                                        0,
-                                        null,
-                                        [
-                                            'debug' => []
-                                        ]);
-        }
-
-        $tableIndexDataCollect = [];
-        foreach ($tableIndexData as $tableIndexDataItem) {
-            $tableIndexDataCollect[$tableIndexDataItem['Key_name']][] = $tableIndexDataItem;
+        if ($tableIndexData) {
+            $tableIndexDataCollect = [];
+            foreach ($tableIndexData as $tableIndexDataItem) {
+                $tableIndexDataCollect[$tableIndexDataItem['Key_name']][] = $tableIndexDataItem;
+            }
         }
 
         //simpleDebugDump($tableIndexDataCollect);
@@ -227,7 +220,7 @@ class ContainerFactoryDatabaseEngineMysqlTable extends Base
     /**
      * Set Primary
      *
-     * @param $keys Name of the Primary
+     * @param array|string $keys of the Primary
      */
     public function setPrimary($keys): void
     {
@@ -342,7 +335,7 @@ class ContainerFactoryDatabaseEngineMysqlTable extends Base
         unset($this->structureUnique[$name]);
     }
 
-    public function createQuery(string $database='primary',string $engine = 'InnoDB', string $charset =null): array
+    public function createQuery(string $database = 'primary', string $engine = 'InnoDB', string $charset = null): array
     {
 
         $return       = 'CREATE TABLE `' . $this->table . "` (\n";
@@ -382,7 +375,7 @@ class ContainerFactoryDatabaseEngineMysqlTable extends Base
                            $createTable) . "\n";
 
 
-        $return .= ') ENGINE=' .$engine . ' DEFAULT CHARSET=' . ($charset ?? (string)Config::get('/environment/database/'.$database.'/default_charset')) . ';';
+        $return .= ') ENGINE=' . $engine . ' DEFAULT CHARSET=' . ($charset ?? (string)Config::get('/environment/database/' . $database . '/default_charset')) . ';';
 
         if (empty($returnAppend)) {
             return [

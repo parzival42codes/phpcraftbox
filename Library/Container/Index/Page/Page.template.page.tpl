@@ -103,8 +103,8 @@
         {$footerInclude}
 
         <CMS function="_ifthen"
-             ifthen="assigned"
-             wanted="0"
+             ifthen="equal"
+             value="0"
              assigned="cookieBanner"
         >
             <div style="width: 100%;position: fixed;bottom: 0;">
