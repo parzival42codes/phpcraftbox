@@ -9,3 +9,7 @@
 .ContainerExtensionTemplateParseCreatePaginationHelper .card-container-header {
     text-align: center;
 }
+
+.ContainerExtensionTemplateParseCreatePaginationHelper .card-container-content {
+    text-align: center;
+}
