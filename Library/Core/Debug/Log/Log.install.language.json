@@ -1,12 +1,33 @@
 {
   "type": "install.language",
   "content": {
+    "/type/log": {
+      "de_DE": "Log",
+      "en_US": "Log"
+    },
+    "/type/note": {
+      "de_DE": "Hinweis",
+      "en_US": "Note"
+    },
+    "/type/deprecated": {
+      "de_DE": "Veraltet",
+      "en_US": "Deprecated"
+    },
+    "/type/warning": {
+      "de_DE": "Warnung",
+      "en_US": "Warning"
+    },
+    "/type/error": {
+      "de_DE": "Fehler",
+      "en_US": "Error"
+    },
+    "/type/exception": {
+      "de_DE": "Ausnahmefehler",
+      "en_US": "Exception"
+    },
     "/template/header": {
-      "language": {
-        "de_DE": {
-          "value": "Logeinträge: {$count} | Log: {$countLog} | Info: {$countInfo} | Warning: {$countWarn} | Error: {$countError}"
-        }
-      }
+      "de_DE": "Logeinträge: {$count} | Log: {$countLog} | Info: {$countInfo} | Veraltet: {$countDeprecated}| Warnung: {$countWarn} | Fehler: {$countError}",
+      "en_US": "Log Entries: {$count} | Log: {$countLog} | Info: {$countInfo} | Deprecated: {$countDeprecated}| Warning: {$countWarn} | Error: {$countError}"
     }
   }
 }

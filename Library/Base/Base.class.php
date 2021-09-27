@@ -2,8 +2,8 @@
 
 abstract class Base
 {
-    protected string $rootClass = '';
-    protected array  $scope     = [];
+    protected ?string $rootClass = null;
+    protected array   $scope     = [];
 
     public function __call(string $name, array $arguments)
     {
@@ -64,6 +64,9 @@ abstract class Base
      */
     public function ___getRootClass(): string
     {
+        if (!$this->rootClass) {
+            $this->rootClass = Core::getRootClass(get_called_class());
+        }
         return $this->rootClass;
     }
 
@@ -72,6 +75,11 @@ abstract class Base
      */
     public function ___setRootClass(string $rootClass): void
     {
+        if (class_exists('CoreDebugLog')) {
+            CoreDebugLog::addLog('/Base/deprecated/' . '___setRootClass',
+                                 get_called_class(),
+                                 CoreDebugLog::LOG_TYPE_DEPRECATED);
+        }
         $this->rootClass = $rootClass;
     }
 

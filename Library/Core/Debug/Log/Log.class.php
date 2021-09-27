@@ -17,7 +17,11 @@ class CoreDebugLog extends Base
     /**
      *
      */
-    const LOG_TYPE_WARN = 'warn';
+    const LOG_TYPE_DEPRECATED = 'deprecated';
+    /**
+     *
+     */
+    const LOG_TYPE_WARNING = 'warning';
     /**
      *
      */

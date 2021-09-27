@@ -43,13 +43,11 @@ li, ul {
 
 .colorInfo {
     @aboveTheFold: "1";
-    background-color: #style-color-info-background !important;
     color: #style-color-info-text !important;
 }
 
 .colorTrigger {
     @aboveTheFold: "1";
-    background-color: #style-color-warning-background !important;
     color: #style-color-warning-text !important;
 }
 
@@ -61,7 +59,6 @@ li, ul {
 
 .colorWarning {
     @aboveTheFold: "1";
-    background-color: #style-color-warning-background !important;
     color: #style-color-warning-text !important;
 }
 
