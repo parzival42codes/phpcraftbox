@@ -157,22 +157,17 @@ abstract class Application_abstract extends Base
         }
 
         /** @var ContainerFactoryMenu_crud $menuCrud */
-        $menuCrud       = Container::get('ContainerFactoryMenu_crud');
-        $menuCrudResult = $menuCrud->find([
-                                              'crudClass' => $menuClass
-                                          ],
-                                          [],
-                                          [],
-                                          1);
+        $menuCrud = Container::get('ContainerFactoryMenu_crud');
+        $menuCrud->setCrudClass($menuClass);
+        $menuCrud->findByColumn([
+                                    'crudClass'
+                                ]);
 
-        /** @var ContainerFactoryMenu_crud $menuCrudResultFirst */
-        $menuCrudResultFirst = reset($menuCrudResult);
-
-        if (!empty($menuCrudResultFirst)) {
+        if (!empty($menuCrud)) {
 
             /** @var ContainerFactoryLanguageParseIni $iniParser */
             $iniParser = Container::get('ContainerFactoryLanguageParseIni',
-                                        $menuCrudResultFirst->getCrudData());
+                                        $menuCrud->getCrudData());
 
             $iniParserLanguages = $iniParser->getLanguages();
             if (isset($iniParserLanguages[Config::get('/environment/language')])) {
@@ -276,15 +271,15 @@ abstract class Application_abstract extends Base
                                           $router->getUrlReadable());
 
         $menu = $this->getMenu();
-        $menu->setMenuClassMain($rootClass);
+        $menu->setMenuClassMain($this->___getRootClass());
 
         $this->pageData();
 
     }
 
-    private function pageData()
+    protected function pageData()
     {
-
+        debugDump($this);
     }
 
 }

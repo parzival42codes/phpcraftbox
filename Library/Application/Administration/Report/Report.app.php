@@ -31,7 +31,7 @@ class ApplicationAdministrationReport_app extends ApplicationAdministration_abst
 
     }
 
-    private function pageData($title): void
+    protected function pageData($title): void
     {
         $className = Core::getRootClass(__CLASS__);
 

@@ -77,6 +77,13 @@ class Container
             return self::$globalContainer[$index];
         }
 
+//        Too Many
+//        if (class_exists('CoreDebugLog')) {
+//            CoreDebugLog::addLog('/Container/deprecated/' . 'get',
+//                                 get_called_class(),
+//                                 CoreDebugLog::LOG_TYPE_DEPRECATED);
+//        }
+
         if (class_exists($index)) {
 
             $object = new $index(...
@@ -87,8 +94,8 @@ class Container
             }
 
             if (
-            !method_exists($object,
-                           '___get')
+                !method_exists($object,
+                               '___get')
             ) {
                 return $object;
             }

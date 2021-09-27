@@ -155,7 +155,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
         return $content;
     }
 
-    private function pageData(): void
+    protected function pageData(): void
     {
         $className = Core::getRootClass(__CLASS__);
 
