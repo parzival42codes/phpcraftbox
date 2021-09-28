@@ -265,7 +265,7 @@ abstract class Application_abstract extends Base
 
         $container = Container::DIC();
         /** @var ContainerFactoryRouter $router */
-        $router = $container->getDIC('/Router');
+        $router = $container::get(ContainerFactoryRouter::class);
 
         $breadcrumbObj->addBreadcrumbItem($breadcrumb,
                                           $router->getUrlReadable());

@@ -45,7 +45,7 @@ class ApplicationAdministrationReport_app extends ApplicationAdministration_abst
 
         $container = Container::DIC();
         /** @var ContainerFactoryRouter $router */
-        $router = $container->getDIC('/Router');
+        $router = $container::get(ContainerFactoryRouter::class);
 
         $breadcrumb->addBreadcrumbItem(ContainerFactoryLanguage::get('/ApplicationBlog/breadcrumb'),
                                        'index.php?application=ApplicationBlog');

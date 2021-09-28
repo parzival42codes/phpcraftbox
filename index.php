@@ -42,6 +42,15 @@ else {
     $user = 0;
 }
 
+$container = new Container();
+$container->register(ContainerFactoryRouter::class,
+                     new ContainerFactoryRouter(Config::get('/server/http/path')));
+$container->register(ContainerFactoryUser::class,
+                     $user);
+$container->register(ContainerIndexPage::class);
+$container->register(ContainerIndexPage::class);
+
+
 $container = Container::DIC([
                                 '/User'                      => $user,
                                 '/Config'                    => new Config(),

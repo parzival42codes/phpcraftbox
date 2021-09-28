@@ -29,7 +29,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
 
         $container = Container::DIC();
         /** @var ContainerFactoryRouter $router */
-        $router = $container->getDIC('/Router');
+        $router = $container::get(ContainerFactoryRouter::class);
 
 
         $crudModul = new ContainerFactoryModul_crud();
@@ -170,7 +170,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
 
         $container = Container::DIC();
         /** @var ContainerFactoryRouter $router */
-        $router = $container->getDIC('/Router');
+        $router = $container::get(ContainerFactoryRouter::class);
 
         $breadcrumb->addBreadcrumbItem(ContainerFactoryLanguage::get('/' . $className . '/breadcrumb'),
                                        $router->getUrlReadable());

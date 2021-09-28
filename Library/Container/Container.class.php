@@ -6,12 +6,23 @@ class Container
     private static array $globalContainer   = [];
     private static array $instanceContainer = [];
 
-    private array             $container = [];
-    private static ?Container $dic       = null;
+    private array             $container           = [];
+    private static array      $containerDependency = [];
+    private static ?Container $dic                 = null;
 
-    public function __construct(array $container)
+    public function __construct(array $container = [])
     {
         $this->container = $container;
+    }
+
+    public function register($key, $value = null)
+    {
+        if ($value === null) {
+            self::$containerDependency[$key] = new $key();
+        }
+        else {
+            self::$containerDependency[$key] = $value;
+        }
     }
 
     public function setDIC(string $index, $value)
@@ -73,36 +84,19 @@ class Container
 
     public static function get(string $index, ...$parameter)
     {
+        if (isset(self::$containerDependency[$index])) {
+            return self::$containerDependency[$index];
+        }
+
         if (isset(self::$globalContainer[$index])) {
             return self::$globalContainer[$index];
         }
 
-//        Too Many
-//        if (class_exists('CoreDebugLog')) {
-//            CoreDebugLog::addLog('/Container/deprecated/' . 'get',
-//                                 get_called_class(),
-//                                 CoreDebugLog::LOG_TYPE_DEPRECATED);
-//        }
-
         if (class_exists($index)) {
-
             $object = new $index(...
                 $parameter);
 
-            if ($object instanceof Base) {
-                $object->___setRootClass(Core::getRootClass(get_class($object)));
-            }
-
-            if (
-                !method_exists($object,
-                               '___get')
-            ) {
-                return $object;
-            }
-            else {
-                return $object->___get(...
-                    $parameter);
-            }
+            return $object;
         }
         else {
 //            var_dump($index);
