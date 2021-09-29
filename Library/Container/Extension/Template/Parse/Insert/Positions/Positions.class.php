@@ -33,7 +33,7 @@ class ContainerExtensionTemplateParseInsertPositions extends ContainerExtensionT
     public static function insert(string $position, string $content): void
     {
         CoreDebugLog::addLog('/Template/Insert/Position/Insert',
-                             $position);
+                             $position.' => '.$content);
 
         if (!isset(self::$positionInsertion[$position])) {
             self::$positionInsertion[$position] = '';
@@ -47,7 +47,8 @@ class ContainerExtensionTemplateParseInsertPositions extends ContainerExtensionT
         $position  = (self::$positionInsertion[$parameter['position']] ?? ($parameter['default'] ?? ''));
 
         CoreDebugLog::addLog('/Template/Insert/Position/Parse',
-                             $position);
+                             htmlentities(var_export($parameter,
+                                                     true)));
 
 
         return $position;
