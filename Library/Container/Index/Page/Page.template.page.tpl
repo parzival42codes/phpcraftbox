@@ -95,6 +95,9 @@
     {$headerInclude}
 </head>
 <body {$pageData}>
+
+    {$headerEnvironmentMessage}
+
 <div id="Application">
     <div id="{$applicationID}">
 

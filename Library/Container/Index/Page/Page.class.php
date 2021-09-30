@@ -418,8 +418,28 @@ class ContainerIndexPage
                               $pageData);
         unset($pageData);
 
+        $templatePage->assign('headerEnvironmentMessage',
+                              '');
+
+        $headerEnvironmentMessage = \Config::get('/environment/info/headerMessage',
+                                                 '');
+        if ($headerEnvironmentMessage) {
+            $templateCache = new ContainerExtensionTemplateLoad_cache_template(__CLASS__,
+                                                                               'headerEnvironmentMessage');
+
+            $template = new ContainerExtensionTemplate();
+            $template->set($templateCache->getCacheContent()['headerEnvironmentMessage']);
+            $templatePage->assign('headerEnvironmentMessage',
+                                  $headerEnvironmentMessage);
+
+            $template->parse();
+            $templatePage->assign('headerEnvironmentMessage',
+                                  $template->get());
+        }
+
         $templatePage->assign('tooltipContainerFactoryDatabaseQuery',
                               '');
+
 
         $templatePage->parseString();
 
