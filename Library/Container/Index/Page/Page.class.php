@@ -429,7 +429,7 @@ class ContainerIndexPage
 
             $template = new ContainerExtensionTemplate();
             $template->set($templateCache->getCacheContent()['headerEnvironmentMessage']);
-            $templatePage->assign('headerEnvironmentMessage',
+            $template->assign('headerEnvironmentMessage',
                                   $headerEnvironmentMessage);
 
             $template->parse();

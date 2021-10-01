@@ -233,7 +233,6 @@ summary {
 }
 
 
-
 .code {
     display: block;
     font-family: monospace;
@@ -267,4 +266,13 @@ blockquote {
     @aboveTheFold: "1";
     margin: 0;
     padding: 0 0 0 1em;
+}
+
+#headerEnvironmentMessage {
+    border: #000000 solid;
+    background: lightgray;
+    color: #000000;
+    padding: 0.5em;
+    text-align: center;
+    font-weight: bold;
 }
