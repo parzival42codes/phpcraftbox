@@ -12,30 +12,6 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
 
             /** @var ContainerIndexPageBox_crud $crud */
             $crud = Container::get('ContainerIndexPageBox_crud');
-            $crud->setCrudId('page_box_logo');
-            $crud->setCrudClass(Core::getRootClass(__CLASS__));
-            $crud->setCrudRow(2);
-            $crud->setCrudFlex(1);
-            $crud->setCrudPosition(1);
-            $crud->setCrudDescription('Logo');
-            $crud->setCrudContent('
-<div class="card-container card-container--shadow">
-<div class="card-container-content">Logo</div>
-</div>
-');
-            $crud->setCrudAssignment('page');
-            $crud->setCrudActive(true);
-
-            $progressData['message'] = $crud->insert(true);
-
-            /*$after*/
-        });
-
-        $this->installFunction(function () {
-            /** @var array $data */ /*$before*/
-
-            /** @var ContainerIndexPageBox_crud $crud */
-            $crud = Container::get('ContainerIndexPageBox_crud');
             $crud->setCrudId('page_box_title');
             $crud->setCrudClass(Core::getRootClass(__CLASS__));
             $crud->setCrudRow(2);

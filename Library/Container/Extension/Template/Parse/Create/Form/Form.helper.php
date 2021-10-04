@@ -205,8 +205,20 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
                                         ]);
         }
 
-        $this->element[$name]->setLabel(ContainerFactoryLanguage::get('/' . $this->class . '/form/' . $name . '/label',
-                                                                      ''));
+        $path  = '/' . $this->class . '/form/' . $name . '/label';
+        $label = ContainerFactoryLanguage::get($path,
+                                               '');
+
+        debugDump($path);
+        debugDump($label);
+
+        if ($label === '') {
+            CoreDebugLog::addLog('/Template/Form',
+                                 'Need Label: ' . $path,
+                                 CoreDebugLog::LOG_TYPE_NOTE);
+        }
+
+        $this->element[$name]->setLabel($label);
         if ($this->response->isHasResponse()) {
             $this->element[$name]->setValue($this->response->get($name));
         }

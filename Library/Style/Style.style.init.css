@@ -269,7 +269,7 @@ blockquote {
 }
 
 #headerEnvironmentMessage {
-    border: #000000 solid;
+    border: #000000 dashed;
     background: lightgray;
     color: #000000;
     padding: 0.5em;
