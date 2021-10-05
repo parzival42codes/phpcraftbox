@@ -21,8 +21,8 @@ class  CoreDebugDump_debug extends ContainerExtensionApiDebug_abstract
 
             $eventTabItem[$key] = $eventTab->createTab($key);
 
-            $file = $elem['backtrace'][2]['file'];
-            $line = $elem['backtrace'][2]['line'];
+            $file = $elem['backtrace'][1]['file'];
+            $line = $elem['backtrace'][1]['line'];
 
             $elem['filename'] = $file;
 

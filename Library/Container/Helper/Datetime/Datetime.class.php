@@ -7,11 +7,9 @@ class ContainerHelperDatetime
     {
         $dateTime = new DateTime($date);
 
-        $dateTimeDiff = self::calculateDifference($dateTime,
-                                                  new DateTime());
-
-//        d($dateTimeDiff);
-//        eol();
+        if(empty($date)) {
+            return '';
+        }
 
         return strftime((string)Config::get('/environment/datetime/locale'),
                         $dateTime->getTimestamp());

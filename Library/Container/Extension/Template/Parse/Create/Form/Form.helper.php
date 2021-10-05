@@ -209,9 +209,6 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
         $label = ContainerFactoryLanguage::get($path,
                                                '');
 
-        debugDump($path);
-        debugDump($label);
-
         if ($label === '') {
             CoreDebugLog::addLog('/Template/Form',
                                  'Need Label: ' . $path,
