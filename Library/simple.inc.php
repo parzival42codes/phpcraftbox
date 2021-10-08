@@ -7,8 +7,8 @@ function simpleDebugDump($Data, bool $backtrace = false): void
     $Backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 
     if (
-    class_exists('ContainerHelperView',
-                 false)
+        class_exists('ContainerHelperView',
+                     false)
     ) {
         $BacktraceView = ContainerHelperView::convertBacktraceView($Backtrace,
                                                                    false);
@@ -34,7 +34,7 @@ function simpleDebugDump($Data, bool $backtrace = false): void
 
     $simpleDebugTable = '<div style="width: 99%; border: 1px solid #000;padding: 2px;margin: 2px;overflow: hidden;font-family: verdana, arial, helvetica, sans-serif; font-size: small;">';
     $simpleDebugTable .= '    <div style="width: 100%;background: blue;color: white;border: 1px solid #000;padding: 4px;margin: 4px;font-weight: bold;font-size: medium;">';
-    $simpleDebugTable .= $Backtrace[0]['file'] . ' # ' . $Backtrace[0]['line'];
+    $simpleDebugTable .= $type . ' | ' . $Backtrace[0]['file'] . ' # ' . $Backtrace[0]['line'];
     $simpleDebugTable .= '    </div>';
     $simpleDebugTable .= '    <div style="width: 100%; display: flex;">';
     $simpleDebugTable .= '        <div style="width: 100%;border: 1px solid #000;padding: 4px;margin: 4px;max-height: 250px;overflow: auto; flex: 3">';
@@ -51,13 +51,13 @@ function simpleDebugDump($Data, bool $backtrace = false): void
 
 }
 
-function simpleDebugLog($content): void
+function simpleDebugLog($content, $note = ''): void
 {
     $Backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 
     if (
-    class_exists('ContainerHelperView',
-                 false)
+        class_exists('ContainerHelperView',
+                     false)
     ) {
         $BacktraceView = ContainerHelperView::convertBacktraceView($Backtrace,
                                                                    false);
@@ -71,25 +71,36 @@ function simpleDebugLog($content): void
     }
 
     $type = gettype($content);
-    switch ($type) {
-        case 'object':
-            $typeContent = simpleDebugDumpObject($content);
-            break;
-        default:
-            $typeContent = '<pre>' . htmlentities(var_export($content,
-                                                             true)) . '</pre>';
-            break;
-    }
+//    switch ($type) {
+//        case 'object':
+//            $typeContent = simpleDebugDumpObject($content);
+//            break;
+//        default:
+//            $typeContent = '<pre>' . htmlentities(var_export($content,
+//                                                             true)) . '</pre>';
+//            break;
+//    }
+
+    $content = strtr(htmlentities(var_export($content,
+                                             true)),
+                     [
+                         '{' => '&#123;',
+                         '}' => '&#125;',
+                     ]);
+
+    $typeContent = '<pre>' . $content . '</pre>';
+
+    $dateTime = new DateTime();
 
     $simpleDebugTable = '<div style="width: 99%; border: 1px solid #000;padding: 2px;margin: 2px;overflow: hidden;font-family: verdana, arial, helvetica, sans-serif; font-size: small;">';
     $simpleDebugTable .= '    <div style="width: 100%;background: blue;color: white;border: 1px solid #000;padding: 4px;margin: 4px;font-weight: bold;font-size: medium;">';
-    $simpleDebugTable .= $Backtrace[0]['file'] . ' # ' . $Backtrace[0]['line'];
+    $simpleDebugTable .= $Backtrace[0]['file'] . ' # ' . $Backtrace[0]['line'] . ' ( ' . ContainerHelperDatetime::getLocaleDate($dateTime) . ' ) | ' . $note;
     $simpleDebugTable .= '    </div>';
     $simpleDebugTable .= '    <div style="width: 100%; display: flex;">';
     $simpleDebugTable .= '        <div style="width: 100%;border: 1px solid #000;padding: 4px;margin: 4px;max-height: 250px;overflow: auto; flex: 3">';
     $simpleDebugTable .= $typeContent;
     $simpleDebugTable .= '         </div>';
-    $simpleDebugTable .= '          <div style="width: 100%;border: 1px solid #000;padding: 4px;margin: 4px;max-height: 250px;overflow: auto;flex: 1;">';
+    $simpleDebugTable .= '          <div style="width: 100%;border: 1px solid #000;padding: 4px;margin: 4px;max-height: 150px;overflow: auto;flex: 1;">';
     $simpleDebugTable .= $BacktraceView;
     $simpleDebugTable .= '          </div>';
     $simpleDebugTable .= '    </div>';
@@ -108,9 +119,8 @@ function simpleDebugDumpObject(object $dump): string
 
     $reflectionClassProperties = $reflectionClass->getProperties();
 
-    $result = '<div>'.get_class($dump).'</div>';
+    $result = '<div>' . get_class($dump) . '</div>';
     $result .= '<div style="display: flex;"><div style="flex: 4;">';
-
 
 
     /** @var ReflectionProperty $reflectionClassPropertiesItem */
@@ -155,8 +165,8 @@ function simpleDebugDumpObject(object $dump): string
     foreach ($reflectionClassMethods as $reflectionClassMethodsItem) {
 
         if (
-        str_contains($reflectionClassMethodsItem->getName(),
-                     '___')
+            str_contains($reflectionClassMethodsItem->getName(),
+                         '___')
         ) {
 
             $result .= '<p><b>' . $reflectionClassMethodsItem->getName() . '</b> ';
@@ -194,8 +204,8 @@ function simpleDebugDumpObject(object $dump): string
 function simpleGetError(): void
 {
     if (
-    class_exists('CoreDebug',
-                 false)
+        class_exists('CoreDebug',
+                     false)
     ) {
         $errors = CoreDebug::getRawDebugData('CoreErrorhandler');
     }
@@ -207,8 +217,8 @@ function simpleGetError(): void
 
     foreach ($errors as $errorCount => $error) {
         if (
-        class_exists('ContainerHelperView',
-                     false)
+            class_exists('ContainerHelperView',
+                         false)
         ) {
             $BacktraceView = ContainerHelperView::convertBacktraceView($error['backtrace'],
                                                                        false);
@@ -240,11 +250,10 @@ function simpleViewTime(): void
     $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS);
 
     if (
-    class_exists('ContainerHelperCalculate',
-                 false)
+        class_exists('ContainerHelperCalculate',
+                     false)
     ) {
-        echo ContainerHelperCalculate::calculateMicroTimeDisplay(
-                                   microtime(true) - CMS_SYSTEM_START_TIME) . ' sec. # ' . ($backtrace[0]['file'] ?? '?') . ' @ ' . ($backtrace[0]['line'] ?? '?') . ' <hr />';
+        echo ContainerHelperCalculate::calculateMicroTimeDisplay(microtime(true) - CMS_SYSTEM_START_TIME) . ' sec. # ' . ($backtrace[0]['file'] ?? '?') . ' @ ' . ($backtrace[0]['line'] ?? '?') . ' <hr />';
     }
     unset($backtrace);
 }

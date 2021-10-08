@@ -5,7 +5,12 @@ class ContainerHelperDatetime
 
     public static function getLocaleDate($date)
     {
-        $dateTime = new DateTime($date);
+
+        if (!$date instanceof DateTime) {
+            $dateTime = new DateTime($date);
+        } else {
+            $dateTime = $date;
+        }
 
         if(empty($date)) {
             return '';
