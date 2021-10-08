@@ -16,7 +16,7 @@ $findAll = $log->find([],
                           'crudId DESC',
                       ],
                       [],
-                      25);
+                      100);
 
 /** @var ContainerFactoryLogDebug_crud $findAllItem */
 foreach ($findAll as $findAllItem) {

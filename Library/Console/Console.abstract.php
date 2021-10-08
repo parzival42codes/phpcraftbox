@@ -10,14 +10,14 @@ abstract class Console_abstract extends Base
     protected int                   $progressCounter = 0;
     protected array                 $progressPartMax = [];
 
-    protected string     $outputMode    = self::OUTPUT_MODE_CONSOLE;
-    protected string     $action        = '';
-    protected string     $methodPrepare = '';
-    protected  $consoleID     = '';
-    protected array      $parameter     = [];
-    protected int        $progress      = 1;
-    protected array      $progressData  = [];
-    protected object     $outputObject;
+    protected string $outputMode    = self::OUTPUT_MODE_CONSOLE;
+    protected string $action        = '';
+    protected string $methodPrepare = '';
+    protected        $consoleID     = '';
+    protected array  $parameter     = [];
+    protected int    $progress      = 1;
+    protected array  $progressData  = [];
+    protected object $outputObject;
 
     protected int    $progressIdentifyCounter = 0;
     protected string $progressIdentify        = '';
@@ -35,8 +35,8 @@ abstract class Console_abstract extends Base
         $this->methodPrepare = 'prepare' . ucfirst($method);
 
         if (
-        !method_exists($this,
-                       $this->methodPrepare)
+            !method_exists($this,
+                           $this->methodPrepare)
         ) {
             echo 'Prepare for ' . $method . ' not found';
             exit();
@@ -59,9 +59,10 @@ abstract class Console_abstract extends Base
         /** @var ContainerFactoryClass $classConstructor */
         $classConstructor       = Container::get('ContainerFactoryClass',
                                                  'console_' . $this->consoleID,
-                                                 'console','
+                                                 'console',
+                                                 '
 /**
-/ * Class console_' . $this->consoleID.'
+/ * Class console_' . $this->consoleID . '
 / * @method mixed getStepProperty(string $key)
 */
         ');
@@ -117,8 +118,8 @@ abstract class Console_abstract extends Base
                 /** @var string $key */
                 $propertyName = 'Step' . $key;
                 if (
-                property_exists($this,
-                                $propertyName)
+                    property_exists($this,
+                                    $propertyName)
                 ) {
                     return $this->$propertyName;
                 }
@@ -132,8 +133,8 @@ abstract class Console_abstract extends Base
                 /** @var string $key */
                 $propertyName = 'StepMax' . $key;
                 if (
-                property_exists($this,
-                                $propertyName)
+                    property_exists($this,
+                                    $propertyName)
                 ) {
                     return $this->$propertyName;
                 }
@@ -228,8 +229,10 @@ abstract class Console_abstract extends Base
                                 ($messageFormat[1] ?? null),
                                 ($messageFormat[2] ?? null));
 
-//                        var_dump($i !== $stepEnd);
-//                        var_dump($i !== $this->progressCounter);
+                        $this->writeDatabase($progressData,
+                                             $i,
+                                             implode("\n",
+                                                     $messages));
 
                         $this->outputObject->step($this,
                                                   $i,
@@ -239,11 +242,6 @@ abstract class Console_abstract extends Base
                                                   $messages,
                                                   $i === $this->progressCounter,
                                                   $this->consoleID);
-
-                        $this->writeDatabase($progressData,
-                                             $i,
-                                             implode("\n",
-                                                     $messages));
 
                     } catch (Throwable $exception) {
                         $this->outputObject->error($exception,

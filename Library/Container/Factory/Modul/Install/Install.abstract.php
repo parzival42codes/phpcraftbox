@@ -655,9 +655,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
         /** @var array $metaCollect */
         $metaCollect = $classComment['paramData']['@modul'];
 
-        simpleDebugLog($rootClass);
-        simpleDebugLog($metaCollect);
-
         if (!empty($classComment['title'])) {
             $metaCollect['name'] = trim($classComment['title']);
         }
@@ -933,6 +930,7 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
         $this->console->addProgressFunction($function,
                                             [
                                                 '/*$before*/' => '
+
         $data = ' . var_export($data,
                                true) . '
         ;
