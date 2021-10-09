@@ -719,4 +719,8 @@ abstract class Base_abstract_crud
         return $this->lastInsertId;
     }
 
+    public function createNoExist() {
+
+    }
+
 }
