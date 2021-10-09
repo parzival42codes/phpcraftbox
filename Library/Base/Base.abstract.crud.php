@@ -147,6 +147,25 @@ abstract class Base_abstract_crud
 
     }
 
+    public function insertIfNoExist(array $columns, bool $ignore = false)
+    {
+        $objBackup = clone $this;
+        if (!$this->findByColumn($columns)) {
+            foreach (static::$reflectionProperty[get_called_class()] as $crudItem) {
+                $value = call_user_func([
+                                            $newThis,
+                                            'get' . ucfirst($crudItem)
+                                        ]);
+                call_user_func([
+                                   $this,
+                                   'set' . ucfirst($crudItem)
+                               ],
+                               $value);
+            }
+        }
+    }
+
+
     public function insertUpdate(): string
     {
         /** @var ContainerFactoryDatabaseQuery $queryItem */
@@ -194,12 +213,9 @@ abstract class Base_abstract_crud
 
     public function findByColumn($columnList, ?bool $exception = false): bool
     {
-
-        /** @var ContainerFactoryDatabaseQuery $query */
-        $query = Container::get('ContainerFactoryDatabaseQuery',
-                                __METHOD__ . '#select',
-                                static::$database,
-                                ContainerFactoryDatabaseQuery::MODE_SELECT);
+        $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                   static::$database,
+                                                   ContainerFactoryDatabaseQuery::MODE_SELECT);
 
         $query->setTable(static::$table);
 
@@ -717,10 +733,6 @@ abstract class Base_abstract_crud
     public function getLastInsertId(): ?int
     {
         return $this->lastInsertId;
-    }
-
-    public function createNoExist() {
-
     }
 
 }
