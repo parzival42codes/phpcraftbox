@@ -25,9 +25,13 @@
       "de_DE": "Ausnahmefehler",
       "en_US": "Exception"
     },
+    "/type/settings": {
+      "de_DE": "Ausnahmefehler",
+      "en_US": "Exception"
+    },
     "/template/header": {
-      "de_DE": "Logeinträge: {$count} | Log: {$countLog} | Info: {$countInfo} | Veraltet: {$countDeprecated}| Warnung: {$countWarn} | Fehler: {$countError}",
-      "en_US": "Log Entries: {$count} | Log: {$countLog} | Info: {$countInfo} | Deprecated: {$countDeprecated}| Warning: {$countWarn} | Error: {$countError}"
+      "de_DE": "Logeinträge: {$count} | Log: {$countLog} | Info: {$countInfo} | Veraltet: {$countDeprecated}| Warnung: {$countWarn} | Fehler: {$countError} | Hauptpunkte: {$mainStep}",
+      "en_US": "Log Entries: {$count} | Log: {$countLog} | Info: {$countInfo} | Deprecated: {$countDeprecated}| Warning: {$countWarn} | Error: {$countError} | Main Steps: {$mainStep}"
     }
   }
 }

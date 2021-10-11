@@ -7,6 +7,7 @@ class CoreDebugLog_debug extends CoreDebug_abstract
     private int $countWarn       = 0;
     private int $countError      = 0;
     private int $countDeprecated = 0;
+    private int $countMainStep   = 0;
 
     protected function prepare(): void
     {
@@ -25,6 +26,9 @@ class CoreDebugLog_debug extends CoreDebug_abstract
             }
             elseif ($elem['type'] === CoreDebugLog::LOG_TYPE_DEPRECATED) {
                 $this->countDeprecated++;
+            }
+            elseif ($elem['type'] === CoreDebugLog::LOG_TYPE_MAIN_STEP) {
+                $this->countMainStep++;
             }
         }
     }
@@ -65,6 +69,9 @@ class CoreDebugLog_debug extends CoreDebug_abstract
                     case CoreDebugLog::LOG_TYPE_DEPRECATED:
                         $elem['icon'] = '<span class="colorInfo">{insert/function function="googlematerialicons" icon="elderly" class="icon-big"}</span>';
                         break;
+                    case CoreDebugLog::LOG_TYPE_MAIN_STEP:
+                        $elem['icon'] = '<span class="colorInfo">{insert/function function="googlematerialicons" icon="settings" class="icon-big"}</span>';
+                        break;
                 }
             }
 
@@ -77,8 +84,8 @@ class CoreDebugLog_debug extends CoreDebug_abstract
                                            $elem['ident']),
                 'text'      => $elem['text'],
                 'microtime' => ContainerHelperCalculate::calculateMicroTimeDisplay($elem['microtime']),
-                'file'      => (ContainerFactoryFile::getReducedFilename($elem['backtrace'][2]['file'] ?? '??')),
-                'line'      => ($elem['backtrace'][2]['line'] ?? '??'),
+                'file'      => (ContainerFactoryFile::getReducedFilename($elem['backtrace'][0]['file'] ?? '??')),
+                'line'      => ($elem['backtrace'][0]['line'] ?? '??'),
             ];
         }
 
@@ -107,6 +114,8 @@ class CoreDebugLog_debug extends CoreDebug_abstract
                           $this->countWarn);
         $template->assign('countError',
                           $this->countError);
+        $template->assign('mainStep',
+                          $this->countMainStep);
         $template->parse();
         return $template->get();
     }

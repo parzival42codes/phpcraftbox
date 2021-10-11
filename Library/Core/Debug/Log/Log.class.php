@@ -30,6 +30,10 @@ class CoreDebugLog extends Base
      *
      */
     const LOG_TYPE_EXCEPTION = 'exception';
+    /**
+     *
+     */
+    const LOG_TYPE_MAIN_STEP = 'main_step';
 
     const ICON_ERROR = '!';
 

@@ -6,9 +6,19 @@ ini_set("max_execution_time",
         720);
 
 require(dirname(__FILE__) . '/Library/config.inc.php');
+CoreDebugLog::addLog('#',
+                     '/Index/Config',
+                     CoreDebugLog::LOG_TYPE_MAIN_STEP);
 
 Config::setDatabase();
+CoreDebugLog::addLog('#',
+                     '/Index/Database/Config',
+                     CoreDebugLog::LOG_TYPE_MAIN_STEP);
 ContainerFactoryLanguage::setCore();
+
+CoreDebugLog::addLog('#',
+                     '/Index/Database/Language',
+                     CoreDebugLog::LOG_TYPE_MAIN_STEP);
 
 if (ContainerFactorySession::check()) {
     if (!ContainerFactorySession::get('/user/id')) {
@@ -69,6 +79,9 @@ if (Config::get('/server/http/path') !== '') {
 
 ContainerFactoryUserConfig::setDatabase();
 
+CoreDebugLog::addLog('#',
+                     '/Index/Switch',
+                     CoreDebugLog::LOG_TYPE_MAIN_STEP);
 
 switch (Container::getInstance('ContainerFactoryRouter')
                  ->getTarget()) {
