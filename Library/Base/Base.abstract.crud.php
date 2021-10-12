@@ -6,6 +6,7 @@ abstract class Base_abstract_crud
     protected static        $database                  = true;
     protected static array  $reflectionProperty        = [];
     protected static string $tableId                   = '';
+    protected static ?array $tableIdMerge              = null;
     private string          $dataVariableCreated       = '';
     private string          $dataVariableEdited        = '';
     private int             $dataVariableEditedCounter = 0;
@@ -69,6 +70,8 @@ abstract class Base_abstract_crud
 
     public function update(): string
     {
+        $this->tableIdMerge();
+
         /** @var ContainerFactoryDatabaseQuery $queryItem */
         $queryItem = Container::get('ContainerFactoryDatabaseQuery',
                                     __METHOD__ . '#insertUpdate',
@@ -112,6 +115,8 @@ abstract class Base_abstract_crud
 
     public function insert(bool $ignore = false): string
     {
+        $this->tableIdMerge();
+
         /** @var ContainerFactoryDatabaseQuery $queryItem */
         $queryItem = Container::get('ContainerFactoryDatabaseQuery',
                                     __METHOD__ . '#insertUpdate',
@@ -153,7 +158,7 @@ abstract class Base_abstract_crud
         if (!$this->findByColumn($columns)) {
             foreach (static::$reflectionProperty[get_called_class()] as $crudItem) {
                 $value = call_user_func([
-                                            $newThis,
+                                            $objBackup,
                                             'get' . ucfirst($crudItem)
                                         ]);
                 call_user_func([
@@ -162,12 +167,20 @@ abstract class Base_abstract_crud
                                ],
                                $value);
             }
+
+            return $this->insert();
+
+        }
+        else {
+            return '';
         }
     }
 
 
     public function insertUpdate(): string
     {
+        $this->tableIdMerge();
+
         /** @var ContainerFactoryDatabaseQuery $queryItem */
         $queryItem = Container::get('ContainerFactoryDatabaseQuery',
                                     __METHOD__ . '#insertUpdate',
@@ -733,6 +746,26 @@ abstract class Base_abstract_crud
     public function getLastInsertId(): ?int
     {
         return $this->lastInsertId;
+    }
+
+    protected function tableIdMerge()
+    {
+        if (static::$tableIdMerge) {
+
+            $idMerging = '';
+            foreach (static::$tableIdMerge as $tableIdMergeItem) {
+                $idMerging .= call_user_func([
+                                                 $this,
+                                                 'get' . ucfirst($tableIdMergeItem)
+                                             ]);
+            }
+
+            call_user_func([
+                               $this,
+                               'set' . ucfirst(static::$tableId)
+                           ],
+                           $idMerging);
+        }
     }
 
 }

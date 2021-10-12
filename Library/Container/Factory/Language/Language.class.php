@@ -45,8 +45,6 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
         $query->construct();
         $smtp = $query->execute();
 
-        /** @var ePDOStatement $smtp */
-
         while ($smtpData = $smtp->fetch()) {
             self::$registry['/' . $smtpData['crudClass'] . $smtpData['crudLanguageKey']][$smtpData['crudLanguageLanguage']] = $smtpData['crudLanguageValue'];
         }

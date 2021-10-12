@@ -5,34 +5,19 @@ class CoreDebugProfiler_install extends ContainerFactoryModulInstall_abstract
 
    public function install(): void
     {
-        $this->installFunction(function () {
-            /** @var array $data */ /*$before*/
+        simpleDebugLog('1');
 
-            /** @var Event_crud $crud */
-            $crud = Container::get('Event_crud');
-            $crud->setCrudPath('/__open');
-            $crud->setCrudTriggerClass('CoreDebugProfiler_event');
-            $crud->setCrudTriggerMethod('doProfilingOpen');
+        $this->setEvent('/__close',
+                        'CoreDebugProfiler_event',
+                        'doProfilingClose');
 
-            $progressData['message'] = $crud->insert();
+        simpleDebugLog('2');
 
-            /*$after*/
-        });
+        $this->setEvent('/__open',
+                        'CoreDebugProfiler_event',
+                        'doProfilingOpen');
 
-        $this->installFunction(function () {
-            /** @var array $data */ /*$before*/
-
-            /** @var Event_crud $crud */
-            $crud = Container::get('Event_crud');
-            $crud->setCrudPath('/__close');
-            $crud->setCrudTriggerClass('CoreDebugProfiler_event');
-            $crud->setCrudTriggerMethod('doProfilingClose');
-
-            $progressData['message'] = $crud->insert();
-
-            /*$after*/
-        });
-
+        simpleDebugLog('3');
     }
 
 

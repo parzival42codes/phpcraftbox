@@ -328,8 +328,9 @@ CMS_CACHE_CORE_LINKREWRITE',
 
     ContainerFactorySession::start();
 
-    setlocale(LC_TIME,
+    setlocale(LC_ALL,
               (string)Config::get('/environment/language'));
+    date_default_timezone_set((string)Config::get('/environment/datetime/timezone'));
 
     CoreDebugLog::addLog('Config.inc',
                          'Locale => ' . Config::get('/environment/language'));

@@ -538,12 +538,13 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             /** @var array $data */ /*$before*/
 
             $crud = new Event_crud();
+
             $crud->setCrudModul($data['rootClass']);
             $crud->setCrudPath($data['path']);
             $crud->setCrudTriggerClass($data['triggerClass']);
             $crud->setCrudTriggerMethod($data['triggerMethod']);
 
-            $progressData['message'] = $crud->insert(true);
+            $progressData['message'] = $crud->insertUpdate();
 
             /*$after*/
         },

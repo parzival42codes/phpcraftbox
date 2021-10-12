@@ -5,25 +5,29 @@ class Event_crud extends Base_abstract_crud
 
     protected static string $table   = 'event_attach';
     protected static string $tableId = 'crudId';
+    protected static ?array $tableIdMerge
+                                     = [
+            'crudModul',
+            'crudPath',
+        ];
 
     /**
-     * @var
-     * @database type int;11
+     * @var string
+     * @database type varchar;250
      * @database isPrimary
-     * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
      */
-    protected ?int $crudId = null;
+    protected ?string $crudId = '';
     /**
      * @var string
      * @database type varchar;250
      */
-    protected string $crudPath ='';
+    protected string $crudPath = '';
     /**
      * @var string
      * @database type varchar;250
      * @database isIndex
      */
-    protected string $crudModul ='';
+    protected string $crudModul = '';
     /**
      * @var string
      * @database type varchar;250
@@ -33,23 +37,7 @@ class Event_crud extends Base_abstract_crud
      * @var string
      * @database type varchar;250
      */
-    protected string $crudTriggerMethod ='';
-
-    /**
-     * @return
-     */
-    public function getCrudId(): ?int
-    {
-        return $this->crudId;
-    }
-
-    /**
-     * @param  $crudId
-     */
-    public function setCrudId(?int $crudId): void
-    {
-        $this->crudId = $crudId;
-    }
+    protected string $crudTriggerMethod = '';
 
     /**
      * @return string
@@ -113,6 +101,22 @@ class Event_crud extends Base_abstract_crud
     public function setCrudModul(string $crudModul): void
     {
         $this->crudModul = $crudModul;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCrudId(): ?string
+    {
+        return $this->crudId;
+    }
+
+    /**
+     * @param string $crudId
+     */
+    public function setCrudId(?string $crudId): void
+    {
+        $this->crudId = $crudId;
     }
 
 
