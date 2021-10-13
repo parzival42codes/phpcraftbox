@@ -32,7 +32,7 @@ class ContainerExternResourcesCss_cache_css extends ContainerExtensionCache_abst
         $resourcesCSS[1] .= '#Style {@CMS-GZIP: "' . (($this->gzip === true) ? 'gzip_' : '') . '";}';
 
 $resourcesCSSObj = Container::get('ContainerExternResourcesCss_cache_init',  $this->styleSelected);
-          $resourcesCSS[1] .= $resourcesCSSObj->getCacheContent();
+          $resourcesCSS[1] .= $resourcesCSSObj->get();
 
           /** @var ContainerFactoryDatabaseQuery $query */
         $query = Container::get('ContainerFactoryDatabaseQuery',

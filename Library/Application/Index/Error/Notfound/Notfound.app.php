@@ -74,7 +74,7 @@ class ApplicationIndexErrorNotfound_app extends Application_abstract
         $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                                'ApplicationIndexErrorNotfound',
                                                'default');
-        $templateCacheContent = $templateCache->getCacheContent();
+        $templateCacheContent = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');

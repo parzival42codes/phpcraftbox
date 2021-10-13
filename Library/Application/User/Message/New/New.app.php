@@ -31,7 +31,7 @@ class ApplicationUserMessageNew_app extends Application_abstract
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         /** @var ContainerExtensionTemplateParseCreateForm_helper $formHelper */
         $formHelper = Container::get('ContainerExtensionTemplateParseCreateForm_helper',
@@ -176,7 +176,7 @@ class ApplicationUserMessageNew_app extends Application_abstract
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['mail']);
+            $template->set($templateCache->get()['mail']);
             $template->assign('from',
                               $crudUser->getCrudUsername());
             $template->assign('date',

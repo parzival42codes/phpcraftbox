@@ -14,7 +14,7 @@ class ContainerExternResourcesJavascript extends Base
         /** @var ContainerExternResourcesJavascript_cache_js $jsCache */
         $jsCache = Container::get('ContainerExternResourcesJavascript_cache_js');
 
-        $return = $jsCache->getCacheContent();
+        $return = $jsCache->get();
 
         return implode('',
                        $return) . PHP_EOL . PHP_EOL . ';parseOnLoad();';

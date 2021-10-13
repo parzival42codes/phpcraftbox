@@ -28,7 +28,7 @@ class ApplicationAdministrationLogError_install extends ContainerFactoryModulIns
             $crud = Container::get('ContainerExtensionTemplateParseInsertPositions_crud');
             $crud->setCrudClass('ApplicationAdministrationLogError');
             $crud->setCrudPosition('/administration/dashboard/buttons');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.button.overview']);
+            $crud->setCrudContent($templateCache->get()['install.button.overview']);
 
             $progressData['message'] = $crud->insert();
 

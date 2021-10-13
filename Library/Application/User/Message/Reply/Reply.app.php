@@ -27,7 +27,7 @@ class ApplicationUserMessageReply_app extends Application_abstract
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         /** @var ContainerFactoryRouter $router */
         $router = Container::getInstance('ContainerFactoryRouter');
@@ -76,7 +76,7 @@ class ApplicationUserMessageReply_app extends Application_abstract
 
             /** @var ContainerExtensionTemplate $templateForm */
             $templateForm = Container::get('ContainerExtensionTemplate');
-            $templateForm->set($templateCache->getCacheContent()['form']);
+            $templateForm->set($templateCache->get()['form']);
 
             $formHelper->addFormElement('plainSource',
                                         'plain',
@@ -196,7 +196,7 @@ class ApplicationUserMessageReply_app extends Application_abstract
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['mail']);
+            $template->set($templateCache->get()['mail']);
             $template->assign('from',
                               $userName);
             $template->assign('date',

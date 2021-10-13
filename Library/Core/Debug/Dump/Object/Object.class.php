@@ -18,7 +18,7 @@ final class  CoreDebugDumpObject extends CoreDebugDump_abstract_api
         $templateCache   = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                           Core::getRootClass(__CLASS__),
                                           'methods,properties');
-        $this->tempCache = $templateCache->getCacheContent();
+        $this->tempCache = $templateCache->get();
 
         $this->getTabProperties($eventTab);
         $this->getTabMethods($eventTab);

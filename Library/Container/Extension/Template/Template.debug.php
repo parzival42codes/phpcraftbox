@@ -24,7 +24,7 @@ class ContainerExtensionTemplate_debug extends CoreDebug_abstract
         $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                                Core::getRootClass(__CLASS__),
                                                'debug');
-        $templateCacheContent = $templateCache->getCacheContent();
+        $templateCacheContent = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');

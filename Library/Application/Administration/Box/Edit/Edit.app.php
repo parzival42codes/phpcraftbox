@@ -23,7 +23,7 @@ class ApplicationAdministrationBoxEdit_app extends ApplicationAdministration_abs
         $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                                Core::getRootClass(__CLASS__),
                                                'default,row,item,item.form,item.dialog,widgets');
-        $templateCacheContent = $templateCache->getCacheContent();
+        $templateCacheContent = $templateCache->get();
 
         /** @var ContainerExtensionTemplateParseCreateFormRequest $request */
         $request = $formHelper->getRequest();

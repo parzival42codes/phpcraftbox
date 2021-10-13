@@ -195,7 +195,7 @@ class ContainerFactoryRouter extends Base
         }
 
         $templateCache        = Container::get('ContainerFactoryRouter_cache_route');
-        $templateCacheContent = $templateCache->getCacheContent();
+        $templateCacheContent = $templateCache->get();
 
         if (isset($templateCacheContent[$this->getApplication()]['simple'][$this->getRoute()])) {
             $this->path  = $templateCacheContent[$this->getApplication()]['simple'][$this->getRoute()];

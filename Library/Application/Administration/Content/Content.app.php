@@ -69,7 +69,7 @@ class ApplicationAdministrationContent_app extends ApplicationAdministration_abs
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
         $template->assign('ContentTable_ContentTable',
                           $tableTcs);
 

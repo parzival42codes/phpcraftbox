@@ -162,7 +162,7 @@ class ApplicationAdministrationContentEdit_app extends ApplicationAdministration
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
         $template->assign('APP_SOURCE',
                           $this->source);
 

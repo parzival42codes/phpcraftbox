@@ -118,13 +118,13 @@ class ContainerExtensionTemplateParseCreateFilterHelper extends Base
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         $templateFilterCollect = '';
         foreach ($this->filter as $filterKey => $filter) {
             /** @var ContainerExtensionTemplate $templateFilter */
             $templateFilter = Container::get('ContainerExtensionTemplate');
-            $templateFilter->set($templateCache->getCacheContent()['item']);
+            $templateFilter->set($templateCache->get()['item']);
             $templateFilter->assign('label',
                                     ContainerExtensionTemplateParseCreateFormRequest::getLabel($this->id . '_' . $filterKey));
             $templateFilter->assign('element',
@@ -138,7 +138,7 @@ class ContainerExtensionTemplateParseCreateFilterHelper extends Base
 
         /** @var ContainerExtensionTemplate $templateSend */
         $templateSend = Container::get('ContainerExtensionTemplate');
-        $templateSend->set($templateCache->getCacheContent()['send']);
+        $templateSend->set($templateCache->get()['send']);
         $templateSend->assign('item',
                               ContainerExtensionTemplateParseCreateFormRequest::getElement($this->id . '_Header') . ContainerExtensionTemplateParseCreateFormRequest::getElement($this->id . '_Footer'));
         $templateSend->parseString();

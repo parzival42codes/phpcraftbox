@@ -80,7 +80,7 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($this->templateCacheFormRow->getCacheContent()[$this->template]);
+            $template->set($this->templateCacheFormRow->get()[$this->template]);
             $template->assign('form',
                               $this->formName);
             $template->assign('name',
@@ -102,7 +102,7 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
 
         /** @var ContainerExtensionTemplate $templateContainer */
         $templateContainer = Container::get('ContainerExtensionTemplate');
-        $templateContainer->set($this->templateCacheFormRow->getCacheContent()[$this->template . '.container']);
+        $templateContainer->set($this->templateCacheFormRow->get()[$this->template . '.container']);
         $templateContainer->assign('content',
                                    $this->templateOutput);
 

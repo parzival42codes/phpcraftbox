@@ -41,7 +41,7 @@ class ApplicationAdministrationUserGroup_app extends ApplicationAdministration_a
         $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                                Core::getRootClass(__CLASS__),
                                                'default,item');
-        $templateCacheContent = $templateCache->getCacheContent();
+        $templateCacheContent = $templateCache->get();
 
         $userGroupCollect = [];
 

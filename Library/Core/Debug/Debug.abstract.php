@@ -42,7 +42,7 @@ abstract class CoreDebug_abstract extends Base
 //                                             [
 //                                                 $templates
 //                                             ]);
-//            $this->template     = $templateCache->getCacheContent();
+//            $this->template     = $templateCache->get();
 //
 //        }
 //

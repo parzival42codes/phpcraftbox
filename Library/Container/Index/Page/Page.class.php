@@ -107,7 +107,7 @@ class ContainerIndexPage
         /** @var ContainerExtensionTemplate $templatePage */
         $this->templatePage = Container::get('ContainerExtensionTemplate');
 
-        $this->templatePage->set($templateCache->getCacheContent()['page']);
+        $this->templatePage->set($templateCache->get()['page']);
         $this->templatePage->setMetaClass(__CLASS__);
     }
 
@@ -199,7 +199,7 @@ class ContainerIndexPage
                                          'error');
         }
 
-        $favIcon = $favIconObj->getCacheContent();
+        $favIcon = $favIconObj->get();
 
         $favIconImg = imagecreatefromstring(base64_decode($favIcon));
 
@@ -357,7 +357,7 @@ class ContainerIndexPage
 
         $templatePageAboveTheFold = Container::get('ContainerIndexPage_cache_abovethefold');
 
-        $headerCssHash = $templatePage->addParseFinal('<style type="text/css">' . $templatePageAboveTheFold->getCacheContent() . $this->pageContent['headerCss'] . '</style>');
+        $headerCssHash = $templatePage->addParseFinal('<style type="text/css">' . $templatePageAboveTheFold->get() . $this->pageContent['headerCss'] . '</style>');
 
         $templatePage->assign('headerCss',
                               $headerCssHash);
@@ -428,7 +428,7 @@ class ContainerIndexPage
                                                                                'headerEnvironmentMessage');
 
             $template = new ContainerExtensionTemplate();
-            $template->set($templateCache->getCacheContent()['headerEnvironmentMessage']);
+            $template->set($templateCache->get()['headerEnvironmentMessage']);
             $template->assign('headerEnvironmentMessage',
                                   $headerEnvironmentMessage);
 
@@ -589,7 +589,7 @@ console.log("Page Generated @ Page End - Debug: ' . ContainerHelperCalculate::ca
         $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                                __CLASS__,
                                                'notification');
-        $templateNotification = $templateCache->getCacheContent()['notification'];
+        $templateNotification = $templateCache->get()['notification'];
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');

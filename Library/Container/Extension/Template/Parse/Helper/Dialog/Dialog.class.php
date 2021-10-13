@@ -51,7 +51,7 @@ class ContainerExtensionTemplateParseHelperDialog extends Base
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['box']);
+        $template->set($templateCache->get()['box']);
 
         $template->assign('id',
                           $this->id);

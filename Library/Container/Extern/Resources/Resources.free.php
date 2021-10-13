@@ -35,7 +35,7 @@ class ContainerExternResources_free extends Base
                                    $routerParameter['gzip'],
             ($routerParameter['design'] ?? ''));
 
-        $hash = md5($cssCache->getCacheContent()['content']);
+        $hash = md5($cssCache->get()['content']);
 
 //        d($cssCache->getDataVariableUpdated());
 //        eol();
@@ -59,7 +59,7 @@ class ContainerExternResources_free extends Base
             $isChanged = true;
         }
 
-        $cssContent = $cssCache->getCacheContent()['content'];
+        $cssContent = $cssCache->get()['content'];
 
         $isChanged = true;
 
@@ -105,7 +105,7 @@ class ContainerExternResources_free extends Base
                                   $gzip);
 
         $hash = md5(implode('',
-                            $jsCache->getCacheContent()));
+                            $jsCache->get()));
 
         if ($jsCache->getDataVariableUpdated() !== '') {
             $updated = $jsCache->getDataVariableUpdated();

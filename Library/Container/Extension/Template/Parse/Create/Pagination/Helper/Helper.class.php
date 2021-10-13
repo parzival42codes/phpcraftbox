@@ -84,7 +84,7 @@ class ContainerExtensionTemplateParseCreatePaginationHelper extends Base
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['first']);
+            $template->set($templateCache->get()['first']);
             $template->assign('firstPage',
                               $router->getUrlReadable());
 
@@ -99,7 +99,7 @@ class ContainerExtensionTemplateParseCreatePaginationHelper extends Base
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['prev']);
+            $template->set($templateCache->get()['prev']);
             $template->assign('prevPage',
                               $router->getUrlReadable());
             $template->parseString();
@@ -115,7 +115,7 @@ class ContainerExtensionTemplateParseCreatePaginationHelper extends Base
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['step']);
+            $template->set($templateCache->get()['step']);
             $template->assign('active',
                 (($i !== $this->pageActive) ? '' : 'active'));
             $template->assign('step',
@@ -153,7 +153,7 @@ class ContainerExtensionTemplateParseCreatePaginationHelper extends Base
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['next']);
+            $template->set($templateCache->get()['next']);
             $template->assign('nextPage',
                               $router->getUrlReadable());
 
@@ -167,7 +167,7 @@ class ContainerExtensionTemplateParseCreatePaginationHelper extends Base
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['last']);
+            $template->set($templateCache->get()['last']);
             $template->assign('lastPage',
                               $router->getUrlReadable());
             $template->parseString();
@@ -181,7 +181,7 @@ class ContainerExtensionTemplateParseCreatePaginationHelper extends Base
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['container']);
+        $template->set($templateCache->get()['container']);
         $template->assign('title',
                           $title);
         $template->assign('content',

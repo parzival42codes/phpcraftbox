@@ -66,7 +66,7 @@ class ApplicationUserConfig_app extends Application_abstract
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         /** @var ContainerFactoryRequest $requestConfig */
         $requestConfig = Container::get('ContainerFactoryRequest',

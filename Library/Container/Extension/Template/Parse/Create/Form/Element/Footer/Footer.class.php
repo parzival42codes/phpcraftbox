@@ -23,7 +23,7 @@ class ContainerExtensionTemplateParseCreateFormElementFooter extends
 
         /** @var ContainerExtensionTemplate $templateCacheFooter */
         $templateCacheFooter = Container::get('ContainerExtensionTemplate');
-        $templateCacheFooter->set($templateCache->getCacheContent()['footer']);
+        $templateCacheFooter->set($templateCache->get()['footer']);
 
         $templateCacheFooter->assign('modifyEncrypt',
                                      $crypt->getEnCrypt());

@@ -13,7 +13,7 @@ parameters:
     - '/Cannot call method \_\_\_get\(\) on class-string\|object./'
     - '/onstant CMS\_[a-zA-Z0-9\\_]+ not found./'
     - '/Variable \$data in PHPDoc tag @var does not exist./'
-    - '/Call to an undefined method [a-zA-Z0-9\\_]+::getCacheContent\(\)./'
+    - '/Call to an undefined method [a-zA-Z0-9\\_]+::get\(\)./'
     - '/function call_user_func expects callable.*array\(.*\) given/'
     - '/function call_user_func_array expects callable.*array\(.*\) given/'
   reportUnmatchedIgnoredErrors: true

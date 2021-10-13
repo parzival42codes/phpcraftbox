@@ -66,14 +66,14 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['default']);
+            $template->set($templateCache->get()['default']);
             $template->assign('content',
                               $crud->$crudContentName());
             $template->parse();
             $content .= $template->get();
 
             $templateForm = new ContainerExtensionTemplate();
-            $templateForm->set($templateCache->getCacheContent()['form']);
+            $templateForm->set($templateCache->get()['form']);
 
             $formHelperResponse = $formHelper->getResponse();
             if (
@@ -137,7 +137,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
         }
         else {
             $templateExists = new ContainerExtensionTemplate();
-            $templateExists->set($templateCache->getCacheContent()['exists']);
+            $templateExists->set($templateCache->get()['exists']);
 
             $reportText = ContainerFactoryLanguage::getLanguageText(json_decode($crudReport->getAdditionalQuerySelect('report_type_crudContent'),
                                                                                 true));
@@ -197,7 +197,7 @@ class ApplicationAdministrationReportSend_app extends ApplicationAdministration_
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['send']);
+            $template->set($templateCache->get()['send']);
 
             $template->assign('typeText',
                               ContainerFactoryLanguage::getLanguageText(json_decode($crudReport->getAdditionalQuerySelect('report_type_crudContent'),

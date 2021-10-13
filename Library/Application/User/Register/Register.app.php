@@ -43,7 +43,7 @@ class ApplicationUserRegister_app extends Application_abstract
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         $formHelper->addFormElement('username',
                                     'text',
@@ -146,7 +146,7 @@ class ApplicationUserRegister_app extends Application_abstract
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['register.mail']);
+            $template->set($templateCache->get()['register.mail']);
             $template->assign('pageTitle',
                               Config::get('/CoreIndex/page/title'));
 

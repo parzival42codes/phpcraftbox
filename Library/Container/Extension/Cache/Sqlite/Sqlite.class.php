@@ -149,7 +149,7 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
      *
      * @throws DetailedException
      */
-    public function getCacheContent(ContainerExtensionCache_abstract $cacheObj, array &$scope, bool $forceCreate = false)
+    public function get(ContainerExtensionCache_abstract $cacheObj, array &$scope, bool $forceCreate = false)
     {
         $cacheName = explode('_',
                              get_class($cacheObj),
@@ -181,7 +181,7 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
                                         'cache',
                                         \ContainerFactoryDatabaseQuery::MODE_INSERT_UPDATE);
 
-                $serializeData = serialize($cacheObj->getCacheContent());
+                $serializeData = serialize($cacheObj->get());
                 $query->setTable('cache');
                 $query->setTableKey('ident');
                 $query->setInsertUpdate('ident',

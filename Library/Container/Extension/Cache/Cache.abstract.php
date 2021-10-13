@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 /**
  * Class ContainerExtensionCache_abstract
- * @method mixed getCacheContent()
+ * @method mixed get()
  */
 abstract class ContainerExtensionCache_abstract extends Base
 {
@@ -12,7 +12,7 @@ abstract class ContainerExtensionCache_abstract extends Base
 
     protected array                              $parameter           = [];
     protected string                             $ident               = '';
-    protected                                    $cacheContent        = '';
+    protected                                    $cacheContent        = null;
     protected int                                $target              = self::TARGET_INTERN;
     protected int                                $ttl                 = 0;
     protected                                    $ttlDatetime;
@@ -28,8 +28,6 @@ abstract class ContainerExtensionCache_abstract extends Base
         $this->prepare();
 
         $this->cacheResource = new ContainerExtensionCacheSqlite($this);
-        d($this->cacheResource);
-        eol();
     }
 
     /**
@@ -77,11 +75,13 @@ abstract class ContainerExtensionCache_abstract extends Base
      * @CMSprofilerSetFromScope cacheName
      * @CMSprofilerSetFromScope isCreated
      */
-    public function _getCacheContent(array &$scope, bool $forceCreate = false)
+    public function _get(array &$scope, bool $forceCreate = false)
     {
-        $this->cacheResource->getCacheContent($this,
-                                              $scope,
-                                              $forceCreate);
+
+
+        $this->cacheResource->get($this,
+                                  $scope,
+                                  $forceCreate);
 
 //        $cacheName = explode('_',
 //                             get_called_class(),
@@ -250,6 +250,14 @@ abstract class ContainerExtensionCache_abstract extends Base
     public function getIdent(): string
     {
         return $this->ident;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCacheContent()
+    {
+        return $this->cacheContent;
     }
 
 }

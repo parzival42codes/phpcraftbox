@@ -71,17 +71,17 @@ class ContainerFactoryHistory extends Base
 
             if (!$crudFindItem->getAdditionalQuerySelect('report_type_crudContent')) {
                 $template = new ContainerExtensionTemplate();
-                $template->set($templateCache->getCacheContent()['item']);
+                $template->set($templateCache->get()['item']);
             }
             else {
 
                 if ($userReportView === true) {
                     $template = new ContainerExtensionTemplate();
-                    $template->set($templateCache->getCacheContent()['item.send']);
+                    $template->set($templateCache->get()['item.send']);
                 }
                 else {
                     $template = new ContainerExtensionTemplate();
-                    $template->set($templateCache->getCacheContent()['item.report']);
+                    $template->set($templateCache->get()['item.report']);
                 }
 
                 $template->assign('typeText',
@@ -121,7 +121,7 @@ class ContainerFactoryHistory extends Base
 //        eol();
 
         $template = new ContainerExtensionTemplate();
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         $template->assign('content',
                           $content);

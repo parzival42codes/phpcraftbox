@@ -33,7 +33,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudFlex(1);
             $crud->setCrudPosition(1);
             $crud->setCrudDescription('Left');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.left']);
+            $crud->setCrudContent($templateCache->get()['install.left']);
             $crud->setCrudAssignment('administration');
             $crud->setCrudActive(true);
 
@@ -58,7 +58,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudFlex(4);
             $crud->setCrudPosition(1);
             $crud->setCrudDescription('main');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.main']);
+            $crud->setCrudContent($templateCache->get()['install.main']);
             $crud->setCrudAssignment('administration');
             $crud->setCrudActive(true);
 
@@ -83,7 +83,7 @@ class ApplicationAdministration_install extends ContainerFactoryModulInstall_abs
             $crud->setCrudFlex(2);
             $crud->setCrudPosition(1);
             $crud->setCrudDescription('Right');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.right']);
+            $crud->setCrudContent($templateCache->get()['install.right']);
             $crud->setCrudAssignment('administration');
             $crud->setCrudActive(true);
 

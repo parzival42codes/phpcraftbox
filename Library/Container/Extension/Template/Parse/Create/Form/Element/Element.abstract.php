@@ -238,7 +238,7 @@ abstract class ContainerExtensionTemplateParseCreateFormElement_abstract extends
         /** @var ContainerIndexHtmlAttribute $attribut */
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['input']);
+        $template->set($templateCache->get()['input']);
         $template->assign('input',
                           $attribut->get('type'));
         $template->assign('attribut',

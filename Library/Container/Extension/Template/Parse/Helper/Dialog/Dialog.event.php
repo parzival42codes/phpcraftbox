@@ -23,7 +23,7 @@ class ContainerExtensionTemplateParseHelperDialog_event extends Base
             foreach ($dialogs[$dialogContentKey] as $dialogId => $dialog) {
                 /** @var ContainerExtensionTemplate $template */
                 $template = Container::get('ContainerExtensionTemplate');
-                $template->set($templateCache->getCacheContent()['page.item']);
+                $template->set($templateCache->get()['page.item']);
 
                 $template->assign('content',
                                   $dialog);
@@ -39,7 +39,7 @@ class ContainerExtensionTemplateParseHelperDialog_event extends Base
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['page']);
+        $template->set($templateCache->get()['page']);
 
         $template->assign('header',
                           $dialogContent[ContainerExtensionTemplateParseHelperDialog::BOX_POSITION_HEADER]);

@@ -26,7 +26,7 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         $statusList = [
             'Active',
@@ -47,7 +47,7 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
 
                 /** @var ContainerExtensionTemplate $templateBtn */
                 $templateBtn = Container::get('ContainerExtensionTemplate');
-                $templateBtn->set($templateCache->getCacheContent()['table.button']);
+                $templateBtn->set($templateCache->get()['table.button']);
 
                 $templateBtn->assign('status',
                                      $statusListValue);
@@ -171,7 +171,7 @@ class ApplicationAdministrationModul_app extends ApplicationAdministration_abstr
         /** @var ContainerExtensionTemplateParseHelperDialog $templateDialog */
         $templateDialog = Container::get('ContainerExtensionTemplateParseHelperDialog',
                                          'ApplicationAdministrationModul_dialog_cgui_messages');
-        $templateDialog->setBody($templateCache->getCacheContent()['dialog']);
+        $templateDialog->setBody($templateCache->get()['dialog']);
         $templateDialog->setFooter();
 
         $templateDialog->create();

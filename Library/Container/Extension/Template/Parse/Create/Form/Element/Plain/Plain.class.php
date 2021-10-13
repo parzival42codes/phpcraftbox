@@ -12,7 +12,7 @@ class ContainerExtensionTemplateParseCreateFormElementPlain extends
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         $attribut = $this->getStdAttribut();
         $this->doModifier($attribut);

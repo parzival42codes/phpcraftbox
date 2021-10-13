@@ -57,7 +57,7 @@ class  CoreDebugDump_debug extends ContainerExtensionApiDebug_abstract
             $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                             Core::getRootClass(__CLASS__),
                                             'debug_row');
-            $templates     = $templateCache->getCacheContent();
+            $templates     = $templateCache->get();
 
             /** @var ContainerExtensionTemplate $templateRow */
             $templateRow = Container::get('ContainerExtensionTemplate');
@@ -100,7 +100,7 @@ class  CoreDebugDump_debug extends ContainerExtensionApiDebug_abstract
 //                                         [
 //                                             'debug_row'
 //                                         ]);
-//        $templates     = $templateCache->getCacheContent();
+//        $templates     = $templateCache->get();
 //
 //        $keySysDebugTabItem->setTitle(ContainerFactoryLanguage::get('/CoreDebug/tab/cachereset'));
 

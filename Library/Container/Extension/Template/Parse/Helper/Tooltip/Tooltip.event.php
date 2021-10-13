@@ -17,7 +17,7 @@ class ContainerExtensionTemplateParseHelperTooltip_event extends Base
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['page']);
+        $template->set($templateCache->get()['page']);
 
         $template->assign('container',
                           implode('',

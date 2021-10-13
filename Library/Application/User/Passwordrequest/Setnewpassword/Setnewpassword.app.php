@@ -59,7 +59,7 @@ class ApplicationUserPasswordrequestSetnewpassword_app extends ApplicationAdmini
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         $formHelper->addFormElement('request',
                                     'text',

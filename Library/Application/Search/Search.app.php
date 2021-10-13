@@ -24,7 +24,7 @@ class ApplicationSearch_app extends Application_abstract
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         /** @var ContainerExtensionTemplateParseCreateForm_helper $formHelper */
         $formHelper = Container::get('ContainerExtensionTemplateParseCreateForm_helper',

@@ -119,7 +119,7 @@ final class  CoreDebug
         $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                         Core::getRootClass(__CLASS__),
                                         'debugbar');
-        $templates     = $templateCache->getCacheContent();
+        $templates     = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $templateDebug */
         $templateDebug = Container::get('ContainerExtensionTemplate');

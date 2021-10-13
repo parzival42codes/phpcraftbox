@@ -9,7 +9,7 @@ class ContainerIndexPageBox extends Base
                                         Core::getRootClass(__CLASS__),
                                         'row,rowitem');
 
-        $templateCacheContent = $templateCache->getCacheContent();
+        $templateCacheContent = $templateCache->get();
 
         /** @var ContainerFactoryDatabaseQuery $query */
         $query = Container::get('ContainerFactoryDatabaseQuery',

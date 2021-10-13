@@ -90,7 +90,7 @@ class ApplicationAdministrationLogNotification_app extends ApplicationAdministra
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
         $template->assign('LogNotificationTable_LogNotificationTable',
                           $tableTcs);
 

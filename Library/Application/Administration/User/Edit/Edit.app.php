@@ -56,7 +56,7 @@ class ApplicationAdministrationUserEdit_app extends Application_abstract
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         $formHelper->addFormElement('username',
                                     'text',

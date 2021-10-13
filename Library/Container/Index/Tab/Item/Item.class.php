@@ -38,7 +38,7 @@ class ContainerIndexTabItem extends ContainerExtensionTemplate_abstract
         $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                         Core::getRootClass(__CLASS__),
                                         'tab');
-        $templates     = $templateCache->getCacheContent();
+        $templates     = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');

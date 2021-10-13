@@ -25,7 +25,7 @@ abstract class Application_abstract extends Base
 
         /** @var Application_cache_menu $cacheMenu */
         $cacheMenu  = Container::get('Application_cache_menu');
-        $this->menu = $cacheMenu->getCacheContent();
+        $this->menu = $cacheMenu->get();
 
     }
 

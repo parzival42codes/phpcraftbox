@@ -15,7 +15,7 @@ class ContainerIndexPageBreadcrumb extends Base
 //        $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
 //                                               Core::getRootClass(__CLASS__),
 //                                               'breadcrumb.jsonld.item,breadcrumb.jsonld');
-//        $templateCacheContent = $templateCache->getCacheContent();
+//        $templateCacheContent = $templateCache->get();
 //
 //        $templateItemList = '';
 //        foreach ($this->breadcrumb as $breadcrumb) {
@@ -43,7 +43,7 @@ class ContainerIndexPageBreadcrumb extends Base
         $templateCache        = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                                Core::getRootClass(__CLASS__),
                                                'breadcrumb.html.item,breadcrumb.html.nolink,breadcrumb.html');
-        $templateCacheContent = $templateCache->getCacheContent();
+        $templateCacheContent = $templateCache->get();
 
         $templateItemList = '';
 

@@ -73,7 +73,7 @@ class ContainerIndexTab extends Base
         $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                         __CLASS__,
                                         'tab');
-        $templates     = $templateCache->getCacheContent();
+        $templates     = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $returnTabs */
         $returnTabs = Container::get('ContainerExtensionTemplate');

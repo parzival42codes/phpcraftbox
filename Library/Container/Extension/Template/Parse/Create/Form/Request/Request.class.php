@@ -92,7 +92,7 @@ class ContainerExtensionTemplateParseCreateFormRequest extends Base
             $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                             'ContainerExtensionTemplateParseCreateForm',
                                             'parsley_translate');
-            $templates     = $templateCache->getCacheContent();
+            $templates     = $templateCache->get();
 
             $template = Container::get('ContainerExtensionTemplate');
             $template->set($templates['parsley_translate']);

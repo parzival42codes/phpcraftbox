@@ -41,7 +41,7 @@ class ContainerExtensionTemplateParseCreateFormElementRadio extends
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['container']);
+        $template->set($templateCache->get()['container']);
         $template->assign('text',
                           $text);
         $template->assign('attribut',

@@ -132,7 +132,7 @@ class ApplicationAdministrationLogError_app extends ApplicationAdministration_ab
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
         $template->assign('LogErrorTable_LogErrorTable',
                           $tableTcs);
 

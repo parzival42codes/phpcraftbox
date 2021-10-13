@@ -18,7 +18,7 @@ class ApplicationIndex_free extends Base
         header("Content-type: image/png");
         /** @var ContainerIndexPage_cache_favicon $favIconObj */
         $favIconObj = Container::get('ContainerIndexPage_cache_favicon');
-        $favIcon    = $favIconObj->getCacheContent();
+        $favIcon    = $favIconObj->get();
 
         $favIconDecode = base64_decode($favIcon);
 

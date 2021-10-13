@@ -29,7 +29,7 @@ class ApplicationAdministrationLogNotification_install extends ContainerFactoryM
             $crud = Container::get('ContainerExtensionTemplateParseInsertPositions_crud');
             $crud->setCrudClass('ApplicationAdministrationLogNotification');
             $crud->setCrudPosition('/administration/dashboard/buttons');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.button.overview']);
+            $crud->setCrudContent($templateCache->get()['install.button.overview']);
 
             $progressData['message'] = $crud->insert();
 

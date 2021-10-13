@@ -30,7 +30,7 @@ class ContainerExtensionTemplateParseCreateFormElementCheckbox extends
         $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                         Core::getRootClass(__CLASS__),
                                         'container,checkbox');
-        $templates     = $templateCache->getCacheContent();
+        $templates     = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');

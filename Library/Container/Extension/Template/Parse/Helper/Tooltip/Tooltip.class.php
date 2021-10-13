@@ -71,7 +71,7 @@ class ContainerExtensionTemplateParseHelperTooltip extends Base
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['page.item']);
+        $template->set($templateCache->get()['page.item']);
 
         $template->assign('id',
                           $this->id);

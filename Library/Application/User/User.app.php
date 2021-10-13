@@ -31,7 +31,7 @@ class ApplicationUser_app extends ApplicationAdministration_abstract
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         /** @var ContainerFactoryRouter $router */
         $router = Container::get('ContainerFactoryRouter');

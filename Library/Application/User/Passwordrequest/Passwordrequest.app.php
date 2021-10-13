@@ -30,7 +30,7 @@ class ApplicationUserPasswordrequest_app extends ApplicationAdministration_abstr
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
         /** @var ContainerExtensionTemplateParseCreateForm_helper $formHelper */
         $formHelper = Container::get('ContainerExtensionTemplateParseCreateForm_helper',
@@ -186,7 +186,7 @@ class ApplicationUserPasswordrequest_app extends ApplicationAdministration_abstr
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['request.mail']);
+            $template->set($templateCache->get()['request.mail']);
             $template->assign('pageTitle',
                               Config::get('/CoreIndex/page/title'));
             $template->assign('url',

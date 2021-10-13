@@ -12,7 +12,7 @@ class ApplicationUser_widget_link extends ContainerExtensionTemplateParseInsertW
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['widget.link.session']);
+            $template->set($templateCache->get()['widget.link.session']);
             $template->parse();
 
             return $template->get();
@@ -25,7 +25,7 @@ class ApplicationUser_widget_link extends ContainerExtensionTemplateParseInsertW
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['widget.link.login']);
+            $template->set($templateCache->get()['widget.link.login']);
             $template->parse();
 
             return $template->get();

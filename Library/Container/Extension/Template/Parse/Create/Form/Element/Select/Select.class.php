@@ -17,7 +17,7 @@ class ContainerExtensionTemplateParseCreateFormElementSelect extends
         $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                         Core::getRootClass(__CLASS__),
                                         'select,option');
-        $templates     = $templateCache->getCacheContent();
+        $templates     = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');

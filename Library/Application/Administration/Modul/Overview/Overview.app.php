@@ -61,7 +61,7 @@ class ApplicationAdministrationModulOverview_app extends ApplicationAdministrati
 
             /** @var ContainerExtensionTemplate $template */
             $template = Container::get('ContainerExtensionTemplate');
-            $template->set($templateCache->getCacheContent()['tooltip']);
+            $template->set($templateCache->get()['tooltip']);
             $template->assign('crudName',
                               $crudModulAllItem->getCrudName());
             $template->assign('crudDescription',
@@ -104,7 +104,7 @@ class ApplicationAdministrationModulOverview_app extends ApplicationAdministrati
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
         $template->assign('ModulTable_ModulTable',
                           $tableTcs);
         $template->parse();

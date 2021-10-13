@@ -24,7 +24,7 @@ class ContainerExtensionTemplateParseCreateFormModifyValidatorEmail extends
 
                 /** @var ContainerExtensionTemplate $template */
                 $template = Container::get('ContainerExtensionTemplate');
-                $template->set($templateCache->getCacheContent()['default']);
+                $template->set($templateCache->get()['default']);
                 $template->assign('message',
                                   ContainerFactoryLanguage::get('/ContainerExtensionTemplateParseCreateFormModifyValidatorEmail/message/emailFail'));
                 $template->parseString();

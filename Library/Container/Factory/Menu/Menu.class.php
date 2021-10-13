@@ -127,7 +127,7 @@ class ContainerFactoryMenu extends Base
                                         Core::getRootClass(__CLASS__),
                                         'menu.' . $this->menuType . '.main,menu.' . $this->menuType . '.item,menu.' . $this->menuType . '.sub');
 
-        $this->template = $templateCache->getCacheContent();
+        $this->template = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');

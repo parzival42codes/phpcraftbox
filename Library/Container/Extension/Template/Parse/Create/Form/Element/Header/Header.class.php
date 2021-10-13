@@ -38,7 +38,7 @@ class ContainerExtensionTemplateParseCreateFormElementHeader extends
         $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                         Core::getRootClass(__CLASS__),
                                         'header');
-        $templates     = $templateCache->getCacheContent();
+        $templates     = $templateCache->get();
 
         /** @var ContainerExtensionTemplate $templateCacheHeader */
         $templateCacheHeader = Container::get('ContainerExtensionTemplate');

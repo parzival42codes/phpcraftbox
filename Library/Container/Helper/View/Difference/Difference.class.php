@@ -65,16 +65,16 @@ class ContainerHelperViewDifference
                               $collectTarget[$collectKey]);
 
             if (!isset($collectSource[$collectKey])) {
-                $template->set($templateCache->getCacheContent()['row.left']);
+                $template->set($templateCache->get()['row.left']);
             }
             elseif (!isset($collectTarget[$collectKey])) {
-                $template->set($templateCache->getCacheContent()['row.right']);
+                $template->set($templateCache->get()['row.right']);
             }
             elseif ($collectSource[$collectKey] === $collectTarget[$collectKey]) {
-                $template->set($templateCache->getCacheContent()['row.equal']);
+                $template->set($templateCache->get()['row.equal']);
             }
             else {
-                $template->set($templateCache->getCacheContent()['row.diff']);
+                $template->set($templateCache->get()['row.diff']);
             }
 
             $template->parseString();
@@ -97,7 +97,7 @@ class ContainerHelperViewDifference
             !in_array($item,
                       $collectNumericSource)
             ) {
-                $template->set($templateCache->getCacheContent()['row.left']);
+                $template->set($templateCache->get()['row.left']);
                 $template->assign('source',
                                   $item);
             }
@@ -105,12 +105,12 @@ class ContainerHelperViewDifference
             !in_array($item,
                       $collectNumericTarget)
             ) {
-                $template->set($templateCache->getCacheContent()['row.right']);
+                $template->set($templateCache->get()['row.right']);
                 $template->assign('target',
                                   $item);
             }
             else {
-                $template->set($templateCache->getCacheContent()['row.equal']);
+                $template->set($templateCache->get()['row.equal']);
                 $template->assign('source',
                                   $item);
                 $template->assign('target',
@@ -124,7 +124,7 @@ class ContainerHelperViewDifference
         /** @var ContainerExtensionTemplate $template */
         $template
             = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['container']);
+        $template->set($templateCache->get()['container']);
 
         $template->assign('output',
                           $output);

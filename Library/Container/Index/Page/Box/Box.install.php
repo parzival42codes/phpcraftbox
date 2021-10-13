@@ -128,7 +128,7 @@ class ContainerIndexPageBox_install extends ContainerFactoryModulInstall_abstrac
             $crud->setCrudFlex(1);
             $crud->setCrudPosition(1);
             $crud->setCrudDescription('Main');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.footer']);
+            $crud->setCrudContent($templateCache->get()['install.footer']);
             $crud->setCrudAssignment('page');
             $crud->setCrudActive(true);
 

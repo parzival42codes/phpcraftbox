@@ -22,7 +22,7 @@ class ContainerExtensionTemplateTagTableTable extends Base
         $templateCache   = Container::get('ContainerExtensionTemplateLoad_cache_template',
                                           Core::getRootClass(__CLASS__),
                                           'row,cell,container');
-        $this->templates = $templateCache->getCacheContent();
+        $this->templates = $templateCache->get();
 
     }
 

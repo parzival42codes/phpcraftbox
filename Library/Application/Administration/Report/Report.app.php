@@ -22,7 +22,7 @@ class ApplicationAdministrationReport_app extends ApplicationAdministration_abst
 
         /** @var ContainerExtensionTemplate $template */
         $template = Container::get('ContainerExtensionTemplate');
-        $template->set($templateCache->getCacheContent()['default']);
+        $template->set($templateCache->get()['default']);
 
 
 

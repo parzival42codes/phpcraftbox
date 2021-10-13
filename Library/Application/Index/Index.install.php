@@ -24,7 +24,7 @@ class ApplicationIndex_install extends ContainerFactoryModulInstall_abstract
             $crud->setCrudFlex(1);
             $crud->setCrudPosition(1);
             $crud->setCrudDescription('Foo Bar');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.main']);
+            $crud->setCrudContent($templateCache->get()['install.main']);
             $crud->setCrudAssignment('index');
             $crud->setCrudActive(true);
 

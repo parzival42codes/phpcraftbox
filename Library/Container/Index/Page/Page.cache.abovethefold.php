@@ -21,7 +21,7 @@ class ContainerIndexPage_cache_abovethefold extends ContainerExtensionCache_abst
                                         false,
                                         $this->styleSelected);
 
-        $this->setCacheContent($contentCssObj->getCacheContent()['contentAboveTheFold']);
+        $this->setCacheContent($contentCssObj->get()['contentAboveTheFold']);
     }
 
 }

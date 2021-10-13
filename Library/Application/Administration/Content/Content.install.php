@@ -48,7 +48,7 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
   }
 }
             ');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.impressum']);
+            $crud->setCrudContent($templateCache->get()['install.impressum']);
 
             $progressData['message'] = $crud->insertUpdate();
 
@@ -79,7 +79,7 @@ class ApplicationAdministrationContent_install extends ContainerFactoryModulInst
   }
 }
             ');
-            $crud->setCrudContent($templateCache->getCacheContent()['install.privacy']);
+            $crud->setCrudContent($templateCache->get()['install.privacy']);
 
             $progressData['message'] = $crud->insertUpdate();
 
