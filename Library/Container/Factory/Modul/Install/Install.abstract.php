@@ -342,7 +342,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 /** @var Config_crud $configCrud */
                 $configCrud = Container::get('Config_crud');
                 $configCrud->setCrudClass($data['crud']['rootClass']);
-                $configCrud->setCrudIdent('/' . $data['crud']['rootClass'] . $data['crud']['key']);
                 $configCrud->setCrudConfigKey($data['crud']['key']);
                 $configCrud->setCrudConfigValue($data['crud']['value']);
                 $configCrud->setCrudConfigValueDefault($data['crud']['valueDefault'] ?? $data['crud']['value']);
