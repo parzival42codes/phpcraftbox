@@ -184,7 +184,7 @@ abstract class Console_abstract extends Base
                 $query->setTable('console');
                 /** @var integer $i */
                 $query->setUpdate('progress',
-                    ($i + 2));
+                    ($i + 1));
                 /** @var array $progressData */
                 $query->setUpdate('progressData',
                                   serialize($progressData));

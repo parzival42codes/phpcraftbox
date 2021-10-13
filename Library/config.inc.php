@@ -88,6 +88,8 @@ try {
 
     require(CMS_PATH_LIBRARY_CORE . '/Pdo/Pdo.class.php');
 
+    define('PAGE_REFRESH_DETECT',(isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0'));
+
     $config = [];
 
     if (file_exists(CMS_ROOT . 'environment.ini')) {
@@ -331,6 +333,9 @@ CMS_CACHE_CORE_LINKREWRITE',
     setlocale(LC_ALL,
               (string)Config::get('/environment/language'));
     date_default_timezone_set((string)Config::get('/environment/datetime/timezone'));
+
+    CoreDebugLog::addLog('Page Refresh Detect',
+        (string)PAGE_REFRESH_DETECT);
 
     CoreDebugLog::addLog('Config.inc',
                          'Locale => ' . Config::get('/environment/language'));
