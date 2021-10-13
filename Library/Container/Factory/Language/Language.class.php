@@ -106,7 +106,7 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
         self::$registry[$path][Config::get('/environment/language')] = $value;
     }
 
-    public static function getLanguageText($languageContainer, string $language = null): string
+    public static function getLanguageText($languageContainer, string $language = null)
     {
         if ($language === null) {
             $language = (string)Config::get('/environment/language');
