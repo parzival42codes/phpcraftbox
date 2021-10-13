@@ -1,0 +1,15 @@
+{
+  "type": "install.config",
+  "content": {
+    "/source": {
+      "value": "sqlite",
+      "language": {
+        "de_DE": "Titel der PHPCraftBox",
+        "en_US": "Titel of the PHPCraftBox"
+      },
+      "form": {
+        "type": "select"
+      }
+    }
+  }
+}
