@@ -109,9 +109,6 @@ final class  CoreDebug
         define('CMS_SET_RAW_DEBUG_DATA_END_MEMORY',
                memory_get_usage());
 
-        d(self::$rawData);
-        eol();
-
         $scope['rawDataKeys'] = array_keys(self::$rawData);
 
         $mapping = [

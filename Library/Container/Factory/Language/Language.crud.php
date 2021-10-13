@@ -17,6 +17,7 @@ class ContainerFactoryLanguage_crud extends Base_abstract_crud
         = [
             'crudClass',
             'crudLanguageKey',
+            'crudLanguageLanguage',
         ];
 
     /**

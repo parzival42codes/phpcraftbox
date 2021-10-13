@@ -41,14 +41,14 @@ class CoreDebugLog extends Base
 
     /**
      * @param string $ident
-     * @param string $text
+     * @param mixed  $text
      * @param string $type
      * @param string $icon
      *
      */
-    public static function addLog(string $ident, string $text, string $type = self::LOG_TYPE_LOG, string $icon = ''): void
+    public static function addLog(string $ident, $text, string $type = self::LOG_TYPE_LOG, string $icon = ''): void
     {
-        if (!PCB_ENV_DEBUG) {
+        if (!DEBUG_LOG) {
             return;
         }
 

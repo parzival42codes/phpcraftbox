@@ -250,7 +250,7 @@ class ContainerFactoryDatabaseEngineSqliteTable extends Base
     /**
      * Set Primary
      *
-     * @param $keys Keys Name of the Primary
+     * @param array $keys Keys Name of the Primary
      */
     public function setPrimary($keys): void
     {

@@ -88,8 +88,6 @@ try {
 
     require(CMS_PATH_LIBRARY_CORE . '/Pdo/Pdo.class.php');
 
-    define('PAGE_REFRESH_DETECT',(isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0'));
-
     $config = [];
 
     if (file_exists(CMS_ROOT . 'environment.ini')) {
@@ -193,9 +191,15 @@ try {
     Config::setCore($config);
     unset($config);
 
-    define('PCB_ENV_DEBUG',
+    define('DEBUG_LOG',
            Config::get('/environment/debug/active',
                        false));
+
+    define('PAGE_REFRESH_DETECT',
+        (isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'no-cache'));
+    define('PAGE_REFRESH_DETECT_DEBUG',
+        (PAGE_REFRESH_DETECT && Config::get('/environment/debug/active',
+                                            false)));
 
 
     $accessPath = '/core/access/' . strtolower($_SERVER['PHP_AUTH_USER'] ?? '');
@@ -335,7 +339,7 @@ CMS_CACHE_CORE_LINKREWRITE',
     date_default_timezone_set((string)Config::get('/environment/datetime/timezone'));
 
     CoreDebugLog::addLog('Page Refresh Detect',
-        (string)PAGE_REFRESH_DETECT);
+                         (int)PAGE_REFRESH_DETECT);
 
     CoreDebugLog::addLog('Config.inc',
                          'Locale => ' . Config::get('/environment/language'));
