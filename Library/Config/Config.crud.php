@@ -14,20 +14,18 @@ class Config_crud extends Base_abstract_crud
 
     protected static string $table   = 'config';
     protected static string $tableId = 'crudId';
+    protected static ?array $tableIdMerge
+                                     = [
+            'crudClass',
+            'crudConfigKey',
+        ];
 
-    /**
-     * @var int|null
-     * @database type int;11
-     * @database isPrimary
-     * @database default ContainerFactoryDatabaseEngineMysqlTable::DEFAULT_AUTO_INCREMENT
-     */
-    protected ?int $crudId = null;
     /**
      * @var string
      * @database type varchar;250
-     * @database isIndex
+     * @database isPrimary
      */
-    protected string $crudIdent = '';
+    protected string $crudId = '';
     /**
      * @var string
      * @database type varchar;250
@@ -150,25 +148,9 @@ class Config_crud extends Base_abstract_crud
     /**
      * @param  $crudConfigGroup
      */
-    public function setCrudConfigGroup( $crudConfigGroup): void
+    public function setCrudConfigGroup($crudConfigGroup): void
     {
         $this->crudConfigGroup = $crudConfigGroup;
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getCrudId()
-    {
-        return $this->crudId;
-    }
-
-    /**
-     * @param ?int $crudId
-     */
-    public function setCrudId(?int $crudId): void
-    {
-        $this->crudId = $crudId;
     }
 
     /**
@@ -206,16 +188,17 @@ class Config_crud extends Base_abstract_crud
     /**
      * @return string
      */
-    public function getCrudIdent(): string
+    public function getCrudId(): string
     {
-        return $this->crudIdent;
+        return $this->crudId;
     }
 
     /**
-     * @param string $crudIdent
+     * @param string $crudId
      */
-    public function setCrudIdent(string $crudIdent): void
+    public function setCrudId(string $crudId): void
     {
-        $this->crudIdent = $crudIdent;
+        $this->crudId = $crudId;
     }
+
 }
