@@ -534,6 +534,8 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
     {
         $rootClass = Core::getRootClass(get_called_class());
 
+        simpleDebugLog($rootClass);
+
         $this->installFunction(function () {
             /** @var array $data */ /*$before*/
 
@@ -544,7 +546,9 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             $crud->setCrudTriggerClass($data['triggerClass']);
             $crud->setCrudTriggerMethod($data['triggerMethod']);
 
-            $progressData['message'] = $crud->insertUpdate();
+            $progressData['message'] = $crud->insert(true);
+
+            simpleDebugLog($progressData['message']);
 
             /*$after*/
         },
