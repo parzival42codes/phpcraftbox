@@ -3,12 +3,12 @@
 class ContainerExtensionCache_install extends ContainerFactoryModulInstall_abstract
 {
 
-   public function install(): void
+    public function install(): void
     {
-          $this->importLanguage();
-          $this->readLanguageFromFile('debug');
+        $this->importLanguage();
+        $this->readLanguageFromFile('debug');
+        $this->importConfig();
     }
-
 
 
 }
