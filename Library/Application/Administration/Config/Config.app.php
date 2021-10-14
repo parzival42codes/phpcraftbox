@@ -17,10 +17,8 @@ class ApplicationAdministrationConfig_app extends Application_abstract
     {
         $this->pageData();
 
-        /** @var ContainerExtensionTemplateLoad_cache_template $templateCache */
-        $templateCache = Container::get('ContainerExtensionTemplateLoad_cache_template',
-                                        Core::getRootClass(__CLASS__),
-                                        'default');
+        $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
+                                                                           'default');
 
         /** @var Config_crud $crud */
         $crud       = Container::get('Config_crud');
@@ -33,47 +31,88 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $user = Container::getInstance('ContainerFactoryUser');
         $configMenu->setMenuAccessList($user->getUserAccess());
 
+//        d($crudConfig);
+//        eol();
+
+        $classes = [];
         /** @var Config_crud $crudConfigItem */
         foreach ($crudConfig as $crudConfigItem) {
+            $classes[] = $crudConfigItem->getCrudClass();
+        }
 
-            $path = ContainerFactoryModul::getModulMenuLanguage($crudConfigItem->getCrudClass(),
-                                                                $crudConfigItem->getCrudClass());
+        $classes = array_unique($classes);
 
-            $jsonDecode        = $crudConfigItem->getCrudConfigLanguage();
-            $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
-                true);
-            if (!empty($languageContainer)) {
-                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
-            }
-            else {
-                $name = $crudConfigItem->getCrudConfigKey();
-            }
+        foreach ($classes as $class) {
+            $path = ContainerFactoryModul::getModulMenuLanguage($class,
+                                                                $class);
 
             /** @var ContainerFactoryMenuItem $menuItem */
             $menuItem = Container::get('ContainerFactoryMenuItem');
-            $menuItem->setPath($path);
+            $menuItem->setPath('/');
             $menuItem->setDescription('');
-            $menuItem->setTitle($name);
-            $menuItem->setLink('index.php?application=ApplicationAdministrationConfig&id=' . $crudConfigItem->getCrudId());
+            $menuItem->setTitle($path);
+            $menuItem->setLink('index.php?application=ApplicationAdministrationConfig&id=' . $class);
             $menuItem->setAccess('ApplicationAdministrationConfig');
 
             $configMenu->addMenuItem($menuItem);
         }
 
-        /** @var ContainerExtensionTemplate $template */
-        $template = Container::get('ContainerExtensionTemplate');
+//        /** @var Config_crud $crudConfigItem */
+//        foreach ($crudConfig as $crudConfigItem) {
+//            $jsonDecode        = $crudConfigItem->getCrudConfigLanguage();
+//            $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
+//                true);
+//            if (!empty($languageContainer)) {
+//                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
+//            }
+//            else {
+//                $name = $crudConfigItem->getCrudConfigKey();
+//            }
+//
+//
+//        }
+
+        $template = new ContainerExtensionTemplate();
         $template->set($templateCache->get()['default']);
 
-        /** @var ContainerFactoryRequest $requestConfig */
-        $requestConfig = Container::get('ContainerFactoryRequest',
-                                        ContainerFactoryRequest::REQUEST_GET,
-                                        'id');
+        $requestConfig = new ContainerFactoryRequest(ContainerFactoryRequest::REQUEST_GET,
+                                                     'id');
 
         if ($requestConfig->exists()) {
 
+            $formHelper = new ContainerExtensionTemplateParseCreateForm_helper('ApplicationAdministrationConfig',
+                                                                               'config');
+
+            $formHelperResponse = $formHelper->getResponse();
+
+            $crudConfig = new Config_crud();
+            $configFind = $crudConfig->find([
+                                                'crudClass' => $requestConfig->get()
+                                            ]);
+
+            $content = '';
+
+            /** @var Config_crud $configFindItem */
+            foreach ($configFind as $configFindItem) {
+                $content .= $this->formConfig($crudConfigItem,
+                                              $formHelper,
+                                              $formHelperResponse);
+            }
+
+
+            d($content);
+            eol();
+
+            $template->assign('content',
+                              $formHelper->getHeader() . $content . $formHelper->getFooter());
+
+
+//            d($requestConfig);
+//            eol();
+
             /** @var Config_crud $crud */
             $crud = Container::get('Config_crud');
-            $crud->setCrudId((int)$requestConfig->get());
+            $crud->setCrudId($requestConfig->get());
             $crud->findById(true);
 
             $path = ContainerFactoryModul::getModulMenuLanguage($crud->getCrudClass(),
@@ -100,6 +139,8 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                               $this->formConfig($crud));
         }
         else {
+
+
             $template->assign('formKey',
                               '');
             $template->assign('formValue',
@@ -116,18 +157,8 @@ class ApplicationAdministrationConfig_app extends Application_abstract
     /**
      *
      */
-    private function formConfig(Config_crud $crudConfig): string
+    private function formConfig(Config_crud $crudConfig, ContainerExtensionTemplateParseCreateForm_helper $formHelper, ContainerExtensionTemplateParseCreateFormResponse $formHelperResponse): string
     {
-        /** @var Config_crud $crudConfig */
-
-        /** @var ContainerExtensionTemplateParseCreateForm_helper $formHelper */
-        $formHelper = Container::get('ContainerExtensionTemplateParseCreateForm_helper',
-                                     'ApplicationAdministrationConfig',
-                                     'config');
-
-        /** @var ContainerExtensionTemplateParseCreateFormResponse $formHelperResponse */
-        $formHelperResponse = $formHelper->getResponse();
-
         $jsonDecode = $crudConfig->getCrudConfigForm();
         $configForm = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
             true);
@@ -146,19 +177,6 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
             true);
 
-        if ($formType !== 'switch') {
-
-            $formHelper->addFormElement('language',
-                                        'Plain',
-                                        [],
-                                        [
-                                            [
-                                                'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                                ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
-                                            ],
-                                        ]);
-        }
-
         $formHelper->addFormElement('id',
                                     'Hidden',
                                     [],
@@ -171,33 +189,18 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                     ]);
 
         if ($formType === 'switch') {
-
-            $formHelper->addFormElement('value',
-                                        'checkbox',
-                                        [
-                                            [
-                                                1 => ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
-                                            ],
-                                        ],
-                                        [
-                                            [
-                                                'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                                $crudConfig->getCrudConfigValue()
-                                            ],
-                                        ]);
+            $this->formTypeSwitch($formHelper,
+                                  $crudConfig,
+                                  $languageContainer);
         }
-
+        elseif ($formType === 'select') {
+            $this->formTypeSelect($formHelper,
+                                  $crudConfig,
+                                  $configForm);
+        }
         else {
-            $formHelper->addFormElement('value',
-                                        'Textarea',
-                                        [],
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired',
-                                            [
-                                                'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                                $crudConfig->getCrudConfigValue()
-                                            ],
-                                        ]);
+            $this->formType($formHelper,
+                            $crudConfig);
         }
 
         $elementObj = $formHelper->getElement('value');
@@ -217,7 +220,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 //        d($crudConfig);
 //        eol();
 
-        return $formHelper->getHeader() . $formHelper->getElements(true) . $formHelper->getFooter();
+        return $formHelper->getElements(true);
     }
 
     protected final function formResponse(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, string $formType): void
@@ -288,5 +291,59 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $menu = $this->getMenu();
         $menu->setMenuClassMain($thisClassName);
 
+    }
+
+    protected function formTypeSwitch(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $languageContainer)
+    {
+        $formHelper->addFormElement('value',
+                                    'checkbox',
+                                    [
+                                        [
+                                            1 => ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
+                                        ],
+                                    ],
+                                    [
+                                        [
+                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
+                                            $crudConfig->getCrudConfigValue()
+                                        ],
+                                    ]);
+    }
+
+    protected function formTypeSelect(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $configForm)
+    {
+
+        $options = [];
+        if (isset($configForm['options'])) {
+            foreach ($configForm['options'] as $optionKey => $optionValue) {
+                $options[$optionKey] = ContainerFactoryLanguage::getLanguageText($optionValue);
+            }
+        }
+
+        $formHelper->addFormElement('value',
+                                    'select',
+                                    [
+                                        $options
+                                    ],
+                                    [
+                                        [
+                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
+                                            $crudConfig->getCrudConfigValue()
+                                        ],
+                                    ]);
+    }
+
+    protected function formType(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig)
+    {
+        $formHelper->addFormElement('value',
+                                    'Textarea',
+                                    [],
+                                    [
+                                        'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired',
+                                        [
+                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
+                                            $crudConfig->getCrudConfigValue()
+                                        ],
+                                    ]);
     }
 }

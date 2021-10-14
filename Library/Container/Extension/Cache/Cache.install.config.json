@@ -4,11 +4,31 @@
     "/source": {
       "value": "sqlite",
       "language": {
-        "de_DE": "Titel der PHPCraftBox",
-        "en_US": "Titel of the PHPCraftBox"
+        "de_DE": "Cache System",
+        "en_US": "Cache System"
       },
       "form": {
-        "type": "select"
+        "type": "select",
+        "options": {
+          "sqlite": {
+            "de_DE": "SQlite (Datei System Basiert)",
+            "en_US": "SQlite (File System based)"
+          },
+          "redis": {
+            "de_DE": "Redis (Speicher basiert)",
+            "en_US": "Redis (Memory based)"
+          }
+        }
+      }
+    },
+    "/ttl": {
+      "value": "sqlite",
+      "language": {
+        "de_DE": "Ablaufzeit in sec.",
+        "en_US": "Time to live in sec"
+      },
+      "form": {
+        "type": "number"
       }
     }
   }

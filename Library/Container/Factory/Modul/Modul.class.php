@@ -3,14 +3,14 @@
 class ContainerFactoryModul extends Base
 {
     protected static array $classMeta = [];
-    protected string       $class     ='';
+    protected string       $class     = '';
 
     public function __construct(string $class)
     {
         $this->class = $class;
     }
 
-    public function getClass():string
+    public function getClass(): string
     {
         return $this->class;
     }
@@ -28,9 +28,7 @@ class ContainerFactoryModul extends Base
                                          true);
 
             if (isset($modulCrudMeta['language']['path'])) {
-                return ContainerFactoryLanguage::getLanguageText(Config::get('/environment/language'),
-                                                                       $modulCrudMeta['language']['path']) . '/' . ContainerFactoryLanguage::getLanguageText(Config::get('/environment/language'),
-                                                                                                                                                             $modulCrudMeta['language']['name']);
+                return ContainerFactoryLanguage::getLanguageText($modulCrudMeta['language']['path']) . '/' . ContainerFactoryLanguage::getLanguageText($modulCrudMeta['language']['name']);
             }
             else {
                 return '/' . $stdPath;

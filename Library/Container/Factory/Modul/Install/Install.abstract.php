@@ -704,8 +704,10 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 str_contains($metaCollectKey,
                              'language_') === true
             ) {
-                $metaCollectKeyData                                                    = explode('_',
-                                                                                                 $metaCollectKey);
+                $metaCollectKeyData = explode('_',
+                                              $metaCollectKey,
+                                              3);
+
                 $modulMeta['language'][$metaCollectKeyData[1]][$metaCollectKeyData[2]] = $metaCollectItem;
             }
 
