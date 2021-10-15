@@ -18,7 +18,7 @@
       "en_US": "The Configuration for '%s' are updated !"
     },
     "/info/text": {
-      "de_DE": "Der Standardwert 123: <span class='defaultValue'>%s</span>",
+      "de_DE": "Der Standardwert: <span class='defaultValue'>%s</span>",
       "en_US": "The default value:  <span class='defaultValue'>%s</span>"
     }
   }

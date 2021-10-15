@@ -6,9 +6,9 @@
  * @author   Stefan Schlombs
  * @version  1.0.0
  * @modul    versionRequiredSystem 1.0.0
- * @modul    language_path_de_DE PHPToolBox
+ * @modul    language_path_de_DE /PHPToolBox
  * @modul    language_name_de_DE Cache
- * @modul    language_path_en_US PHPToolBox
+ * @modul    language_path_en_US /PHPToolBox
  * @modul    language_name_en_US Cache
  */
 

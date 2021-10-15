@@ -15,7 +15,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
     public function setContent(): string
     {
-        $this->pageData();
+        $this->createPageData();
 
         $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
                                                                            'default');
@@ -46,11 +46,20 @@ class ApplicationAdministrationConfig_app extends Application_abstract
             $path = ContainerFactoryModul::getModulMenuLanguage($class,
                                                                 $class);
 
+            $pathExplode = explode('/',
+                                   $path);
+            $pathTitle   = array_pop($pathExplode);
+            $path        = implode('/',
+                                   $pathExplode);
+            if ($path === '') {
+                $path = '/';
+            }
+
             /** @var ContainerFactoryMenuItem $menuItem */
             $menuItem = Container::get('ContainerFactoryMenuItem');
-            $menuItem->setPath('/');
+            $menuItem->setPath($path);
             $menuItem->setDescription('');
-            $menuItem->setTitle($path);
+            $menuItem->setTitle($pathTitle);
             $menuItem->setLink('index.php?application=ApplicationAdministrationConfig&id=' . $class);
             $menuItem->setAccess('ApplicationAdministrationConfig');
 
@@ -93,7 +102,8 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                 ContainerFactoryLanguage::set('/' . $class . '/form' . $configFindItem->getCrudConfigKey() . '/label',
                                               $label);
                 ContainerFactoryLanguage::set('/' . $class . '/form' . $configFindItem->getCrudConfigKey() . '/info',
-                                              sprintf(ContainerFactoryLanguage::get('/ApplicationAdministrationConfig/info/text') , $configFindItem->getCrudConfigValueDefault()));
+                                              sprintf(ContainerFactoryLanguage::get('/ApplicationAdministrationConfig/info/text'),
+                                                      $configFindItem->getCrudConfigValueDefault()));
 
                 $content .= $this->formConfig($configFindItem,
                                               $formHelper,
@@ -106,9 +116,18 @@ class ApplicationAdministrationConfig_app extends Application_abstract
             $path = ContainerFactoryModul::getModulMenuLanguage($class,
                                                                 $class);
 
+            $pathExplode = explode('/',
+                                   $path);
+            $pathTitle   = array_pop($pathExplode);
+            $path        = implode('/',
+                                   $pathExplode);
+            if ($path === '') {
+                $path = '/';
+            }
+
             $template->assign('menu',
-                              $configMenu->createMenu('/',
-                                                      $path));
+                              $configMenu->createMenu($path,
+                                                      $pathTitle));
 
         }
         else {
@@ -191,9 +210,15 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
     protected final function formResponse(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, string $formType): void
     {
-        /** @var ContainerExtensionTemplateParseCreateFormResponse $response */
         $response = $formHelper->getResponse();
-        $value    = $response->get('value');
+
+        d($response);
+        d($crudConfig);
+        d($formType);
+        eol();
+
+        $value = $response->get('value');
+
 
         if ($formType === 'switch') {
             if (is_array($value)) {
@@ -203,6 +228,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
         $crudConfig->setCrudConfigValue($value);
         $crudConfig->update();
+
 
         /** @var ContainerFactoryLog_crud_notification $crud */
         $crud = Container::get('ContainerFactoryLog_crud_notification');
@@ -228,35 +254,6 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $router->setQuery('_form',
                           null);
         $router->redirect();
-    }
-
-
-    public function pageData(): void
-    {
-        $thisClassName = Core::getRootClass(__CLASS__);
-
-        /** @var ContainerIndexPage $page */
-        $page = Container::getInstance('ContainerIndexPage');
-        $page->setPageTitle(ContainerFactoryLanguage::get('/' . $thisClassName . '/meta/title'));
-        $page->setPageDescription(ContainerFactoryLanguage::get('/' . $thisClassName . '/meta/description'));
-
-        /** @var ContainerFactoryRouter $router */
-        $router = Container::get('ContainerFactoryRouter');
-        $router->analyzeUrl('index.php?application=' . $thisClassName . '');
-
-
-        $breadcrumb = $page->getBreadcrumb();
-
-        $breadcrumb->addBreadcrumbItem(ContainerFactoryLanguage::get('/ApplicationAdministration/breadcrumb'),
-                                       'index.php?application=ApplicationAdministration');
-
-        $breadcrumb->addBreadcrumbItem(ContainerFactoryLanguage::get('/' . $thisClassName . '/meta/title'),
-                                       'index.php?application=ApplicationAdministrationConfig');
-
-        /** @var ContainerFactoryMenu $menu */
-        $menu = $this->getMenu();
-        $menu->setMenuClassMain($thisClassName);
-
     }
 
     protected function formTypeSwitch(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $configForm, array $languageContainer)

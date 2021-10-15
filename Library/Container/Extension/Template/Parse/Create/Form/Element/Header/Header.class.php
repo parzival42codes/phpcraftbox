@@ -7,6 +7,9 @@ class ContainerExtensionTemplateParseCreateFormElementHeader extends
     public function get(): string
     {
 
+        /** @var ContainerFactoryRouter $router */
+        $router = Container::get(ContainerFactoryRouter::class);
+
         /** @var ContainerIndexHtmlAttribute $attributeHeader */
         $attributeHeader = Container::get('ContainerIndexHtmlAttribute');
         $attributeHeader->set('class',
@@ -20,7 +23,7 @@ class ContainerExtensionTemplateParseCreateFormElementHeader extends
                               $this->getFormId());
         $attributeHeader->set('action',
                               null,
-                              '');
+                              $router->getUrlReadable());
         $attributeHeader->set('autocomplete',
                               null,
                               'off');
@@ -52,7 +55,7 @@ class ContainerExtensionTemplateParseCreateFormElementHeader extends
 
     }
 
-    public function response():void
+    public function response(): void
     {
 
     }
