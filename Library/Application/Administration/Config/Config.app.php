@@ -57,21 +57,6 @@ class ApplicationAdministrationConfig_app extends Application_abstract
             $configMenu->addMenuItem($menuItem);
         }
 
-//        /** @var Config_crud $crudConfigItem */
-//        foreach ($crudConfig as $crudConfigItem) {
-//            $jsonDecode        = $crudConfigItem->getCrudConfigLanguage();
-//            $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
-//                true);
-//            if (!empty($languageContainer)) {
-//                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
-//            }
-//            else {
-//                $name = $crudConfigItem->getCrudConfigKey();
-//            }
-//
-//
-//        }
-
         $template = new ContainerExtensionTemplate();
         $template->set($templateCache->get()['default']);
 
@@ -80,6 +65,8 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
         if ($requestConfig->exists()) {
 
+            $class = Core::getRootClass($requestConfig->get());
+
             $formHelper = new ContainerExtensionTemplateParseCreateForm_helper('ApplicationAdministrationConfig',
                                                                                'config');
 
@@ -87,56 +74,40 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
             $crudConfig = new Config_crud();
             $configFind = $crudConfig->find([
-                                                'crudClass' => $requestConfig->get()
+                                                'crudClass' => $class
                                             ]);
 
             $content = '';
 
             /** @var Config_crud $configFindItem */
             foreach ($configFind as $configFindItem) {
-                $content .= $this->formConfig($crudConfigItem,
+
+                $labelSource = $configFindItem->getCrudConfigLanguage();
+                if ($labelSource) {
+                    $label = ContainerFactoryLanguage::getLanguageText($labelSource);
+                }
+                else {
+                    $label = $labelSource;
+                }
+
+                ContainerFactoryLanguage::set('/' . $class . '/form' . $configFindItem->getCrudConfigKey() . '/label',
+                                              $label);
+
+                $content .= $this->formConfig($configFindItem,
                                               $formHelper,
                                               $formHelperResponse);
             }
 
-
-            d($content);
-            eol();
-
             $template->assign('content',
                               $formHelper->getHeader() . $content . $formHelper->getFooter());
 
-
-//            d($requestConfig);
-//            eol();
-
-            /** @var Config_crud $crud */
-            $crud = Container::get('Config_crud');
-            $crud->setCrudId($requestConfig->get());
-            $crud->findById(true);
-
-            $path = ContainerFactoryModul::getModulMenuLanguage($crud->getCrudClass(),
-                                                                $crud->getCrudClass());
-
-            $jsonDecode        = $crud->getCrudConfigLanguage();
-            $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
-                true);
-
-            if (!empty($languageContainer)) {
-                $name = ContainerFactoryLanguage::getLanguageText($languageContainer);
-            }
-            else {
-                $name = $crud->getCrudConfigKey();
-            }
+            $path = ContainerFactoryModul::getModulMenuLanguage($class,
+                                                                $class);
 
             $template->assign('menu',
-                              $configMenu->createMenu($path,
-                                                      $name));
+                              $configMenu->createMenu('/',
+                                                      $path));
 
-            $template->assign('formKey',
-                              '/' . $crud->getCrudClass() . $crud->getCrudConfigKey());
-            $template->assign('formValue',
-                              $this->formConfig($crud));
         }
         else {
 
@@ -163,6 +134,10 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $configForm = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
             true);
 
+        $configForm['_id']    = substr($crudConfig->getCrudConfigKey(),
+                                       1);
+        $configForm['_class'] = $crudConfig->getCrudClass();
+
         $formType = ($configForm['type'] ?? '');
 
         if (
@@ -177,20 +152,10 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
             true);
 
-        $formHelper->addFormElement('id',
-                                    'Hidden',
-                                    [],
-                                    [
-                                        'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired',
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                            $crudConfig->getCrudId()
-                                        ],
-                                    ]);
-
         if ($formType === 'switch') {
             $this->formTypeSwitch($formHelper,
                                   $crudConfig,
+                                  $configForm,
                                   $languageContainer);
         }
         elseif ($formType === 'select') {
@@ -198,15 +163,21 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                   $crudConfig,
                                   $configForm);
         }
+        elseif ($formType === 'number') {
+            $this->formTypeNumber($formHelper,
+                                  $crudConfig,
+                                  $configForm);
+        }
         else {
             $this->formType($formHelper,
-                            $crudConfig);
+                            $crudConfig,
+                            $configForm);
         }
 
-        $elementObj = $formHelper->getElement('value');
+        $elementObj = $formHelper->getElement($configForm['_id']);
         $elementObj->setFlex(2);
 
-        $formHelper->addFormElement('valueDefault',
+        $formHelper->addFormElement('valueDefault' . $crudConfig->getCrudConfigKey(),
                                     'Plain',
                                     [],
                                     [
@@ -293,9 +264,9 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
     }
 
-    protected function formTypeSwitch(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $languageContainer)
+    protected function formTypeSwitch(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $configForm, array $languageContainer)
     {
-        $formHelper->addFormElement('value',
+        $formHelper->addFormElement($configForm['_id'],
                                     'checkbox',
                                     [
                                         [
@@ -307,7 +278,8 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                             'ContainerExtensionTemplateParseCreateFormModifyDefault',
                                             $crudConfig->getCrudConfigValue()
                                         ],
-                                    ]);
+                                    ],
+                                    $configForm['_class']);
     }
 
     protected function formTypeSelect(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $configForm)
@@ -320,7 +292,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
             }
         }
 
-        $formHelper->addFormElement('value',
+        $formHelper->addFormElement($configForm['_id'],
                                     'select',
                                     [
                                         $options
@@ -330,12 +302,35 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                             'ContainerExtensionTemplateParseCreateFormModifyDefault',
                                             $crudConfig->getCrudConfigValue()
                                         ],
-                                    ]);
+                                    ],
+                                    $configForm['_class']);
     }
 
-    protected function formType(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig)
+    protected function formTypeNumber(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $configForm)
     {
-        $formHelper->addFormElement('value',
+
+        $options = [];
+        if (isset($configForm['options'])) {
+            foreach ($configForm['options'] as $optionKey => $optionValue) {
+                $options[$optionKey] = ContainerFactoryLanguage::getLanguageText($optionValue);
+            }
+        }
+
+        $formHelper->addFormElement($configForm['_id'],
+                                    'number',
+                                    [],
+                                    [
+                                        [
+                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
+                                            $crudConfig->getCrudConfigValue()
+                                        ],
+                                    ],
+                                    $configForm['_class']);
+    }
+
+    protected function formType(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $configForm)
+    {
+        $formHelper->addFormElement($configForm['_id'],
                                     'Textarea',
                                     [],
                                     [
@@ -344,6 +339,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                             'ContainerExtensionTemplateParseCreateFormModifyDefault',
                                             $crudConfig->getCrudConfigValue()
                                         ],
-                                    ]);
+                                    ],
+                                    $configForm['_class']);
     }
 }

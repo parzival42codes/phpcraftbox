@@ -22,7 +22,7 @@
       }
     },
     "/ttl": {
-      "value": "sqlite",
+      "value": "120",
       "language": {
         "de_DE": "Ablaufzeit in sec.",
         "en_US": "Time to live in sec"
