@@ -18,7 +18,8 @@
             "de_DE": "Redis (Speicher basiert)",
             "en_US": "Redis (Memory based)"
           }
-        }
+        },
+        "required": true
       }
     },
     "/ttl": {
@@ -28,7 +29,8 @@
         "en_US": "Time to live in sec"
       },
       "form": {
-        "type": "number"
+        "type": "number",
+        "required": true
       }
     }
   }

@@ -1,21 +1,25 @@
 {
-    "type": "install.language",
-    "content": {
-        "/meta/title": {
-            "de_DE": "Konfiguration Administration",
-            "en_US": "Config Administration"
-        },
-        "/meta/description": {
-            "de_DE": "Konfiguration Administration",
-            "en_US": "Config Administration"
-        },
-        "/breadcrumb": {
-            "de_DE": "Konfiguration",
-            "en_US": "Config"
-        }  ,
-        "/notification/updated": {
-            "de_DE": "Die Konfiguration für '%s' wurde aktualisiert !",
-            "en_US": "The Configuration for '%s' are updated !"
-        }
+  "type": "install.language",
+  "content": {
+    "/meta/title": {
+      "de_DE": "Konfiguration Administration",
+      "en_US": "Config Administration"
+    },
+    "/meta/description": {
+      "de_DE": "Konfiguration Administration",
+      "en_US": "Config Administration"
+    },
+    "/breadcrumb": {
+      "de_DE": "Konfiguration",
+      "en_US": "Config"
+    },
+    "/notification/updated": {
+      "de_DE": "Die Konfiguration für '%s' wurde aktualisiert !",
+      "en_US": "The Configuration for '%s' are updated !"
+    },
+    "/info/text": {
+      "de_DE": "Der Standardwert 123: <span class='defaultValue'>%s</span>",
+      "en_US": "The default value:  <span class='defaultValue'>%s</span>"
     }
+  }
 }

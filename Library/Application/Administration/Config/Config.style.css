@@ -1,3 +1,6 @@
 #ApplicationAdministrationConfig .ContainerExtensionTemplateParseCreateForm-textarea {
     height: 10em;
 }
+#ApplicationAdministrationConfig .defaultValue {
+    font-weight: bold;
+}
