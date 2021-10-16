@@ -214,18 +214,41 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
         $responseRequestData = $response->getResponseRequestData();
 
-        foreach ($response->getAll() as $key => $value) {
-            if (
-                strpos($key,
-                       '_') !== 0
-            ) {
-                $crudConfig = new Config_crud();
-                $crudConfig->setCrudClass($responseRequestData['class']);
-                $crudConfig->setCrudConfigKey('/' . $key);
-                $crudConfig->findById(true);
-                $crudConfig->setCrudConfigValue($value);
-                $crudConfig->update();
+        $formMetaKeys = [];
+        foreach ($response->getMetaData() as $key => $value) {
+            if ($key !== 'Header' && $key !== 'Footer') {
+                $formMetaKeys[] = $key;
             }
+        }
+
+        $allResponse = $response->getAll();
+
+        foreach ($formMetaKeys as $key) {
+            $crudConfig = new Config_crud();
+            $crudConfig->setCrudClass($responseRequestData['class']);
+            $crudConfig->setCrudConfigKey('/' . $key);
+            $crudConfig->findById(true);
+
+            $crudConfigForm = json_decode($crudConfig->getCrudConfigForm(),
+                                          true);
+
+            if (isset($crudConfigForm['type'])) {
+                if ($crudConfigForm['type'] === 'switch') {
+                    if (isset($allResponse[$key][0]) && $allResponse[$key][0] === '1') {
+                        $crudConfig->setCrudConfigValue('1');
+                    }
+                    else {
+                        $crudConfig->setCrudConfigValue('0');
+                    }
+                } else {
+                    $crudConfig->setCrudConfigValue($allResponse[$key]);
+                }
+            }
+            else {
+                $crudConfig->setCrudConfigValue($allResponse[$key]);
+            }
+
+            $crudConfig->update();
         }
 
         /** @var ContainerFactoryLog_crud_notification $crud */
@@ -265,7 +288,10 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                         ],
                                     ],
                                     [
-
+                                        [
+                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
+                                            $crudConfig->getCrudConfigValue()
+                                        ],
                                     ],
                                     $configForm['_class']);
     }

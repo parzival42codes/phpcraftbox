@@ -27,7 +27,12 @@ abstract class ContainerExtensionCache_abstract extends Base
         $this->parameter = $parameter;
         $this->prepare();
 
-        $this->cacheResource = new ContainerExtensionCacheSqlite($this);
+        if (Config::get('/ContainerExtensionCache/source') === 'sqlite') {
+            $this->cacheResource = new ContainerExtensionCacheSqlite($this);
+        } elseif (Config::get('/ContainerExtensionCache/source') == 'redis') {
+            $this->cacheResource = new ContainerExtensionCacheRedis($this);
+        }
+
     }
 
     /**
@@ -77,7 +82,6 @@ abstract class ContainerExtensionCache_abstract extends Base
      */
     public function _get(array &$scope, bool $forceCreate = false)
     {
-
 
         $this->cacheResource->get($this,
                                   $scope,
