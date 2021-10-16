@@ -6,6 +6,10 @@
       "language": {
         "de_DE": "Maximale Anmelde Versuche vor Sperrung",
         "en_US": "Maximal Login Fails"
+      },
+      "form": {
+        "type": "number",
+        "required": true
       }
     }
   }

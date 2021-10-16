@@ -219,6 +219,8 @@ abstract class Base_abstract_crud
 
     public function findById(bool $exception = false): bool
     {
+        $this->tableIdMerge();
+
         return $this->findByColumn(static::$tableId,
                                    $exception);
     }

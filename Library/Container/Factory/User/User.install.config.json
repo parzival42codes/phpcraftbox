@@ -3,6 +3,14 @@
   "content": {
     "/guest/group": {
       "value": "1"
+    },
+    "language": {
+      "de_DE": "Gästegruppe",
+      "en_US": "Guest Group"
+    },
+    "form": {
+      "type": "number",
+      "required": true
     }
   }
 }

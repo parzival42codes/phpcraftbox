@@ -33,20 +33,32 @@ class ContainerExtensionTemplateParseCreateFormRequest extends Base
     }
 
     /**
+     * @param string $formid
+     * @param string $key
+     *
+     * @return string|null
+     */
+    public static function getRequestData(string $formid, string $key): ?string
+    {
+        return (self::$requestData[$formid][$key] ?? null);
+    }
+
+    /**
+     * @param string $formid
+     *
      * @return array
      */
-    public static function getRequestData(): array
+    public static function getRequestDataAll(string $formid): array
     {
-        return self::$requestData;
+        return self::$requestData[$formid];
     }
 
     /**
      * @param array $requestData
      */
-    public static function setRequestData(array $requestData): void
+    public static function setRequestData(string $formid, string $key, string $value): void
     {
-        self::$requestData = array_merge(self::$requestData,
-                                         $requestData);
+        self::$requestData[$formid][$key] = $value;
     }
 
     public function create(): void

@@ -17,8 +17,9 @@ class ContainerExtensionTemplateParseCreateFormElementFooter extends
         $crypt->setText(serialize([
                                       'modify'      => ContainerExtensionTemplateParseCreateFormRequest::getModify($this->formId),
                                       'metaData'    => ContainerExtensionTemplateParseCreateFormRequest::getMetaData($this->formId),
-                                      'requestData' => ContainerExtensionTemplateParseCreateFormRequest::getRequestData(),
+                                      'requestData' => ContainerExtensionTemplateParseCreateFormRequest::getRequestDataAll($this->formId),
                                   ]));
+
         $crypt->setKey((string)Config::get('/environment/secret/form'));
 
         /** @var ContainerExtensionTemplate $templateCacheFooter */

@@ -245,5 +245,13 @@ class ContainerExtensionTemplateParseCreateForm_helper extends Base
         return $this->class;
     }
 
+    /**
+     * @return string
+     */
+    public function getFormName(): string
+    {
+        return $this->formName;
+    }
+
 }
 

@@ -31,9 +31,6 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $user = Container::getInstance('ContainerFactoryUser');
         $configMenu->setMenuAccessList($user->getUserAccess());
 
-//        d($crudConfig);
-//        eol();
-
         $classes = [];
         /** @var Config_crud $crudConfigItem */
         foreach ($crudConfig as $crudConfigItem) {
@@ -79,7 +76,18 @@ class ApplicationAdministrationConfig_app extends Application_abstract
             $formHelper = new ContainerExtensionTemplateParseCreateForm_helper('ApplicationAdministrationConfig',
                                                                                'config');
 
+            $formHelperRequest = $formHelper->getRequest();
+            $formHelperRequest::setRequestData($formHelper->getFormName(),
+                                               'class',
+                                               $requestConfig->get());
+
             $formHelperResponse = $formHelper->getResponse();
+
+            if (
+                $formHelperResponse->isHasResponse() && !$formHelperResponse->hasError()
+            ) {
+                $this->formResponse($formHelper);
+            }
 
             $crudConfig = new Config_crud();
             $configFind = $crudConfig->find([
@@ -168,14 +176,6 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
         $formType = ($configForm['type'] ?? '');
 
-        if (
-            $formHelperResponse->isHasResponse() && !$formHelperResponse->hasError()
-        ) {
-            $this->formResponse($formHelper,
-                                $crudConfig,
-                                $formType);
-        }
-
         $jsonDecode        = $crudConfig->getCrudConfigLanguage();
         $languageContainer = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
             true);
@@ -208,27 +208,25 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         return $formHelper->getElements(true);
     }
 
-    protected final function formResponse(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, string $formType): void
+    protected final function formResponse(ContainerExtensionTemplateParseCreateForm_helper $formHelper): void
     {
         $response = $formHelper->getResponse();
 
-        d($response);
-        d($crudConfig);
-        d($formType);
-        eol();
+        $responseRequestData = $response->getResponseRequestData();
 
-        $value = $response->get('value');
-
-
-        if ($formType === 'switch') {
-            if (is_array($value)) {
-                $value = reset($value);
+        foreach ($response->getAll() as $key => $value) {
+            if (
+                strpos($key,
+                       '_') !== 0
+            ) {
+                $crudConfig = new Config_crud();
+                $crudConfig->setCrudClass($responseRequestData['class']);
+                $crudConfig->setCrudConfigKey('/' . $key);
+                $crudConfig->findById(true);
+                $crudConfig->setCrudConfigValue($value);
+                $crudConfig->update();
             }
         }
-
-        $crudConfig->setCrudConfigValue($value);
-        $crudConfig->update();
-
 
         /** @var ContainerFactoryLog_crud_notification $crud */
         $crud = Container::get('ContainerFactoryLog_crud_notification');
@@ -258,7 +256,6 @@ class ApplicationAdministrationConfig_app extends Application_abstract
 
     protected function formTypeSwitch(ContainerExtensionTemplateParseCreateForm_helper $formHelper, Config_crud $crudConfig, array $configForm, array $languageContainer)
     {
-
 
         $formHelper->addFormElement($configForm['_id'],
                                     'checkbox',

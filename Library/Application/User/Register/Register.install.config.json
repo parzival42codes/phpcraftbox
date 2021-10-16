@@ -16,6 +16,9 @@
       "language": {
         "de_DE": "User muss aktiviert werden",
         "en_US": "User must be activate"
+      },
+      "form": {
+        "type": "switch"
       }
     }
   }
