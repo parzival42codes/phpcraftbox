@@ -27,10 +27,25 @@ abstract class ContainerExtensionCache_abstract extends Base
         $this->parameter = $parameter;
         $this->prepare();
 
-        if (Config::get('/ContainerExtensionCache/source') === 'sqlite') {
-            $this->cacheResource = new ContainerExtensionCacheSqlite($this);
-        } elseif (Config::get('/ContainerExtensionCache/source') == 'redis') {
+        $cacheSource = 'sqlite';
+        if (Config::get('/ContainerExtensionCache/source') === 'redis') {
+            if (ContainerExtensionCacheRedis::connection()) {
+                $cacheSource = 'redis';
+            };
+        }
+
+        if ($cacheSource === 'redis') {
             $this->cacheResource = new ContainerExtensionCacheRedis($this);
+        }
+        else {
+            $this->cacheResource = new ContainerExtensionCacheSqlite($this);
+        }
+
+        if ($cacheSource !== Config::get('/ContainerExtensionCache/source')) {
+            CoreDebugLog::addLog('/System/Cache',
+                                 'Fallback from ' . Config::get('/ContainerExtensionCache/source'),
+                                 CoreDebugLog::LOG_TYPE_WARNING);
+
         }
 
     }

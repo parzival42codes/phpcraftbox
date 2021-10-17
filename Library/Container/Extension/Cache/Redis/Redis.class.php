@@ -3,20 +3,18 @@ declare(strict_types=1);
 
 class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
 {
-    protected Redis $redis;
+    protected static ?Redis $redis     = null;
+    protected static bool   $connected = false;
 
     public function __construct(ContainerExtensionCache_abstract $cacheObj)
     {
-        $this->redis = new Redis();
-        $this->redis->connect((string)Config::get('/environment/server/redis/host'),
-                              (int)Config::get('/environment/server/redis/port'));
 
         if (
             (!PAGE_REFRESH_DETECT_DEBUG)
         ) {
 
-            if ($this->redis->get($cacheObj->getIdent()) !== false) {
-                $cacheObj->setCacheContent(unserialize($this->redis->get($cacheObj->getIdent())));
+            if (self::$redis->get($cacheObj->getIdent()) !== false) {
+                $cacheObj->setCacheContent(unserialize(self::$redis->get($cacheObj->getIdent())));
             }
             else {
                 $cacheObj->setCacheContent(null);
@@ -34,8 +32,9 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
 
     /**
      * @param ContainerExtensionCache_abstract $cacheObj
-     * @param bool                             $forceCreate
      * @param array                            $scope
+     *
+     * @param bool                             $forceCreate
      *
      * @throws DetailedException
      */
@@ -65,11 +64,27 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
                 (!PAGE_REFRESH_DETECT_DEBUG)
             ) {
                 $serializeData = serialize($cacheObj->get());
-                $this->redis->set($cacheObj->getIdent(),
+                self::$redis->set($cacheObj->getIdent(),
                                   $serializeData,
                                   (int)Config::get('/ContainerExtensionCache/ttl'));
             }
         }
+    }
+
+    public static function connection()
+    {
+
+        if (self::$redis === null) {
+            self::$redis = new Redis();
+            try {
+                self::$connected = self::$redis->connect((string)Config::get('/environment/server/redis/host'),
+                                                         (int)Config::get('/environment/server/redis/port'));
+            } catch (Throwable $e) {
+                self::$connected = false;
+            }
+        }
+
+        return self::$connected;
     }
 
 }
