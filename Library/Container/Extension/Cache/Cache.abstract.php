@@ -10,42 +10,51 @@ abstract class ContainerExtensionCache_abstract extends Base
     const TARGET_INTERN = 1;
     const TARGET_EXTERN = 2;
 
-    protected array                              $parameter           = [];
-    protected string                             $ident               = '';
-    protected                                    $cacheContent        = null;
-    protected int                                $target              = self::TARGET_INTERN;
-    protected int                                $ttl                 = 0;
-    protected                                    $ttlDatetime;
-    protected int                                $size                = 0;
-    protected bool                               $persistent          = false;
-    protected string                             $dataVariableUpdated = '';
-    protected bool                               $isCreated           = false;
-    protected ?ContainerExtensionCache_interface $cacheResource       = null;
+    protected array                                     $parameter           = [];
+    protected string                                    $ident               = '';
+    protected                                           $cacheContent        = null;
+    protected int                                       $target              = self::TARGET_INTERN;
+    protected int                                       $ttl                 = 0;
+    protected                                           $ttlDatetime;
+    protected int                                       $size                = 0;
+    protected bool                                      $persistent          = false;
+    protected string                                    $dataVariableUpdated = '';
+    protected bool                                      $isCreated           = false;
+    protected static ?ContainerExtensionCache_interface $cacheResource       = null;
 
     public function __construct(...$parameter)
     {
         $this->parameter = $parameter;
         $this->prepare();
 
-        $cacheSource = 'sqlite';
-        if (Config::get('/ContainerExtensionCache/source') === 'redis') {
-            if (ContainerExtensionCacheRedis::connection()) {
-                $cacheSource = 'redis';
-            };
-        }
+        if (self::$cacheResource === null) {
 
-        if ($cacheSource === 'redis') {
-            $this->cacheResource = new ContainerExtensionCacheRedis($this);
-        }
-        else {
-            $this->cacheResource = new ContainerExtensionCacheSqlite($this);
-        }
+            $cacheSource = 'sqlite';
+            if (Config::get('/ContainerExtensionCache/source') === 'redis') {
+                if (ContainerExtensionCacheRedis::connection()) {
+                    $cacheSource = 'redis';
+                };
+            }   elseif (Config::get('/ContainerExtensionCache/source') === 'memcached') {
+                if (ContainerExtensionCacheMemcached::connection()) {
+                    $cacheSource = 'memcached';
+                };
+            }
 
-        if ($cacheSource !== Config::get('/ContainerExtensionCache/source')) {
-            CoreDebugLog::addLog('/System/Cache',
-                                 'Fallback from ' . Config::get('/ContainerExtensionCache/source'),
-                                 CoreDebugLog::LOG_TYPE_WARNING);
+            if ($cacheSource === 'redis') {
+                self::$cacheResource = new ContainerExtensionCacheRedis($this);
+            }    elseif ($cacheSource === 'memcached') {
+                self::$cacheResource = new ContainerExtensionCacheRedis($this);
+            }
+            else {
+                self::$cacheResource = new ContainerExtensionCacheSqlite($this);
+            }
 
+            if ($cacheSource !== Config::get('/ContainerExtensionCache/source')) {
+                CoreDebugLog::addLog('/System/Cache',
+                                     'Fallback from ' . Config::get('/ContainerExtensionCache/source'),
+                                     CoreDebugLog::LOG_TYPE_WARNING);
+
+            }
         }
 
     }
@@ -98,7 +107,7 @@ abstract class ContainerExtensionCache_abstract extends Base
     public function _get(array &$scope, bool $forceCreate = false)
     {
 
-        $this->cacheResource->get($this,
+        self::$cacheResource->get($this,
                                   $scope,
                                   $forceCreate);
 

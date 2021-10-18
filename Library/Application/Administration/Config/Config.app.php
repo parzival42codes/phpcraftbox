@@ -155,24 +155,22 @@ class ApplicationAdministrationConfig_app extends Application_abstract
      */
     private function formConfig(Config_crud $crudConfig, ContainerExtensionTemplateParseCreateForm_helper $formHelper, ContainerExtensionTemplateParseCreateFormResponse $formHelperResponse): string
     {
-        $jsonDecode = $crudConfig->getCrudConfigForm();
-        $configForm = json_decode((($jsonDecode !== null) ? $jsonDecode : '{}'),
-            true);
+        $configForm = Config::getForm($crudConfig->getCrudClass(),
+                                      $crudConfig->getCrudConfigKey());
 
-        $configForm['_id']    = substr($crudConfig->getCrudConfigKey(),
-                                       1);
-        $configForm['_class'] = $crudConfig->getCrudClass();
-        $configForm['modify'] = [
+        $configForm['_id']     = substr($crudConfig->getCrudConfigKey(),
+                                        1);
+        $configForm['_class']  = $crudConfig->getCrudClass();
+        $configForm['_modify'] = [
             [
                 'ContainerExtensionTemplateParseCreateFormModifyDefault',
                 $crudConfig->getCrudConfigValue()
             ]
         ];
 
-        if (($configForm['modify'] ?? false) === true) {
-            $configForm['modify'][] = 'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired';
+        if (($configForm['_modify'] ?? false) === true) {
+            $configForm['_modify'][] = 'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired';
         }
-
 
         $formType = ($configForm['type'] ?? '');
 
@@ -240,7 +238,8 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                     else {
                         $crudConfig->setCrudConfigValue('0');
                     }
-                } else {
+                }
+                else {
                     $crudConfig->setCrudConfigValue($allResponse[$key]);
                 }
             }
@@ -287,12 +286,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                             1 => ContainerFactoryLanguage::getLanguageText(($languageContainer ?? []))
                                         ],
                                     ],
-                                    [
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                            $crudConfig->getCrudConfigValue()
-                                        ],
-                                    ],
+                                    $configForm['_modify'],
                                     $configForm['_class']);
     }
 
@@ -311,12 +305,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
                                     [
                                         $options
                                     ],
-                                    [
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                            $crudConfig->getCrudConfigValue()
-                                        ],
-                                    ],
+                                    $configForm['_modify'],
                                     $configForm['_class']);
     }
 
@@ -333,12 +322,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $formHelper->addFormElement($configForm['_id'],
                                     'number',
                                     [],
-                                    [
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                            $crudConfig->getCrudConfigValue()
-                                        ],
-                                    ],
+                                    $configForm['_modify'],
                                     $configForm['_class']);
     }
 
@@ -347,13 +331,7 @@ class ApplicationAdministrationConfig_app extends Application_abstract
         $formHelper->addFormElement($configForm['_id'],
                                     'Textarea',
                                     [],
-                                    [
-                                        'ContainerExtensionTemplateParseCreateFormModifyValidatorRequired',
-                                        [
-                                            'ContainerExtensionTemplateParseCreateFormModifyDefault',
-                                            $crudConfig->getCrudConfigValue()
-                                        ],
-                                    ],
+                                    $configForm['_modify'],
                                     $configForm['_class']);
     }
 }

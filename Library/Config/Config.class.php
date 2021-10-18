@@ -34,8 +34,8 @@ class Config extends Base_abstract_keyvalue
     public static function get(string $path, $default = null)
     {
         if (
-        array_key_exists($path,
-                         self::$registry)
+            array_key_exists($path,
+                             self::$registry)
         ) {
             return self::$registry[$path];
         }
@@ -77,6 +77,37 @@ class Config extends Base_abstract_keyvalue
         while ($smtpData = $smtp->fetch()) {
             self::$registry['/' . $smtpData['crudClass'] . $smtpData['crudConfigKey']] = $smtpData['crudConfigValue'];
         }
+    }
+
+    public static function getForm(string  $rootClass, ?string $path = ''): array
+    {
+        $fileConfigImport = Container::get('ContainerFactoryFile',
+                                           [
+                                               'filename' => $rootClass . '.install.config.json',
+                                           ]);
+        if (!$fileConfigImport->exists()) {
+            throw new DetailedException('languageConfigFileNotFound',
+                                        0,
+                                        null,
+                                        [
+                                            'debug' => [
+                                                'class' => $rootClass,
+                                            ]
+                                        ]);
+        }
+
+        $fileConfigImport->load();
+        $fileConfigImport->decode();
+        $configAll = $fileConfigImport->get();
+
+        if ($path !== null) {
+            return ($configAll['content'][$path]['form']?? []);
+        }
+        else {
+            return $configAll['content'];
+        }
+
+
     }
 
 }

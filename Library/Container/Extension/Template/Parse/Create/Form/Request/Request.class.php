@@ -50,7 +50,7 @@ class ContainerExtensionTemplateParseCreateFormRequest extends Base
      */
     public static function getRequestDataAll(string $formid): array
     {
-        return self::$requestData[$formid];
+        return (self::$requestData[$formid] ?? []);
     }
 
     /**

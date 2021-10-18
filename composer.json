@@ -28,6 +28,7 @@
     "ext-json": "*",
     "ext-pdo": "*",
     "ext-gd": "*",
-    "ext-redis": "*"
+    "ext-redis": "*",
+    "ext-memcached": "*"
   }
 }

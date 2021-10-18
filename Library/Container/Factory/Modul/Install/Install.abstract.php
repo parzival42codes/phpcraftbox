@@ -347,8 +347,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
                 $configCrud->setCrudConfigValueDefault($data['crud']['valueDefault'] ?? $data['crud']['value']);
                 $configCrud->setCrudConfigGroup(($data['crud']['group'] ?? null));
                 $configCrud->setCrudConfigLanguage(json_encode(($data['crud']['language'] ?? [])));
-                $configCrud->setCrudConfigForm(json_encode(($data['crud']['form'] ?? [])));
-
                 $progressData['message'] = $configCrud->insert(true) . ' |##|blue';
 
                 /*$after*/

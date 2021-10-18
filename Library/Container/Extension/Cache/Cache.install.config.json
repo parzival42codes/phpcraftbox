@@ -17,6 +17,10 @@
           "redis": {
             "de_DE": "Redis (Speicher basiert)",
             "en_US": "Redis (Memory based)"
+          },
+          "memcached": {
+            "de_DE": "Memcached (Speicher basiert)",
+            "en_US": "Memcached (Memory based)"
           }
         },
         "required": true
