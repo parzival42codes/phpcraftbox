@@ -34,19 +34,21 @@ abstract class ContainerExtensionCache_abstract extends Base
                 if (ContainerExtensionCacheRedis::connection()) {
                     $cacheSource = 'redis';
                 };
-            }   elseif (Config::get('/ContainerExtensionCache/source') === 'memcached') {
+            }
+            elseif (Config::get('/ContainerExtensionCache/source') === 'memcached') {
                 if (ContainerExtensionCacheMemcached::connection()) {
                     $cacheSource = 'memcached';
                 };
             }
 
             if ($cacheSource === 'redis') {
-                self::$cacheResource = new ContainerExtensionCacheRedis($this);
-            }    elseif ($cacheSource === 'memcached') {
-                self::$cacheResource = new ContainerExtensionCacheRedis($this);
+                self::$cacheResource = new ContainerExtensionCacheRedis();
+            }
+            elseif ($cacheSource === 'memcached') {
+                self::$cacheResource = new ContainerExtensionCacheMemcached();
             }
             else {
-                self::$cacheResource = new ContainerExtensionCacheSqlite($this);
+                self::$cacheResource = new ContainerExtensionCacheSqlite();
             }
 
             if ($cacheSource !== Config::get('/ContainerExtensionCache/source')) {
@@ -110,72 +112,6 @@ abstract class ContainerExtensionCache_abstract extends Base
         self::$cacheResource->get($this,
                                   $scope,
                                   $forceCreate);
-
-//        $cacheName = explode('_',
-//                             get_called_class(),
-//                             2);
-//
-//        $scope['cacheClassName'] = $cacheName[0];
-//        $scope['cacheName']      = $cacheName[1];
-//        $scope['isCreated']      = false;
-//
-//        if (
-//            empty($this->cacheContent) || $forceCreate === true
-//        ) {
-//            $this->cacheContent = null;
-//            $this->create();
-//            $this->setIsCreated(true);
-//            $scope['isCreated'] = true;
-//
-//            if (empty($this->ident)) {
-//                throw new DetailedException('noIdent');
-//            }
-//
-//            if (
-//                (!PAGE_REFRESH_DETECT_DEBUG)
-//            ) {
-//
-//                /** @var ContainerFactoryDatabaseQuery $query */
-//                $query = Container::get('ContainerFactoryDatabaseQuery',
-//                                        __METHOD__ . '#insertUpdate',
-//                                        'cache',
-//                                        \ContainerFactoryDatabaseQuery::MODE_INSERT_UPDATE);
-//
-//                $serializeData = serialize($this->cacheContent);
-//                $query->setTable('cache');
-//                $query->setTableKey('ident');
-//                $query->setInsertUpdate('ident',
-//                                        $this->ident);
-//                $query->setInsertUpdate('content',
-//                                        $serializeData,
-//                                        true);
-//                $query->setInsertUpdate('target',
-//                                        $this->target,
-//                                        true);
-//                $query->setInsertUpdate('ttl',
-//                                        $this->ttl,
-//                                        true);
-//                $query->setInsertUpdate('persistent',
-//                                        (int)$this->persistent,
-//                                        true);
-//                $query->setInsertUpdate('size',
-//                                        strlen($serializeData),
-//                                        true);
-//
-//                $ttlDatetime = new \DateTime();
-//
-//                if ($this->ttl > 0) {
-//                    $ttlDatetime->modify('' . $this->ttl . 's');
-//                }
-//                $query->setInsertUpdate('ttlDatetime',
-//                    ((empty($this->ttl)) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase'))),
-//                                        true);
-//
-//                $query->construct();
-//                $query->execute();
-//            }
-//        }
-
 
         return $this->cacheContent;
     }

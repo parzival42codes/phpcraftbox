@@ -6,30 +6,6 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
     protected static ?Redis $redis     = null;
     protected static bool   $connected = false;
 
-    public function __construct(ContainerExtensionCache_abstract $cacheObj)
-    {
-
-        if (
-            (!PAGE_REFRESH_DETECT_DEBUG)
-        ) {
-
-            if (self::$redis->get($cacheObj->getIdent()) !== false) {
-                $cacheObj->setCacheContent(unserialize(self::$redis->get($cacheObj->getIdent())));
-            }
-            else {
-                $cacheObj->setCacheContent(null);
-            }
-
-            $cacheObj->setTtl((int)Config::get('/ContainerExtensionCache/ttl'));
-            $cacheObj->setTarget(ContainerExtensionCache_abstract::TARGET_INTERN);
-            $cacheObj->setPersistent(true);
-        }
-        else {
-            $cacheObj->setCacheContent(null);
-            $cacheObj->setPersistent(false);
-        }
-    }
-
     /**
      * @param ContainerExtensionCache_abstract $cacheObj
      * @param array                            $scope
@@ -48,8 +24,23 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
         $scope['cacheName']      = $cacheName[1];
         $scope['isCreated']      = false;
 
+        $redisData = self::$redis->get($cacheObj->getIdent());
+
+        if ($redisData !== false) {
+            $cacheData = unserialize($redisData);
+            if (!$cacheData !== false) {
+                $cacheObj->setCacheContent($cacheData);
+            }
+            else {
+                $cacheObj->setCacheContent(null);
+            }
+        }
+        else {
+            $cacheObj->setCacheContent(null);
+        }
+
         if (
-            empty($cacheObj->getCacheContent()) || $forceCreate === true
+            empty($cacheObj->getCacheContent()) || $forceCreate === true || PAGE_REFRESH_DETECT_DEBUG
         ) {
             $cacheObj->setCacheContent(null);
             $cacheObj->create();
@@ -60,14 +51,11 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
                 throw new DetailedException('noIdent');
             }
 
-            if (
-                (!PAGE_REFRESH_DETECT_DEBUG)
-            ) {
-                $serializeData = serialize($cacheObj->get());
-                self::$redis->set($cacheObj->getIdent(),
-                                  $serializeData,
-                                  (int)Config::get('/ContainerExtensionCache/ttl'));
-            }
+            $serializeData = serialize($cacheObj->getCacheContent());
+            self::$redis->set($cacheObj->getIdent(),
+                              $serializeData,
+                              (int)Config::get('/ContainerExtensionCache/ttl'));
+
         }
     }
 

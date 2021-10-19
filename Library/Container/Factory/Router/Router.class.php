@@ -136,10 +136,6 @@ class ContainerFactoryRouter extends Base
             $url          = $linkAnchor[0];
         }
 
-        debugDump($url);
-
-        debugDump(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
-
         if (
             strpos($url,
                    'index.php') !== false
@@ -310,12 +306,6 @@ class ContainerFactoryRouter extends Base
         $this->target      = ($routeFound['crudTarget'] ?? '');
         $this->route       = ($routeFound['crudRoute'] ?? '');
         $this->path        = ($routeFound['crudPath'] ?? '');
-
-        debugDump($this->application);
-        debugDump($this->target);
-        debugDump($this->route);
-        debugDump($this->path);
-        debugDump($this->query);
 
         return;
     }
