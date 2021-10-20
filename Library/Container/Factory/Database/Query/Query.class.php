@@ -955,7 +955,7 @@ class ContainerFactoryDatabaseQuery extends Base
                     break;
             }
             $scope['lastId']    = $this->lastId;
-            $scope['backtrace'] = ((\Config::get('/debug/status',
+            $scope['backtrace'] = ((\Config::get('/environment/debug/active',
                                                  CMS_DEBUG_ACTIVE) === false) ? '' : debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
 
             $this->smtp = $smtp;

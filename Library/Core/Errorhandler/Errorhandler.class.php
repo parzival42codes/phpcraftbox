@@ -271,7 +271,7 @@ class CoreErrorhandler
                         ]);
 
         if (
-            \Config::get('/debug/status',
+            \Config::get('/environment/debug/active',
                          CMS_DEBUG_ACTIVE) === true
         ) {
             $fileName           = Config::get('/cms/path/library') . 'Core/Errorhandler/Errorhandler.template.exception.debug.tpl';
@@ -470,7 +470,7 @@ function cmsShutdownError(): void
        <h1>PHP Error bar</h1>';
 
                 if (
-                    \Config::get('/debug/status',
+                    \Config::get('/environment/debug/active',
                                  CMS_DEBUG_ACTIVE) === false
                 ) {
                     $Output .= '<p>:(</p>';

@@ -79,6 +79,7 @@ try {
 
     require(CMS_PATH_LIBRARY_CORE . 'Core.class.php');
     require(CMS_PATH_LIBRARY_CONTAINER . '/Container.class.php');
+    require(CMS_PATH_LIBRARY_CONTAINER . '/Factory/File/File.class.php');
     require(CMS_PATH_LIBRARY_CONTAINER . '/Factory/Database/Database.class.php');
     require(CMS_PATH_LIBRARY_CONTAINER . '/Factory/Database/Engine/Engine.abstract.php');
     require(CMS_PATH_LIBRARY_CONTAINER . '/Factory/Database/Engine/Sqlite/Sqlite.class.php');

@@ -40,6 +40,23 @@ class Config extends Base_abstract_keyvalue
             return self::$registry[$path];
         }
 
+        $pathClass = explode('/',
+                             $path,
+                             3);
+
+        array_shift($pathClass);
+        $class = array_shift($pathClass);
+
+        $formData = self::getForm($class,
+                                  null);
+
+        $pathName = '/' . $pathClass[0];
+
+        if (isset($formData[$pathName]['value'])) {
+            return $formData[$pathName]['value'];
+        }
+
+
         if ($default !== null) {
             return $default;
         }
@@ -79,32 +96,24 @@ class Config extends Base_abstract_keyvalue
         }
     }
 
-    public static function getForm(string  $rootClass, ?string $path = ''): array
+    public static function getForm(string $rootClass, ?string $path = ''): array
     {
-        $fileConfigImport = Container::get('ContainerFactoryFile',
-                                           [
-                                               'filename' => $rootClass . '.install.config.json',
-                                           ]);
-        if (!$fileConfigImport->exists()) {
-            throw new DetailedException('languageConfigFileNotFound',
-                                        0,
-                                        null,
-                                        [
-                                            'debug' => [
-                                                'class' => $rootClass,
-                                            ]
-                                        ]);
-        }
+        $fileConfigImport = new ContainerFactoryFile($rootClass . '.install.config.json');
+        if ($fileConfigImport->exists()) {
 
-        $fileConfigImport->load();
-        $fileConfigImport->decode();
-        $configAll = $fileConfigImport->get();
+            $fileConfigImport->load();
+            $fileConfigImport->decode();
+            $configAll = $fileConfigImport->get();
 
-        if ($path !== null) {
-            return ($configAll['content'][$path]['form']?? []);
+            if ($path !== null) {
+                return ($configAll['content'][$path]['form'] ?? []);
+            }
+            else {
+                return $configAll['content'];
+            }
         }
         else {
-            return $configAll['content'];
+            return [];
         }
 
 

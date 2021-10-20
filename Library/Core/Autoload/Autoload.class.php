@@ -23,7 +23,7 @@ class CoreAutoload
         }
 
         if (
-            Config::get('/debug/status',
+            Config::get('/environment/debug/active',
                         CMS_DEBUG_ACTIVE) === true
         ) {
             CoreDebug::setRawDebugData(__CLASS__,
