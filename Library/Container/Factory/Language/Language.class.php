@@ -64,7 +64,22 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
                 return reset(self::$registry[$path]);
             }
         }
-        elseif ($alternative !== null) {
+
+        $pathClass = explode('/',
+                             $path,
+                             3);
+
+        array_shift($pathClass);
+        $class = array_shift($pathClass);
+
+        $language = self::getLanguage($class,
+                                      $pathClass[0]);
+
+        if ($language !== null) {
+            return $language;
+        }
+
+        if ($alternative !== null) {
             if (is_array($alternative)) {
 
                 $pathExtracted = explode('/',
@@ -80,7 +95,7 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
                     $crud->setCrudLanguageValue($alternative[Config::get('/environment/language')]);
                     $crud->setCrudLanguageValueDefault($alternative[Config::get('/environment/language')]);
 
-                    $crud->insertUpdate();
+                    $crud->insert(true);
 
                     return $alternative[Config::get('/environment/language')];
 
@@ -114,7 +129,7 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
 
         if (is_string($languageContainer)) {
             $languageContainerEncode = json_decode($languageContainer,
-                                             true);
+                                                   true);
             if ($languageContainerEncode === null) {
                 throw new DetailedException('languageTextJsonError',
                                             0,
@@ -137,5 +152,61 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
         else {
             return reset($languageContainer);
         }
+    }
+
+    public static function getLanguage(string $rootClass, string $path = ''): ?string
+    {
+        $fileConfigImport = new ContainerFactoryFile($rootClass . '.install.language.json');
+        if ($fileConfigImport->exists()) {
+
+            $fileConfigImport->load();
+            $fileConfigImport->decode();
+            $language = $fileConfigImport->get();
+
+            $pathName = '/' . $path;
+
+            if (isset($language['content'][$pathName]['language'])) {
+                $languageText = self::getLanguageText($language['content'][$pathName]['language']);
+
+                if (isset($languageText['value'])) {
+                    $languageText = $languageText['value'];
+                }
+
+                if ($languageText !== null) {
+                    /** @var ContainerFactoryLanguage_crud $crud */
+                    $crud = Container::get("ContainerFactoryLanguage_crud");
+                    $crud->setCrudClass($rootClass);
+                    $crud->setCrudLanguageLanguage(Config::get('/environment/language'));
+                    $crud->setCrudLanguageKey($pathName);
+                    $crud->setCrudLanguageValue($languageText);
+                    $crud->setCrudLanguageValueDefault($languageText);
+
+                    $crud->insert(true);
+
+                    return $languageText;
+                }
+
+                return null;
+            }
+            elseif (isset($language['content'][$pathName])) {
+                $languageText = self::getLanguageText($language['content'][$pathName]);
+
+                if ($languageText !== null) {
+                    /** @var ContainerFactoryLanguage_crud $crud */
+                    $crud = Container::get("ContainerFactoryLanguage_crud");
+                    $crud->setCrudClass($rootClass);
+                    $crud->setCrudLanguageLanguage(Config::get('/environment/language'));
+                    $crud->setCrudLanguageKey($pathName);
+                    $crud->setCrudLanguageValue($languageText);
+                    $crud->setCrudLanguageValueDefault($languageText);
+
+                    $crud->insert(true);
+
+                    return $languageText;
+                }
+            }
+        }
+
+        return null;
     }
 }

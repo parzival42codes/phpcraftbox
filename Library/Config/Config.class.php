@@ -115,8 +115,6 @@ class Config extends Base_abstract_keyvalue
         else {
             return [];
         }
-
-
     }
 
 }

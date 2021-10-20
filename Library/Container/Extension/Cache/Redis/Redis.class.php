@@ -28,7 +28,7 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
 
         if ($redisData !== false) {
             $cacheData = unserialize($redisData);
-            if (!$cacheData !== false) {
+            if ($cacheData !== false) {
                 $cacheObj->setCacheContent($cacheData);
             }
             else {
@@ -42,6 +42,7 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
         if (
             empty($cacheObj->getCacheContent()) || $forceCreate === true || PAGE_REFRESH_DETECT_DEBUG
         ) {
+
             $cacheObj->setCacheContent(null);
             $cacheObj->create();
             $cacheObj->setIsCreated(true);
@@ -52,9 +53,10 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
             }
 
             $serializeData = serialize($cacheObj->getCacheContent());
-            self::$redis->set($cacheObj->getIdent(),
-                              $serializeData,
-                              (int)Config::get('/ContainerExtensionCache/ttl'));
+
+            self::$redis->setex($cacheObj->getIdent(),
+                                (int)Config::get('/ContainerExtensionCache/ttl'),
+                                $serializeData);
 
         }
     }

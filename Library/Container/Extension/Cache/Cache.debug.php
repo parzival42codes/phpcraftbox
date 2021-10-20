@@ -56,6 +56,7 @@ class ContainerExtensionCache_debug extends CoreDebug_abstract
 
         $template->set(ContainerFactoryLanguage::get('/ContainerExtensionCache/debug/header'));
         $template->assignArray([
+                                   'source'     => Config::get('/ContainerExtensionCache/source'),
                                    'countRead'  => $countRead,
                                    'countWrite' => $countWrite,
                                ]);

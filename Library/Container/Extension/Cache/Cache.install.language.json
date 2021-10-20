@@ -5,7 +5,7 @@
       "group": "debug",
       "language": {
         "de_DE": {
-          "value": "Cache lesen: {$countRead} Cache schreiben {$countWrite}"
+          "value": "{$source} | Cache lesen: {$countRead} Cache schreiben {$countWrite}"
         }
       }
     }
