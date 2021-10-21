@@ -1,0 +1,16 @@
+{
+  "type": "install.menu",
+  "content": {
+    "link": "index.php?application=ApplicationAdministrationSystemCache",
+    "menuClassMain": "ApplicationAdministrationSystemCache",
+    "menuIcon": "",
+    "language": {
+      "de_DE": {
+        "menuTitle": "Cache",
+        "menuDescription": "",
+        "menuPath": "/Administration/System",
+        "menuAccess": "ApplicationAdministrationSystemCache"
+      }
+    }
+  }
+}

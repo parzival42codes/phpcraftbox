@@ -1,0 +1,13 @@
+{
+    "type": "install.language",
+    "content": {
+        "/breadcrumb": {
+            "de_DE": "Blog Übersicht",
+            "en_US": "Blog Overview"
+        }    ,
+        "/action/flush": {
+            "de_DE": "Cache löschen",
+            "en_US": "Cache flush"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "simple": {
+        "default": {
+            "path": "/administration/system/cache"
+        }
+    },
+    "regex": []
+}

@@ -77,4 +77,28 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
         return self::$connected;
     }
 
+    public static function getCache()
+    {
+        if (self::connection()) {
+
+            $keys = self::$redis->keys('*');
+
+            $cacheContent = [];
+            foreach ($keys as $key) {
+                $cacheContent[] = [
+                    'key'   => $key,
+                    'value' => self::$redis->get($key),
+                    'ttl'   => 0,
+                    'size'  => strlen(self::$redis->get($key)),
+                ];
+            }
+
+            return $cacheContent;
+        }
+        else {
+            return [];
+        }
+
+    }
+
 }

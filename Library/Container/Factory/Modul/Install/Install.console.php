@@ -38,6 +38,7 @@ class ContainerFactoryModulInstall_console extends Console_abstract
             //            'CoreDebugAssert',
             'CoreIndex',
             'ContainerExtensionCache',
+            'ApplicationAdministrationSystemCache',
             'ContainerIndexPage',
             'ContainerIndexPageBox',
             'ContainerIndexPageBreadcrumb',
