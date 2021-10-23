@@ -1,1 +1,1 @@
-<div class="ApplicationAdministrationSystemCache content-box">{$content}</div>
+<code>{$content}</code>

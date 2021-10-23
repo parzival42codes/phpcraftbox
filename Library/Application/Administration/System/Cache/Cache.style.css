@@ -1,5 +1,10 @@
-.ApplicationAdministrationSystemCache.content-box {
-    width: 10em;
-    height: 10em;
+#ApplicationAdministrationSystemCache .table-cell-key-key {
+    width: 50%;
+}
+
+#ApplicationAdministrationSystemCache .table-cell-key-value code {
+    width: 50em;
+    height: 25em;
     overflow: scroll;
+    display: inline-block;
 }

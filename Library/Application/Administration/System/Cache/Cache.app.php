@@ -50,13 +50,18 @@ class ApplicationAdministrationSystemCache_app extends Application_abstract
                     $template = new ContainerExtensionTemplate();
                     $template->set($templateCache->get()['box']);
 
-                    $content['value'] = htmlentities(strtr($content['value'],
+                    $content['key'] = strtr($content['key'],
+                                              [
+                                                  '/' => '&shy;',
+                                              ]);
+
+                    $content['value'] = strtr($content['value'],
                                                            [
                                                                '{' => '&#123;',
                                                                '}' => '&#125;',
-                                                               '>' => '&lt;',
-                                                               '<' => '&gt;',
-                                                           ]));
+                                                               '<' => '&lt;',
+                                                               '>' => '&gt;',
+                                                           ]);
 
                     $template->assign('content',
                                       $content['value']);
