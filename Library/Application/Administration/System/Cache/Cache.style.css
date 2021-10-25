@@ -2,9 +2,9 @@
     width: 50%;
 }
 
-#ApplicationAdministrationSystemCache .table-cell-key-value code {
+#ApplicationAdministrationSystemCache .table-cell-key-content code {
     width: 50em;
-    height: 25em;
-    overflow: scroll;
+    max-height: 25em;
+    overflow: auto;
     display: inline-block;
 }

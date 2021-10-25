@@ -55,7 +55,7 @@ function simpleCaptureException(Throwable $exception): void
     require_once CMS_PATH_LIBRARY_CONTAINER . '/Helper/View/View.class.php';
     require_once CMS_PATH_LIBRARY_CONTAINER . '/Factory/File/File.class.php';
 
-    simpleDebugDump($exception);
+//    simpleDebugDump($exception);
 
 //    d(CMS_PATH_LIBRARY_CONTAINER . '/Extension/Extern/Style/Style.error.css');
     d($exception);

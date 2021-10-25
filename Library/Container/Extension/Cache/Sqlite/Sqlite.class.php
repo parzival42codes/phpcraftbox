@@ -126,6 +126,7 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
             $query->select('persistent');
             $query->select('ttl');
             $query->select('ttlDatetime');
+            $query->select('size');
             $query->select('dataVariableUpdated');
 
             $query->setParameterWhere('ident',
@@ -143,6 +144,7 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
                 $cacheObj->setTtlDatetime($smtpData['ttlDatetime']);
                 $cacheObj->setTarget((int)$smtpData['target']);
                 $cacheObj->setPersistent((bool)$smtpData['persistent']);
+                $cacheObj->setSize((int)$smtpData['size']);
                 $cacheObj->setDataVariableUpdated($smtpData['dataVariableUpdated']);
             }
 
@@ -160,45 +162,49 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
                 throw new DetailedException('noIdent');
             }
 
-            /** @var ContainerFactoryDatabaseQuery $query */
-            $query = Container::get('ContainerFactoryDatabaseQuery',
-                                    __METHOD__ . '#insertUpdate',
-                                    'cache',
-                                    \ContainerFactoryDatabaseQuery::MODE_INSERT_UPDATE);
+//            if ($cacheObj->getCacheContent() !== null) {
 
-            $serializeData = serialize($cacheObj->getCacheContent());
-            $query->setTable('cache');
-            $query->setTableKey('ident');
-            $query->setInsertUpdate('ident',
-                                    $cacheObj->getIdent());
-            $query->setInsertUpdate('content',
-                                    $serializeData,
-                                    true);
-            $query->setInsertUpdate('target',
-                                    $cacheObj->getTarget(),
-                                    true);
-            $query->setInsertUpdate('ttl',
-                                    $cacheObj->getTtl(),
-                                    true);
-            $query->setInsertUpdate('persistent',
-                                    (int)$cacheObj->getPersistent(),
-                                    true);
-            $query->setInsertUpdate('size',
-                                    strlen($serializeData),
-                                    true);
+                /** @var ContainerFactoryDatabaseQuery $query */
+                $query = Container::get('ContainerFactoryDatabaseQuery',
+                                        __METHOD__ . '#insertUpdate',
+                                        'cache',
+                                        \ContainerFactoryDatabaseQuery::MODE_INSERT_UPDATE);
 
-            $ttlDatetime = new \DateTime();
+                $serializeData = serialize($cacheObj->getCacheContent());
+                $query->setTable('cache');
+                $query->setTableKey('ident');
+                $query->setInsertUpdate('ident',
+                                        $cacheObj->getIdent());
+                $query->setInsertUpdate('content',
+                                        $serializeData,
+                                        true);
+                $query->setInsertUpdate('target',
+                                        $cacheObj->getTarget(),
+                                        true);
+                $query->setInsertUpdate('ttl',
+                                        $cacheObj->getTtl(),
+                                        true);
+                $query->setInsertUpdate('persistent',
+                                        (int)$cacheObj->getPersistent(),
+                                        true);
+                $query->setInsertUpdate('size',
+                                        strlen((is_string($cacheObj->getCacheContent()) ? $cacheObj->getCacheContent() : var_export($cacheObj->getCacheContent(),
+                                                                                                                                    true))),
+                                        true);
 
-            if ($cacheObj->getTtl() > 0) {
-                $ttlDatetime->modify('' . $cacheObj->getTtl() . 's');
-            }
-            $query->setInsertUpdate('ttlDatetime',
-                ((empty($this->ttl)) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase'))),
-                                    true);
+                $ttlDatetime = new \DateTime();
 
-            $query->construct();
-            $query->execute();
+                if ($cacheObj->getTtl() > 0) {
+                    $ttlDatetime->modify('' . $cacheObj->getTtl() . 's');
+                }
+                $query->setInsertUpdate('ttlDatetime',
+                    ((empty($this->ttl)) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase'))),
+                                        true);
 
+                $query->construct();
+                $query->execute();
+
+//            }
         }
     }
 
@@ -228,5 +234,29 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
     {
         self::$persistentCache[$key] = $value;
     }
+
+    public static function getCache()
+    {
+
+        $cacheContent = [];
+
+        foreach (self::getPersistentCacheAll() as $element) {
+            $cacheContent[] = [
+                'key'         => $element['ident'],
+                'content'     => $element['content'],
+                'ttl'         => $element['ttl'],
+                'ttlDateTime' => $element['ttlDatetime'],
+                'size'        => ContainerHelperCalculate::calculateMemoryBytes((int)$element['size']),
+            ];
+        }
+
+//        d(self::getPersistentCacheAll());
+//        eol();
+
+        return $cacheContent;
+
+
+    }
+
 
 }

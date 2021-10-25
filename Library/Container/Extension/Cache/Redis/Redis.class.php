@@ -5,6 +5,7 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
 {
     protected static ?Redis $redis     = null;
     protected static bool   $connected = false;
+    protected array         $redisData = [];
 
     /**
      * @param ContainerExtensionCache_abstract $cacheObj
@@ -28,8 +29,18 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
 
         if ($redisData !== false) {
             $cacheData = unserialize($redisData);
+
             if ($cacheData !== false) {
-                $cacheObj->setCacheContent($cacheData);
+
+                $cacheObj->setCacheContent($cacheData['content']);
+                $cacheObj->setTtl((int)$cacheData['ttl']);
+                $cacheObj->setTtlDatetime($cacheData['ttlDatetime']);
+                $cacheObj->setTarget((int)$cacheData['target']);
+                $cacheObj->setPersistent(true);
+                $cacheObj->setDataVariableUpdated($cacheData['dataVariableUpdated']);
+                $cacheObj->setSize($cacheData['size']);
+
+
             }
             else {
                 $cacheObj->setCacheContent(null);
@@ -52,7 +63,29 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
                 throw new DetailedException('noIdent');
             }
 
-            $serializeData = serialize($cacheObj->getCacheContent());
+            $ttlDatetime = new \DateTime();
+
+            if ($cacheObj->getTtl() > 0) {
+                $ttlDatetime->modify('' . $cacheObj->getTtl() . 's');
+            }
+            else {
+                if (Config::get('/ContainerExtensionCache/ttl') > 0) {
+                    $ttlDatetime->modify('' . Config::get('/ContainerExtensionCache/ttl') . 's');
+                    $cacheObj->setTtl((int)Config::get('/ContainerExtensionCache/ttl'));
+                }
+            }
+
+            $ttlDatetimeNow = new \DateTime();
+
+            $serializeData = serialize([
+                                           'content'             => $cacheObj->getCacheContent(),
+                                           'ttl'                 => $cacheObj->getTtl(),
+                                           'ttlDatetime'         => (empty($this->ttl)) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase')),
+                                           'target'              => $cacheObj->getTarget(),
+                                           'dataVariableUpdated' => $ttlDatetimeNow->format((string)Config::get('/cms/date/dbase')),
+                                           'size'                => strlen((is_string($cacheObj->getCacheContent()) ? $cacheObj->getCacheContent() : var_export($cacheObj->getCacheContent(),
+                                                                                                                                                                true))),
+                                       ]);
 
             self::$redis->setex($cacheObj->getIdent(),
                                 (int)Config::get('/ContainerExtensionCache/ttl'),
@@ -85,13 +118,33 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
 
             $cacheContent = [];
             foreach ($keys as $key) {
-                $cacheContent[] = [
-                    'key'   => $key,
-                    'value' => self::$redis->get($key),
-                    'ttl'   => 0,
-                    'size'  => strlen(self::$redis->get($key)),
-                ];
+
+                $redisData = unserialize(self::$redis->get($key));
+
+                if ($redisData) {
+                    $cacheContent[] = [
+                        'key'         => $key,
+                        'content'     => is_string($redisData['content']) ? $redisData['content'] : var_export($redisData['content'],
+                                                                                                               true),
+                        'ttl'         => self::$redis->ttl($key).' / '.$redisData['ttl'],
+                        'ttlDateTime' => $redisData['ttlDatetime'],
+                        'size'        => ContainerHelperCalculate::calculateMemoryBytes($redisData['size']),
+                    ];
+                }
+                else {
+                    $cacheContent[] = [
+                        'key'         => $key,
+                        'content'     => '???',
+                        'ttl'         => 0,
+                        'ttlDatetime' => '0',
+                        'size'        => 0,
+                    ];
+                }
+
             }
+
+//            d($cacheContent);
+//            eol();
 
             return $cacheContent;
         }

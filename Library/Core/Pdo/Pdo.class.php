@@ -82,7 +82,7 @@ class ePDOStatement extends PDOStatement
             if (class_exists('CoreErrorhandler') === true) {
                 $DebugTemp['getTrace'] = '';
 
-                simpleDebugDump($DebugTemp);
+//                simpleDebugDump($DebugTemp);
 
                 throw new DetailedException('databaseExecuteError',
                                             0,

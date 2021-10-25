@@ -415,7 +415,6 @@ set_exception_handler(array(
 
 function cmsShutdownError(): void
 {
-
     if ($error = error_get_last()) {
         if (isset($error['type']) && ($error['type'] == E_ERROR || $error['type'] == E_PARSE || $error['type'] == E_COMPILE_ERROR)) {
             $contentSend = ob_get_contents();
@@ -459,6 +458,7 @@ function cmsShutdownError(): void
                                  false) === true
                 ) {
                     simpleDebugDump($error);
+                    die();
                     eol();
                     $Output .= file_get_contents(Core::getClassFileName('ContainerExtensionStyle_error_css'));
                 }
@@ -628,8 +628,10 @@ function cmsShutdownError(): void
 
 function cmsShutdown(): void
 {
-    cmsShutdownError();
-    ob_end_flush();
-    exit;
+    d(error_get_last());
+
+//    cmsShutdownError();
+//    ob_end_flush();
+//    exit;
 
 }

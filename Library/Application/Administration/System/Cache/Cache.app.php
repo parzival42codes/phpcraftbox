@@ -51,37 +51,68 @@ class ApplicationAdministrationSystemCache_app extends Application_abstract
                     $template->set($templateCache->get()['box']);
 
                     $content['key'] = strtr($content['key'],
-                                              [
-                                                  '/' => '&shy;',
-                                              ]);
+                                            [
+                                                '/' => '&shy;',
+                                            ]);
 
-                    $content['value'] = strtr($content['value'],
-                                                           [
-                                                               '{' => '&#123;',
-                                                               '}' => '&#125;',
-                                                               '<' => '&lt;',
-                                                               '>' => '&gt;',
-                                                           ]);
+//                    d($content);
+//                    eol();
+
+                    $content['content'] = strtr(($content['content'] ?? ''),
+                        [
+                            '{' => '&#123;',
+                            '}' => '&#125;',
+                            '<' => '&lt;',
+                            '>' => '&gt;',
+                        ]);
 
                     $template->assign('content',
-                                      $content['value']);
+                                      $content['content']);
                     $template->parse();
 
-                    $content['value'] = $template->get();
+                    $content['content'] = $template->get();
                 });
 
             $template->assign('Table_Table',
                               $cacheContent);
 
-
-//
-//
         }
         elseif ($cacheSource === 'memcached') {
 
         }
         else {
+            $cacheContent = ContainerExtensionCacheSqlite::getCache();
 
+            array_walk($cacheContent,
+                function (&$content) {
+                    $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
+                                                                                       'box');
+
+                    $template = new ContainerExtensionTemplate();
+                    $template->set($templateCache->get()['box']);
+
+                    $content['key'] = strtr($content['key'],
+                                            [
+                                                '/' => '&shy;',
+                                            ]);
+
+                    $content['content'] = strtr(($content['content'] ?? ''),
+                        [
+                            '{' => '&#123;',
+                            '}' => '&#125;',
+                            '<' => '&lt;',
+                            '>' => '&gt;',
+                        ]);
+
+                    $template->assign('content',
+                                      $content['content']);
+                    $template->parse();
+
+                    $content['content'] = $template->get();
+                });
+
+            $template->assign('Table_Table',
+                              $cacheContent);
         }
 
         $template->parse();

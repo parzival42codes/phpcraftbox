@@ -18,7 +18,7 @@
                 language-de_DE="Schlüssel"
                 language-en_US="Key"}"
                 },
-                "value": {
+                "content": {
                 "titleHeader": "{insert/language class="ApplicationAdministrationSystemCache" path="/table/content"
                 language-de_DE="Inhalt"
                 language-en_US="Content"}"

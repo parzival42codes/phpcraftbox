@@ -8,7 +8,7 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
         $parameter = $this->getParameter();
         $content   = ContainerFactoryLanguage::get('/' . $parameter['class'] . $parameter['path']);
 
-        if (!empty($content)) {
+        if (!$content === null) {
             return $content;
         }
         else {
@@ -24,6 +24,7 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
                                     $this->getParseString());
 
         $parameter = $this->getParameter();
+
         preg_match_all('@(.*?)="(.*?)"@si',
                        $contentParse,
                        $matchLanguage,
@@ -56,6 +57,8 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
 
                 if ($languageCollectKey === Config::get('/environment/language')) {
                     $content = $languageCollectValueItem;
+                    ContainerFactoryLanguage::set('/' . $parameter['class'] . $parameter['path'],
+                                                  $content);
                 }
 
                 /** @var ContainerFactoryLanguage_crud $crud */

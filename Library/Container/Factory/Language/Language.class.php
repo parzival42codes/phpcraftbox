@@ -45,16 +45,30 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
         $query->construct();
         $smtp = $query->execute();
 
+        $doubleCheck = [];
+
+        $count = 0;
         while ($smtpData = $smtp->fetch()) {
+            $count++;
             self::$registry['/' . $smtpData['crudClass'] . $smtpData['crudLanguageKey']][$smtpData['crudLanguageLanguage']] = $smtpData['crudLanguageValue'];
+            $doubleCheck['/' . $smtpData['crudClass'] . $smtpData['crudLanguageKey'] . $smtpData['crudLanguageLanguage']]   = true;
         }
 
+//        $cacheContent    = new ContainerFactoryLanguage_cache_entries();
+//        $cacheContentGet = $cacheContent->get();
+//
+//        if (!empty($cacheContentGet)) {
+//            self::$registry = $cacheContent->get();
+//        }
+
+//        d($count);
+//        d($doubleCheck);
 //        d(self::$registry);
 //        eol();
 
     }
 
-    public static function get(string $path, $alternative = null): string
+    public static function get(string $path, $alternative = null): ?string
     {
         if (isset(self::$registry[$path]) === true) {
             if (isset(self::$registry[$path][Config::get('/environment/language')])) {
@@ -113,7 +127,7 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
                                        'language' => '<details><summary>Language List</summary><pre>' . var_export(array_keys(self::$registry),
                                                                                                                    true) . '</pre></details>',
                                    ]);
-        return '';
+        return null;
     }
 
     public static function set(string $path, string $value): void
