@@ -66,11 +66,11 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
             $ttlDatetime = new \DateTime();
 
             if ($cacheObj->getTtl() > 0) {
-                $ttlDatetime->modify('' . $cacheObj->getTtl() . 's');
+                $ttlDatetime->modify('+' . Config::get('/ContainerExtensionCache/ttl') . ' seconds');
             }
             else {
                 if (Config::get('/ContainerExtensionCache/ttl') > 0) {
-                    $ttlDatetime->modify('' . Config::get('/ContainerExtensionCache/ttl') . 's');
+                    $ttlDatetime->modify('+' . Config::get('/ContainerExtensionCache/ttl') . ' seconds');
                     $cacheObj->setTtl((int)Config::get('/ContainerExtensionCache/ttl'));
                 }
             }

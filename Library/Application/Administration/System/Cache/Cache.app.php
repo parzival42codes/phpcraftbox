@@ -41,79 +41,57 @@ class ApplicationAdministrationSystemCache_app extends Application_abstract
 
         if ($cacheSource === 'redis') {
             $cacheContent = ContainerExtensionCacheRedis::getCache();
-
-            array_walk($cacheContent,
-                function (&$content) {
-                    $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
-                                                                                       'box');
-
-                    $template = new ContainerExtensionTemplate();
-                    $template->set($templateCache->get()['box']);
-
-                    $content['key'] = strtr($content['key'],
-                                            [
-                                                '/' => '&shy;',
-                                            ]);
-
-//                    d($content);
-//                    eol();
-
-                    $content['content'] = strtr(($content['content'] ?? ''),
-                        [
-                            '{' => '&#123;',
-                            '}' => '&#125;',
-                            '<' => '&lt;',
-                            '>' => '&gt;',
-                        ]);
-
-                    $template->assign('content',
-                                      $content['content']);
-                    $template->parse();
-
-                    $content['content'] = $template->get();
-                });
-
-            $template->assign('Table_Table',
-                              $cacheContent);
-
         }
         elseif ($cacheSource === 'memcached') {
 
         }
         else {
             $cacheContent = ContainerExtensionCacheSqlite::getCache();
-
-            array_walk($cacheContent,
-                function (&$content) {
-                    $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
-                                                                                       'box');
-
-                    $template = new ContainerExtensionTemplate();
-                    $template->set($templateCache->get()['box']);
-
-                    $content['key'] = strtr($content['key'],
-                                            [
-                                                '/' => '&shy;',
-                                            ]);
-
-                    $content['content'] = strtr(($content['content'] ?? ''),
-                        [
-                            '{' => '&#123;',
-                            '}' => '&#125;',
-                            '<' => '&lt;',
-                            '>' => '&gt;',
-                        ]);
-
-                    $template->assign('content',
-                                      $content['content']);
-                    $template->parse();
-
-                    $content['content'] = $template->get();
-                });
-
-            $template->assign('Table_Table',
-                              $cacheContent);
         }
+
+        array_walk($cacheContent,
+            function (&$content) {
+                $templateCache = new ContainerExtensionTemplateLoad_cache_template(Core::getRootClass(__CLASS__),
+                                                                                   'box,ttl');
+
+                $template = new ContainerExtensionTemplate();
+                $template->set($templateCache->get()['box']);
+
+                $content['key'] = strtr($content['key'],
+                                        [
+                                            '/' => '&shy;',
+                                        ]);
+
+                $content['content'] = strtr(($content['content'] ?? ''),
+                    [
+                        '{' => '&#123;',
+                        '}' => '&#125;',
+                        '<' => '&lt;',
+                        '>' => '&gt;',
+                    ]);
+
+                $template->assign('content',
+                                  $content['content']);
+                $template->parse();
+
+                $content['content'] = $template->get();
+
+                $templateDateTime = new ContainerExtensionTemplate();
+                $templateDateTime->set($templateCache->get()['ttl']);
+
+                $ttlDiff = ContainerHelperDatetime::calculateDifference(new DateTime(),
+                                                                        new DateTime($content['ttlDateTime'] ?? 'now'));
+
+                $templateDateTime->assign('sec',
+                                          $ttlDiff['s']);
+
+                $templateDateTime->parse();
+                $content['ttl'] = $templateDateTime->get();
+
+            });
+
+        $template->assign('Table_Table',
+                          $cacheContent);
 
         $template->parse();
 

@@ -8,6 +8,8 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
         $parameter = $this->getParameter();
         $content   = ContainerFactoryLanguage::get('/' . $parameter['class'] . $parameter['path']);
 
+//        d('/' . $parameter['class'] . $parameter['path']);
+
         if (!$content === null) {
             return $content;
         }
@@ -55,6 +57,8 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
         if (isset($languageCollect['class']) && isset($languageCollect['path']) && isset($languageCollect['class'])) {
             foreach ($languageCollectValue as $languageCollectKey => $languageCollectValueItem) {
 
+//                d(ContainerFactoryLanguage::getAll());
+
                 if ($languageCollectKey === Config::get('/environment/language')) {
                     $content = $languageCollectValueItem;
                     ContainerFactoryLanguage::set('/' . $parameter['class'] . $parameter['path'],
@@ -69,6 +73,12 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
                 $crud->setCrudLanguageValue($languageCollectValueItem);
                 $crud->setCrudLanguageValueDefault($languageCollectValueItem);
                 $crud->insertUpdate();
+
+//                d($crud->getCrudId());
+//                d($languageCollectValueItem);
+//                d(ContainerFactoryLanguage::getAll());
+//
+//                eol();
 
             }
         }

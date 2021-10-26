@@ -8,11 +8,12 @@ class ContainerHelperDatetime
 
         if (!$date instanceof DateTime) {
             $dateTime = new DateTime($date);
-        } else {
+        }
+        else {
             $dateTime = $date;
         }
 
-        if(empty($date)) {
+        if (empty($date)) {
             return '';
         }
 
@@ -20,15 +21,10 @@ class ContainerHelperDatetime
                         $dateTime->getTimestamp());
     }
 
-    public static function calculateDifference($dateStart, $dateEnd): array
+    public static function calculateDifference(DateTime $dateStart, DateTime $dateEnd): array
     {
-        if (!is_object($dateStart)) {
-            $dateStart = new \DateTime($dateStart);
-        }
-
-        if (!is_object($dateEnd)) {
-            $dateEnd = new \DateTime($dateEnd);
-        }
+        d($dateStart);
+        d($dateEnd);
 
         $dateDiff = $dateStart->diff($dateEnd);
 
@@ -45,6 +41,9 @@ class ContainerHelperDatetime
         foreach ($dateArray as $dateArrayValue) {
             $output[$dateArrayValue] = $dateDiff->$dateArrayValue;
         }
+
+        d($output);
+
         return $output;
     }
 
