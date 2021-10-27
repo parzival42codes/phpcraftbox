@@ -71,6 +71,10 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
                 return self::$registry[$path][Config::get('/environment/language')];
             }
             else {
+                CoreDebugLog::addLog('/Language/get',
+                                     'Missing Locale Translation: ' . $path,
+                                     CoreDebugLog::LOG_TYPE_WARNING);
+
                 return reset(self::$registry[$path]);
             }
         }
@@ -107,7 +111,7 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
 
                     $crud->insert(true);
 
-                    return $alternative[Config::get('/environment/language')];
+                    return ($alternative[Config::get('/environment/language')] ?? null);
 
                 }
             }
@@ -216,6 +220,10 @@ class ContainerFactoryLanguage extends Base_abstract_keyvalue
                 }
             }
         }
+
+        CoreDebugLog::addLog('/Language/get',
+                             'Missing Form: ' . $rootClass . '.install.language.json # Path: ' . $path,
+                             CoreDebugLog::LOG_TYPE_WARNING);
 
         return null;
     }
