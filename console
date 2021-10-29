@@ -11,7 +11,15 @@ $consoleClassName = ucfirst($parameterClass) . '_console';
 // C:\xampp\htdocs\cms\Library\Container\Extension\Cache\Cache.console.php
 
 /** @var Console_abstract $console */
-$console = Container::get($consoleClassName,
-                           ...$parameter);
+$console = new $consoleClassName(...
+        $parameter);
+
+$console->setOutputMode(Console_abstract::OUTPUT_MODE_CONSOLE);
 $console->execute();
+
+require_once(CMS_PATH_STORAGE_CACHE . '/class/console/console_' . $console->getConsoleID() . '.php');
+$className = 'console_' . $console->getConsoleID();
+new $className(Console_abstract::OUTPUT_MODE_CONSOLE);
+
+exit();
 ?>

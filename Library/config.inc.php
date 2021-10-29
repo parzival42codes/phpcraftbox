@@ -113,7 +113,7 @@ try {
 
     }
 
-    $requestUri = $_SERVER['REQUEST_URI'];
+    $requestUri = ($_SERVER['REQUEST_URI'] ?? '');
 
     $config['server/path']            = ($_GET['url'] ?? '');
     $config['server/http']            = ((($_SERVER['SERVER_PORT'] ?? 0) == 443) ? 'https://' : 'http://');

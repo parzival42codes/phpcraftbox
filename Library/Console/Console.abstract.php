@@ -27,7 +27,7 @@ abstract class Console_abstract extends Base
         if ($this->consoleID == 0) {
             $this->consoleID = time();
         }
-        
+
         $this->parameter = $parameter;
 
         $this->methodPrepare = 'prepare' . ucfirst($method);
@@ -144,6 +144,8 @@ abstract class Console_abstract extends Base
         $this->classConstructor->addMethod('__construct',
             function () {
 
+                $this->outputMethode = $outputMethode;
+
                 /** @var string $outputMethode */
                 $this->outputObject = Container::get('ConsoleOutput' . $outputMethode);
 
@@ -208,45 +210,91 @@ abstract class Console_abstract extends Base
             function () {
 
                 $step                    = (int)$this->progress;
-                $stepEnd                 = $step + Config::get('/environment/console/ajax_step');
-                $msTime                  = microtime(true);
-                $progressData['message'] = '';
 
-                for ($i = $step; $i <= $this->progressCounter; $i++) {
-                    try {
-                        $progressData = call_user_func([
-                                                           $this,
-                                                           'Step' . $i
-                                                       ],
+                if ($this->getOutputMode() === self::OUTPUT_MODE_AJAX) {
+                    $stepEnd                 = $step + Config::get('/environment/console/ajax_step');
+                    $msTime                  = microtime(true);
+                    $progressData['message'] = '';
+
+                    for ($i = $step; $i <= $this->progressCounter; $i++) {
+                        try {
+                            $progressData = call_user_func([
+                                                               $this,
+                                                               'Step' . $i
+                                                           ],
+                                                           $progressData);
+
+                            $messageFormat = explode('|##|',
+                                ($progressData['message'] ?? ''));
+
+                            $messages[] = $i . ') ' . $this->outputObject->formatMessage($messageFormat[0],
+                                    ($messageFormat[1] ?? null),
+                                    ($messageFormat[2] ?? null));
+
+                            $this->writeDatabase($progressData,
+                                                 $i,
+                                                 implode("\n",
+                                                         $messages));
+
+                            $this->outputObject->step($this,
+                                                      $i,
+                                                      $progressData,
+                                                      $i === $stepEnd,
+                                                      $msTime,
+                                                      $messages,
+                                                      $i === $this->progressCounter,
+                                                      $this->consoleID);
+
+                        } catch (Throwable $exception) {
+                            $this->outputObject->error($exception,
+                                                       $i,
                                                        $progressData);
-
-                        $messageFormat = explode('|##|',
-                            ($progressData['message'] ?? ''));
-
-                        $messages[] = $i . ') ' . $this->outputObject->formatMessage($messageFormat[0],
-                                ($messageFormat[1] ?? null),
-                                ($messageFormat[2] ?? null));
-
-                        $this->writeDatabase($progressData,
-                                             $i,
-                                             implode("\n",
-                                                     $messages));
-
-                        $this->outputObject->step($this,
-                                                  $i,
-                                                  $progressData,
-                                                  $i === $stepEnd,
-                                                  $msTime,
-                                                  $messages,
-                                                  $i === $this->progressCounter,
-                                                  $this->consoleID);
-
-                    } catch (Throwable $exception) {
-                        $this->outputObject->error($exception,
-                                                   $i,
-                                                   $progressData);
+                        }
                     }
                 }
+                elseif ($this->getOutputMode() === self::OUTPUT_MODE_CONSOLE) {
+                    $stepEnd                 = $step + 1;
+                    $msTime                  = microtime(true);
+                    $progressData['message'] = '';
+
+                    for ($i = $step; $i <= $this->progressCounter; $i++) {
+                        try {
+                            $progressData = call_user_func([
+                                                               $this,
+                                                               'Step' . $i
+                                                           ],
+                                                           $progressData);
+
+                            $messageFormat = explode('|##|',
+                                ($progressData['message'] ?? ''));
+
+                            $messages[] = $i . ') ' . $this->outputObject->formatMessage($messageFormat[0],
+                                    ($messageFormat[1] ?? null),
+                                    ($messageFormat[2] ?? null));
+
+                            $this->writeDatabase($progressData,
+                                                 $i,
+                                                 implode("\n",
+                                                         $messages));
+
+                            $this->outputObject->step($this,
+                                                      $i,
+                                                      $progressData,
+                                                      $i === $stepEnd,
+                                                      $msTime,
+                                                      $messages,
+                                                      $i === $this->progressCounter,
+                                                      $this->consoleID);
+
+                        } catch (Throwable $exception) {
+                            $this->outputObject->error($exception,
+                                                       $i,
+                                                       $progressData);
+                        }
+                    }
+                }
+
+
             },
                                            'array $progressData');
 
@@ -290,6 +338,9 @@ abstract class Console_abstract extends Base
                                  'cguiMax'   => $this->progressCounter,
                                  'consoleID' => $this->consoleID
                              ]);
+        }
+        elseif ($this->getOutputMode() === self::OUTPUT_MODE_CONSOLE) {
+
         }
 
     }
@@ -381,6 +432,14 @@ abstract class Console_abstract extends Base
     {
         $this->progressIdentifyCounter = 0;
         $this->progressIdentify        = $progressIdentify;
+    }
+
+    /**
+     * @return int|string
+     */
+    public function getConsoleID()
+    {
+        return $this->consoleID;
     }
 
 }
