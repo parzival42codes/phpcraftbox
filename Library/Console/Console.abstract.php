@@ -11,7 +11,6 @@ abstract class Console_abstract extends Base
     protected array                 $progressPartMax = [];
 
     protected string $outputMode    = self::OUTPUT_MODE_CONSOLE;
-    protected string $action        = '';
     protected string $methodPrepare = '';
     protected        $consoleID     = '';
     protected array  $parameter     = [];
@@ -22,14 +21,13 @@ abstract class Console_abstract extends Base
     protected int    $progressIdentifyCounter = 0;
     protected string $progressIdentify        = '';
 
-    public function __construct(string $consoleID, string $action, string $method, ...$parameter)
+    public function __construct(string $consoleID, string $method, ...$parameter)
     {
         $this->consoleID = $consoleID;
         if ($this->consoleID == 0) {
             $this->consoleID = time();
         }
-
-        $this->action    = $action;
+        
         $this->parameter = $parameter;
 
         $this->methodPrepare = 'prepare' . ucfirst($method);

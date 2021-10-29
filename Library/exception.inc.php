@@ -52,6 +52,13 @@ class DetailedException extends MessageException
 
 function simpleCaptureException(Throwable $exception): void
 {
+    $isCLI = (php_sapi_name() == 'cli');
+
+    if ($isCLI === true) {
+        d($exception);
+        die();
+    }
+
     require_once CMS_PATH_LIBRARY_CONTAINER . '/Helper/View/View.class.php';
     require_once CMS_PATH_LIBRARY_CONTAINER . '/Factory/File/File.class.php';
 

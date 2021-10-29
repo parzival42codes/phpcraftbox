@@ -105,6 +105,10 @@ abstract class Base_abstract_crud
         $queryItem->setParameterWhere(static::$tableId,
                                       $id);
 
+        simpleDebugLog(static::$tableId);
+        simpleDebugLog($id);
+        simpleDebugLog($queryItem->getQueryParsed());
+
         $queryItem->construct();
         $queryItem->execute();
 

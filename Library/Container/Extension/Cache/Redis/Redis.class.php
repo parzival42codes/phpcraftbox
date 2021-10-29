@@ -66,7 +66,7 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
             $ttlDatetime = new \DateTime();
 
             if ($cacheObj->getTtl() > 0) {
-                $ttlDatetime->modify('+' . Config::get('/ContainerExtensionCache/ttl') . ' seconds');
+                $ttlDatetime->modify('+' . $cacheObj->getTtl() . ' seconds');
             }
             else {
                 if (Config::get('/ContainerExtensionCache/ttl') > 0) {
@@ -80,7 +80,7 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
             $serializeData = serialize([
                                            'content'             => $cacheObj->getCacheContent(),
                                            'ttl'                 => $cacheObj->getTtl(),
-                                           'ttlDatetime'         => (empty($this->ttl)) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase')),
+                                           'ttlDatetime'         => (empty($cacheObj->getTtl())) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase')),
                                            'target'              => $cacheObj->getTarget(),
                                            'dataVariableUpdated' => $ttlDatetimeNow->format((string)Config::get('/cms/date/dbase')),
                                            'size'                => strlen((is_string($cacheObj->getCacheContent()) ? $cacheObj->getCacheContent() : var_export($cacheObj->getCacheContent(),
@@ -126,7 +126,7 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
                         'key'         => $key,
                         'content'     => is_string($redisData['content']) ? $redisData['content'] : var_export($redisData['content'],
                                                                                                                true),
-                        'ttl'         => self::$redis->ttl($key).' / '.$redisData['ttl'],
+                        'ttl'         => self::$redis->ttl($key) . ' / ' . $redisData['ttl'],
                         'ttlDateTime' => $redisData['ttlDatetime'],
                         'size'        => ContainerHelperCalculate::calculateMemoryBytes($redisData['size']),
                     ];

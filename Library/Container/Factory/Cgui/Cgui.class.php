@@ -71,7 +71,6 @@ class ContainerFactoryCgui extends Base
         /** @var Console_abstract $console */
         $console = Container::get($modul->get() . '_console',
                                   0,
-                                  'prepare',
                                   $command->get(),
                                   $parameter->get());
         $console->setOutputMode(Console_abstract::OUTPUT_MODE_AJAX);

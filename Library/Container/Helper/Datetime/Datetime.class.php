@@ -23,9 +23,6 @@ class ContainerHelperDatetime
 
     public static function calculateDifference(DateTime $dateStart, DateTime $dateEnd): array
     {
-        d($dateStart);
-        d($dateEnd);
-
         $dateDiff = $dateStart->diff($dateEnd);
 
         $dateArray = [
@@ -42,7 +39,7 @@ class ContainerHelperDatetime
             $output[$dateArrayValue] = $dateDiff->$dateArrayValue;
         }
 
-        d($output);
+        $output['negativ'] = ($dateStart > $dateEnd);
 
         return $output;
     }

@@ -1,6 +1,5 @@
 #!/usr/bin/php -q
 <?php
-require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Library/exception.inc.php');
 require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Library/config.inc.php');
 
 $parameter = $_SERVER["argv"];
@@ -13,7 +12,6 @@ $consoleClassName = ucfirst($parameterClass) . '_console';
 
 /** @var Console_abstract $console */
 $console = Container::get($consoleClassName,
-                           $parameter);
+                           ...$parameter);
 $console->execute();
-
 ?>

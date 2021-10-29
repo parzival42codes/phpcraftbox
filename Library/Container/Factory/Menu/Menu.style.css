@@ -123,3 +123,8 @@
     border: 1px solid #style-color-primary-dark;
     border-radius: 0.1em;
 }
+
+.icon-menu {
+    font-size: 1.2em;
+    vertical-align: middle;
+}

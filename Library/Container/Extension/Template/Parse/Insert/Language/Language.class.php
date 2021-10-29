@@ -10,9 +10,9 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
 
         $content = ContainerFactoryLanguage::get($path);
 
-//        d('/' . $parameter['class'] . $parameter['path']);
+  //        d('/' . $parameter['class'] . $parameter['path']);
 
-        if (!$content === null) {
+        if ($content !== null) {
             return $content;
         }
         else {
@@ -55,17 +55,6 @@ class ContainerExtensionTemplateParseInsertLanguage extends ContainerExtensionTe
         }
 
         $content = '';
-
-//        CoreDebugLog::addLog('/Language/insert',
-//                             'Language: ' . var_export($matchLanguage,
-//                                                             true) . ' # Parameter: ' . var_export($parameter,
-//                                                                                                   true),
-//                             CoreDebugLog::LOG_TYPE_WARNING);
-//
-//
-//        debugDump($matchLanguage);
-//        debugDump($parameter);
-//        debugDump($languageCollect);
 
         if (isset($languageCollect['class']) && isset($languageCollect['path']) && isset($languageCollect['class'])) {
             foreach ($languageCollectValue as $languageCollectKey => $languageCollectValueItem) {

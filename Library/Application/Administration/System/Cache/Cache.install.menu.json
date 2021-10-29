@@ -3,7 +3,7 @@
   "content": {
     "link": "index.php?application=ApplicationAdministrationSystemCache",
     "menuClassMain": "ApplicationAdministrationSystemCache",
-    "menuIcon": "",
+    "menuIcon": "{insert/function function=\"googlematerialicons\" icon=\"cached\" class=\"icon-menu\"}",
     "language": {
       "de_DE": {
         "menuTitle": "Cache",

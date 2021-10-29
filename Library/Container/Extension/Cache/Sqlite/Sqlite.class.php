@@ -162,8 +162,6 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
                 throw new DetailedException('noIdent');
             }
 
-            d($cacheObj->getIdent());
-
 //            if ($cacheObj->getCacheContent() !== null) {
 
             /** @var ContainerFactoryDatabaseQuery $query */

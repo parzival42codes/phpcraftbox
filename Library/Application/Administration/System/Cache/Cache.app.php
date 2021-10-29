@@ -79,11 +79,25 @@ class ApplicationAdministrationSystemCache_app extends Application_abstract
                 $templateDateTime = new ContainerExtensionTemplate();
                 $templateDateTime->set($templateCache->get()['ttl']);
 
+                $ttlDateTime = ((empty($content['ttlDateTime']) || $content['ttlDateTime'] === '0000-00-00 00:00:00') ? 'now' : $content['ttlDateTime']);
+
                 $ttlDiff = ContainerHelperDatetime::calculateDifference(new DateTime(),
-                                                                        new DateTime($content['ttlDateTime'] ?? 'now'));
+                                                                        new DateTime($ttlDateTime));
 
                 $templateDateTime->assign('sec',
                                           $ttlDiff['s']);
+                $templateDateTime->assign('min',
+                                          $ttlDiff['i']);
+                $templateDateTime->assign('hours',
+                                          $ttlDiff['h']);
+                $templateDateTime->assign('days',
+                                          $ttlDiff['d']);
+                $templateDateTime->assign('month',
+                                          $ttlDiff['m']);
+                $templateDateTime->assign('years',
+                                          $ttlDiff['y']);
+                $templateDateTime->assign('negative',
+                                          (int)$ttlDiff['negative']);
 
                 $templateDateTime->parse();
                 $content['ttl'] = $templateDateTime->get();

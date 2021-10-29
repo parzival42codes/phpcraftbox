@@ -107,47 +107,52 @@ class CoreErrorhandler
         }
 
         if (
-            self::$errorCounterCount < \Config::get('/debug/errorhandler/capture/normal/max',
-                                                    100)
+            class_exists(Config::class,
+                         true)
         ) {
-            $Backtrace = ((\Config::get('/debug/errorhandler/capture/normal/args',
-                                        CMS_DEBUG_ACTIVE) ?? false) ? debug_backtrace() : debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
-
-            /** @var ContainerFactoryLogError_crud $log */
-            $log = Container::get('ContainerFactoryLogError_crud');
-            $log->setCrudTitle($message);
-            $log->setCrudContent('');
-            $log->setCrudPath('/normal/' . $level . '/' . Core::getReducedFilename($file_handler) . '/' . $line_handler);
-            $log->setCrudType(ContainerFactoryLogError_crud::LOG_TYPE_WARNING);
-            $log->setCrudBacktrace(serialize(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)));
-            $log->insert();
-
-            if (class_exists('Container') && class_exists('CoreDebug')) {
-                CoreDebug::setRawDebugData(__CLASS__,
-                                           [
-                                               'level'     => $level,
-                                               'message'   => $message,
-                                               'file'      => $file_handler,
-                                               'line'      => $line_handler,
-                                               'backtrace' => $Backtrace,
-                                               '_'         => [
-                                                   'backtraceFile'  => '',
-                                                   'backtraceLine'  => '',
-                                                   'microtimeStart' => 0,
-                                                   'memoryStart'    => 0,
-                                                   'microtimeEnd'   => 0,
-                                                   'memoryEnd'      => 0,
-                                               ]
-                                           ]);
-            }
 
             if (
-                Config::get('/environment/debug/active',
-                            0) == 1 && Config::get('/environment/debug/print/error',
-                                                   0) == 1
+                self::$errorCounterCount < \Config::get('/debug/errorhandler/capture/normal/max',
+                                                        100)
             ) {
+                $Backtrace = ((\Config::get('/debug/errorhandler/capture/normal/args',
+                                            CMS_DEBUG_ACTIVE) ?? false) ? debug_backtrace() : debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS));
 
-                echo '
+                /** @var ContainerFactoryLogError_crud $log */
+                $log = Container::get('ContainerFactoryLogError_crud');
+                $log->setCrudTitle($message);
+                $log->setCrudContent('');
+                $log->setCrudPath('/normal/' . $level . '/' . Core::getReducedFilename($file_handler) . '/' . $line_handler);
+                $log->setCrudType(ContainerFactoryLogError_crud::LOG_TYPE_WARNING);
+                $log->setCrudBacktrace(serialize(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)));
+                $log->insert();
+
+                if (class_exists('Container') && class_exists('CoreDebug')) {
+                    CoreDebug::setRawDebugData(__CLASS__,
+                                               [
+                                                   'level'     => $level,
+                                                   'message'   => $message,
+                                                   'file'      => $file_handler,
+                                                   'line'      => $line_handler,
+                                                   'backtrace' => $Backtrace,
+                                                   '_'         => [
+                                                       'backtraceFile'  => '',
+                                                       'backtraceLine'  => '',
+                                                       'microtimeStart' => 0,
+                                                       'memoryStart'    => 0,
+                                                       'microtimeEnd'   => 0,
+                                                       'memoryEnd'      => 0,
+                                                   ]
+                                               ]);
+                }
+
+                if (
+                    Config::get('/environment/debug/active',
+                                0) == 1 && Config::get('/environment/debug/print/error',
+                                                       0) == 1
+                ) {
+
+                    echo '
          ErrorLevel: ' . $level . '<br />
          ErrorMessage: ' . $message . '<br />
          ErrorFile: ' . $file_handler . '<br />
@@ -157,12 +162,12 @@ class CoreErrorhandler
                              true) . '</pre><br />
  <hr />9
    ';
-            }
+                }
 
 
-            if (defined('CMS_CACHE_ERROR') === true && CMS_CACHE_ERROR === true) {
+                if (defined('CMS_CACHE_ERROR') === true && CMS_CACHE_ERROR === true) {
 
-                $errorText = '
+                    $errorText = '
      Referrer: ' . ((isset($_SERVER['HTTP_REFERER']) === true) ? htmlentities(strip_tags($_SERVER['HTTP_REFERER']),
                                                                               ENT_QUOTES) : '-') . '
      UserAgent: ' . ((isset($_SERVER['HTTP_USER_AGENT']) === true) ? htmlentities(strip_tags($_SERVER['HTTP_USER_AGENT']),
@@ -185,20 +190,21 @@ class CoreErrorhandler
 //                'noDB' => true
 //            )
 
-                if (is_dir(CMS_PATH_CACHE . DIRECTORY_SEPARATOR . 'Error') === false) {
-                    mkdir(CMS_PATH_CACHE . DIRECTORY_SEPARATOR . 'Error',
-                          0777);
-                }
+                    if (is_dir(CMS_PATH_CACHE . DIRECTORY_SEPARATOR . 'Error') === false) {
+                        mkdir(CMS_PATH_CACHE . DIRECTORY_SEPARATOR . 'Error',
+                              0777);
+                    }
 
-                file_put_contents(CMS_PATH_CACHE . DIRECTORY_SEPARATOR . 'Error' . DIRECTORY_SEPARATOR . strtr(CMS_DATA_DATE_PARSE . '_' . microtime(),
-                                                                                                               array(
-                                                                                                                   ' ' => '_',
-                                                                                                                   ':' => '_',
-                                                                                                                   '.' => '_'
-                                                                                                               )) . '.txt',
-                                  $errorText);
+                    file_put_contents(CMS_PATH_CACHE . DIRECTORY_SEPARATOR . 'Error' . DIRECTORY_SEPARATOR . strtr(CMS_DATA_DATE_PARSE . '_' . microtime(),
+                                                                                                                   array(
+                                                                                                                       ' ' => '_',
+                                                                                                                       ':' => '_',
+                                                                                                                       '.' => '_'
+                                                                                                                   )) . '.txt',
+                                      $errorText);
 
 //\SysCore::CacheWrapper(strtr(CMS_DATA_DATE_PARSE . '_' . microtime(), array(' ' => '_', ':' => '_', '.' => '_')) . '.txt', 'error', $errorText);
+                }
             }
         }
     }
@@ -278,7 +284,7 @@ class CoreErrorhandler
             $fileContentMessage = file_get_contents($fileName);
 
             if (
-            class_exists('ContainerHelperView')
+                class_exists('ContainerHelperView')
             ) {
                 $outputBacktrace = \ContainerHelperView::convertBacktraceView($exception->getTrace());
             }
@@ -628,10 +634,8 @@ function cmsShutdownError(): void
 
 function cmsShutdown(): void
 {
-    d(error_get_last());
-
-//    cmsShutdownError();
-//    ob_end_flush();
-//    exit;
+    cmsShutdownError();
+    ob_end_flush();
+    exit;
 
 }
