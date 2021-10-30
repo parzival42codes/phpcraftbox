@@ -29,6 +29,7 @@
     "ext-pdo": "*",
     "ext-gd": "*",
     "ext-redis": "*",
-    "ext-memcached": "*"
+    "ext-memcached": "*",
+    "ext-zlib": "*"
   }
 }

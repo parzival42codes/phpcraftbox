@@ -1,5 +1,9 @@
 <?php declare(strict_types=1);
 
+define('PHP_CRAFT_BOX_CLI',
+    (php_sapi_name() == 'cli'));
+
+
 // Melde alle PHP Fehler (siehe Changelog)
 error_reporting(E_ALL);
 // Dies entspricht error_reporting(E_ALL);
@@ -35,7 +39,9 @@ const CMS_MKDIR_RIGHTS = 0777;
 
 const CMS_DEBUG_ACTIVE = true;
 
-ob_start();
+if (PHP_CRAFT_BOX_CLI === false) {
+    ob_start();
+}
 
 $httpHost = ($_SERVER['HTTP_HOST'] ?? '');
 

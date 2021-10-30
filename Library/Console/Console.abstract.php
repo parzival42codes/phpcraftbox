@@ -209,7 +209,7 @@ abstract class Console_abstract extends Base
         $this->classConstructor->addMethod('progressDataQuery',
             function () {
 
-                $step                    = (int)$this->progress;
+                $step = (int)$this->progress;
 
                 if ($this->getOutputMode() === self::OUTPUT_MODE_AJAX) {
                     $stepEnd                 = $step + Config::get('/environment/console/ajax_step');
@@ -268,21 +268,20 @@ abstract class Console_abstract extends Base
                             $messageFormat = explode('|##|',
                                 ($progressData['message'] ?? ''));
 
-                            $messages[] = $i . ') ' . $this->outputObject->formatMessage($messageFormat[0],
+                            $messages = $i . ') ' . $this->outputObject->formatMessage($messageFormat[0],
                                     ($messageFormat[1] ?? null),
                                     ($messageFormat[2] ?? null));
 
                             $this->writeDatabase($progressData,
                                                  $i,
-                                                 implode("\n",
-                                                         $messages));
+                                                 $messages);
 
                             $this->outputObject->step($this,
                                                       $i,
                                                       $progressData,
                                                       $i === $stepEnd,
                                                       $msTime,
-                                                      $messages,
+                                                      [$messages],
                                                       $i === $this->progressCounter,
                                                       $this->consoleID);
 

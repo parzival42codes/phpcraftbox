@@ -4,15 +4,21 @@ require(dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Library/config.inc.php');
 
 $parameter = $_SERVER["argv"];
 array_shift($parameter);
-$parameterClass = array_shift($parameter);
 
-$consoleClassName = ucfirst($parameterClass) . '_console';
+$parameterPrepare = implode(' ',
+                            $parameter);
 
-// C:\xampp\htdocs\cms\Library\Container\Extension\Cache\Cache.console.php
+$parameterParsed = explode('::',
+                           $parameterPrepare);
+
+$consoleClassName = ucfirst(array_shift($parameterParsed)) . '_console';
+$consoleMethod    = array_shift($parameterParsed);
 
 /** @var Console_abstract $console */
-$console = new $consoleClassName(...
-        $parameter);
+$console = new $consoleClassName(0,
+                                 $consoleMethod,
+        ...
+                                 $parameterParsed);
 
 $console->setOutputMode(Console_abstract::OUTPUT_MODE_CONSOLE);
 $console->execute();
