@@ -3,36 +3,76 @@
 class Console_console extends Console_abstract
 {
 
-    public function prepareInstall()
+    public function prepareCacheDelete()
     {
+        $this->addProgressFunction(function ($progressData) {
 
-        $this->console->addProgressFunction($function,
-                                            [
-                                                '/*$before*/' => '
+            $cacheSource = 'sqlite';
+            if (Config::get('/ContainerExtensionCache/source') === 'redis') {
+                if (ContainerExtensionCacheRedis::connection()) {
+                    $cacheSource = 'redis';
+                };
+            }
+            elseif (Config::get('/ContainerExtensionCache/source') === 'memcached') {
+                if (ContainerExtensionCacheMemcached::connection()) {
+                    $cacheSource = 'memcached';
+                };
+            }
 
-        $data = ' . var_export($data,
-                               true) . '
-        ;
-        ',
-                                                '/*$after*/'  => '
+            if ($cacheSource === 'redis') {
+                $cacheResourceObj = new ContainerExtensionCacheRedis();
+            }
+            elseif ($cacheSource === 'memcached') {
+                $cacheResourceObj = new ContainerExtensionCacheMemcached();
+            }
+            else {
+                $cacheResourceObj = new ContainerExtensionCacheSqlite();
+            }
 
-                                                return $progressData;
-                                                ',
-                                            ]);
+            $progressData['message'] = 'Flush Cache: ' . $cacheSource . ' : ' . (int)$cacheResourceObj::flush();
 
-
-//        foreach ($this->module as $parameterKey => $parameterItem) {
-//            /** @var ContainerFactoryModulInstall_abstract $installModule */
-//
-//            $installModule = Container::get($parameterItem . '_install',
-//                                            $this);
-//            $this->setProgressIdentify($parameterItem);
-//            $installModule->install();
-//
-////            d($this->getClassConstructor());
-//        }
-
+            return $progressData;
+        });
     }
 
+
+    public function prepareCacheContent()
+    {
+        d($this->parameter);
+
+        switch ($this->parameter[0]) {
+            case 'autoload':
+                $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                           'cache',
+                                                           ContainerFactoryDatabaseQuery::MODE_SELECT);
+
+                $query->setTable('autoload');
+                $query->select('path');
+                $query->select('class');
+
+                $query->construct();
+                $smtp = $query->execute();
+
+                d($smtp->fetchAll());
+
+//                $this->generateList([
+//                    'class',
+//                    'path',
+//                                    ]);
+                break;
+            default:
+
+
+        }
+    }
+
+    public function prepareTest()
+    {
+
+        $this->addProgressFunction(function ($progressData) {
+            $progressData['message'] = 'foo bar';
+            return $progressData;
+        });
+    }
 
 }

@@ -14,18 +14,36 @@ class ConsoleOutputConsole extends ConsoleOutput_abstract
 
     public function step(object $object, int $i, array $progressData, bool $step, float $ms, array $messages, bool $isFinal = false, string $consoleID = ''): void
     {
+
+        $message = strip_tags(implode('',
+                                      $messages));
+        $message = str_replace("\n",
+                               ' ',
+                               $message);
+        $message = str_replace("\r",
+                               ' ',
+                               $message);
+
+        $message = strtr($message,
+                         [
+                             "\n" => ''
+                         ]);
+
         $conLength = 200;
 
         $propertyData = $object->getStepProperty($i);
 
-        if ($isFinal === true) {
-            unlink(CMS_PATH_STORAGE_CACHE . '/class/console/console_' . $consoleID . '.php');
-            echo "\n\n";
-            return;
-        }
-
         echo str_repeat("\x08",
                         $conLength);
+
+        if ($isFinal === true) {
+            unlink(CMS_PATH_STORAGE_CACHE . '/class/console/console_' . $consoleID . '.php');
+            $output = '|' . str_repeat('#',
+                                       20) . '| - 100 % / |' . str_repeat('#',
+                                                                          20) . '| - 100 % ' . $message;
+            echo $output . "\n\n";
+            return;
+        }
 
         $processMainPercent   = ceil($i * 100 / $object->getProgressCounter());
         $processMain          = ceil($processMainPercent / 5);
@@ -42,20 +60,6 @@ class ConsoleOutputConsole extends ConsoleOutput_abstract
                                            $processPart);
         $processPartIndicator .= str_repeat(' ',
                                             $processPartRight);
-
-        $message = strip_tags(implode('',
-                                      $messages));
-        $message = str_replace("\n",
-                               ' ',
-                               $message);
-        $message = str_replace("\r",
-                               ' ',
-                               $message);
-
-        $message = strtr($message,
-                         [
-                             "\n" => ''
-                         ]);
 
         $output = '|' . $processMainIndicator . '| - ' . $processMainPercent . ' % / |' . $processPartIndicator . '| - ' . $processPartPercent . ' % ' . $message;
 

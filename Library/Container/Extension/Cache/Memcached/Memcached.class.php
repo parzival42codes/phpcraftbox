@@ -55,7 +55,7 @@ class ContainerExtensionCacheMemcached implements ContainerExtensionCache_interf
             self::$memcached = new Memcached();
             try {
                 self::$memcached->addServer((string)Config::get('/environment/server/memcached/host'),
-                                                               (int)Config::get('/environment/server/memcached/port'));
+                                            (int)Config::get('/environment/server/memcached/port'));
                 self::$connected = (bool)self::$memcached->getStats();
             } catch (Throwable $e) {
                 self::$connected = false;
@@ -64,6 +64,11 @@ class ContainerExtensionCacheMemcached implements ContainerExtensionCache_interf
 
         return self::$connected;
 
+    }
+
+    public static function flush()
+    {
+        return self::$memcached->flush();
     }
 
 }

@@ -62,11 +62,10 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
         }
 
         if (empty(self::getPersistentCacheAll())) {
-            /** @var ContainerFactoryDatabaseQuery $query */
-            $query = Container::get('ContainerFactoryDatabaseQuery',
-                                    __METHOD__ . '#select',
-                                    'cache',
-                                    ContainerFactoryDatabaseQuery::MODE_SELECT);
+
+            $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                       'cache',
+                                                       ContainerFactoryDatabaseQuery::MODE_SELECT);
 
             $query->setTable('cache');
             $query->select('ident');
@@ -206,7 +205,7 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
                                     true);
 
             $query->setInsertUpdate('ttlDatetime',
-                (empty($cacheObj->getTtl())) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase')),
+                                    (empty($cacheObj->getTtl())) ? '0000-00-00 00:00:00' : $ttlDatetime->format((string)Config::get('/cms/date/dbase')),
                                     true);
 
             $query->construct();
@@ -245,7 +244,6 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
 
     public static function getCache()
     {
-
         $cacheContent = [];
 
         foreach (self::getPersistentCacheAll() as $element) {
@@ -259,9 +257,22 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
         }
 
         return $cacheContent;
-
-
     }
 
+    public static function connection()
+    {
+        return true;
+    }
+
+    public static function flush()
+    {
+        $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                   'cache',
+                                                   ContainerFactoryDatabaseQuery::MODE_OTHER);
+        $query->query('DELETE FROM cache');
+        $query->execute();
+
+        return true;
+    }
 
 }

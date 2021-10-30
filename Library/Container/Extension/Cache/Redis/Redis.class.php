@@ -110,6 +110,11 @@ class ContainerExtensionCacheRedis implements ContainerExtensionCache_interface
         return self::$connected;
     }
 
+    public static function flush()
+    {
+        return self::$redis->flushAll();
+    }
+
     public static function getCache()
     {
         if (self::connection()) {

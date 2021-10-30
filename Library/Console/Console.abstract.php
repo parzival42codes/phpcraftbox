@@ -441,4 +441,9 @@ abstract class Console_abstract extends Base
         return $this->consoleID;
     }
 
+    protected function generateList(array $header, array $content)
+    {
+
+    }
+
 }
