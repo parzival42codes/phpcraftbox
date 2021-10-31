@@ -109,7 +109,16 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
         $scope['isCreated']      = false;
 
         if (self::getPersistentCache($cacheObj->getIdent())) {
-            $cacheObj->setCacheContent(unserialize(self::getPersistentCache($cacheObj->getIdent())['content']));
+            $cacheObjData = self::getPersistentCache($cacheObj->getIdent());
+
+            $cacheObj->setCacheContent(unserialize($cacheObjData['content']));
+            $cacheObj->setTtl((int)$cacheObjData['ttl']);
+            $cacheObj->setTtlDatetime($cacheObjData['ttlDatetime']);
+            $cacheObj->setTarget((int)$cacheObjData['target']);
+            $cacheObj->setPersistent((bool)$cacheObjData['persistent']);
+            $cacheObj->setSize((int)$cacheObjData['size']);
+            $cacheObj->setDataVariableUpdated($cacheObjData['dataVariableUpdated']);
+
         }
         else {
             /** @var ContainerFactoryDatabaseQuery $query */
@@ -145,6 +154,17 @@ class ContainerExtensionCacheSqlite implements ContainerExtensionCache_interface
                 $cacheObj->setPersistent((bool)$smtpData['persistent']);
                 $cacheObj->setSize((int)$smtpData['size']);
                 $cacheObj->setDataVariableUpdated($smtpData['dataVariableUpdated']);
+            }
+
+        }
+
+
+        if ($cacheObj->getTtlDatetime() !== '0000-00-00 00:00:00') {
+            $ttlDatetimeNow      = new DateTime();
+            $ttlDatetimeCacheObj = new DateTime($cacheObj->getTtlDatetime());
+
+            if ($ttlDatetimeCacheObj < $ttlDatetimeNow) {
+                $forceCreate = true;
             }
 
         }
