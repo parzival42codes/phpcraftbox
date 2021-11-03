@@ -81,6 +81,11 @@ abstract class Console_abstract extends Base
                                              0,
                                              $this->classConstructor::ACCESS_PROTECTED);
 
+        $this->classConstructor->addProperty('parameter',
+                                             var_export($this->parameter,
+                                                        true),
+                                             $this->classConstructor::ACCESS_PROTECTED);
+
         $this->classConstructor->addConst('OUTPUT_MODE_CONSOLE',
                                           '"Console"');
 
@@ -100,6 +105,13 @@ abstract class Console_abstract extends Base
         $this->classConstructor->addMethod('getOutputMode',
             function () {
                 return $this->outputMode;
+            },
+                                           '',
+                                           'string');
+
+        $this->classConstructor->addMethod('getParameter',
+            function () {
+                return $this->parameter;
             },
                                            '',
                                            'string');
@@ -441,7 +453,7 @@ abstract class Console_abstract extends Base
         return $this->consoleID;
     }
 
-    public static function generateList(array $content)
+    public static function generateList(array $content): string
     {
         $keyNames = array_keys($content[0]);
 
@@ -462,9 +474,6 @@ abstract class Console_abstract extends Base
 
         }
 
-
-        d($contentsMaxLength);
-
         $header = [];
 
         foreach ($keyNames as $key) {
@@ -477,9 +486,13 @@ abstract class Console_abstract extends Base
         $contentContainer[] = ' | ' . implode(' | ',
                                               $header) . ' | ';
 
-        $contentContainer[] = str_repeat('+',
-                                         strlen($contentContainer[0]));
+        $contentContainerSeparator = str_repeat('+',
+                                                strlen($contentContainer[0]));
 
+        $contentContainer[] = $contentContainerSeparator;
+
+        array_unshift($contentContainer,
+                      $contentContainerSeparator);
 
         foreach ($content as $item) {
             $contentRow = [];
@@ -494,10 +507,11 @@ abstract class Console_abstract extends Base
                                                   $contentRow) . ' | ';
         }
 
-        d($contentContainer);
+        $contentContainer[] = $contentContainerSeparator;
+        $contentContainer[] = "\n";
 
-        die();
-
+        return implode("\n",
+                       $contentContainer);
     }
 
 }

@@ -38,32 +38,36 @@ class Console_console extends Console_abstract
 
     public function prepareCacheContent()
     {
-        d($this->parameter);
 
-        switch ($this->parameter[0]) {
-            case 'autoload':
-                $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
-                                                           'cache',
-                                                           ContainerFactoryDatabaseQuery::MODE_SELECT);
+        $this->addProgressFunction(function ($progressData) {
+            switch ($this->parameter[0]) {
+                case 'autoload':
+                    $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                               'cache',
+                                                               ContainerFactoryDatabaseQuery::MODE_SELECT);
 
-                $query->setTable('autoload');
-                $query->select('path');
-                $query->select('class');
+                    $query->setTable('autoload');
+                    $query->select('path');
+                    $query->select('class');
 
-                $query->construct();
-                $smtp = $query->execute();
+                    $query->construct();
+                    $smtp = $query->execute();
 
-                d($smtp->fetchAll());
+                    echo Console_abstract::generateList($smtp->fetchAll());
 
 //                $this->generateList([
 //                    'class',
 //                    'path',
 //                                    ]);
-                break;
-            default:
+                    break;
+                default:
 
 
-        }
+            }
+
+            $progressData['message'] = 'View Cache: ' . $this->parameter[0];
+            return $progressData;
+        });
     }
 
     public function prepareTest()
@@ -74,8 +78,8 @@ class Console_console extends Console_abstract
             $testArray = [];
 
             $testArray[] = [
-                'foo' => 123,
-                'bar' => 456,
+                'foo'    => 123,
+                'bar'    => 456,
                 'fooBar' => 456,
             ];
 
@@ -88,7 +92,7 @@ class Console_console extends Console_abstract
                 'bar' => 'Lorem Ipsum',
             ];
 
-            Console_abstract::generateList($testArray);
+            echo Console_abstract::generateList($testArray);
 
             $progressData['message'] = 'foo bar';
             return $progressData;
