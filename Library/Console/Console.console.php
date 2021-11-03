@@ -70,6 +70,26 @@ class Console_console extends Console_abstract
     {
 
         $this->addProgressFunction(function ($progressData) {
+
+            $testArray = [];
+
+            $testArray[] = [
+                'foo' => 123,
+                'bar' => 456,
+                'fooBar' => 456,
+            ];
+
+            $testArray[] = [
+                'foo' => 'abc',
+                'bar' => 'def',
+            ];
+
+            $testArray[] = [
+                'bar' => 'Lorem Ipsum',
+            ];
+
+            Console_abstract::generateList($testArray);
+
             $progressData['message'] = 'foo bar';
             return $progressData;
         });

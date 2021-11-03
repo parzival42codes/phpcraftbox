@@ -441,8 +441,40 @@ abstract class Console_abstract extends Base
         return $this->consoleID;
     }
 
-    protected function generateList(array $header, array $content)
+    public static function generateList(array $content)
     {
+        $keyNames = array_keys($content[0]);
+
+        $contentsMaxLength = [];
+        foreach ($keyNames as $key) {
+            $contentsMaxLength[$key] = 0;
+        }
+
+        foreach ($content as $item) {
+
+            foreach ($keyNames as $key) {
+                $length = strlen($item[$key]);
+
+                if ($length > $contentsMaxLength[$key]) {
+                    $contentsMaxLength[$key] = $length;
+                }
+            }
+
+        }
+
+
+        d($contentsMaxLength);
+
+        $header = [];
+
+        foreach ($keyNames as $key) {
+            $header = $key . str_repeat(' ',);
+        }
+
+        d(implode(' | ',
+                  $header));
+
+        die();
 
     }
 
