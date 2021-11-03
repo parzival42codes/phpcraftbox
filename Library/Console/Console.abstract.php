@@ -447,7 +447,7 @@ abstract class Console_abstract extends Base
 
         $contentsMaxLength = [];
         foreach ($keyNames as $key) {
-            $contentsMaxLength[$key] = 0;
+            $contentsMaxLength[$key] = strlen($key);
         }
 
         foreach ($content as $item) {
@@ -468,11 +468,33 @@ abstract class Console_abstract extends Base
         $header = [];
 
         foreach ($keyNames as $key) {
-            $header = $key . str_repeat(' ',);
+            $header[] = $key . str_repeat(' ',
+                    ($contentsMaxLength[$key] - strlen($key)));
         }
 
-        d(implode(' | ',
-                  $header));
+        $contentContainer = [];
+
+        $contentContainer[] = ' | ' . implode(' | ',
+                                              $header) . ' | ';
+
+        $contentContainer[] = str_repeat('+',
+                                         strlen($contentContainer[0]));
+
+
+        foreach ($content as $item) {
+            $contentRow = [];
+
+            foreach ($keyNames as $key) {
+                $itemContent  = $item[$key];
+                $contentRow[] = $itemContent . str_repeat(' ',
+                        ($contentsMaxLength[$key] - strlen($itemContent)));
+            }
+
+            $contentContainer[] = ' | ' . implode(' | ',
+                                                  $contentRow) . ' | ';
+        }
+
+        d($contentContainer);
 
         die();
 
