@@ -97,7 +97,7 @@ class ApplicationAdministrationSystemCache_app extends Application_abstract
                 $templateDateTime->assign('years',
                                           $ttlDiff['y']);
                 $templateDateTime->assign('negative',
-                                          (int)$ttlDiff['negative']);
+                                          (int)$ttlDiff['negativ']);
 
                 $templateDateTime->parse();
                 $content['ttl'] = $templateDateTime->get();

@@ -635,7 +635,6 @@ function cmsShutdownError(): void
 function cmsShutdown(): void
 {
     cmsShutdownError();
-    ob_end_flush();
     exit;
 
 }

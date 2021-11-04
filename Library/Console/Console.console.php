@@ -35,33 +35,101 @@ class Console_console extends Console_abstract
         });
     }
 
+    public function prepareCacheReset()
+    {
+        $this->prepareCacheDelete();
+
+        $this->addProgressFunction(function ($progressData) {
+            $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                       'cache',
+                                                       ContainerFactoryDatabaseQuery::MODE_OTHER);
+            $query->query('DELETE FROM log_error');
+            $query->execute();
+
+            $progressData['message'] = 'Reset Error';
+            return $progressData;
+        });
+
+        $this->addProgressFunction(function ($progressData) {
+            $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                       'cache',
+                                                       ContainerFactoryDatabaseQuery::MODE_OTHER);
+            $query->query('DELETE FROM debug');
+            $query->execute();
+
+            $progressData['message'] = 'Reset Debug';
+            return $progressData;
+        });
+
+        $this->addProgressFunction(function ($progressData) {
+            $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                       'cache',
+                                                       ContainerFactoryDatabaseQuery::MODE_OTHER);
+            $query->query('DELETE FROM autoload');
+            $query->execute();
+
+            $progressData['message'] = 'Reset Debug';
+            return $progressData;
+        });
+
+        $this->addProgressFunction(function ($progressData) {
+            $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                       'cache',
+                                                       ContainerFactoryDatabaseQuery::MODE_OTHER);
+            $query->query('DELETE FROM console');
+            $query->execute();
+
+            $progressData['message'] = 'Reset Debug';
+            return $progressData;
+        });
+
+
+    }
+
 
     public function prepareCacheContent()
     {
 
         $this->addProgressFunction(function ($progressData) {
+
             switch ($this->parameter[0]) {
                 case 'autoload':
                     $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
                                                                'cache',
                                                                ContainerFactoryDatabaseQuery::MODE_SELECT);
-
                     $query->setTable('autoload');
                     $query->select('path');
                     $query->select('class');
-
                     $query->construct();
                     $smtp = $query->execute();
-
                     echo Console_abstract::generateList($smtp->fetchAll());
-
-//                $this->generateList([
-//                    'class',
-//                    'path',
-//                                    ]);
+                    break;
+                case 'cache':
+                    $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                               'cache',
+                                                               ContainerFactoryDatabaseQuery::MODE_SELECT);
+                    $query->setTable('cache');
+                    $query->select('ident');
+                    $query->select('ttlDatetime');
+                    $query->select('size');
+                    $query->construct();
+                    $smtp = $query->execute();
+                    echo Console_abstract::generateList($smtp->fetchAll());
+                    break;
+                case 'logError':
+                    $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
+                                                               'cache',
+                                                               ContainerFactoryDatabaseQuery::MODE_SELECT);
+                    $query->setTable('log_error');
+                    $query->select('crudType');
+                    $query->select('crudPath');
+                    $query->select('crudTitle');
+                    $query->select('dataVariableCreated');
+                    $query->construct();
+                    $smtp = $query->execute();
+                    echo Console_abstract::generateList($smtp->fetchAll());
                     break;
                 default:
-
 
             }
 
