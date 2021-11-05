@@ -10,7 +10,7 @@ class ApplicationUser_install extends ContainerFactoryModulInstall_abstract
         $this->importLanguage();
         $this->readLanguageFromFile('widget.link.login');
         $this->readLanguageFromFile('widget.link.session');
-        $this->importDocumentationCode(ContainerFactoryModulInstall_abstract::DOCUMENTATION_TYPE_WIDGET);
+        $this->importDocumentationCode();
         $this->importMetaFromModul('_app');
 //        $this->importDocumentationWidget();
     }

@@ -42,6 +42,9 @@ class ConsoleOutputConsole extends ConsoleOutput_abstract
                                        20) . '| - 100 % / |' . str_repeat('#',
                                                                           20) . '| - 100 % ' . $message;
             echo $output . "\n\n";
+
+            echo $progressData['output'] . "\n\n";
+
             return;
         }
 

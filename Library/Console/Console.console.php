@@ -102,7 +102,7 @@ class Console_console extends Console_abstract
                     $query->select('class');
                     $query->construct();
                     $smtp = $query->execute();
-                    echo Console_abstract::generateList($smtp->fetchAll());
+                    $progressData['output'] .= Console_abstract::generateList($smtp->fetchAll());
                     break;
                 case 'cache':
                     $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
@@ -114,7 +114,7 @@ class Console_console extends Console_abstract
                     $query->select('size');
                     $query->construct();
                     $smtp = $query->execute();
-                    echo Console_abstract::generateList($smtp->fetchAll());
+                    $progressData['output'] .= Console_abstract::generateList($smtp->fetchAll());
                     break;
                 case 'logError':
                     $query = new ContainerFactoryDatabaseQuery(__METHOD__ . '#select',
@@ -127,7 +127,7 @@ class Console_console extends Console_abstract
                     $query->select('dataVariableCreated');
                     $query->construct();
                     $smtp = $query->execute();
-                    echo Console_abstract::generateList($smtp->fetchAll());
+                    $progressData['output'] .= Console_abstract::generateList($smtp->fetchAll());
                     break;
                 default:
 
@@ -136,6 +136,32 @@ class Console_console extends Console_abstract
             $progressData['message'] = 'View Cache: ' . $this->parameter[0];
             return $progressData;
         });
+    }
+
+    public function prepareDebugLog()
+    {
+
+        /** @var ContainerFactoryLogDebug_crud $log */
+        $log     = Container::get('ContainerFactoryLogDebug_crud');
+        $findAll = $log->find([],
+                              [
+                                  'crudId DESC',
+                              ],
+                              [],
+                              100);
+
+        /** @var ContainerFactoryLogDebug_crud $findAllItem */
+        foreach ($findAll as $findAllItem) {
+            echo $findAllItem->getCrudContent();
+            $this->addProgressFunction(function ($progressData) {
+
+
+
+                $progressData['message'] = 'foo bar';
+                return $progressData;
+            });
+        }
+
     }
 
     public function prepareTest()

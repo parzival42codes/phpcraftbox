@@ -5,9 +5,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
     protected Console_abstract $console;
     protected int              $progressPartCounter = 1;
 
-    const DOCUMENTATION_TYPE_CODE   = 'code';
-    const DOCUMENTATION_TYPE_WIDGET = 'widget';
-
     public function __construct($console)
     {
         /** @var Console_abstract $console */
@@ -767,11 +764,11 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
 
     }
 
-    public function importDocumentationCode(string $type = ContainerFactoryModulInstall_abstract::DOCUMENTATION_TYPE_CODE): void
+    public function importDocumentationCode(): void
     {
         $rootClass = Core::getRootClass(get_called_class());
 
-        $documentationWidgetPathFile = Core::getClassFileName($rootClass . '_install_documentation_' . $type . '_tpl');
+        $documentationWidgetPathFile = Core::getClassFileName($rootClass . '_install_documentation_tpl');
 
         $this->installFunction(function () {
             /** @var array $data */ /*$before*/
@@ -779,7 +776,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             /** @var ContainerExtensionDocumentation_crud $crud */
             $crud = Container::get("ContainerExtensionDocumentation_crud");
             $crud->setCrudClass($data['crud']["rootClass"]);
-            $crud->setCrudType($data['crud']["type"]);
             $crud->setCrudContent($data['crud']["content"]);
 
             $progressData["message"] = $crud->insert(true) . " |##|blue";
@@ -789,7 +785,6 @@ abstract class ContainerFactoryModulInstall_abstract extends Base
             [
                 'crud' => [
                     'rootClass' => $rootClass,
-                    'type'      => $type,
                     'content'   => file_get_contents($documentationWidgetPathFile),
                 ]
             ]);

@@ -268,6 +268,7 @@ abstract class Console_abstract extends Base
                     $stepEnd                 = $step + 1;
                     $msTime                  = microtime(true);
                     $progressData['message'] = '';
+                    $progressData['output']  = '';
 
                     for ($i = $step; $i <= $this->progressCounter; $i++) {
                         try {
