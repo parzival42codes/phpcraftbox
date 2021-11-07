@@ -279,7 +279,6 @@ abstract class Application_abstract extends Base
 
     protected function pageData()
     {
-        debugDump($this);
     }
 
 }
